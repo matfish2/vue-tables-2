@@ -1,0 +1,20 @@
+{
+  "name": "vue-tables",
+  "description": "Vue.js grid components",
+  "main": "index.js",
+  "license": "MIT",
+  "keywords": [
+    "vue",
+    "bootstrap",
+    "tables",
+    "grids"
+  ],
+  "homepage": "https://github.com/matfish2/vue-tables",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
