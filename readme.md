@@ -45,7 +45,7 @@ Require the script:
 
 If you want to listen for events, require the event bus:
 
-    var bus = require('vue-tables/lib/bus');
+    var bus = require('vue-tables-2/lib/bus');
 
 ## Client Side
 
