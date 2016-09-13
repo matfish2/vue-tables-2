@@ -1,6 +1,6 @@
 # Vue Tables
 
-[![npm version](https://badge.fury.io/js/vue-tables.svg)](https://badge.fury.io/js/vue-tables) [![Build Status](https://travis-ci.org/matfish2/vue-tables.svg?branch=master)](https://travis-ci.org/matfish2/vue-tables)
+[![npm version](https://badge.fury.io/js/vue-tables.svg)](https://badge.fury.io/js/vue-tables-2)
 
 This Vue package offers an easy and intuitive way of displaying Bootstrap-styled grids with data coming either from the client or from the server.
 
@@ -155,7 +155,7 @@ Then inside your component call:
 
 # Templates
 
-Templates allows you to wrap your cells with vue-compiled HTML. Their syntax is similar to that of `render` functions, as it leverages the virtual DOM to bind the templates into the main table template.
+Templates allow you to wrap your cells with vue-compiled HTML. Their syntax is similar to that of `render` functions, as it leverages the virtual DOM to bind the templates into the main table template.
 It is recommended to use JSX, which closely resembles HTML, to write the templates.
 
 E.g.:
@@ -170,11 +170,11 @@ E.g.:
       ...
       }
 
-The first parametr is the `h` scope used to compile the element. It MUST be called `h`.
+The first parameter is the `h` scope used to compile the element. It MUST be called `h`.
 The second parameter gives you access to the row data.
 In addition a `this` context will be available, which refers to the parent of the table component. This allows you to call your own instance methods directly.
 
-Note: Don't include HTML in your dataset, as it will be parsed as plain text. Always use templates.
+Note: Don't include HTML directly in your dataset, as it will be parsed as plain text.
 
 # Custom Filters
 
