@@ -1,4 +1,4 @@
-# Vue Tables
+# Vue Tables 2
 
 [![npm version](https://badge.fury.io/js/vue-tables.svg)](https://badge.fury.io/js/vue-tables-2)
 
