@@ -193,9 +193,9 @@ A. use the `customFilters` option to declare your filters, following this syntax
         }
       ]
 
-B. On your application broadcast an event when a filter was applied, and pass the query:
+B. On your application emit an event when a filter was applied, using the `bus` you imported earlier, and pass the query:
 
-      this.$broadcast('vue-tables.filter::alphabet', query);
+      bus.$emit('vue-tables.filter::alphabet', query);
 
 ## Server Side Filters
 
