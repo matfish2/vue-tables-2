@@ -13,7 +13,7 @@ module.exports = function(h, that) {
         </td>)
       }.bind(that))
 
-      rows.push(<tr>{columns} </tr>)
+      rows.push(<tr on-click={that.rowWasClicked.bind(that, row)}>{columns} </tr>)
     }.bind(that))
 
     return rows;

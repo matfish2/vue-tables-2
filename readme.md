@@ -104,25 +104,6 @@ Javascript:
 
   `count` `number` - Total count before limit.
 
-### Events
-
-Listen to events using the `bus` you pulled above.
-E.g:
-
-      bus.$on('vue-tables.loaded', function(data) {
-          // Do something
-      });
-
-`vue-tables.loading`
-
-Fires off when a request is sent to the server. Sends through the request data.
-
-`vue-tables.loaded`
-
-Fires off after the response data has been attached to the table. Sends through the response.
-
-You can listen to those complementary events on a parent component and use them to add and remove a *loading indicator*, respectively.
-
 ### Programmatic reload
 
 At times you might want to refresh the data as a reaction to data alteration on the server-side.
@@ -173,6 +154,29 @@ The second parameter gives you access to the row data.
 In addition a `this` context will be available, which refers to the parent of the table component. This allows you to call your own instance methods directly.
 
 Note: Don't include HTML directly in your dataset, as it will be parsed as plain text.
+
+### Events
+
+Listen to events using the `bus` you pulled above.
+E.g:
+
+      bus.$on('vue-tables.loaded', function(data) {
+          // Do something
+      });
+
+`vue-tables.loading` (server)
+
+Fires off when a request is sent to the server. Sends through the request data.
+
+`vue-tables.loaded` (server)
+
+Fires off after the response data has been attached to the table. Sends through the response.
+
+You can listen to those complementary events on a parent component and use them to add and remove a *loading indicator*, respectively.
+
+`vue-tables.row-click`
+
+Fires off after a row was clicked. sends through the row
 
 # Custom Filters
 
