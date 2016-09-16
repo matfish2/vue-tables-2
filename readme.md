@@ -174,6 +174,10 @@ Fires off after the response data has been attached to the table. Sends through 
 
 You can listen to those complementary events on a parent component and use them to add and remove a *loading indicator*, respectively.
 
+`vue-tables.error` (server-side)
+
+Fires off if the server returns an invalid code. Sends through the error
+
 `vue-tables.row-click`
 
 Fires off after a row was clicked. sends through the row
