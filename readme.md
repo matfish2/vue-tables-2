@@ -12,6 +12,8 @@ Note: Users of VueJS 1 Please use [this](https://github.com/matfish2/vue-tables)
     - [Client Side](#client-side)
     - [Server Side](#server-side)
 - [Templates](#templates)
+- [Methods](#methods)
+- [Events](#events)
 - [Custom Filters](#custom-filters)
 - [List Filters](#list-filters)
 - [Options](#options)
@@ -104,19 +106,6 @@ Javascript:
 
   `count` `number` - Total count before limit.
 
-### Programmatic reload
-
-At times you might want to refresh the data as a reaction to data alteration on the server-side.
-To do so use `v-ref` to grab the component and call the `refresh()` method on it. E.g:
-
-     <div id="people">
-       <v-server-table url="/people" :columns="columns" :options="options" ref="table"></v-server-table>
-     </div>
-
-Then inside your component call:
-
-     this.$refs.table.refresh();
-
 ### Implementations
 
   I have included [an Eloquent implementation](https://github.com/matfish2/vue-tables/tree/master/server/PHP) for Laravel Users.
@@ -153,7 +142,16 @@ The first parameter is the `h` scope used to compile the element. It MUST be cal
 The second parameter gives you access to the row data.
 In addition a `this` context will be available, which refers to the parent of the table component. This allows you to call your own instance methods directly.
 
+**Important**: To use components in your templates they must be declared globally using `Vue.component()`.
+
 Note: Don't include HTML directly in your dataset, as it will be parsed as plain text.
+
+### Methods
+
+Call methods on your instance using the [`ref`](http://vuejs.org/api/#ref) attribute.
+
+* `setPage(page)`
+* `refresh()` Server component only
 
 ### Events
 
