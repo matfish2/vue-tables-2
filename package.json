@@ -1,7 +1,7 @@
 {
   "name": "vue-tables-2",
   "description": "Vue.js 2 grid components",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "keywords": [
     "vue2",
     "bootstrap",
@@ -20,8 +20,8 @@
   "dependencies": {
     "merge": "^1.2.0",
     "moment": "^2.11.1",
-    "vue": "2.0.0-beta.1",
-    "vue-pagination-2": "^0.1.2",
+    "vue": ">=2.0.0",
+    "vue-pagination-2": "^0.1.9",
     "vue-resource": "^0.9.0"
   },
   "browserify": {
