@@ -4,7 +4,7 @@ module.exports = function(h, that) {
   ref="pagination"
   for={that.id}
   records={that.count}
-  per-page={that.limit}
+  per-page={parseInt(that.limit)}
   chunk={that.opts.pagination.chunk}
   count-text={that.opts.texts.count}>
   </pagination>
