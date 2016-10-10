@@ -140,7 +140,7 @@ E.g.:
 
 The first parameter is the `h` scope used to compile the element. It MUST be called `h`.
 The second parameter gives you access to the row data.
-In addition a `this` context will be available, which refers to the parent of the table component. This allows you to call your own instance methods directly.
+In addition a `this` context will be available, which refers to the root vue instance. This allows you to call your own instance methods directly.
 
 **Important**:
 * To use components in your templates they must be declared globally using `Vue.component()`.
