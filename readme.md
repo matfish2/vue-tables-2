@@ -50,7 +50,7 @@ Require the script:
  If you set it to `true` you must add a `name` prop to your table, which will be used to to register a module on your store.
  Use `vue-devtools` to look under the hood and see the current state.
 
-If you want to listen for events, and you are not useing `vuex`, require the event bus:
+If you want to listen for events, and you are not using `vuex`, require the event bus:
 
     var bus = require('vue-tables-2/lib/bus');
 
@@ -171,26 +171,26 @@ Using an event bus:
 Using Vuex:
 
     mutations:{
-      'tableName.LOADED' (state, data) {
+      ['tableName/LOADED'] (state, data) {
         // Do something
       }
     }
 
-`vue-tables.loading` | `tableName.LOADING` (server)
+`vue-tables.loading` | `tableName/LOADING` (server)
 
 Fires off when a request is sent to the server. Sends through the request data.
 
-`vue-tables.loaded` | `tableName.LOADED` (server)
+`vue-tables.loaded` | `tableName/LOADED` (server)
 
 Fires off after the response data has been attached to the table. Sends through the response.
 
 You can listen to those complementary events on a parent component and use them to add and remove a *loading indicator*, respectively.
 
-`vue-tables.error` | `tableName.ERROR` (server-side)
+`vue-tables.error` | `tableName/ERROR` (server-side)
 
 Fires off if the server returns an invalid code. Sends through the error
 
-`vue-tables.row-click` | `tableName.ROW_CLICK`
+`vue-tables.row-click` | `tableName/ROW_CLICK`
 
 Fires off after a row was clicked. sends through the row
 
@@ -218,7 +218,7 @@ B.
 
 * Using `vuex`:
 
-    this.$store.commit('myTable.SET_CUSTOM_FILTER',{filter:'alphabet', value:query})
+      this.$store.commit('myTable/SET_CUSTOM_FILTER',{filter:'alphabet', value:query})
 
 ## Server Side Filters
 
