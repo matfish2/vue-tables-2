@@ -214,11 +214,11 @@ A. use the `customFilters` option to declare your filters, following this syntax
 B.
 * Using the event bus:
 
-      bus.$emit('vue-tables.filter::alphabet', query);
+          bus.$emit('vue-tables.filter::alphabet', query);
 
 * Using `vuex`:
 
-      this.$store.commit('myTable/SET_CUSTOM_FILTER',{filter:'alphabet', value:query})
+          this.$store.commit('myTable/SET_CUSTOM_FILTER',{filter:'alphabet', value:query})
 
 ## Server Side Filters
 
