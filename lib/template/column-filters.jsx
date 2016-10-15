@@ -12,6 +12,7 @@ module.exports = function(h, that) {
   that.allColumns.map(function(column) {
 
       if (that.filterable(column)) {
+
        switch (true) {
           case that.isTextFilter(column):   filter =  textFilter(column);break;
           case that.isDateFilter(column): filter =  dateFilter(column);break;

@@ -2,7 +2,7 @@ module.exports = function(h, that) {
     var rows = [];
     var columns;
 
-    var data = that.source=='client'?that.filteredData:that.data;
+    var data = that.source=='client'?that.filteredData:that.tableData;
 
     data.map(function(row) {
       columns = [];

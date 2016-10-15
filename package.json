@@ -1,7 +1,7 @@
 {
   "name": "vue-tables-2",
   "description": "Vue.js 2 grid components",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "keywords": [
     "vue2",
     "bootstrap",
@@ -21,13 +21,16 @@
     "merge": "^1.2.0",
     "moment": "^2.11.1",
     "vue": ">=2.0.0",
-    "vue-pagination-2": "^0.1.9",
+    "vue-pagination-2": "^0.2.0",
     "vue-resource": "^0.9.0"
   },
   "browserify": {
     "transform": [
       "babelify"
     ]
+  },
+    "scripts": {
+    "build-min": "browserify index.js --s VueTables | uglifyjs -c > ../dist/vue-tables.min.js"
   },
   "licenses": "MIT",
   "main": "index.js",

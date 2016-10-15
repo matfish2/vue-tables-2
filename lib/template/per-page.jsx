@@ -7,7 +7,7 @@ module.exports = function(h, that) {
         <select class="form-control"
           name="limit"
           value={that.limit}
-          on-change={that.setPage.bind(that,1, true)}
+          on-change={that.setLimit.bind(that)}
           >
           {perpageValues}
         </select>

@@ -21,6 +21,7 @@ Note: Users of VueJS 1 Please use [this](https://github.com/matfish2/vue-tables)
 # Dependencies
 
 * Vue.js (>=2.0). Required.
+* Vuex (>=2.0). Optional.
 * Bootstrap (CSS). Optional.
 * vue-resource (>=0.9.0) (server-side component only)
 
@@ -38,14 +39,18 @@ Require the script:
 
 ## Register the component(s)
 
-    Vue.use(VueTables.client, options);
+    Vue.use(VueTables.client, [options], [useVuex]);
 
   Or/And
 
     Vue.use(require('vue-resource'));
-    Vue.use(VueTables.server, options);
+    Vue.use(VueTables.server, [options], [useVuex]);
 
-If you want to listen for events, require the event bus:
+ The third argument is a boolean, indicating whether to use `vuex` for state management, or manage state on the component itself.
+ If you set it to `true` you must add a `name` prop to your table, which will be used to to register a module on your store.
+ Use `vue-devtools` to look under the hood and see the current state.
+
+If you want to listen for events, and you are not useing `vuex`, require the event bus:
 
     var bus = require('vue-tables-2/lib/bus');
 
@@ -157,28 +162,35 @@ Call methods on your instance using the [`ref`](http://vuejs.org/api/#ref) attri
 
 ### Events
 
-Listen to events using the `bus` you pulled above.
-E.g:
+Using an event bus:
 
       bus.$on('vue-tables.loaded', function(data) {
           // Do something
       });
 
-`vue-tables.loading` (server)
+Using Vuex:
+
+    mutations:{
+      'tableName.LOADED' (state, data) {
+        // Do something
+      }
+    }
+
+`vue-tables.loading` | `tableName.LOADING` (server)
 
 Fires off when a request is sent to the server. Sends through the request data.
 
-`vue-tables.loaded` (server)
+`vue-tables.loaded` | `tableName.LOADED` (server)
 
 Fires off after the response data has been attached to the table. Sends through the response.
 
 You can listen to those complementary events on a parent component and use them to add and remove a *loading indicator*, respectively.
 
-`vue-tables.error` (server-side)
+`vue-tables.error` | `tableName.ERROR` (server-side)
 
 Fires off if the server returns an invalid code. Sends through the error
 
-`vue-tables.row-click`
+`vue-tables.row-click` | `tableName.ROW_CLICK`
 
 Fires off after a row was clicked. sends through the row
 
@@ -199,9 +211,14 @@ A. use the `customFilters` option to declare your filters, following this syntax
         }
       ]
 
-B. On your application emit an event when a filter was applied, using the `bus` you imported earlier, and pass the query:
+B.
+* Using the event bus:
 
       bus.$emit('vue-tables.filter::alphabet', query);
+
+* Using `vuex`:
+
+    this.$store.commit('myTable.SET_CUSTOM_FILTER',{filter:'alphabet', value:query})
 
 ## Server Side Filters
 
