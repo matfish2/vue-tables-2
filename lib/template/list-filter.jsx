@@ -20,7 +20,7 @@
       on-change={search}
       name={column}
       value={that.query[column]}>
-      <option value="">{that.display('defaultOption',that.getHeading(column))}</option>
+      <option value="">{that.display('defaultOption',{column:that.getHeading(column)})}</option>
       {options}
       </select>
       </div>

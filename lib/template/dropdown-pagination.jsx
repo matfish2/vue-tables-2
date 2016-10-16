@@ -16,8 +16,9 @@ module.exports = function(h, that) {
     <label>{that.display('page')}</label>
     <select class="form-control"
     name="page"
+    ref="page"
     value={that.page}
-    on-change={that.setPage.bind(that, null, null)}
+    on-change={that.setPage.bind(that, null)}
     >
     {pages}
     </select>

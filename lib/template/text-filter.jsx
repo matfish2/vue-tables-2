@@ -10,7 +10,7 @@
        class="form-control"
        name={column}
        type="text"
-       placeholder={that.display('filterBy',that.getHeading(column))}
+       placeholder={that.display('filterBy',{column:that.getHeading(column)})}
        value={that.query[column]}
        />
      }
