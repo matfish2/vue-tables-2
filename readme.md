@@ -159,6 +159,8 @@ Note: Don't include HTML directly in your dataset, as it will be parsed as plain
 # Child Rows
 
 Child rows allow for a custom designed output area, namely a hidden child row underneath each row, whose content you are free to set yourself.
+When using the `childRow` option you must pass a unqiue `id` property for each row, which is used to track the current state.
+
 The syntax is identincal to that of templates:
 
       options:{
@@ -191,6 +193,7 @@ Example styling:
     display: none;
 }
 ```
+
 
 ### Methods
 
