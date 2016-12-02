@@ -1,7 +1,7 @@
 {
   "name": "vue-tables-2",
   "description": "Vue.js 2 grid components",
-  "version": "0.2.44",
+  "version": "0.2.45",
   "keywords": [
     "vue2",
     "vuex",
@@ -19,6 +19,7 @@
     "tonic-example.js"
   ],
   "dependencies": {
+    "clone": "^2.1.0",
     "merge": "^1.2.0",
     "moment": "^2.11.1",
     "vue": ">=2.0.0",
@@ -30,7 +31,7 @@
       "babelify"
     ]
   },
-    "scripts": {
+  "scripts": {
     "build-min": "browserify index.js --s VueTables | uglifyjs -c > ../dist/vue-tables.min.js"
   },
   "licenses": "MIT",
