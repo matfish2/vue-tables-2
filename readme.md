@@ -111,7 +111,7 @@ Javascript:
 
   `count` `number` - Total count before limit.
 
-Note: If you are calling a foreign API or simply want to use your own keys, use to the `responseAdapter` option.
+Note: If you are calling a foreign API or simply want to use your own keys, refer to the `responseAdapter` option.
 
 ### Implementations
 
