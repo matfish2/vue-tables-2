@@ -12,6 +12,7 @@ Note: Users of VueJS 1 Please use [this](https://github.com/matfish2/vue-tables)
     - [Client Side](#client-side)
     - [Server Side](#server-side)
 - [Templates](#templates)
+- [Child Rows](#child-rows)
 - [Methods](#methods)
 - [Events](#events)
 - [Custom Filters](#custom-filters)
@@ -154,6 +155,42 @@ In addition a `this` context will be available, which refers to the root vue ins
 * Templates must be declared in the `columns` prop
 
 Note: Don't include HTML directly in your dataset, as it will be parsed as plain text.
+
+### Child Rows
+
+Child rows allow for a custom designed output area, namely a hidden child row underneath each row, whose content you are free to set yourself.
+The syntax is identincal to that of templates:
+
+      options:{
+      ...
+      childRow: function(h, row) {
+        return <div>My custom content for row {row.id}</div>
+      }
+      ...
+      }
+
+When the plugin detects a `childRow` function it appends the child rows and prepends to each row an additional toggler column with a `span` you can design to your liking.
+
+Example styling:
+```css
+.VueTables__child-row-toggler {
+  width:16px;
+  height:16px;
+  display: block;
+}
+
+.VueTables__child-row-toggler--closed {
+    background: url('./toggler-closed.png');
+}
+
+.VueTables__child-row-toggler--open  {
+    background: url('./toggler-open.png');
+}
+
+.VueTables__child-row--closed {
+    display: none;
+}
+```
 
 ### Methods
 

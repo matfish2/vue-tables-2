@@ -9,6 +9,9 @@ module.exports = function(h, that) {
   var filters = [];
   var filter;
 
+  if (that.opts.childRow)
+    filters.push(<th></th>);
+
   that.allColumns.map(function(column) {
 
       if (that.filterable(column)) {
