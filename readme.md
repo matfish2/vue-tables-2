@@ -156,7 +156,7 @@ In addition a `this` context will be available, which refers to the root vue ins
 
 Note: Don't include HTML directly in your dataset, as it will be parsed as plain text.
 
-### Child Rows
+# Child Rows
 
 Child rows allow for a custom designed output area, namely a hidden child row underneath each row, whose content you are free to set yourself.
 The syntax is identincal to that of templates:
