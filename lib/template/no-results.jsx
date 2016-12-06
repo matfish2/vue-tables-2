@@ -1,9 +1,14 @@
 module.exports = function(h, that) {
-    if (that.count==0)
+    if (that.count==0) {
+
+      let colspan = that.allColumns.length;
+      if (that.opts.childRow) colspan++;
+
    return <tr class="VueTables__no-results">
   <td class="text-center"
-  colspan={that.allColumns.length}>
+  colspan={colspan}>
   {that.display('noResults')}
   </td>
   </tr>
+}
 }
