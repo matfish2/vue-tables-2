@@ -40,16 +40,20 @@ Require the script:
 
 ## Register the component(s)
 
-    Vue.use(VueTables.client, [options], [useVuex]);
+    Vue.use(VueTables.client, [options], [useVuex], [customTemplate]);
 
   Or/And
 
     Vue.use(require('vue-resource'));
-    Vue.use(VueTables.server, [options], [useVuex]);
+    Vue.use(VueTables.server, [options], [useVuex], [customTemplate]);
 
  The third argument is a boolean, indicating whether to use `vuex` for state management, or manage state on the component itself.
  If you set it to `true` you must add a `name` prop to your table, which will be used to to register a module on your store.
  Use `vue-devtools` to look under the hood and see the current state.
+
+The fourth argument allows you to pass a custom template for the entire table.
+You can find the main template file under `lib/template/template.jsx`.
+Copy it to your project and modify to your needs.
 
 If you want to listen for events, and you are not using `vuex`, require the event bus:
 
