@@ -55,7 +55,7 @@ The fourth argument allows you to pass a custom template for the entire table.
 You can find the main template file under `lib/template.jsx`.
 Copy it to your project and modify to your needs.
 
-If you want to listen for events, and you are not using `vuex`, require the event bus:
+If you want to listen for events, which require more than child-parent communication, and you are not using `vuex`, require the event bus:
 
     var bus = require('vue-tables-2/lib/bus');
 
@@ -210,6 +210,10 @@ Call methods on your instance using the [`ref`](http://vuejs.org/api/#ref) attri
 * `refresh()` Server component only
 
 ### Events
+
+Using Custom Events (For child-parent communication):
+
+    <v-server-table :columns="columns" url="/getData" @loaded="onLoaded"></v-server-table>
 
 Using an event bus:
 
