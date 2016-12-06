@@ -173,20 +173,23 @@ The syntax is identincal to that of templates:
 
 When the plugin detects a `childRow` function it appends the child rows and prepends to each row an additional toggler column with a `span` you can design to your liking.
 
-Example styling:
+Example styling (also found in `style.css`):
 ```css
 .VueTables__child-row-toggler {
   width:16px;
   height:16px;
+  line-height: 16px;
   display: block;
+  margin: auto;
+  text-align: center;
 }
 
-.VueTables__child-row-toggler--closed {
-    background: url('./toggler-closed.png');
+.VueTables__child-row-toggler--closed::before {
+   content: "+";
 }
 
-.VueTables__child-row-toggler--open  {
-    background: url('./toggler-open.png');
+.VueTables__child-row-toggler--open::before  {
+    content: "-";
 }
 
 .VueTables__child-row--closed {
