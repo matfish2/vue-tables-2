@@ -52,7 +52,7 @@ Require the script:
  Use `vue-devtools` to look under the hood and see the current state.
 
 The fourth argument allows you to pass a custom template for the entire table.
-You can find the main template file under `lib/template/template.jsx`.
+You can find the main template file under `lib/template.jsx`.
 Copy it to your project and modify to your needs.
 
 If you want to listen for events, and you are not using `vuex`, require the event bus:
