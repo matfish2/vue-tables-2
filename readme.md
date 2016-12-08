@@ -154,8 +154,30 @@ The first parameter is the `h` scope used to compile the element. It MUST be cal
 The second parameter gives you access to the row data.
 In addition a `this` context will be available, which refers to the root vue instance. This allows you to call your own instance methods directly.
 
+A Second option to for creating templates is to encapsulate the template within a component and pass the name. The component must have a `data` property, which will receive the row object. E.g:
+
+      Vue.component('delete', {
+        props:['data'],
+        template:`<a class='delete' @click='erase'></a>`,
+        methods:{
+          erase() {
+              let id = this.data.id;
+              // delete the item
+          }
+        }
+      });
+
+
+      options:{
+      ...
+        templates: {
+            erase: 'delete'
+        }
+      ...
+      }
+
 **Important**:
-* To use components in your templates they must be declared globally using `Vue.component()`.
+* To use components in your templates they must be declared **globally** using `Vue.component()`.
 * Templates must be declared in the `columns` prop
 
 Note: Don't include HTML directly in your dataset, as it will be parsed as plain text.
@@ -173,6 +195,14 @@ The syntax is identincal to that of templates:
       childRow: function(h, row) {
         return <div>My custom content for row {row.id}</div>
       }
+      ...
+      }
+
+Or you can pass a component name: (See `Templates` above for a complete example)
+
+      options:{
+      ...
+      childRow: 'row-component'
       ...
       }
 

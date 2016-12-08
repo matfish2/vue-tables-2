@@ -19,8 +19,17 @@ module.exports = function(h, that) {
 
       rows.push(<tr on-click={that.rowWasClicked.bind(that, row)}>{columns} </tr>);
 
-      if (that.opts.childRow)
-        rows.push(<tr class={`VueTables__child-row ` + that.childRowClass(row[rowKey])}><td colspan={that.allColumns.length+1}>{that.opts.childRow.apply(that, [h, row])}</td></tr>);
+      if (that.opts.childRow) {
+        let childRow = that.opts.childRow;
+        let template = typeof childRow==='function'?
+        childRow.apply(that, [h, row]):
+        h(childRow,{
+              attrs:{
+                data: row
+            }
+          });
+        rows.push(<tr class={`VueTables__child-row ` + that.childRowClass(row[rowKey])}><td colspan={that.allColumns.length+1}>{template}</td></tr>);
+      }
 
     }.bind(that))
 
