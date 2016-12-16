@@ -153,6 +153,23 @@ E.g.:
 The first parameter is the `h` scope used to compile the element. It MUST be called `h`.
 The second parameter gives you access to the row data.
 In addition a `this` context will be available, which refers to the root vue instance. This allows you to call your own instance methods directly.
+Note: when using a `.vue` file `jsx` must be imported from a dedicated `.jsx` file in order to compile correctly. E.g
+
+edit.jsx
+
+    export default function(h, row) {
+       return <a class='fa fa-edit' href={'#/' + row.id + '/edit'}></a>
+    }
+
+app.vue
+
+import edit from 'edit.jsx'
+
+    <script>
+    templates:{
+       edit
+    }
+    </script>
 
 A Second option to for creating templates is to encapsulate the template within a component and pass the name. The component must have a `data` property, which will receive the row object. E.g:
 
