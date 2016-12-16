@@ -1,7 +1,7 @@
 {
   "name": "vue-tables-2",
   "description": "Vue.js 2 grid components",
-  "version": "0.2.66",
+  "version": "0.2.67",
   "keywords": [
     "vue2",
     "vuex",
@@ -19,6 +19,7 @@
     "tonic-example.js"
   ],
   "dependencies": {
+    "clone": "^2.1.0",
     "merge": "^1.2.0",
     "moment": "^2.11.1",
     "vue": ">=2.0.0",
