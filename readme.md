@@ -249,6 +249,11 @@ Example styling (also found in `style.css`):
 }
 ```
 
+You can also trigger the child row toggler programmtically. E.g, to toggle the row with an id of 4:
+
+```js
+this.$refs.myTable.toggleChildRow(4); // replace myTable with your own ref
+```
 
 ### Methods
 
