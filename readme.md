@@ -36,6 +36,18 @@ Require the script:
 
     var VueTables = require('vue-tables-2');
 
+Webpack users, use the following setup to compile the package's jsx files:
+
+```js
+loaders: [
+    {
+        test: /\.jsx?$/,
+        loader: 'babel',
+        exclude: /node_modules(?!\/(vue-tables-2|vue-pagination-2))/
+    },
+]
+```
+
 # Usage
 
 ## Register the component(s)
