@@ -7,7 +7,7 @@ module.exports = function(h, that) {
    return <tr class="VueTables__no-results">
   <td class="text-center"
   colspan={colspan}>
-  {that.display('noResults')}
+  {that.display(that.loading?'loading':'noResults')}
   </td>
   </tr>
 }
