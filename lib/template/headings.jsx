@@ -9,7 +9,7 @@ module.exports = function(h, that) {
  that.allColumns.map(function(column) {
   headings.push(<th on-click={that.orderByColumn.bind(that,column)}
     class={that.sortableClass(column)}>
-    <span class="VueTables__heading">{that.getHeading(column)}</span>
+    <span class="VueTables__heading">{that.getHeading(column, h)}</span>
     {sortControl(column)}
     </th>)
 }.bind(that))
