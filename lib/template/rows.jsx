@@ -2,7 +2,7 @@ module.exports = function(h, that) {
     var rows = [];
     var columns;
     var rowKey = that.opts.childRowKey;
-
+    var rowClass;
     var data = that.source=='client'?that.filteredData:that.tableData;
 
     data.map(function(row, index) {
@@ -17,7 +17,9 @@ module.exports = function(h, that) {
         </td>)
       }.bind(that))
 
-      rows.push(<tr on-click={that.rowWasClicked.bind(that, row)}>{columns} </tr>);
+      rowClass = that.opts.rowClassCallback?that.opts.rowClassCallback(row):'';
+
+      rows.push(<tr class={rowClass} on-click={that.rowWasClicked.bind(that, row)}>{columns} </tr>);
 
       if (that.opts.childRow) {
         let childRow = that.opts.childRow;
