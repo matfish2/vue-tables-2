@@ -34,7 +34,7 @@ Compile the code using a module bundler, such as webpack or browserify, and the 
 
 Require the script:
 
-    var VueTables = require('vue-tables-2');
+    import {ServerTable, ClientTable, Event} from 'vue-tables-2';
 
 Webpack users, use the following setup to compile the package's jsx files:
 
@@ -52,11 +52,11 @@ loaders: [
 
 ## Register the component(s)
 
-    Vue.use(VueTables.client, [options], [useVuex], [customTemplate]);
+    Vue.use(ClientTable, [options], [useVuex], [customTemplate]);
 
   Or/And
 
-    Vue.use(VueTables.server, [options], [useVuex], [customTemplate]);
+    Vue.use(ServerTable, [options], [useVuex], [customTemplate]);
 
  The third argument is a boolean, indicating whether to use `vuex` for state management, or manage state on the component itself.
  If you set it to `true` you must add a `name` prop to your table, which will be used to to register a module on your store.
@@ -65,10 +65,6 @@ loaders: [
 The fourth argument allows you to pass a custom template for the entire table.
 You can find the main template file under `lib/template.jsx`.
 Copy it to your project and modify to your needs.
-
-If you want to listen for events, which require more than child-parent communication, and you are not using `vuex`, require the event bus:
-
-    var bus = require('vue-tables-2/lib/bus');
 
 ## Client Side
 
@@ -275,9 +271,9 @@ Using Custom Events (For child-parent communication):
 
     <v-server-table :columns="columns" url="/getData" @loaded="onLoaded"></v-server-table>
 
-Using an event bus:
+Using the event bus:
 
-      bus.$on('vue-tables.loaded', function(data) {
+      Event.$on('vue-tables.loaded', function(data) {
           // Do something
       });
 
@@ -327,7 +323,7 @@ A. use the `customFilters` option to declare your filters, following this syntax
 B.
 * Using the event bus:
 
-          bus.$emit('vue-tables.filter::alphabet', query);
+          Event.$emit('vue-tables.filter::alphabet', query);
 
 * Using `vuex`:
 

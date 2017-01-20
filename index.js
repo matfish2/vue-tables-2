@@ -1,2 +1,9 @@
-exports.client = require('./lib/v-client-table');
-exports.server = require('./lib/v-server-table');
+var ClientTable = require('./lib/v-client-table');
+var ServerTable = require('./lib/v-server-table');
+var Event = require('./lib/bus');
+
+module.exports = {
+  ClientTable,
+  ServerTable,
+  Event
+};
