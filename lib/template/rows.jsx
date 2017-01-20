@@ -30,7 +30,7 @@ module.exports = function(h, that) {
                 data: row
             }
           });
-        rows.push(<tr class={`VueTables__child-row ` + that.childRowClass(row[rowKey])}><td colspan={that.allColumns.length+1}>{template}</td></tr>);
+        rows.push(<tr class='VueTables__child-row'><td colspan={that.allColumns.length+1}>{template}</td></tr>);
       }
 
     }.bind(that))

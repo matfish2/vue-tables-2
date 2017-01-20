@@ -255,10 +255,6 @@ Example styling (also found in `style.css`):
 .VueTables__child-row-toggler--open::before  {
     content: "-";
 }
-
-.VueTables__child-row--closed {
-    display: none;
-}
 ```
 
 You can also trigger the child row toggler programmtically. E.g, to toggle the row with an id of 4:
