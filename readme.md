@@ -24,7 +24,7 @@ Note: Users of VueJS 1 Please use [this](https://github.com/matfish2/vue-tables)
 * Vue.js (>=2.0). Required.
 * Vuex (>=2.0). Optional.
 * Bootstrap (CSS). Optional.
-* vue-resource (>=0.9.0) (server-side component only)
+* axios OR vue-resource (>=0.9.0) OR jQuery (server-side component only)
 
 # Installation
 
@@ -56,7 +56,6 @@ loaders: [
 
   Or/And
 
-    Vue.use(require('vue-resource'));
     Vue.use(VueTables.server, [options], [useVuex], [customTemplate]);
 
  The third argument is a boolean, indicating whether to use `vuex` for state management, or manage state on the component itself.
