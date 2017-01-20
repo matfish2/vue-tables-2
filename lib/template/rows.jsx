@@ -21,7 +21,7 @@ module.exports = function(h, that) {
 
       rows.push(<tr class={rowClass} on-click={that.rowWasClicked.bind(that, row)}>{columns} </tr>);
 
-      if (that.opts.childRow) {
+      if (that.opts.childRow && this.rowsToggleState['row_' + row[rowKey]]) {
         let childRow = that.opts.childRow;
         let template = typeof childRow==='function'?
         childRow.apply(that, [h, row]):
