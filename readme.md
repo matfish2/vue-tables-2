@@ -47,6 +47,14 @@ loaders: [
     },
 ]
 ```
+If you are using babel / babelify separate from webpack and you have compilation issues create a .babelrc file with the required compilation options:
+
+```js
+{
+  "presets": ["es2015"],
+  "plugins": ["transform-vue-jsx"]
+}
+```
 
 # Usage
 
