@@ -367,5 +367,13 @@ Options are set in three layers, where the more particular overrides the more ge
 
 [EXPLORE OPTIONS](//jsfiddle.net/matfish2/823jzuzc/embedded/result/)
 
+# Issues Policy
+
+Any bug reports or feature requests are most welcome with one exception, namely, compilation issues.
+**Please DO NOT post here any issues regarding problems with the build process.**
+The package CAN be compiled with the right settings (i.e ES6 and jsx files transformers).
+
+If you think there is a way to make this admittedly cumbersome process easier, I'm all ears.
+
 -----------------
 CSS Note: to center the pagination apply `text-align:center` to the wrapping element
