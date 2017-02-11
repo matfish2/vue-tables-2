@@ -1,7 +1,8 @@
 module.exports = function(h, that) {
     var rows = [];
     var columns;
-    var rowKey = that.opts.childRowKey;
+    var rowKey = that.opts.uniqueKey;
+
     var rowClass;
     var data = that.source=='client'?that.filteredData:that.tableData;
 
@@ -15,7 +16,7 @@ module.exports = function(h, that) {
           columns.push(<td>
             {that.render(row, column, h)}
         </td>)
-      }.bind(that))
+      }.bind(that));
 
       rowClass = that.opts.rowClassCallback?that.opts.rowClassCallback(row):'';
 

@@ -6,6 +6,8 @@ This Vue package offers an easy and intuitive way of displaying Bootstrap-styled
 
 Note: Users of VueJS 1 Please use [this](https://github.com/matfish2/vue-tables) package instead.
 
+Note: As of version 0.4.0 the `childRowKey` option has been replaced by the more generic `uniqueKey` option.
+
 - [Dependencies](#dependencies)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -212,7 +214,7 @@ Note: Don't include HTML directly in your dataset, as it will be parsed as plain
 
 Child rows allow for a custom designed output area, namely a hidden child row underneath each row, whose content you are free to set yourself.
 When using the `childRow` option you must pass a unqiue `id` property for each row, which is used to track the current state.
-If your identifer key is not `id`, use the `childRowKey` option to set it.
+If your identifer key is not `id`, use the `uniqueKey` option to set it.
 
 The syntax is identincal to that of templates:
 
