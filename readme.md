@@ -17,7 +17,9 @@ Note: Users of VueJS 1 Please use [this](https://github.com/matfish2/vue-tables)
 - [Events](#events)
 - [Custom Filters](#custom-filters)
 - [List Filters](#list-filters)
+- [Custom Sorting](#custom-sotring)
 - [Options](#options)
+- [Issues Policy](#issues-policy)
 
 # Dependencies
 
@@ -356,6 +358,27 @@ For example:
 
 The values of this column should correspond to the `id`'s passed to the list.
 They will be automatically converted to their textual representation.
+
+# Custom Sorting (Client Component)
+
+Sometimes you may one to override the default sorting logic which is applied uniformly to all columns.
+To do so use the `customSorting` option. This is an object that recieves custom logic for specific columns.
+E.g, to sort the `name` column by the last character:
+
+```js
+    customSorting:{
+             name: function(ascending) {
+              return function(a, b) {
+                 var lastA = a.name[a.name.length-1].toLowerCase();
+                 var lastB = b.name[b.name.length-1].toLowerCase();
+
+                 if (ascending)
+                   return lastA <= lastB?1:-1;
+
+               return lastA >= lastB?1:-1;
+           }
+       }
+```
 
 # Options
 
