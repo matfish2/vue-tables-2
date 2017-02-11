@@ -305,7 +305,9 @@ Fires off if the server returns an invalid code. Sends through the error
 
 `vue-tables.row-click` | `tableName/ROW_CLICK`
 
-Fires off after a row was clicked. sends through the row
+Fires off after a row was clicked. sends through the row.
+When using the client component, if you want to recieve the *original* row, so that it can be directly mutated, you must have a unique row identifier.
+The key defaults to `id`, but can be changed using the `uniqueKey` option.
 
 # Custom Filters
 
