@@ -53,7 +53,8 @@ Require the script:
  Use `vue-devtools` to look under the hood and see the current state.
 
 The fourth argument allows you to pass a custom template for the entire table.
-You can find the main template file under `dist/template.js`.
+You can find the main template file under `lib/template.js`, which in turn requires the partials in the `template` folder.
+The template in written using `jsx`, so you will need a [jsx compiler](https://github.com/vuejs/babel-plugin-transform-vue-jsx) to modify it (the package is using the compiled version under the `compiled` folder).
 Copy it to your project and modify to your needs.
 
 ## Client Side
