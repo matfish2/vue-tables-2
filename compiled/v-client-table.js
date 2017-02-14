@@ -2,8 +2,6 @@
 
 var _vuePagination = require('vue-pagination-2');
 
-var _vuePagination2 = _interopRequireDefault(_vuePagination);
-
 var _vuex = require('./state/vuex');
 
 var _vuex2 = _interopRequireDefault(_vuex);
@@ -24,10 +22,6 @@ var _data2 = require('./state/data');
 
 var _data3 = _interopRequireDefault(_data2);
 
-var _bus = require('vue-pagination-2/src/bus');
-
-var _bus2 = _interopRequireDefault(_bus);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _data = require('./mixins/data');
@@ -37,7 +31,7 @@ var template = require('./template');
 
 exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
 
-  Vue.use(_vuePagination2.default, useVuex);
+  Vue.use(_vuePagination.VuePagination, useVuex);
 
   var client = _merge2.default.recursive(true, (0, _table2.default)(), {
     name: 'client-table',
@@ -85,7 +79,7 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
       if (!this.vuex) {
         this.registerClientFilters();
 
-        _bus2.default.$on('vue-pagination::' + this.id, function (page) {
+        _vuePagination.VueEvent.$on('vue-pagination::' + this.id, function (page) {
           this.setPage(page);
         }.bind(this));
       }
