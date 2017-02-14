@@ -1,7 +1,7 @@
 {
 "name": "vue-tables-2",
 "description": "Vue.js 2 grid components",
-"version": "0.4.20",
+"version": "0.4.30",
 "keywords": [
 "vue2",
 "vuex",
@@ -26,13 +26,8 @@
 "vue-pagination-2": "^0.2.4",
 "vue-resource": "^0.9.0"
 },
-"browserify": {
-"transform": [
-"babelify"
-]
-},
 "scripts": {
-"build-min": "browserify index.js --s VueTables | uglifyjs -c > dist/vue-tables.min.js"
+"build": "babel lib -d compiled"
 },
 "licenses": "MIT",
 "main": "index.js",

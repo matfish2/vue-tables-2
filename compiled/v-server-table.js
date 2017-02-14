@@ -1,11 +1,29 @@
-import merge from 'merge';
-import stateData from './state/data';
-import vuex from './state/vuex';
-import normal from './state/normal';
-import Table from './table';
+'use strict';
 
-var data = require('./mixins/data');
-var created = require('./mixins/created');
+var _merge = require('merge');
+
+var _merge2 = _interopRequireDefault(_merge);
+
+var _data2 = require('./state/data');
+
+var _data3 = _interopRequireDefault(_data2);
+
+var _vuex = require('./state/vuex');
+
+var _vuex2 = _interopRequireDefault(_vuex);
+
+var _normal = require('./state/normal');
+
+var _normal2 = _interopRequireDefault(_normal);
+
+var _table = require('./table');
+
+var _table2 = _interopRequireDefault(_table);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _data = require('./mixins/data');
+var _created = require('./mixins/created');
 
 var template = require('./template');
 var VuePagination = require('vue-pagination-2');
@@ -13,13 +31,13 @@ var paginationBus = require('vue-pagination-2/src/bus');
 
 exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
 
-  let state = useVuex ? vuex('server') : normal();
+  var state = useVuex ? (0, _vuex2.default)('server') : (0, _normal2.default)();
 
   Vue.use(VuePagination, useVuex);
 
-  var server = merge.recursive(true, Table(), {
+  var server = _merge2.default.recursive(true, (0, _table2.default)(), {
     name: 'server-table',
-    render: customTemplate?customTemplate:template('server'),
+    render: customTemplate ? customTemplate : template('server'),
     props: {
       columns: {
         type: Array,
@@ -32,21 +50,19 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
       options: {
         type: Object,
         required: false,
-        default: function ()
-        {
-          return {}
+        default: function _default() {
+          return {};
         }
       }
     },
-    created: function () {
+    created: function created() {
 
-      created(this);
+      _created(this);
 
       if (!this.vuex) {
         this.query = this.initQuery();
 
         this.initOrderBy(this.Columns[0]);
-
       }
 
       if (!this.vuex) {
@@ -55,7 +71,7 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
 
       this.getData(true).then(function (response) {
 
-        let data = this.getResponseData(response);
+        var data = this.getResponseData(response);
         this.setData(this.opts.responseAdapter(data));
 
         this.loading = false;
@@ -65,37 +81,33 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
             this.initDateFilters();
           }.bind(this), 0);
         }
-
       }.bind(this));
-
     },
-    mounted: function () {
+    mounted: function mounted() {
 
-      if (this.vuex)
-        return;
+      if (this.vuex) return;
 
       this.registerServerFilters();
 
       paginationBus.$on('vue-pagination::' + this.id, function (page) {
 
         this.setPage(page);
-
       }.bind(this));
     },
-    data: function () {
-      return merge.recursive(data(), {
+    data: function data() {
+      return _merge2.default.recursive(_data(), {
         source: 'server',
         loading: true,
         lastKeyStrokeAt: false,
-        globalOptions
-      }, stateData(useVuex, 'server'));
+        globalOptions: globalOptions
+      }, (0, _data3.default)(useVuex, 'server'));
     },
     methods: {
       refresh: require('./methods/refresh'),
       getData: require('./methods/get-data'),
       setData: require('./methods/set-data'),
       serverSearch: require('./methods/server-search'),
-      registerServerFilters: require('./methods/register-server-filters'),
+      registerServerFilters: require('./methods/register-server-filters')
     },
     computed: {
       totalPages: require('./computed/total-pages')
@@ -104,5 +116,4 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
   }, state);
 
   Vue.component('v-server-table', server);
-
 };

@@ -32,25 +32,11 @@ Note: As of version 0.4.0 the `childRowKey` option has been replaced by the more
 
 # Installation
 
-Compile the code using a module bundler, such as webpack or browserify, and the [vue jsx transform](https://github.com/vuejs/babel-plugin-transform-vue-jsx)
-
     npm install vue-tables-2
 
 Require the script:
 
     import {ServerTable, ClientTable, Event} from 'vue-tables-2';
-
-Webpack users, use the following setup to compile the package's jsx files:
-
-```js
-loaders: [
-    {
-        test: /\.jsx?$/,
-        loader: 'babel',
-        exclude: /node_modules(?!\/(vue-tables-2|vue-pagination-2))/
-    },
-]
-```
 
 # Usage
 
@@ -67,7 +53,7 @@ loaders: [
  Use `vue-devtools` to look under the hood and see the current state.
 
 The fourth argument allows you to pass a custom template for the entire table.
-You can find the main template file under `lib/template.jsx`.
+You can find the main template file under `dist/template.js`.
 Copy it to your project and modify to your needs.
 
 ## Client Side
@@ -147,7 +133,7 @@ Note: If you are calling a foreign API or simply want to use your own keys, refe
 # Templates
 
 Templates allow you to wrap your cells with vue-compiled HTML. Their syntax is similar to that of `render` functions, as it leverages the virtual DOM to bind the templates into the main table template.
-It is recommended to use JSX, which closely resembles HTML, to write the templates.
+It is recommended to use JSX, which closely resembles HTML, to write the templates (To compile jsx you need to install the [vue jsx transform](https://github.com/vuejs/babel-plugin-transform-vue-jsx)).
 
 E.g.:
 
@@ -393,14 +379,6 @@ Options are set in three layers, where the more particular overrides the more ge
 3. Options for a single table, passed through the `options` prop.
 
 [EXPLORE OPTIONS](//jsfiddle.net/matfish2/823jzuzc/embedded/result/)
-
-# Issues Policy
-
-Any bug reports or feature requests are most welcome with one exception, namely, compilation issues.
-**Please DO NOT post here any issues regarding problems with the build process.**
-The package CAN be compiled with the right settings (i.e ES6 and jsx files transformers).
-
-If you think there is a way to make this admittedly cumbersome process easier, I'm all ears.
 
 -----------------
 CSS Note: to center the pagination apply `text-align:center` to the wrapping element
