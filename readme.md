@@ -138,14 +138,17 @@ It is recommended to use JSX, which closely resembles HTML, to write the templat
 
 E.g.:
 
-      options:{
-      ...
-        templates: {
-            erase: function(h, row) {
-               return <delete id={row.id}></delete>
+      data : {
+          columns:['erase'],
+          options:{
+          ...
+            templates: {
+                erase: function(h, row) {
+                   return <delete id={row.id}></delete>
+              }
+            }
+          ...
           }
-        }
-      ...
       }
 
 The first parameter is the `h` scope used to compile the element. It MUST be called `h`.
