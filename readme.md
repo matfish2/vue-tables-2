@@ -44,8 +44,8 @@ Require the script:
 
     Vue.use(ClientTable, [options], [useVuex], [customTemplate]);
 
-  Or/And
-
+Or/And:
+    
     Vue.use(ServerTable, [options], [useVuex], [customTemplate]);
 
  The third argument is a boolean, indicating whether to use `vuex` for state management, or manage state on the component itself.
@@ -54,7 +54,7 @@ Require the script:
 
 The fourth argument allows you to pass a custom template for the entire table.
 You can find the main template file under `lib/template.js`, which in turn requires the partials in the `template` folder.
-The template in written using `jsx`, so you will need a [jsx compiler](https://github.com/vuejs/babel-plugin-transform-vue-jsx) to modify it (the package is using the compiled version under the `compiled` folder).
+The template is written using `jsx`, so you will need a [jsx compiler](https://github.com/vuejs/babel-plugin-transform-vue-jsx) to modify it (the package is using the compiled version under the `compiled` folder).
 Copy it to your project and modify to your needs.
 
 ## Client Side
@@ -161,8 +161,7 @@ edit.jsx
 
 app.vue
 
-import edit from 'edit.jsx'
-
+    import edit from 'edit.jsx'
     <script>
     templates:{
        edit
@@ -332,11 +331,12 @@ B. the same as in the client component.
 
 # List Filters
 
-When filtering by column, the `listColumns` option allows for filtering columns whose values are part of a list, using a select box instead of the default free-text filter.
+When filtering by column (option `filterByColumn:true`), the `listColumns` option allows for filtering columns whose values are part of a list, using a select box instead of the default free-text filter.
 
 For example:
 
       options: {
+        filterByColumn:true,
         listColumns:{
           animal: [
             {id:1, text:'Dog'},
