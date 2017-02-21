@@ -192,6 +192,28 @@ A Second option to for creating templates is to encapsulate the template within 
         }
       ...
       }
+      
+This method allows you to also use single page .vue files for displaying the template data
+E.g:
+edit.vue
+
+    <template>
+        <a class="fa fa-edit" href="#/{{ data.id }}/edit">Edit</a>            
+    </template>
+    <script>
+        export default {
+            props:['data'],
+        }
+    </script>
+    
+app.vue
+
+    import edit from 'edit.vue'
+    <script>
+    templates:{
+       edit
+    }
+    </script>
 
 **Important**:
 * To use components in your templates they must be declared **globally** using `Vue.component()`.
