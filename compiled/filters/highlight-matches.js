@@ -2,9 +2,11 @@
 
 module.exports = function (value, column, h) {
 
+  if (!this.opts.highlightMatches) return value;
+
   var query = this.opts.filterByColumn ? this.query[column] : this.query;
 
-  if (!this.opts.highlightMatches || !query) return value;
+  if (!query) return value;
 
   query = new RegExp("(" + query + ")", "i");
 
