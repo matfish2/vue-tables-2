@@ -3,7 +3,7 @@ var ServerTable = require('./compiled/v-server-table');
 var Event = require('./compiled/bus');
 
 module.exports = {
-  ClientTable,
-  ServerTable,
-  Event
+  ClientTable:ClientTable,
+  ServerTable:ServerTable,
+  Event:Event
 };
