@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 exports.default = function (source) {
 
   var extra = source == 'server' ? serverExtra() : clientExtra();
@@ -62,7 +64,7 @@ exports.default = function (source) {
         this.commit('SORT', { column: column, ascending: undefined });
       },
       setLimit: function setLimit(e) {
-        var limit = parseInt(e.target.value);
+        var limit = (typeof e === 'undefined' ? 'undefined' : _typeof(e)) === 'object' ? parseInt(e.target.value) : e;
         this.commit('SET_LIMIT', limit);
       },
       setOrder: function setOrder(column, ascending) {

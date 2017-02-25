@@ -45,7 +45,7 @@ Require the script:
     Vue.use(ClientTable, [options], [useVuex], [customTemplate]);
 
 Or/And:
-    
+
     Vue.use(ServerTable, [options], [useVuex], [customTemplate]);
 
  The third argument is a boolean, indicating whether to use `vuex` for state management, or manage state on the component itself.
@@ -192,20 +192,20 @@ A Second option to for creating templates is to encapsulate the template within 
         }
       ...
       }
-      
+
 This method allows you to also use single page .vue files for displaying the template data
 E.g:
 edit.vue
 
     <template>
-        <a class="fa fa-edit" href="#/{{ data.id }}/edit">Edit</a>            
+        <a class="fa fa-edit" href="#/{{ data.id }}/edit">Edit</a>
     </template>
     <script>
         export default {
             props:['data'],
         }
     </script>
-    
+
 app.vue
 
     import edit from 'edit.vue'
@@ -278,6 +278,8 @@ this.$refs.myTable.toggleChildRow(4); // replace myTable with your own ref
 Call methods on your instance using the [`ref`](http://vuejs.org/api/#ref) attribute.
 
 * `setPage(page)`
+* `setLimit(recordsPerPage)`
+* `setOrder(column, isAscending)`
 * `refresh()` Server component only
 
 ### Events
