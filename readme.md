@@ -280,6 +280,7 @@ Call methods on your instance using the [`ref`](http://vuejs.org/api/#ref) attri
 * `setPage(page)`
 * `setLimit(recordsPerPage)`
 * `setOrder(column, isAscending)`
+* `setFilter(query)` - `query` should be a string, or an object if `filterByColumn` is set to `true`.
 * `refresh()` Server component only
 
 ### Events
