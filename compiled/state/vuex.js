@@ -59,11 +59,14 @@ exports.default = function (source) {
 
         if (!this.sortable(column)) return;
 
-        this.commit('SORT', column);
+        this.commit('SORT', { column: column, ascending: undefined });
       },
       setLimit: function setLimit(e) {
         var limit = parseInt(e.target.value);
         this.commit('SET_LIMIT', limit);
+      },
+      setOrder: function setOrder(column, ascending) {
+        this.commit('SORT', { column: column, ascending: ascending });
       },
       setPage: function setPage(page, silent) {
 

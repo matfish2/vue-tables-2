@@ -43,8 +43,17 @@ exports.default = function (self) {
     state.limit = limit;
 
     if (self.source == 'server') self.getData();
-  }), _defineProperty(_merge$recursive, self.name + '/SORT', function undefined(state, column) {
-    state.ascending = state.sortBy == column ? !state.ascending : true;
+  }), _defineProperty(_merge$recursive, self.name + '/SORT', function undefined(state, _ref5) {
+    var column = _ref5.column;
+    var ascending = _ref5.ascending;
+
+
+    if (typeof ascending !== 'undefined') {
+      state.ascending = ascending;
+    } else {
+      state.ascending = state.sortBy == column ? !state.ascending : true;
+    }
+
     state.sortBy = column;
 
     if (self.source == 'server') self.getData();
