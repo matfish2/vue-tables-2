@@ -57,6 +57,12 @@ You can find the main template file under `lib/template.js`, which in turn requi
 The template is written using `jsx`, so you will need a [jsx compiler](https://github.com/vuejs/babel-plugin-transform-vue-jsx) to modify it (the package is using the compiled version under the `compiled` folder).
 Copy it to your project and modify to your needs.
 
+Note: The template file is a function that receives a `source` parameter (`client` or `server`). E.g:
+
+```js
+Vue.use(ClientTable, {}, false, require('./template.js')('client'))
+```
+
 ## Client Side
 
 Add the following element to your page wherever you want it to render.
