@@ -1,7 +1,7 @@
 {
 "name": "vue-tables-2",
 "description": "Vue.js 2 grid components",
-"version": "0.4.50",
+"version": "0.4.51",
 "keywords": [
 "vue2",
 "vuex",
@@ -14,10 +14,7 @@
 "url": "https://github.com/matfish2/vue-tables-2"
 },
 "files": [
-"index.js",
-"lib",
-"compiled",
-"tonic-example.js"
+"compiled"
 ],
 "dependencies": {
 "clone": "^2.1.0",
@@ -31,7 +28,7 @@
 "build": "babel lib -d compiled"
 },
 "licenses": "MIT",
-"main": "index.js",
+"main": "compiled/index.js",
 "tonicExampleFilename": "tonic-example.js",
 "devDependencies": {
 "daterangepicker": "0.0.3",
