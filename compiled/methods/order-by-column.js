@@ -1,7 +1,5 @@
 'use strict';
 
-var bus = require('../bus');
-
 module.exports = function (colName) {
 
   if (!this.sortable(colName)) return;

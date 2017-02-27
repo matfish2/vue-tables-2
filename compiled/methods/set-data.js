@@ -1,7 +1,5 @@
 'use strict';
 
-var bus = require('../bus');
-
 module.exports = function (data) {
   this.data = data.data;
   this.count = data.count;
