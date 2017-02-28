@@ -12,7 +12,7 @@ module.exports = function (data) {
     this.dispatch('error', e);
   }.bind(this));
 
-  if (typeof $ != 'undefined') return $.get(this.url, data).fail(function (e) {
+  if (typeof $ != 'undefined') return $.getJSON(this.url, data).fail(function (e) {
     this.dispatch('error', e);
   }.bind(this));
 
