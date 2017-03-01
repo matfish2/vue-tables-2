@@ -1,6 +1,6 @@
 'use strict';
 
-var intersection = require('../helpers/array-intersection');
+var intersection = require('array-intersection');
 
 module.exports = function () {
 
