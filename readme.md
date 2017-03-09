@@ -25,10 +25,13 @@ Note: As of version 0.4.0 the `childRowKey` option has been replaced by the more
 
 # Dependencies
 
-* Vue.js (>=2.0). Required.
-* Vuex (>=2.0). Optional.
-* Bootstrap (CSS). Optional.
+* Vue.js (>=2.0)
 * axios OR vue-resource (>=0.9.0) OR jQuery (server-side component only)
+
+## Compatibility
+
+* Vuex (>=2.0)
+* Bootstrap (CSS)
 
 # Installation
 
@@ -48,18 +51,17 @@ Or/And:
 
     Vue.use(ServerTable, [options], [useVuex], [customTemplate]);
 
- The third argument is a boolean, indicating whether to use `vuex` for state management, or manage state on the component itself.
- If you set it to `true` you must add a `name` prop to your table, which will be used to to register a module on your store.
- Use `vue-devtools` to look under the hood and see the current state.
-
-The fourth argument allows you to pass a custom template for the entire table.
+* `useVuex` is a boolean indicating whether to use `vuex` for state management, or manage state on the component itself.
+If you set it to `true` you must add a `name` prop to your table, which will be used to to register a module on your store.
+Use `vue-devtools` to look under the hood and see the current state.
+* `customTemplate` argument allows you to pass a custom template for the entire table.
 You can find the main template file under `lib/template.js`, which in turn requires the partials in the `template` folder.
 The template is written using `jsx`, so you will need a [jsx compiler](https://github.com/vuejs/babel-plugin-transform-vue-jsx) to modify it (the package is using the compiled version under the `compiled` folder).
 Copy it to your project and modify to your needs.
 
 Note: The template file is a function that receives a `source` parameter (`client` or `server`). E.g:
 
-```js
+```jsx
 Vue.use(ClientTable, {}, false, require('./template.js')('client'))
 ```
 
@@ -68,28 +70,32 @@ Vue.use(ClientTable, {}, false, require('./template.js')('client'))
 Add the following element to your page wherever you want it to render.
 Make sure to wrap it with a parent element you can latch your vue instance into.
 
-    <div id="people">
-      <v-client-table :data="tableData" :columns="columns" :options="options"></v-client-table>
-    </div>
+```html
+<div id="people">
+  <v-client-table :data="tableData" :columns="columns" :options="options"></v-client-table>
+</div>
+```
 
 Create a new Vue instance (You can also nest it within other components). An example works best to illustrate the syntax:
 
-    new Vue({
-      el:"#people",
-      data: {
-        columns:['id','name','age'],
+```jsx
+new Vue({
+    el:"#people",
+    data: {
+        columns: ['id','name','age'],
         tableData: [
-          {id:1, name:"John",age:"20"},
-          {id:2, name:"Jane",age:"24"},
-          {id:3, name:"Susan",age:"16"},
-          {id:4, name:"Chris",age:"55"},
-          {id:5, name:"Dan",age:"40"}
+            {id:1, name:"John",age:"20"},
+            {id:2, name:"Jane",age:"24"},
+            {id:3, name:"Susan",age:"16"},
+            {id:4, name:"Chris",age:"55"},
+            {id:5, name:"Dan",age:"40"}
         ],
         options: {
-          // see the options API
+            // see the options API
         }
-      }
-    });
+    }
+});
+```
 
   You can access the filtered dataset at any given moment by fetching the `filteredData` computed property of the table, using `ref` as a pointer (`this.$refs.myTable.filteredData`);
 
@@ -97,24 +103,28 @@ Create a new Vue instance (You can also nest it within other components). An exa
 
 ## Server side
 
-    <div id="people">
-      <v-server-table url="/people" :columns="columns" :options="options"></v-server-table>
-    </div>
+```html
+<div id="people">
+  <v-server-table url="/people" :columns="columns" :options="options"></v-server-table>
+</div>
+```
 
 Javascript:
 
-    new Vue({
-        el:"#people",
-        data: {
-          columns:['id','name','age'],
-          options: {
-           // see the options API
-         }
-      }
-    });
+```jsx
+new Vue({
+    el: "#people",
+    data: {
+        columns: ['id','name','age'],
+        options: {
+            // see the options API
+        }
+    }
+});
+```
 
-  All the data is passed in the following GET parameters: `query`,`limit`,`page`,`orderBy`,`ascending`,`byColumn`.
-  You need to return a JSON object with two properties:
+All the data is passed in the following GET parameters: `query`,`limit`,`page`,`orderBy`,`ascending`,`byColumn`.
+You need to return a JSON object with two properties:
 
   `data` `array` - An array of row objects with identical keys.
 
@@ -144,18 +154,20 @@ It is recommended to use JSX, which closely resembles HTML, to write the templat
 
 E.g.:
 
-      data : {
-          columns:['erase'],
-          options:{
-          ...
-            templates: {
-                erase: function(h, row) {
-                   return <delete id={row.id}></delete>
-              }
+```jsx
+data : {
+    columns: ['erase'],
+    options: {
+        ...
+        templates: {
+            erase: function(h, row) {
+                return <delete id={row.id}></delete>
             }
-          ...
-          }
-      }
+        }
+        ...
+    }
+}
+```
 
 The first parameter is the `h` scope used to compile the element. It MUST be called `h`.
 The second parameter gives you access to the row data.
@@ -164,62 +176,74 @@ Note: when using a `.vue` file `jsx` must be imported from a dedicated `.jsx` fi
 
 edit.jsx
 
-    export default function(h, row) {
-       return <a class='fa fa-edit' href={'#/' + row.id + '/edit'}></a>
-    }
+```jsx
+export default function(h, row) {
+   return <a class='fa fa-edit' href={'#/' + row.id + '/edit'}></a>
+}
+```
 
 app.vue
 
-    import edit from 'edit.jsx'
-    <script>
-    templates:{
-       edit
-    }
-    </script>
+```vue
+<script>
+import edit from './edit'
+
+templates: {
+   edit
+}
+</script>
+```
 
 A Second option to for creating templates is to encapsulate the template within a component and pass the name. The component must have a `data` property, which will receive the row object. E.g:
 
-      Vue.component('delete', {
-        props:['data'],
-        template:`<a class='delete' @click='erase'></a>`,
-        methods:{
-          erase() {
-              let id = this.data.id;
-              // delete the item
-          }
+```jsx
+Vue.component('delete', {
+    props:['data'],
+    template:`<a class='delete' @click='erase'></a>`,
+    methods:{
+        erase() {
+            let id = this.data.id; // delete the item
         }
-      });
+    }
+});
+```
 
-
-      options:{
-      ...
-        templates: {
-            erase: 'delete'
-        }
-      ...
-      }
+```jsx
+options: {
+    ...
+    templates: {
+        erase: 'delete'
+    }
+    ...
+}
+```
 
 This method allows you to also use single page .vue files for displaying the template data
 E.g:
 edit.vue
 
-    <template>
-        <a class="fa fa-edit" href="#/{{ data.id }}/edit">Edit</a>
-    </template>
-    <script>
-        export default {
-            props:['data'],
-        }
-    </script>
+```vue
+<template>
+    <a class="fa fa-edit" href="#/{{ data.id }}/edit">Edit</a>
+</template>
+<script>
+    export default {
+        props:['data'],
+    }
+</script>
+```
 
 app.vue
 
-    import edit from 'edit.vue'
-    <script>
-    templates:{
-       edit
-    }
-    </script>
+```vue
+<script>
+import edit from './edit'
+
+templates:{
+   edit
+}
+</script>
+```
 
 **Important**:
 * To use components in your templates they must be declared **globally** using `Vue.component()`.
@@ -235,21 +259,25 @@ If your identifer key is not `id`, use the `uniqueKey` option to set it.
 
 The syntax is identincal to that of templates:
 
-      options:{
-      ...
-      childRow: function(h, row) {
-        return <div>My custom content for row {row.id}</div>
-      }
-      ...
-      }
+```jsx
+options:{
+  ...
+  childRow: function(h, row) {
+    return <div>My custom content for row {row.id}</div>
+  }
+  ...
+}
+```
 
 Or you can pass a component name: (See `Templates` above for a complete example)
 
-      options:{
+```jsx
+options:{
       ...
       childRow: 'row-component'
       ...
-      }
+}
+```
 
 When the plugin detects a `childRow` function it appends the child rows and prepends to each row an additional toggler column with a `span` you can design to your liking.
 
@@ -293,13 +321,17 @@ Call methods on your instance using the [`ref`](http://vuejs.org/api/#ref) attri
 
 Using Custom Events (For child-parent communication):
 
+```html
     <v-server-table :columns="columns" url="/getData" @loaded="onLoaded"></v-server-table>
+```
 
 Using the event bus:
 
-      Event.$on('vue-tables.loaded', function(data) {
-          // Do something
-      });
+```jsx
+Event.$on('vue-tables.loaded', function (data) {
+    // Do something
+});
+```
 
 Using Vuex:
 
@@ -337,23 +369,29 @@ Custom filters allow you to integrate your own filters into the plugin using Vue
 
 A. use the `customFilters` option to declare your filters, following this syntax:
 
-      customFilters: [
-        {
-          name:'alphabet',
-          callback: function(row, query) {
+```js
+customFilters: [
+    {
+        name:'alphabet',
+        callback: function(row, query) {
             return row.name[0] == query;
         }
-        }
-      ]
+    }
+]
+```
 
 B.
 * Using the event bus:
 
-          Event.$emit('vue-tables.filter::alphabet', query);
+```js
+Event.$emit('vue-tables.filter::alphabet', query);
+```
 
 * Using `vuex`:
 
-          this.$store.commit('myTable/SET_CUSTOM_FILTER',{filter:'alphabet', value:query})
+```js
+this.$store.commit('myTable/SET_CUSTOM_FILTER', {filter:'alphabet', value:query})
+```
 
 ## Server Side Filters
 
@@ -391,18 +429,18 @@ To do so use the `customSorting` option. This is an object that recieves custom 
 E.g, to sort the `name` column by the last character:
 
 ```js
-    customSorting:{
-             name: function(ascending) {
-              return function(a, b) {
-                 var lastA = a.name[a.name.length-1].toLowerCase();
-                 var lastB = b.name[b.name.length-1].toLowerCase();
+customSorting:{
+    name: function(ascending) {
+    return function(a, b) {
+        var lastA = a.name[a.name.length-1].toLowerCase();
+        var lastB = b.name[b.name.length-1].toLowerCase();
 
-                 if (ascending)
-                   return lastA <= lastB?1:-1;
+         if (ascending)
+            return lastA <= lastB?1:-1;
 
-               return lastA >= lastB?1:-1;
-           }
-       }
+        return lastA >= lastB?1:-1;
+    }
+}
 ```
 
 # Options
