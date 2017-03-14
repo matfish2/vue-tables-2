@@ -27,8 +27,8 @@ module.exports = function (h, that) {
 
     that.allColumns.map(function (column) {
       columns.push(h(
-        'td',
-        null,
+        'td',        
+        {'class':that.opts.columnClass[column]},
         [that.render(row, column, h)]
       ));
     }.bind(that));
