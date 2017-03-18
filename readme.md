@@ -224,7 +224,7 @@ edit.vue
 
 ```vue
 <template>
-    <a class="fa fa-edit" href="#/{{ data.id }}/edit">Edit</a>
+    <a class="fa fa-edit" :href="edit(data.id)">Edit</a>
 </template>
 <script>
     export default {
@@ -243,6 +243,18 @@ templates:{
    edit
 }
 </script>
+```
+
+If you are using Vue 2.1.0 and above, you can use [scoped slots](https://vuejs.org/v2/guide/components.html#Scoped-Slots) to create templates:
+
+```html
+ <v-client-table :data="entries" :columns="['id', 'name' ,'age', 'edit']">
+      <template slot="edit" scope="props">
+        <div>
+            <a class="fa fa-edit" :href="edit(props.row.id)"></a>
+        </div>
+      </template>
+    </v-client-table>
 ```
 
 **Important**:

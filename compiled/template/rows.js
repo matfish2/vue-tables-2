@@ -26,10 +26,12 @@ module.exports = function (h, that) {
     ));
 
     that.allColumns.map(function (column) {
+      var rowTemplate = that.$scopedSlots && that.$scopedSlots[column];
+
       columns.push(h(
         'td',
         null,
-        [that.render(row, column, h)]
+        [rowTemplate ? rowTemplate({ row: row, column: column, index: index }) : that.render(row, column, h)]
       ));
     }.bind(that));
 
