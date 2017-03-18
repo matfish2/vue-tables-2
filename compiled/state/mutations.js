@@ -12,7 +12,7 @@ exports.default = function (self) {
     var count = _ref.count;
 
     state.data = data;
-    state.count = count;
+    state.count = parseInt(count);
   }), _defineProperty(_ref2, self.name + '/LOADING', function undefined(state, payload) {}), _defineProperty(_ref2, self.name + '/LOADED', function undefined(state, payload) {}), _defineProperty(_ref2, self.name + '/ERROR', function undefined(state, payload) {}), _ref2) : _defineProperty({}, self.name + '/SET_COUNT', function undefined(state, count) {
     state.count = count;
   });

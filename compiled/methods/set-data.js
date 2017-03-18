@@ -2,7 +2,7 @@
 
 module.exports = function (data) {
   this.data = data.data;
-  this.count = data.count;
+  this.count = parseInt(data.count);
 
   setTimeout(function () {
     this.dispatch('loaded', data);
