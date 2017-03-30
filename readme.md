@@ -6,7 +6,7 @@ This Vue package offers an easy and intuitive way of displaying Bootstrap-styled
 
 Note: Users of VueJS 1 Please use [this](https://github.com/matfish2/vue-tables) package instead.
 
-Note: As of version 0.4.0 the `childRowKey` option has been replaced by the more generic `uniqueKey` option.
+Note: As of version 0.5.0 the `row-click` event sends along an object containing the row and the mouse event.
 
 - [Dependencies](#dependencies)
 - [Installation](#installation)
@@ -369,7 +369,7 @@ Fires off if the server returns an invalid code. Sends through the error
 
 `vue-tables.row-click` | `tableName/ROW_CLICK`
 
-Fires off after a row was clicked. sends through the row.
+Fires off after a row was clicked. sends through the row and the mouse event.
 When using the client component, if you want to recieve the *original* row, so that it can be directly mutated, you must have a unique row identifier.
 The key defaults to `id`, but can be changed using the `uniqueKey` option.
 
