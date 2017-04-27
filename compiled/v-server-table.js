@@ -33,10 +33,11 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
 
   var state = useVuex ? (0, _vuex2.default)('server') : (0, _normal2.default)();
 
-  Vue.use(_vuePagination.VuePagination, useVuex);
-
   var server = _merge2.default.recursive(true, (0, _table2.default)(), {
     name: 'server-table',
+    components: {
+      Pagination: _vuePagination.Pagination
+    },
     render: customTemplate ? customTemplate : template('server'),
     props: {
       columns: {
@@ -89,7 +90,7 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
 
       this.registerServerFilters();
 
-      _vuePagination.VueEvent.$on('vue-pagination::' + this.id, function (page) {
+      _vuePagination.PaginationEvent.$on('vue-pagination::' + this.id, function (page) {
 
         this.setPage(page);
       }.bind(this));

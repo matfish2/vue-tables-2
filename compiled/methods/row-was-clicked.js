@@ -13,5 +13,5 @@ module.exports = function (row) {
     data = row;
   }
 
-  this.dispatch('row-click', {row:data,event:event});
+  this.dispatch('row-click', { row: data, event: event });
 };

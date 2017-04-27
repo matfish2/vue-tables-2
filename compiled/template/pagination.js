@@ -10,6 +10,7 @@ module.exports = function (h, that) {
       {
         ref: "pagination",
         attrs: { "for": name,
+          vuex: that.vuex,
           records: that.count,
           "per-page": parseInt(that.limit),
           chunk: that.opts.pagination.chunk,

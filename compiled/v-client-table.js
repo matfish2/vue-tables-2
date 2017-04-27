@@ -31,10 +31,11 @@ var template = require('./template');
 
 exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
 
-  Vue.use(_vuePagination.VuePagination, useVuex);
-
   var client = _merge2.default.recursive(true, (0, _table2.default)(), {
     name: 'client-table',
+    components: {
+      Pagination: _vuePagination.Pagination
+    },
     render: customTemplate ? customTemplate : template('client'),
     props: {
       columns: {
@@ -79,7 +80,7 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
       if (!this.vuex) {
         this.registerClientFilters();
 
-        _vuePagination.VueEvent.$on('vue-pagination::' + this.id, function (page) {
+        _vuePagination.PaginationEvent.$on('vue-pagination::' + this.id, function (page) {
           this.setPage(page);
         }.bind(this));
       }
