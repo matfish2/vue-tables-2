@@ -61,13 +61,18 @@ exports.default = function (source) {
 
         if (!this.sortable(column)) return;
 
-        this.commit('SORT', { column: column, ascending: undefined });
+        var ascending = this.orderBy.column === column ? !this.orderBy.ascending : true;
+
+        this.updateState('orderBy', { column: column, ascending: ascending });
+        this.commit('SORT', { column: column, ascending: ascending });
       },
       setLimit: function setLimit(e) {
         var limit = (typeof e === 'undefined' ? 'undefined' : _typeof(e)) === 'object' ? parseInt(e.target.value) : e;
+        this.updateState('perPage', limit);
         this.commit('SET_LIMIT', limit);
       },
       setOrder: function setOrder(column, ascending) {
+        this.updateState('orderBy', { column: column, ascending: ascending });
         this.commit('SORT', { column: column, ascending: ascending });
       },
       setPage: function setPage(page, silent) {
@@ -75,6 +80,8 @@ exports.default = function (source) {
         if (!page) {
           page = this.$refs.page.value;
         }
+
+        if (!this.opts.pagination.dropdown) this.$refs.pagination.Page = page;
 
         this.commit('PAGINATE', page, silent);
       }

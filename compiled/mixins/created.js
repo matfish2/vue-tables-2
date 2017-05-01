@@ -6,7 +6,7 @@ var registerVuexModule = require('../state/register-module');
 
 module.exports = function (self) {
 
-  if (self.name) {
+  if (self.vuex) {
     registerVuexModule(self);
   } else {
     self.limit = self.opts.perPage;

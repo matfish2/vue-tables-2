@@ -10,6 +10,8 @@ module.exports = function (colName) {
 
   this.orderBy.column = colName;
 
+  this.updateState('orderBy', this.orderBy);
+
   if (this.source == 'server') {
     this.getData();
   }

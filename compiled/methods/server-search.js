@@ -15,6 +15,8 @@ module.exports = function (e) {
     }
 
     if (!this.vuex) this.query = query;
+
+    this.updateState('query', query);
   }
 
   if (noDebounce(e, name, this.opts)) {

@@ -19,9 +19,14 @@ exports.default = function (self) {
 
   return _merge2.default.recursive(true, (_merge$recursive = {}, _defineProperty(_merge$recursive, self.name + '/PAGINATE', function undefined(state, page) {
     state.page = page;
+    self.updateState('page', page);
+
     if (self.source == 'server') self.getData();
   }), _defineProperty(_merge$recursive, self.name + '/SET_FILTER', function undefined(state, filter) {
     state.page = 1;
+
+    self.updateState('page', 1);
+
     state.query = filter;
 
     if (self.source == 'server') {
@@ -33,27 +38,38 @@ exports.default = function (self) {
 
 
     state.page = 1;
+    self.updateState('page', 1);
     state.customQueries[filter] = value;
 
     if (self.source == 'server') {
       self.getData();
     }
+  }), _defineProperty(_merge$recursive, self.name + '/SET_STATE', function undefined(state, _ref5) {
+    var page = _ref5.page;
+    var query = _ref5.query;
+    var customQueries = _ref5.customQueries;
+    var limit = _ref5.limit;
+    var orderBy = _ref5.orderBy;
+
+    state.customQueries = customQueries;
+    state.query = query;
+    state.page = page;
+    state.limit = limit;
+    state.ascending = orderBy.ascending;
+    state.sortBy = orderBy.column;
   }), _defineProperty(_merge$recursive, self.name + '/SET_LIMIT', function undefined(state, limit) {
     state.page = 1;
+    self.updateState('page', 1);
+
     state.limit = limit;
 
     if (self.source == 'server') self.getData();
-  }), _defineProperty(_merge$recursive, self.name + '/SORT', function undefined(state, _ref5) {
-    var column = _ref5.column;
-    var ascending = _ref5.ascending;
+  }), _defineProperty(_merge$recursive, self.name + '/SORT', function undefined(state, _ref6) {
+    var column = _ref6.column;
+    var ascending = _ref6.ascending;
 
 
-    if (typeof ascending !== 'undefined') {
-      state.ascending = ascending;
-    } else {
-      state.ascending = state.sortBy == column ? !state.ascending : true;
-    }
-
+    state.ascending = ascending;
     state.sortBy = column;
 
     if (self.source == 'server') self.getData();

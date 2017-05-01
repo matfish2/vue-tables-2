@@ -66,6 +66,8 @@ module.exports = function () {
       byColumn: 'byColumn'
     },
     rowClassCallback: false,
-    config: false
+    config: false,
+    saveState: false,
+    storage: 'local'
   };
 };

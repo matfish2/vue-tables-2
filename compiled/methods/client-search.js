@@ -18,6 +18,8 @@ module.exports = function (data, e) {
       _query = e.target.value;
     }
     this.vuex ? this.commit('SET_FILTER', _query) : this.query = _query;
+
+    this.updateState('query', _query);
   }
 
   var query = this.query;

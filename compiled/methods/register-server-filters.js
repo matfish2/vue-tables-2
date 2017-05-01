@@ -12,6 +12,7 @@ module.exports = function () {
     _bus2.default.$off('vue-tables.filter::' + filter);
     _bus2.default.$on('vue-tables.filter::' + filter, function (value) {
       this.customQueries[filter] = value;
+      this.updateState('customQueries', this.customQueries);
       this.refresh();
     }.bind(this));
   }.bind(this));

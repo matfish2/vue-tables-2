@@ -46,6 +46,10 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
         type: Array,
         required: true
       },
+      name: {
+        type: String,
+        required: false
+      },
       options: {
         type: Object,
         required: false,
@@ -84,13 +88,15 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
           this.setPage(page);
         }.bind(this));
       }
+
+      this.loadState();
     },
 
     data: function data() {
       return _merge2.default.recursive(_data(), {
         source: 'client',
         globalOptions: globalOptions
-      }, (0, _data3.default)(useVuex));
+      }, (0, _data3.default)(useVuex, 'client'));
     },
     computed: {
       q: require('./computed/q'),
@@ -107,7 +113,33 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
     methods: {
       transformDateStringsToMoment: require('./methods/transform-date-strings-to-moment'),
       registerClientFilters: require('./methods/register-client-filters'),
-      search: require('./methods/client-search')
+      search: require('./methods/client-search'),
+      loadState: function loadState() {
+
+        if (!this.opts.saveState) return;
+
+        if (!this.storage.getItem(this.stateKey)) {
+          this.initState();
+          return;
+        }
+
+        var state = JSON.parse(this.storage.getItem(this.stateKey));
+
+        this.setFilter(state.query);
+        this.setOrder(state.orderBy.column, state.orderBy.ascending);
+
+        if (this.vuex) {
+          this.commit('SET_LIMIT', state.perPage);
+        } else {
+          this.limit = state.perPage;
+        }
+
+        this.setPage(state.page);
+
+        this.activeState = true;
+
+        // TODO: Custom Queries
+      }
     }
 
   });

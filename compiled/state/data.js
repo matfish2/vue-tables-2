@@ -6,9 +6,14 @@ Object.defineProperty(exports, "__esModule", {
 
 exports.default = function (useVuex, source) {
 
-  if (useVuex) return {};
+  if (useVuex) return {
+    vuex: true,
+    activeState: false
+  };
 
   var data = {
+    vuex: false,
+    activeState: false,
     count: 0,
     customQueries: {},
     query: null,
