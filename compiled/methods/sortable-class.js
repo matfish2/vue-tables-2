@@ -2,5 +2,9 @@
 
 module.exports = function (column) {
 
-   return this.sortable(column) ? 'VueTables__sortable' : '';
+  var c = this.sortable(column) ? 'VueTables__sortable ' : '';
+
+  c += this.columnClass(column);
+
+  return c;
 };

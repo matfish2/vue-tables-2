@@ -68,6 +68,7 @@ module.exports = function () {
     rowClassCallback: false,
     config: false,
     saveState: false,
-    storage: 'local'
+    storage: 'local',
+    columnsClasses: {}
   };
 };

@@ -37,7 +37,7 @@ module.exports = function (h, that) {
 
     filters.push(h(
       'th',
-      null,
+      { 'class': that.columnClass(column) },
       [h(
         'div',
         _defineProperty({ 'class': 'VueTables__column-filter' }, 'class', 'VueTables__' + column + '-filter-wrapper'),

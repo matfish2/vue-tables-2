@@ -30,7 +30,7 @@ module.exports = function (h, that) {
 
       columns.push(h(
         'td',
-        null,
+        { 'class': that.columnClass(column) },
         [rowTemplate ? rowTemplate({ row: row, column: column, index: index }) : that.render(row, column, h)]
       ));
     }.bind(that));
