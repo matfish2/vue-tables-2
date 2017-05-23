@@ -25,7 +25,7 @@ module.exports = function (e) {
   }
 
   if (noDebounce(e, name, this.opts)) {
-    return search(this);
+    return search(this, query);
   }
 
   this.lastKeyStrokeAt = Date.now();
