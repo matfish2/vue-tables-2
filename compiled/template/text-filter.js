@@ -9,7 +9,7 @@ module.exports = function (h, that) {
                   "input",
                   {
                         on: {
-                              keyup: search
+                              "keyup": search
                         },
 
                         "class": "form-control",

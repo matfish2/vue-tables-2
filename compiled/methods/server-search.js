@@ -2,14 +2,19 @@
 
 module.exports = function (e) {
 
-  var query = this.query;
+  // we need to handle the store this.query to make sure we're not mutating outside of it
+  if (this.vuex) {
+    var _query = JSON.parse(JSON.stringify(this.query));
+  } else {
+    var _query2 = this.query;
+  }
 
   if (e) {
-    var name = e.target.name;
+    var _name = e.target.name;
     var value = e.target.value;
 
-    if (name) {
-      query[name] = value;
+    if (_name) {
+      query[_name] = value;
     } else {
       query = value;
     }
@@ -20,7 +25,7 @@ module.exports = function (e) {
   }
 
   if (noDebounce(e, name, this.opts)) {
-    return search(this);
+    return search(this, query);
   }
 
   this.lastKeyStrokeAt = Date.now();
@@ -43,7 +48,9 @@ function search(that, query) {
   } else {
     that.initPagination();
 
-    if (that.opts.pagination.dropdown) that.getData();
+    if (that.opts.pagination.dropdown) {
+      that.getData();
+    }
   }
 }
 
