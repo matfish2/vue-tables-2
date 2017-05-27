@@ -3,11 +3,7 @@
 module.exports = function (e) {
 
   // we need to handle the store this.query to make sure we're not mutating outside of it
-  if (this.vuex) {
-    var _query = JSON.parse(JSON.stringify(this.query));
-  } else {
-    var _query2 = this.query;
-  }
+  var query = this.vuex ? JSON.parse(JSON.stringify(this.query)) : this.query;
 
   if (e) {
     var _name = e.target.name;

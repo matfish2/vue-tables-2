@@ -14,7 +14,7 @@ exports.default = function (self) {
     query: self.initQuery(),
     customQueries: self.initCustomFilters(),
     sortBy: self.opts.orderBy && self.opts.orderBy.column ? self.opts.orderBy.column : self.columns[0],
-    ascending: self.opts.orderBy && self.opts.orderBy.ascending ? self.opts.orderBy.ascending : true
+    ascending: self.opts.orderBy && self.opts.orderBy.hasOwnProperty('ascending') ? self.opts.orderBy.ascending : true
   };
 
   return state;
