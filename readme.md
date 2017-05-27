@@ -455,6 +455,14 @@ customSorting:{
 }
 ```
 
+Additionally, if you know a particular column is numeric column, you can let the sorting method know so it can sort it as numeric values. For example the code below sort the `price` column as numeric column.
+
+```js
+customSorting:{
+    price: 'numeric'
+}
+```
+
 # Options
 
 Options are set in three layers, where the more particular overrides the more general.
