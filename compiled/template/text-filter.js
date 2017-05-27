@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 module.exports = function (h, that) {
 
@@ -6,15 +6,15 @@ module.exports = function (h, that) {
 
       return function (column) {
             return h(
-                  "input",
+                  'input',
                   {
                         on: {
                               keyup: search
                         },
 
-                        "class": "form-control",
-                        attrs: { name: column,
-                              type: "text",
+                        'class': 'form-control',
+                        attrs: { name: 'vf__' + column,
+                              type: 'text',
                               placeholder: that.display('filterBy', { column: that.getHeading(column) }),
                               value: that.query[column]
                         }

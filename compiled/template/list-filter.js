@@ -32,7 +32,7 @@ module.exports = function (h, that) {
             change: search
           },
           attrs: {
-            name: column,
+            name: 'vf__' + column,
             value: that.query[column] }
         },
         [h(

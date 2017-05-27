@@ -11,7 +11,8 @@ module.exports = function (data, e) {
     var _query = this.query;
 
     this.setPage(1, true);
-    var name = e.target.name;
+    var name = this.getName(e.target.name);
+
     if (name) {
       _query[name] = '' + e.target.value;
     } else {

@@ -6,7 +6,7 @@ module.exports = function (e) {
   var query = this.vuex ? JSON.parse(JSON.stringify(this.query)) : this.query;
 
   if (e) {
-    var _name = e.target.name;
+    var _name = this.getName(e.target.name);
     var value = e.target.value;
 
     if (_name) {
