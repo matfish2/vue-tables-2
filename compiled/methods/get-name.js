@@ -2,5 +2,9 @@
 
 module.exports = function (name) {
   if (!name) return name;
-  return name.split('__')[1];
+
+  name = name.split('__');
+  name.shift();
+
+  return name.join('__');
 };
