@@ -26,3 +26,24 @@ $vuetables = new EloquentVueTables;
 $users = $vuetables->get(new User, [.id', 'name', 'email'],['user_metas']);
 return $users
 ```
+
+#### Displaying Data from Relationships 
+```js
+options:{
+  templates: {
+    mobile: function(h, row) {
+      var x = '';
+      try{
+        x = getObjects(row.user_metas, 'meta_name', 'mobile');
+        x = x[0].meta_value;
+      }catch(err){}
+        return x
+      }
+  }
+},
+```
+
+You need following JS function form `getObjects`
+```js
+
+```
