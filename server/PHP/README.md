@@ -1,10 +1,13 @@
 ### Installation
 
-Create a folder called `vue-table` in your Laravel root directory. Copy `VueTablesInterface.php` and `EloquentVueTables.php` in `vue-table` folder. Edit `bootstrap/autoload.php` and add following lines after `require __DIR__ . '/../vendor/autoload.php';`
+Create a folder called `vue-table` in your Laravel root directory. Copy `VueTablesInterface.php` and `EloquentVueTables.php` in `vue-table` folder. Edit `composer.json` and add following lines then run `composer dump-autoload`.
 
-```php
-require_once __DIR__ . '/../vue-table/VueTablesInterface.php';
-require_once __DIR__ . '/../vue-table/EloquentVueTables.php';
+```json
+"autoload": {
+  "psr-4": {
+    "": "vue-table/"
+  }
+},
 ```
 
 If you are using L5 you need to replace the `Input` class on line 12 with the `Request` one and add `use App\Services\VueTables\VueTablesInterface;` in `EloquentVueTables.php`.
