@@ -21,12 +21,12 @@ use App\User;
 ...
 ...
 $vuetables = new EloquentVueTables;
-$users = $vuetables->get(new User, [.id', 'name', 'email']);
+$users = $vuetables->get(new User, ['id', 'name', 'email']);
 return $users
 
 // With Relationships
 $vuetables = new EloquentVueTables;
-$users = $vuetables->get(new User, [.id', 'name', 'email'],['user_metas']);
+$users = $vuetables->get(new User, ['id', 'name', 'email'],['user_metas']);
 return $users
 ```
 
