@@ -11,7 +11,7 @@ Class EloquentVueTables  implements VueTablesInterface  {
 
     extract(Input::only('query', 'limit', 'page', 'orderBy', 'ascending', 'byColumn'));
 
-    $data = $model->select($fields)->with($with);
+    $data = (empty($with))? $model->select($fields) : $model->select($fields)->with($with);
 
     if (isset($query) && $query) {
        $data = $byColumn==1?$this->filterByColumn($data, $query):
