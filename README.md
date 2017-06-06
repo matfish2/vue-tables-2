@@ -534,7 +534,7 @@ texts | Object | Table default labels:<br><br>`{ count:'Showing {from} to {to} o
 toMomentFormat (client-side) | String | transform date columns string values to momentjs objects using this format. If this option is not used the consumer is expected to pass momentjs objects himself | `false`
 uniqueKey | String | The key of a unique identifier in your dataset, used to track the child rows, and return the original row in row click event | `id`
 
-> Note: You can check this [demo](//jsfiddle.net/matfish2/823jzuzc/embedded/result/) of the Client Side implementation and a nicer way to go over the options.
+> Note: You can check this [demo](https://jsfiddle.net/matfish2/823jzuzc/) of the Client Side implementation and a nicer way to go over the options.
 
 # VueJS 1
 
