@@ -134,7 +134,7 @@ new Vue({
 });
 ```
 
-All the data is passed in the following GET parameters: 
+All the data is passed in the following GET parameters:
 * `query`,
 * `limit`,
 * `page`,
@@ -162,7 +162,7 @@ You need to return a JSON object with two properties:
 
 # Templates
 
-Templates allow you to wrap your cells with vue-compiled HTML. 
+Templates allow you to wrap your cells with vue-compiled HTML.
 
 Their syntax is similar to that of `render` functions, as it leverages the virtual DOM to bind the templates into the main table template.
 
@@ -510,7 +510,7 @@ datepickerOptions | Object | Options for the daterangepicker when using a date f
 debounce (server-side) | Number | Number of idle milliseconds (no key stroke) to wait before sending a request. Used to detect when the user finished his query in order to avoid redundant requests | `500`
 filterable | Array / Boolean | Filterable columns `true` - All columns. | Set to `false` or an `empty array` to hide the filter(s)
 footerHeadings | Boolean | Display headings at the bottom of the table too | `false`
-headings | Object | Table headings. | Can be either a string or a function, if you wish to inject vue-compiled HTML.<br>E.g: `function(h) { return <h2>Title</h2>}`<br>Note that this example uses jsx, and not HTML.<br><br>The default rule is to extract from the first row properties with the underscores become spaces and the first letter capitalized
+headings | Object | Table headings. | Can be either a string or a function, if you wish to inject vue-compiled HTML.<br>E.g: `function(h) { return <h2>Title</h2>}`<br>Note that this example uses jsx, and not HTML.<br>The `this` context inside the function refers to the direct parent of the table instance.<br><br>The default rule is to extract from the first row properties with the underscores become spaces and the first letter capitalized
 highlightMatches | Boolean | Highlight matches | `false`
 initFilters | Object | Set initial values for all filter types: generic, by column or custom.<br><br> Accepts an object of key-value pairs, where the key is one of the following: <br><br>a. "GENERIC" - for the generic filter<br>b. column name - for by column filters.<br>c. filter name - for custom filters. <br><br>In case of date filters the date range should be passed as an object comprised of start and end properties, each being a moment object. | `{}`
 listColumns | Object | See [documentation](#list-filters) | {}

@@ -15,7 +15,7 @@ module.exports = function (value, h) {
   if (!this.opts.headings.hasOwnProperty(value)) return derivedHeading;
 
   if (typeof this.opts.headings[value] === 'function') {
-    if (h) return this.opts.headings[value](h);
+    if (h) return this.opts.headings[value].call(this.$parent, h);
 
     return derivedHeading;
   }
