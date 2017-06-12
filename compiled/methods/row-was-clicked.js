@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function (row) {
+module.exports = function (row, event) {
 
   var data;
   var id = this.opts.uniqueKey;
