@@ -30,20 +30,24 @@ module.exports = function (source) {
           [dropdownPagination, perPage]
         )]
       ), h(
-        'table',
-        { 'class': 'VueTables__table table ' + this.opts.skin },
+        'div',
+        { 'class': 'table-responsive' },
         [h(
-          'thead',
-          null,
+          'table',
+          { 'class': 'VueTables__table table ' + this.opts.skin },
           [h(
-            'tr',
+            'thead',
             null,
-            [headings]
-          ), columnFilters]
-        ), footerHeadings, h(
-          'tbody',
-          null,
-          [noResults, rows]
+            [h(
+              'tr',
+              null,
+              [headings]
+            ), columnFilters]
+          ), footerHeadings, h(
+            'tbody',
+            null,
+            [noResults, rows]
+          )]
         )]
       ), pagination, dropdownPaginationCount]
     );
