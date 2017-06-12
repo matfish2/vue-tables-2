@@ -7,6 +7,6 @@ namespace App\Services\VueTables;
 
 Interface VueTablesInterface {
 
-  public function get($table, Array $fields);
+  public function get($table, Array $fields, Array $with = []);
 
 }
