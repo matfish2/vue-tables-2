@@ -5,7 +5,14 @@ module.exports = function (e) {
   // we need to handle the store this.query to make sure we're not mutating outside of it
   var query = this.vuex ? JSON.parse(JSON.stringify(this.query)) : this.query;
 
-  if (e) {
+  // in case we pass an object manually (mostly used for init-date-filters should refactor
+  if (Object.prototype.toString.call(e).slice(8, -1) == 'Object') {
+    query = this.vuex ? JSON.parse(JSON.stringify(e)) : e;
+
+    if (!this.vuex) this.query = query;
+
+    this.updateState('query', query);
+  } else if (e) {
     var _name = this.getName(e.target.name);
     var value = e.target.value;
 
