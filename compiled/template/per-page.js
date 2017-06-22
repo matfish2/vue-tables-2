@@ -24,7 +24,7 @@ module.exports = function (h, that) {
             id: id
           },
           on: {
-            change: that.setLimit.bind(that)
+            'change': that.setLimit.bind(that)
           }
         },
         [perpageValues]
