@@ -1,5 +1,7 @@
 'use strict';
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var object_filled_keys_count = require('../helpers/object-filled-keys-count');
 var is_valid_moment_object = require('../helpers/is-valid-moment-object');
 var filterByCustomFilters = require('../filters/custom-filters');
@@ -11,13 +13,16 @@ module.exports = function (data, e) {
     var _query = this.query;
 
     this.setPage(1, true);
+
     var name = this.getName(e.target.name);
+    var value = _typeof(e.target.value) === 'object' ? e.target.value : '' + e.target.value;
 
     if (name) {
-      _query[name] = '' + e.target.value;
+      _query[name] = value;
     } else {
-      _query = e.target.value;
+      _query = value;
     }
+
     this.vuex ? this.commit('SET_FILTER', _query) : this.query = _query;
 
     this.updateState('query', _query);

@@ -8,8 +8,8 @@ module.exports = function () {
   var that = this;
   var query = this.vuex ? JSON.parse(JSON.stringify(this.query)) : this.query;
 
-  var search = function search(query) {
-    return that.source == 'client' ? that.search(that.data) : that.serverSearch(query);
+  var search = function search(query, e) {
+    return that.source == 'client' ? that.search(that.data, e) : that.serverSearch(query);
   };
 
   var datepickerOptions = merge.recursive(this.opts.datepickerOptions, {
@@ -35,13 +35,15 @@ module.exports = function () {
       if (!that.vuex) that.query = query;
 
       $(this).text(picker.startDate.format(that.opts.dateFormat) + " - " + picker.endDate.format(that.opts.dateFormat));
+
       that.updateState('query', query);
 
-      search(query);
+      search(query, { target: { name: 'vf__' + column, value: query[column] } });
     });
 
     el.on('cancel.daterangepicker', function (ev, picker) {
-      that.query[column] = '';
+
+      query[column] = '';
 
       if (!that.vuex) that.query = query;
 
@@ -49,7 +51,7 @@ module.exports = function () {
 
       $(this).html("<span class='VueTables__filter-placeholder'>" + that.display('filterBy', { column: that.getHeading(column) }) + "</span>");
 
-      search(query);
+      search(query, { target: { name: 'vf__' + column, value: query[column] } });
     });
   });
 };

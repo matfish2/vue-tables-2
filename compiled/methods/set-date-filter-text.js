@@ -8,7 +8,7 @@ module.exports = function (query) {
   if (this.hasDateFilters()) {
     this.opts.dateColumns.forEach(function (column) {
       value = query[column];
-      console.log(query, column, value);
+
       if (!value) return;
 
       var datepicker = $(_this.$el).find("#VueTables__" + column + "-filter");

@@ -94,7 +94,6 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
 
       if (this.opts.saveState) {
         var state = JSON.parse(this.storage.getItem(this.stateKey));
-        console.log(state.query);
         this.setDateFilterText(state.query);
       }
 
