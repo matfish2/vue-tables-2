@@ -12,6 +12,8 @@ module.exports = function (filter) {
     this.query = filter;
   }
 
+  this.setDateFilterText(filter);
+
   if (this.source == 'server') {
     this.getData();
   }

@@ -5,7 +5,6 @@ var merge = require('merge');
 module.exports = function () {
 
   var el;
-  var drp;
   var that = this;
   var query = this.vuex ? JSON.parse(JSON.stringify(this.query)) : this.query;
 
@@ -25,13 +24,6 @@ module.exports = function () {
 
     el = $(that.$el).find("#VueTables__" + column + "-filter");
     el.daterangepicker(datepickerOptions);
-    drp = el.data('daterangepicker');
-
-    if (query.updateDate) {
-      el.text(moment(query.updateDate.start).format(that.opts.dateFormat) + " - " + moment(query.updateDate.end).format(that.opts.dateFormat));
-    } else {
-      el.text(drp.startDate.format(that.opts.dateFormat) + " - " + drp.endDate.format(that.opts.dateFormat));
-    }
 
     el.on('apply.daterangepicker', function (ev, picker) {
 

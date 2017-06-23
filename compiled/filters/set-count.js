@@ -2,7 +2,7 @@
 
 module.exports = function (data) {
 
-  this.count = data.length;
+    this.count = data.length;
 
-  return data;
+    return data;
 };
