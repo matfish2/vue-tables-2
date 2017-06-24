@@ -367,6 +367,9 @@ Event.$on('vue-tables.loaded', function (data) {
 });
 ```
 
+Note: If you are using the bus and want the event to be "namespaced", so you can distinguish bewteen different tables on the same page, use the `name` prop.
+The event name will then take the shape of `vue-tables.tableName.eventName`.
+
 * Using Vuex:
 
 ```js
@@ -377,27 +380,29 @@ mutations:{
 }
 ```
 
-1. `vue-tables.loading` / `tableName/LOADING` (server)
+* `vue-tables.loading` / `tableName/LOADING` (server)
 
     Fires off when a request is sent to the server. Sends through the request data.
 
-1. `vue-tables.loaded` / `tableName/LOADED` (server)
+* `vue-tables.loaded` / `tableName/LOADED` (server)
 
     Fires off after the response data has been attached to the table. Sends through the response.
 
     You can listen to those complementary events on a parent component and use them to add and remove a *loading indicator*, respectively.
 
-1. `vue-tables.error` / `tableName/ERROR` (server)
+* `vue-tables.pagination / `tableName/PAGINATION`
+
+    Fires off whenever the user changes a page. Send through the page number.
+
+* `vue-tables.error` / `tableName/ERROR` (server)
 
     Fires off if the server returns an invalid code. Sends through the error
 
-1. `vue-tables.row-click` / `tableName/ROW_CLICK`
+* `vue-tables.row-click` / `tableName/ROW_CLICK`
 
     Fires off after a row was clicked. sends through the row and the mouse event.
     When using the client component, if you want to recieve the *original* row, so that it can be directly mutated, you must have a unique row identifier.
     The key defaults to `id`, but can be changed using the `uniqueKey` option.
-
-    > Note: As of version 0.5.0 the `row-click` event sends along an object containing the row and the mouse event.
 
 # Custom Filters
 
@@ -507,7 +512,7 @@ customSorting | Object | See [documentation](#custom-sorting) | `{}`
 dateColumns | Array | Use daterangepicker as a filter for the specified columns (when filterByColumn is set to true).<br><br>Dates should be passed as moment objects, or as strings in conjunction with the toMomentFormat option | `[]`
 dateFormat (client-side) | String | Format to display date objects. Using [momentjs](https://momentjs.com/) | `DD/MM/YYYY`
 datepickerOptions | Object | Options for the daterangepicker when using a date filter (see dateColumns) | `{ locale: { cancelLabel: 'Clear' } }`
-debounce (server-side) | Number | Number of idle milliseconds (no key stroke) to wait before sending a request. Used to detect when the user finished his query in order to avoid redundant requests | `500`
+debounce | Number | Number of idle milliseconds (no key stroke) to wait before sending a request. Used to detect when the user finished his query in order to avoid redundant requests (server) or rendering (client) | `500`
 filterable | Array / Boolean | Filterable columns `true` - All columns. | Set to `false` or an `empty array` to hide the filter(s)
 footerHeadings | Boolean | Display headings at the bottom of the table too | `false`
 headings | Object | Table headings. | Can be either a string or a function, if you wish to inject vue-compiled HTML.<br>E.g: `function(h) { return <h2>Title</h2>}`<br>Note that this example uses jsx, and not HTML.<br>The `this` context inside the function refers to the direct parent of the table instance.<br><br>The default rule is to extract from the first row properties with the underscores become spaces and the first letter capitalized
