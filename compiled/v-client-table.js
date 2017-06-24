@@ -86,6 +86,7 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
 
         _vuePagination.PaginationEvent.$on('vue-pagination::' + this.id, function (page) {
           this.setPage(page);
+          this.dispatch('pagination', page);
         }.bind(this));
       }
 

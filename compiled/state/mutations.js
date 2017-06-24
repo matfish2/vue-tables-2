@@ -22,6 +22,8 @@ exports.default = function (self) {
     self.updateState('page', page);
 
     if (self.source == 'server') self.getData();
+
+    self.commit('PAGINATION', page);
   }), _defineProperty(_merge$recursive, self.name + '/SET_FILTER', function undefined(state, filter) {
     state.page = 1;
 
@@ -32,7 +34,7 @@ exports.default = function (self) {
     if (self.source == 'server') {
       self.getData();
     }
-  }), _defineProperty(_merge$recursive, self.name + '/SET_CUSTOM_FILTER', function undefined(state, _ref4) {
+  }), _defineProperty(_merge$recursive, self.name + '/PAGINATION', function undefined(state, page) {}), _defineProperty(_merge$recursive, self.name + '/SET_CUSTOM_FILTER', function undefined(state, _ref4) {
     var filter = _ref4.filter;
     var value = _ref4.value;
 
