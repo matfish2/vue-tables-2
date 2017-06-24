@@ -13,11 +13,11 @@ module.exports = function (e) {
 
     this.updateState('query', query);
   } else if (e) {
-    var _name = this.getName(e.target.name);
+    var name = this.getName(e.target.name);
     var value = e.target.value;
 
-    if (_name) {
-      query[_name] = value;
+    if (name) {
+      query[name] = value;
     } else {
       query = value;
     }
@@ -27,21 +27,7 @@ module.exports = function (e) {
     this.updateState('query', query);
   }
 
-  if (noDebounce(e, name, this.opts)) {
-    return search(this, query);
-  }
-
-  this.lastKeyStrokeAt = Date.now();
-
-  var elapsed;
-  var debounce = this.opts.debounce;
-
-  setTimeout(function () {
-
-    elapsed = Date.now() - this.lastKeyStrokeAt;
-
-    if (elapsed >= debounce) search(this, query);
-  }.bind(this), debounce);
+  return search(this, query);
 };
 
 function search(that, query) {
