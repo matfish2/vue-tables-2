@@ -46,7 +46,7 @@ module.exports = function (source) {
           ), footerHeadings, h(
             'tbody',
             null,
-            [noResults, rows]
+            [this.$slots.beforeBody, noResults, rows, this.$slots.afterBody]
           )]
         )]
       ), pagination, dropdownPaginationCount]
