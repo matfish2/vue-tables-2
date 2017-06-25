@@ -390,7 +390,7 @@ mutations:{
 
     You can listen to those complementary events on a parent component and use them to add and remove a *loading indicator*, respectively.
 
-* `vue-tables.pagination / `tableName/PAGINATION`
+* `vue-tables.pagination` / `tableName/PAGINATION`
 
     Fires off whenever the user changes a page. Send through the page number.
 
