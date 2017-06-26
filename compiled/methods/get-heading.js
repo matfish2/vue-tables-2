@@ -8,17 +8,21 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 module.exports = function (value, h) {
 
-  if (typeof value !== 'string') return '';
+	if (typeof value !== 'string') return '';
 
-  var derivedHeading = (0, _ucfirst2.default)(value.split("_").join(" "));
+	if (this.$scopedSlots && typeof this.$scopedSlots['h__' + value] !== 'undefined') {
+		return this.$scopedSlots['h__' + value]();
+	}
 
-  if (!this.opts.headings.hasOwnProperty(value)) return derivedHeading;
+	var derivedHeading = (0, _ucfirst2.default)(value.split("_").join(" "));
 
-  if (typeof this.opts.headings[value] === 'function') {
-    if (h) return this.opts.headings[value].call(this.$parent, h);
+	if (!this.opts.headings.hasOwnProperty(value)) return derivedHeading;
 
-    return derivedHeading;
-  }
+	if (typeof this.opts.headings[value] === 'function') {
+		if (h) return this.opts.headings[value].call(this.$parent, h);
 
-  return this.opts.headings[value];
+		return derivedHeading;
+	}
+
+	return this.opts.headings[value];
 };
