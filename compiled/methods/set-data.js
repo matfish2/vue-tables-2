@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function (data) {
-  this.data = data.data;
+  this.data = this.applyFilters(data.data);
   this.count = parseInt(data.count);
 
   setTimeout(function () {
