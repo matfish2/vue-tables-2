@@ -6,7 +6,7 @@ module.exports = function (data) {
 
       if (this.source === 'client') row[column] = this.formatDate(row[column], this.opts.dateFormat);
 
-      if (this.isListFilter(column)) {
+      if (this.isListFilter(column) && !this.opts.templates[column] && !this.$scopedSlots[column]) {
         row[column] = this.optionText(row[column], column);
       }
     }
