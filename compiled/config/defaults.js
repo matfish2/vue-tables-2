@@ -39,6 +39,7 @@ module.exports = function () {
       down: 'glyphicon-chevron-down'
     },
     customSorting: {},
+    multiSorting: {},
     filterByColumn: false,
     highlightMatches: false,
     orderBy: false,

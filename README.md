@@ -3,25 +3,26 @@
 [![npm version](https://badge.fury.io/js/vue-tables-2.svg)](https://badge.fury.io/js/vue-tables-2) [![GitHub stars](https://img.shields.io/github/stars/matfish2/vue-tables-2.svg)](https://github.com/matfish2/vue-tables-2/stargazers) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/matfish2/vue-tables-2/master/LICENSE)
 
 - [Usage](#usage)
-    - [Dependencies](#dependencies)
-    - [Installation](#installation)
-    - [Client Side](#client-side)
-    - [Server Side](#server-side)
-        - [Implementations](#implementations)
+- [Dependencies](#dependencies)
+- [Installation](#installation)
+- [Client Side](#client-side)
+- [Server Side](#server-side)
+- [Implementations](#implementations)
 - [Templates](#templates)
-    - [JSX](#jsx)
-    - [Vue Component](#vue-component)
-    - [Scoped Slots](#scoped-slots)
+- [JSX](#jsx)
+- [Vue Component](#vue-component)
+- [Scoped Slots](#scoped-slots)
 - [Child Rows](#child-rows)
 - [Methods](#methods)
 - [Events](#events)
 - [Custom Filters](#custom-filters)
-    - [Client Side Filters](#client-side-filters)
-    - [Server Side Filters](#server-side-filters)
+- [Client Side Filters](#client-side-filters)
+- [Server Side Filters](#server-side-filters)
 - [List Filters](#list-filters)
 - [Custom Sorting](#custom-sorting)
-    - [Client Side Sorting](#client-side-sorting)
-    - [Server Side Sorting](#server-side-sorting)
+- [Multiple Sorting](#multiple-sorting)
+- [Client Side Sorting](#client-side-sorting)
+- [Server Side Sorting](#server-side-sorting)
 - [Options](#options)
 - [VueJS 1](#vuejs-1)
 
@@ -91,24 +92,24 @@ Create a new Vue instance (You can also nest it within other components). An exa
 
 ```js
 new Vue({
-    el:"#people",
-    data: {
-        columns: ['id','name','age'],
-        tableData: [
-            {id:1, name:"John",age:"20"},
-            {id:2, name:"Jane",age:"24"},
-            {id:3, name:"Susan",age:"16"},
-            {id:4, name:"Chris",age:"55"},
-            {id:5, name:"Dan",age:"40"}
-        ],
-        options: {
-            // see the options API
-        }
-    }
+el:"#people",
+data: {
+columns: ['id','name','age'],
+tableData: [
+{id:1, name:"John",age:"20"},
+{id:2, name:"Jane",age:"24"},
+{id:3, name:"Susan",age:"16"},
+{id:4, name:"Chris",age:"55"},
+{id:5, name:"Dan",age:"40"}
+],
+options: {
+// see the options API
+}
+}
 });
 ```
 
-  You can access the filtered dataset at any given moment by fetching the `filteredData` computed property of the table, using `ref` as a pointer (`this.$refs.myTable.filteredData`);
+You can access the filtered dataset at any given moment by fetching the `filteredData` computed property of the table, using `ref` as a pointer (`this.$refs.myTable.filteredData`);
 
 > Important: when loading data asynchronously add a `v-if` conditional to the component along with some `loaded` flag, so it will only compile once the data is attached.
 
@@ -124,13 +125,13 @@ Javascript:
 
 ```js
 new Vue({
-    el: "#people",
-    data: {
-        columns: ['id','name','age'],
-        options: {
-            // see the options API
-        }
-    }
+el: "#people",
+data: {
+columns: ['id','name','age'],
+options: {
+// see the options API
+}
+}
 });
 ```
 
@@ -150,15 +151,15 @@ You need to return a JSON object with two properties:
 
 ### Implementations
 
-  I have included [an Eloquent implementation](https://github.com/matfish2/vue-tables/tree/master/server/PHP) for Laravel Users.
+I have included [an Eloquent implementation](https://github.com/matfish2/vue-tables/tree/master/server/PHP) for Laravel Users.
 
-  If you happen to write other implementations for PHP or other languages, a pull request would be most welcome, under the following guidelines:
+If you happen to write other implementations for PHP or other languages, a pull request would be most welcome, under the following guidelines:
 
-  1. Include the class under `./server/{language}`.
-  1. Name it according to convention: `{concrete}VueTables`.
-  1. if this is the first implementation in this language add an interface similar to the one found in the PHP folder.
-  1. Have it implement the interface.
-  1. TEST IT.
+1. Include the class under `./server/{language}`.
+1. Name it according to convention: `{concrete}VueTables`.
+1. if this is the first implementation in this language add an interface similar to the one found in the PHP folder.
+1. Have it implement the interface.
+1. TEST IT.
 
 # Templates
 
@@ -173,16 +174,16 @@ E.g.:
 
 ```js
 data : {
-    columns: ['erase'],
-    options: {
-        ...
-        templates: {
-            erase: function(h, row) {
-                return <delete id={row.id}></delete>
-            }
-        }
-        ...
-    }
+columns: ['erase'],
+options: {
+...
+templates: {
+erase: function(h, row) {
+return <delete id={row.id}></delete>
+}
+}
+...
+}
 }
 ```
 
@@ -195,7 +196,7 @@ edit.jsx
 
 ```js
 export default function(h, row) {
-   return <a class='fa fa-edit' href={'#/' + row.id + '/edit'}></a>
+return <a class='fa fa-edit' href={'#/' + row.id + '/edit'}></a>
 }
 ```
 
@@ -203,11 +204,11 @@ app.vue
 
 ```html
 <script>
-import edit from './edit'
+    import edit from './edit'
 
-templates: {
-   edit
-}
+    templates: {
+     edit
+ }
 </script>
 ```
 
@@ -216,23 +217,23 @@ A Second option to for creating templates is to encapsulate the template within 
 
 ```js
 Vue.component('delete', {
-    props:['data'],
-    template:`<a class='delete' @click='erase'></a>`,
-    methods:{
-        erase() {
-            let id = this.data.id; // delete the item
-        }
-    }
+props:['data'],
+template:`<a class='delete' @click='erase'></a>`,
+methods:{
+erase() {
+let id = this.data.id; // delete the item
+}
+}
 });
 ```
 
 ```js
 options: {
-    ...
-    templates: {
-        erase: 'delete'
-    }
-    ...
+...
+templates: {
+erase: 'delete'
+}
+...
 }
 ```
 
@@ -255,11 +256,11 @@ app.vue
 
 ```html
 <script>
-import edit from './edit'
+    import edit from './edit'
 
-templates:{
-   edit
-}
+    templates:{
+     edit
+ }
 </script>
 ```
 
@@ -269,9 +270,9 @@ If you are using Vue 2.1.0 and above, you can use [scoped slots](https://vuejs.o
 ```html
 <v-client-table :data="entries" :columns="['id', 'name' ,'age', 'edit']">
     <template slot="edit" scope="props">
-    <div>
-        <a class="fa fa-edit" :href="edit(props.row.id)"></a>
-    </div>
+        <div>
+            <a class="fa fa-edit" :href="edit(props.row.id)"></a>
+        </div>
     </template>
 </v-client-table>
 ```
@@ -295,11 +296,11 @@ The syntax is identincal to that of templates:
 
 ```js
 options:{
-    ...
-    childRow: function(h, row) {
-        return <div>My custom content for row {row.id}</div>
-    }
-    ...
+...
+childRow: function(h, row) {
+return <div>My custom content for row {row.id}</div>
+}
+...
 }
 ```
 
@@ -307,9 +308,9 @@ Or you can pass a component name: (See [Templates](#templates) above for a compl
 
 ```js
 options:{
-    ...
-    childRow: 'row-component'
-    ...
+...
+childRow: 'row-component'
+...
 }
 ```
 
@@ -318,20 +319,20 @@ When the plugin detects a `childRow` function it appends the child rows and prep
 Example styling (also found in `style.css`):
 ```css
 .VueTables__child-row-toggler {
-  width:16px;
-  height:16px;
-  line-height: 16px;
-  display: block;
-  margin: auto;
-  text-align: center;
+width:16px;
+height:16px;
+line-height: 16px;
+display: block;
+margin: auto;
+text-align: center;
 }
 
 .VueTables__child-row-toggler--closed::before {
-   content: "+";
+content: "+";
 }
 
 .VueTables__child-row-toggler--open::before  {
-    content: "-";
+content: "-";
 }
 ```
 
@@ -363,7 +364,7 @@ Using Custom Events (For child-parent communication):
 
 ```js
 Event.$on('vue-tables.loaded', function (data) {
-    // Do something
+// Do something
 });
 ```
 
@@ -374,35 +375,35 @@ The event name will then take the shape of `vue-tables.tableName.eventName`.
 
 ```js
 mutations:{
-    ['tableName/LOADED'] (state, data) {
-        // Do something
-    }
+['tableName/LOADED'] (state, data) {
+// Do something
+}
 }
 ```
 
 * `vue-tables.loading` / `tableName/LOADING` (server)
 
-    Fires off when a request is sent to the server. Sends through the request data.
+Fires off when a request is sent to the server. Sends through the request data.
 
 * `vue-tables.loaded` / `tableName/LOADED` (server)
 
-    Fires off after the response data has been attached to the table. Sends through the response.
+Fires off after the response data has been attached to the table. Sends through the response.
 
-    You can listen to those complementary events on a parent component and use them to add and remove a *loading indicator*, respectively.
+You can listen to those complementary events on a parent component and use them to add and remove a *loading indicator*, respectively.
 
 * `vue-tables.pagination` / `tableName/PAGINATION`
 
-    Fires off whenever the user changes a page. Send through the page number.
+Fires off whenever the user changes a page. Send through the page number.
 
 * `vue-tables.error` / `tableName/ERROR` (server)
 
-    Fires off if the server returns an invalid code. Sends through the error
+Fires off if the server returns an invalid code. Sends through the error
 
 * `vue-tables.row-click` / `tableName/ROW_CLICK`
 
-    Fires off after a row was clicked. sends through the row and the mouse event.
-    When using the client component, if you want to recieve the *original* row, so that it can be directly mutated, you must have a unique row identifier.
-    The key defaults to `id`, but can be changed using the `uniqueKey` option.
+Fires off after a row was clicked. sends through the row and the mouse event.
+When using the client component, if you want to recieve the *original* row, so that it can be directly mutated, you must have a unique row identifier.
+The key defaults to `id`, but can be changed using the `uniqueKey` option.
 
 # Custom Filters
 
@@ -414,10 +415,10 @@ Custom filters allow you to integrate your own filters into the plugin using Vue
 
 ```js
 customFilters: [{
-    name:'alphabet',
-    callback: function(row, query) {
-        return row.name[0] == query;
-    }
+name:'alphabet',
+callback: function(row, query) {
+return row.name[0] == query;
+}
 }]
 ```
 
@@ -451,15 +452,15 @@ For example:
 
 ```js
 options: {
-    filterByColumn: true,
-    listColumns: {
-        animal: [
-            { id: 1, text: 'Dog' },
-            { id: 2, text: 'Cat' },
-            { id: 3, text: 'Tiger' },
-            { id: 4, text: 'Bear' }
-        ]
-    }
+filterByColumn: true,
+listColumns: {
+animal: [
+{ id: 1, text: 'Dog' },
+{ id: 2, text: 'Cat' },
+{ id: 3, text: 'Tiger' },
+{ id: 4, text: 'Bear' }
+]
+}
 }
 ```
 
@@ -476,23 +477,51 @@ E.g, to sort the `name` column by the last character:
 
 ```js
 customSorting:{
-    name: function(ascending) {
-        return function(a, b) {
-            var lastA = a.name[a.name.length-1].toLowerCase();
-            var lastB = b.name[b.name.length-1].toLowerCase();
+name: function(ascending) {
+return function(a, b) {
+var lastA = a.name[a.name.length-1].toLowerCase();
+var lastB = b.name[b.name.length-1].toLowerCase();
 
-            if (ascending)
-                return lastA <= lastB?1:-1;
+if (ascending)
+return lastA <= lastB?1:-1;
 
-            return lastA >= lastB?1:-1;
-        }
-    }
+return lastA >= lastB?1:-1;
+}
+}
 }
 ```
 
 ## Server Side Sorting
 
 This depends entirely on your backend implemetation as the library sends the sorting direction trough the request.
+
+# Multiple Sorting
+
+Multiple sorting allows you to sort recursively by multiple columns.
+Simply put, when the primary column (i.e the column the user is currently sorting) has two or more identical items, their order will be determined by a secondary column, and so on, until the list of columns is exhausted.
+
+Example usage:
+```js
+{
+    ...
+    multiSorting:{
+    name:[
+        {
+         column:'age',
+         matchDir:false
+        },
+        {
+         column:'birth_date',
+         matchDir:true
+        }
+    ]
+    }
+    ...
+}
+```
+
+The above code means that when the user is sorting by `name` and identical names are compared, their order will be determined by the `age` column. If the ages are also identical the `birth_date` column will determine the order.
+The `matchDir` property tells the plugin whether the secondary sorting should match the direction of the primary column (i.e ascending/descending), or not.
 
 # Options
 
@@ -519,6 +548,7 @@ headings | Object | Table headings. | Can be either a string or a function, if y
 highlightMatches | Boolean | Highlight matches | `false`
 initFilters | Object | Set initial values for all filter types: generic, by column or custom.<br><br> Accepts an object of key-value pairs, where the key is one of the following: <br><br>a. "GENERIC" - for the generic filter<br>b. column name - for by column filters.<br>c. filter name - for custom filters. <br><br>In case of date filters the date range should be passed as an object comprised of start and end properties, each being a moment object. | `{}`
 listColumns | Object | See [documentation](#list-filters) | {}
+multiSorting | Object | See [documentation](#multiple-sotring) | {}
 orderBy.ascending | Boolean | initial order direction | `orderBy: { ascending:true }`
 orderBy.column | String | initial column to sort by | First column
 pagination.chunk | Number | maximum pages in a chunk of pagination | `pagination: { chunk:10 }`

@@ -96,7 +96,8 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
     data: function data() {
       return _merge2.default.recursive(_data(), {
         source: 'client',
-        globalOptions: globalOptions
+        globalOptions: globalOptions,
+        currentlySorting: {}
       }, (0, _data3.default)(useVuex, 'client'));
     },
     computed: {
@@ -115,6 +116,7 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
       transformDateStringsToMoment: require('./methods/transform-date-strings-to-moment'),
       registerClientFilters: require('./methods/register-client-filters'),
       search: require('./methods/client-search'),
+      defaultSort: require('./methods/default-sort'),
       loadState: function loadState() {
 
         if (!this.opts.saveState) return;
