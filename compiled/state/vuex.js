@@ -61,10 +61,13 @@ exports.default = function (source) {
 
         if (!this.sortable(column)) return;
 
-        var ascending = this.orderBy.column === column ? !this.orderBy.ascending : true;
-
-        this.updateState('orderBy', { column: column, ascending: ascending });
-        this.commit('SORT', { column: column, ascending: ascending });
+        if (ev.shiftKey && this.orderBy.column && this.hasMultiSort) {
+          this.setUserMultiSort(colName);
+        } else {
+          var ascending = this.orderBy.column === column ? !this.orderBy.ascending : true;
+          this.updateState('orderBy', { column: column, ascending: ascending });
+          this.commit('SORT', { column: column, ascending: ascending });
+        }
       },
       setLimit: function setLimit(e) {
         var limit = (typeof e === 'undefined' ? 'undefined' : _typeof(e)) === 'object' ? parseInt(e.target.value) : e;
