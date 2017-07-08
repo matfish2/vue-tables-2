@@ -5,11 +5,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var merge = require('merge');
 
 module.exports = function (promiseOnly) {
-  var _data;
+  var _opts$requestAdapter;
 
   var keys = this.opts.requestKeys;
 
-  var data = (_data = {}, _defineProperty(_data, keys.query, this.query), _defineProperty(_data, keys.limit, this.limit), _defineProperty(_data, keys.orderBy, this.orderBy.column), _defineProperty(_data, keys.ascending, this.orderBy.ascending ? 1 : 0), _defineProperty(_data, keys.page, this.page), _defineProperty(_data, keys.byColumn, this.opts.filterByColumn ? 1 : 0), _data);
+  var data = this.opts.requestAdapter((_opts$requestAdapter = {}, _defineProperty(_opts$requestAdapter, keys.query, this.query), _defineProperty(_opts$requestAdapter, keys.limit, this.limit), _defineProperty(_opts$requestAdapter, keys.orderBy, this.orderBy.column), _defineProperty(_opts$requestAdapter, keys.ascending, this.orderBy.ascending ? 1 : 0), _defineProperty(_opts$requestAdapter, keys.page, this.page), _defineProperty(_opts$requestAdapter, keys.byColumn, this.opts.filterByColumn ? 1 : 0), _opts$requestAdapter));
 
   data = merge(data, this.opts.params, this.customQueries);
 
