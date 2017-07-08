@@ -57,12 +57,12 @@ exports.default = function (source) {
         silent = { silent: silent };
         return this.$store.commit(this.name + '/' + action, payload, silent);
       },
-      orderByColumn: function orderByColumn(column) {
+      orderByColumn: function orderByColumn(column, ev) {
 
         if (!this.sortable(column)) return;
 
         if (ev.shiftKey && this.orderBy.column && this.hasMultiSort) {
-          this.setUserMultiSort(colName);
+          this.setUserMultiSort(column);
         } else {
           var ascending = this.orderBy.column === column ? !this.orderBy.ascending : true;
           this.updateState('orderBy', { column: column, ascending: ascending });
