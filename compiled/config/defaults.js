@@ -40,6 +40,8 @@ module.exports = function () {
     },
     customSorting: {},
     multiSorting: {},
+    clientMultiSorting: true,
+    serverMultiSorting: false,
     filterByColumn: false,
     highlightMatches: false,
     orderBy: false,

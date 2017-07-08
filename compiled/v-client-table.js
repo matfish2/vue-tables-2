@@ -97,14 +97,18 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
       return _merge2.default.recursive(_data(), {
         source: 'client',
         globalOptions: globalOptions,
-        currentlySorting: {}
+        currentlySorting: {},
+        time: Date.now()
       }, (0, _data3.default)(useVuex, 'client'));
     },
     computed: {
       q: require('./computed/q'),
       customQ: require('./computed/custom-q'),
       totalPages: require('./computed/total-pages'),
-      filteredData: require('./computed/filtered-data')
+      filteredData: require('./computed/filtered-data'),
+      hasMultiSort: function hasMultiSort() {
+        return this.opts.clientMultiSorting;
+      }
     },
 
     filters: {

@@ -20,9 +20,9 @@
 - [Server Side Filters](#server-side-filters)
 - [List Filters](#list-filters)
 - [Custom Sorting](#custom-sorting)
-- [Multiple Sorting](#multiple-sorting)
 - [Client Side Sorting](#client-side-sorting)
 - [Server Side Sorting](#server-side-sorting)
+- [Multiple Sorting](#multiple-sorting)
 - [Options](#options)
 - [VueJS 1](#vuejs-1)
 
@@ -523,6 +523,12 @@ Example usage:
 The above code means that when the user is sorting by `name` and identical names are compared, their order will be determined by the `age` column. If the ages are also identical the `birth_date` column will determine the order.
 The `matchDir` property tells the plugin whether the secondary sorting should match the direction of the primary column (i.e ascending/descending), or not.
 
+In addition to programmatically setting the sorting in advance, by default the user can also use Shift+Click to build his own sorting logic in real time.
+To disable this option set `clientMultiSorting` to `false`.
+
+On the server component this behaviour is disabled by default, because it requires addtional server logic to handle the request.
+To enable it set `serverMultiSorting` to `true`. The request will then contain a `multiSort` array, if applicable.
+
 # Options
 
 Options are set in three layers, where the more particular overrides the more general.
@@ -534,6 +540,7 @@ Options are set in three layers, where the more particular overrides the more ge
 Option | Type | Description | Default
 -------|------|-------------|--------
 childRow | Function| [See documentation](#child-rows) | `false`
+clientMultiSorting | Boolean | Enable multiple columns sorting using Shift + Click on the client component | `true`
 columnsClasses | Object | Add class(es) to the specified columns.<br> Takes key-value pairs, where the key is the column name and the value is a string of space-separated classes | `{}`
 columnsDisplay | Object | Responsive display for the specified columns.<br><br> Columns will only be shown when the window width is within the defined limits. <br><br>Accepts key-value pairs of column name and device.<br><br> Possible values are `mobile` (x < 480), `mobileP` (x < 320), `mobileL` (320 <= x < 480), `tablet` (480 <= x < 1024), `tabletP` (480 <= x < 768), `tabletL` (768 <= x < 1024), `desktop` (x >= 1024).<br><br> All options can be preceded by the logical operators min,max, and not followed by an underscore.<br><br>For example, a column which is set to `not_mobile` will be shown when the width of the window is greater than or equal to 480px, while a column set to `max_tabletP` will only be shown when the width is under 768px | `{}`
 customFilters | Array | See [documentation](#custom-filters) | `[]`
@@ -560,6 +567,7 @@ requestKeys (server-side) | Object | Set your own request keys | `{ query:'query
 responseAdapter (server-side) | Function | Transform the server response to match the format expected by the client. This is especially useful when calling a foreign API, where you cannot control the response on the server-side | `function(resp) { return { data: resp.data, count: resp.count } }`
 rowClassCallback | Function | Add dynamic classes to table rows.<br><br> E.g function(row) { return `row-${row.id}`} <br><br>This can be useful for manipulating the appearance of rows based on the data they contain | `false`
 saveState | Boolean | Constantly save table state and reload it each time the component mounts. When setting it to true, use the `name` prop to set an identifier for the table | `false`
+serverMultiSorting | Boolean | Enable multiple columns sorting using Shift + Click on the server component | `false`
 skin | String | Space separated Bootstrap table styling classes | `table-striped table-bordered table-hover`
 sortIcon | String | Sort icon classes | `{ base:'glyphicon', up:'glyphicon-chevron-up', down:'glyphicon-chevron-down' }`
 sortable | Array |  Sortable columns | All columns

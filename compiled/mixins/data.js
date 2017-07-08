@@ -4,7 +4,8 @@ module.exports = function () {
   return {
     id: makeId(),
     rowsToggleState: {},
-    windowWidth: window.innerWidth
+    windowWidth: window.innerWidth,
+    userMultiSorting: {}
   };
 };
 

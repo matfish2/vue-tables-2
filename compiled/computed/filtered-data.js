@@ -9,7 +9,12 @@ module.exports = function () {
 
   var column = this.orderBy.column;
 
-  if (column) data.sort(this.getSortFn(column));
+  if (column) {
+    // dummy var to force compilation
+    if (this.time) this.time = this.time;
+
+    data.sort(this.getSortFn(column));
+  }
 
   data = this.search(data);
 

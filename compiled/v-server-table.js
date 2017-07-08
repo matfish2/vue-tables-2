@@ -159,7 +159,10 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
       }
     },
     computed: {
-      totalPages: require('./computed/total-pages')
+      totalPages: require('./computed/total-pages'),
+      hasMultiSort: function hasMultiSort() {
+        return this.opts.serverMultiSorting;
+      }
     }
 
   }, state);
