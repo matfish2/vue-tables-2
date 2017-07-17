@@ -43,11 +43,11 @@ module.exports = function (source) {
               null,
               [headings]
             ), columnFilters]
-          ), footerHeadings, h(
+          ), footerHeadings, this.$slots.beforeTbody, h(
             'tbody',
             null,
             [this.$slots.beforeBody, noResults, rows, this.$slots.afterBody]
-          )]
+          ), this.$slots.afterTbody]
         )]
       ), pagination, dropdownPaginationCount]
     );
