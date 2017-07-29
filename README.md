@@ -381,6 +381,15 @@ mutations:{
 }
 ```
 
+* `vue-tables.filter` / `tableName/FILTER`
+
+Fires off when a filter is changed. Sends through the name and value in case of column filter, or just the value in case of the general filter
+
+* `vue-tables.filter::colName`
+
+Same as above, only this one has the name attached to the event itself, and only sends through the value.
+Releveant only for non-vuex tables with `filterByColumn` set to true.
+
 * `vue-tables.loading` / `tableName/LOADING` (server)
 
 Fires off when a request is sent to the server. Sends through the request data.
