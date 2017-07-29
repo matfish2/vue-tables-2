@@ -149,6 +149,21 @@ You need to return a JSON object with two properties:
 
 > Note: If you are calling a foreign API or simply want to use your own keys, refer to the `responseAdapter` option.
 
+### Custom Request Function
+
+by default the library supports `JQuery`, `vue-resource` and `axios` as ajax libraries.
+If you wish to use a different library, or somehow alter the request (e.g add auth headers, or manipulate the data) use the `requestFunction` option. E.g:
+
+```js
+options:{
+  requestFunction: function(data) {
+    return axios.get(this.url, { params: data }).catch(function (e) {
+      this.dispatch('error', e);
+    }.bind(this));
+}
+}
+```
+
 ### Implementations
 
 I have included [an Eloquent implementation](https://github.com/matfish2/vue-tables/tree/master/server/PHP) for Laravel Users.
@@ -204,10 +219,10 @@ app.vue
 
 ```html
 <script>
-    import edit from './edit'
+  import edit from './edit'
 
-    templates: {
-     edit
+  templates: {
+   edit
  }
 </script>
 ```
@@ -243,12 +258,12 @@ edit.vue
 
 ```html
 <template>
-    <a class="fa fa-edit" :href="edit(data.id)">Edit</a>
+  <a class="fa fa-edit" :href="edit(data.id)">Edit</a>
 </template>
 <script>
-    export default {
-        props:['data'],
-    }
+  export default {
+    props:['data'],
+  }
 </script>
 ```
 
@@ -256,10 +271,10 @@ app.vue
 
 ```html
 <script>
-    import edit from './edit'
+  import edit from './edit'
 
-    templates:{
-     edit
+  templates:{
+   edit
  }
 </script>
 ```
@@ -269,11 +284,11 @@ If you are using Vue 2.1.0 and above, you can use [scoped slots](https://vuejs.o
 
 ```html
 <v-client-table :data="entries" :columns="['id', 'name' ,'age', 'edit']">
-    <template slot="edit" scope="props">
-        <div>
-            <a class="fa fa-edit" :href="edit(props.row.id)"></a>
-        </div>
-    </template>
+  <template slot="edit" scope="props">
+    <div>
+      <a class="fa fa-edit" :href="edit(props.row.id)"></a>
+    </div>
+  </template>
 </v-client-table>
 ```
 
@@ -512,20 +527,20 @@ Simply put, when the primary column (i.e the column the user is currently sortin
 Example usage:
 ```js
 {
-    ...
-    multiSorting:{
-    name:[
-        {
-         column:'age',
-         matchDir:false
-        },
-        {
-         column:'birth_date',
-         matchDir:true
-        }
-    ]
-    }
-    ...
+  ...
+  multiSorting:{
+  name:[
+  {
+  column:'age',
+  matchDir:false
+},
+{
+ column:'birth_date',
+ matchDir:true
+}
+]
+}
+...
 }
 ```
 
@@ -573,6 +588,7 @@ params (server-side) | Object | Additional parameters to send along with the req
 perPage | number | Initial records per page | `10`
 perPageValues | Array | Records per page options | `[10,25,50,100]`
 requestAdapter (server-side) | Function | Set a custom request format | `function(data) { return data; }`
+requestFunction (server-side) | Function | Set a custom request function | See documentation
 requestKeys (server-side) | Object | Set your own request keys | `{ query:'query', limit:'limit', orderBy:'orderBy', ascending:'ascending', page:'page', byColumn:'byColumn' }`
 responseAdapter (server-side) | Function | Transform the server response to match the format expected by the client. This is especially useful when calling a foreign API, where you cannot control the response on the server-side | `function(resp) { return { data: resp.data, count: resp.count } }`
 rowClassCallback | Function | Add dynamic classes to table rows.<br><br> E.g function(row) { return `row-${row.id}`} <br><br>This can be useful for manipulating the appearance of rows based on the data they contain | `false`

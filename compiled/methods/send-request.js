@@ -2,6 +2,10 @@
 
 module.exports = function (data) {
 
+  if (typeof this.opts.requestFunction === 'function') {
+    return this.opts.requestFunction.call(this, data);
+  }
+
   if (typeof axios !== 'undefined') return axios.get(this.url, { params: data }).catch(function (e) {
     this.dispatch('error', e);
   }.bind(this));
@@ -16,5 +20,5 @@ module.exports = function (data) {
     this.dispatch('error', e);
   }.bind(this));
 
-  throw "vue-tables: No supported ajax library was found. (jQuery, axios or vue-resource)";
+  throw "vue-tables: No supported ajax library was found. (jQuery, axios or vue-resource). To use a different library you can write your own request function (see the `requestFunction` option)";
 };

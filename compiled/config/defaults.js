@@ -54,6 +54,7 @@ module.exports = function () {
     childRow: false,
     childRowKey: 'id',
     uniqueKey: 'id',
+    requestFunction: false,
     requestAdapter: function requestAdapter(data) {
       return data;
     },
