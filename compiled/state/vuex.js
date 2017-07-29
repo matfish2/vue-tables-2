@@ -103,8 +103,8 @@ function serverExtra() {
   return {
     methods: {
       setData: function setData(_ref) {
-        var data = _ref.data;
-        var count = _ref.count;
+        var data = _ref.data,
+            count = _ref.count;
 
         this.commit('SET_DATA', { data: data, count: count });
         this.commit('LOADED', { data: data, count: count });

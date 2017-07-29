@@ -26,5 +26,5 @@ function matches(value, query, h) {
 }
 
 function escapeRegex(s) {
-  return typeof s==='string'?s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'):s;  
+  return typeof s === 'string' ? s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&') : s;
 };

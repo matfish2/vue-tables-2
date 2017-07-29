@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function (e) {
+module.exports = function (e, dateEvent) {
 
   // we need to handle the store this.query to make sure we're not mutating outside of it
   var query = this.vuex ? JSON.parse(JSON.stringify(this.query)) : this.query;
@@ -11,18 +11,35 @@ module.exports = function (e) {
 
     if (!this.vuex) this.query = query;
 
-    this.updateState('query', query);
-  } else if (e) {
-    var name = this.getName(e.target.name);
-    var value = e.target.value;
+    var name = dateEvent.target.name;
+    var value = dateEvent.target.value;
 
     if (name) {
-      query[name] = value;
+      this.dispatch('filter', { name: name, value: value });
+      this.dispatch('filter::' + name, value);
     } else {
-      query = value;
+      this.dispatch('filter', value);
+    }
+
+    this.updateState('query', query);
+  } else if (e) {
+    var _name = this.getName(e.target.name);
+    var _value = e.target.value;
+
+    if (_name) {
+      query[_name] = _value;
+    } else {
+      query = _value;
     }
 
     if (!this.vuex) this.query = query;
+
+    if (_name) {
+      this.dispatch('filter', { name: _name, value: _value });
+      this.dispatch('filter::' + _name, _value);
+    } else {
+      this.dispatch('filter', _value);
+    }
 
     this.updateState('query', query);
   }

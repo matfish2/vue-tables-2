@@ -8,6 +8,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 module.exports = function (event, payload) {
   if (this.vuex) {
+    if (event.split('::').length > 1) return;
     this.commit(event.toUpperCase().replace('-', '_'), payload);
   } else {
 

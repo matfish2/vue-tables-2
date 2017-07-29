@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function (column, ascending) {
-    var multiIndex = arguments.length <= 2 || arguments[2] === undefined ? -1 : arguments[2];
+    var multiIndex = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : -1;
 
 
     var sort = this.defaultSort;

@@ -9,7 +9,7 @@ module.exports = function () {
   var query = this.vuex ? JSON.parse(JSON.stringify(this.query)) : this.query;
 
   var search = function search(query, e) {
-    return that.source == 'client' ? that.search(that.data, e) : that.serverSearch(query);
+    return that.source == 'client' ? that.search(that.data, e) : that.serverSearch(query, e);
   };
 
   var datepickerOptions = merge.recursive(this.opts.datepickerOptions, {

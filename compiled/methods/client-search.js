@@ -26,6 +26,13 @@ module.exports = function (data, e) {
     this.vuex ? this.commit('SET_FILTER', _query) : this.query = _query;
 
     this.updateState('query', _query);
+
+    if (name) {
+      this.dispatch('filter', { name: name, value: value });
+      this.dispatch('filter::' + name, value);
+    } else {
+      this.dispatch('filter', value);
+    }
   }
 
   var query = this.query;
