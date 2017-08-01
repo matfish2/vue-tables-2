@@ -22,7 +22,6 @@ module.exports = function (h, that) {
   that.allColumns.map(function (column) {
 
     if (that.filterable(column)) {
-
       switch (true) {
         case that.isTextFilter(column):
           filter = textFilter(column);break;
@@ -31,6 +30,8 @@ module.exports = function (h, that) {
         case that.isListFilter(column):
           filter = listFilter(column);break;
       }
+    } else if (typeof that.$slots['filter__' + column] !== 'undefined') {
+      filter = that.$slots['filter__' + column];
     } else {
       filter = '';
     }
