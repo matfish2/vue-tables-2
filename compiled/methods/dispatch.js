@@ -8,15 +8,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 module.exports = function (event, payload) {
 
-  if (this.vuex) {
-    if (event.split('::').length > 1) return;
-    this.commit(event.toUpperCase().replace('-', '_'), payload);
-  }
+    if (this.vuex) {
+        if (event.split('::').length > 1) return;
+        this.commit(event.toUpperCase().replace('-', '_'), payload);
+    }
 
-  var name = 'vue-tables.';
-  if (this.name) name += this.name + ".";
-  name += event;
+    var name = 'vue-tables.';
+    if (this.name) name += this.name + ".";
+    name += event;
 
-  _bus2.default.$emit(name, payload);
-  this.$emit(event, payload);
+    _bus2.default.$emit(name, payload);
+    this.$emit(event, payload);
 };
