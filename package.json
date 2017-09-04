@@ -28,7 +28,7 @@
   "scripts": {
     "build": "babel lib -d compiled"
   },
-  "licenses": "MIT",
+  "license": "MIT",
   "main": "compiled/index.js",
   "tonicExampleFilename": "tonic-example.js",
   "devDependencies": {
