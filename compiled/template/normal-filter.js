@@ -29,7 +29,7 @@ module.exports = function (h, that) {
                         id: id
                     },
                     on: {
-                        keyup: debounce(search, that.opts.debounce)
+                        'keyup': debounce(search, that.opts.debounce)
                     }
                 },
                 []

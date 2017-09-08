@@ -23,6 +23,7 @@
 - [Client Side Sorting](#client-side-sorting)
 - [Server Side Sorting](#server-side-sorting)
 - [Multiple Sorting](#multiple-sorting)
+- [Slots](#slots)
 - [Options](#options)
 - [VueJS 1](#vuejs-1)
 
@@ -552,6 +553,36 @@ To disable this option set `clientMultiSorting` to `false`.
 
 On the server component this behaviour is disabled by default, because it requires addtional server logic to handle the request.
 To enable it set `serverMultiSorting` to `true`. The request will then contain a `multiSort` array, if applicable.
+
+# Slots
+
+Slots allow you to insert you own custom HTML in predefined positions within the component:
+
+* `beforeFilters`: Before the filters row
+* `afterFilters`: After the filters row
+* `beforeTBody`: Before the `<tbody>` tag
+* `afterTBody`: After the `<tbody>` tag
+* `beforeBody`: Prepend to the `<tbody>` tag
+* `afterBody`: Append to the `<tbody>` tag
+
+In addition to these slots you can insert your own filter HTML in the filters row (When `filterByColumn` is set to `true`):
+
+A. Make sure that the column is not filterable by omitting it from the `filterable` array.
+B. Create a slot whose name is formatted `filter__{column}` (double underscore).
+
+For example, to insert a checkbox on the `id` column:
+
+```js
+{
+  filterable:["name","age"] // omit the `id` column
+}
+```
+
+```html
+ <div slot="filter__id">
+    <input type="checkbox" class="form-control" v-model='allMarked' @change="markAll()">
+  </div>
+ ```   
 
 # Options
 

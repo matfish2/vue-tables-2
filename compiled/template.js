@@ -42,7 +42,7 @@ module.exports = function (source) {
               'tr',
               null,
               [headings]
-            ), columnFilters]
+            ), this.$slots.beforeFilters, columnFilters, this.$slots.afterFilters]
           ), footerHeadings, this.$slots.beforeTbody, h(
             'tbody',
             null,
