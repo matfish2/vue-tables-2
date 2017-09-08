@@ -560,10 +560,10 @@ Slots allow you to insert you own custom HTML in predefined positions within the
 
 * `beforeFilters`: Before the filters row
 * `afterFilters`: After the filters row
-* `beforeTBody`: Before the `<tbody>` tag
-* `afterTBody`: After the `<tbody>` tag
-* `beforeBody`: Prepend to the `<tbody>` tag
-* `afterBody`: Append to the `<tbody>` tag
+* `beforeBody`: Before the `<tbody>` tag
+* `afterBody`: After the `<tbody>` tag
+* `prependBody`: Prepend to the `<tbody>` tag
+* `appendBody`: Append to the `<tbody>` tag
 
 In addition to these slots you can insert your own filter HTML in the filters row (When `filterByColumn` is set to `true`):
 
