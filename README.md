@@ -565,12 +565,14 @@ Slots allow you to insert you own custom HTML in predefined positions within the
 * `prependBody`: Prepend to the `<tbody>` tag
 * `appendBody`: Append to the `<tbody>` tag
 
-In addition to these slots you can insert your own filter HTML in the filters row (When `filterByColumn` is set to `true`):
+In addition to these slots you can insert your own filter HTML in the filters row, or add content to the existing filter, e.g a button (When `filterByColumn` is set to `true`):
 
-A. Make sure that the column is not filterable by omitting it from the `filterable` array.
+A. If you just want your own content make sure that the column is not filterable by omitting it from the `filterable` array.
+Otherwise the slot content will be appended to the native filter.
+
 B. Create a slot whose name is formatted `filter__{column}` (double underscore).
 
-For example, to insert a checkbox on the `id` column:
+For example, to insert a checkbox on the `id` column instead of the normal input filter:
 
 ```js
 {
@@ -582,7 +584,7 @@ For example, to insert a checkbox on the `id` column:
  <div slot="filter__id">
     <input type="checkbox" class="form-control" v-model='allMarked' @change="markAll()">
   </div>
- ```   
+ ```
 
 # Options
 

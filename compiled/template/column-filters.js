@@ -1,5 +1,11 @@
 'use strict';
 
+var _merge = require('merge');
+
+var _merge2 = _interopRequireDefault(_merge);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 module.exports = function (h, that) {
@@ -21,6 +27,8 @@ module.exports = function (h, that) {
 
   that.allColumns.map(function (column) {
 
+    var filter = '';
+
     if (that.filterable(column)) {
       switch (true) {
         case that.isTextFilter(column):
@@ -30,10 +38,14 @@ module.exports = function (h, that) {
         case that.isListFilter(column):
           filter = listFilter(column);break;
       }
-    } else if (typeof that.$slots['filter__' + column] !== 'undefined') {
-      filter = that.$slots['filter__' + column];
-    } else {
-      filter = '';
+    }
+
+    if (typeof that.$slots['filter__' + column] !== 'undefined') {
+      filter = filter ? h(
+        'div',
+        null,
+        [filter, that.$slots['filter__' + column]]
+      ) : that.$slots['filter__' + column];
     }
 
     filters.push(h(
