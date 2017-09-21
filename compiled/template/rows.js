@@ -18,7 +18,7 @@ module.exports = function (h, that) {
         'span',
         {
           on: {
-            click: that.toggleChildRow.bind(that, row[rowKey])
+            'click': that.toggleChildRow.bind(that, row[rowKey])
           },
           'class': 'VueTables__child-row-toggler ' + that.childRowTogglerClass(row[rowKey]) },
         []
@@ -40,8 +40,8 @@ module.exports = function (h, that) {
     rows.push(h(
       'tr',
       { 'class': rowClass, on: {
-          click: that.rowWasClicked.bind(that, row),
-          dblclick: that.rowWasClicked.bind(that, row)
+          'click': that.rowWasClicked.bind(that, row),
+          'dblclick': that.rowWasClicked.bind(that, row)
         }
       },
       [columns, ' ']

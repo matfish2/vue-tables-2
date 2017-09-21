@@ -6,6 +6,8 @@ module.exports = function (column) {
 
   if (!this.sortable(column)) return;
 
+  this.opts.sortIcon.is && (cls += this.opts.sortIcon.is);
+
   if (this.hasMultiSort && this.orderBy.column && this.userMultiSorting[this.orderBy.column]) {
     var col = this.userMultiSorting[this.orderBy.column].filter(function (c) {
       return c.column === column;
