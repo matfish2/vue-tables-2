@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 module.exports = function (secondaryCol) {
 
@@ -45,4 +45,12 @@ module.exports = function (secondaryCol) {
   }
   // force re-compilation of the filteredData computed property
   this.time = Date.now();
+
+  this.dispatch('sorted', getMultiSortData(this.orderBy, this.userMultiSorting));
+};
+
+function getMultiSortData(main, secondary) {
+  var cols = [JSON.parse(JSON.stringify(main))];
+  cols = cols.concat(secondary[main.column]);
+  return cols;
 };

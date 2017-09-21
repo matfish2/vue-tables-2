@@ -1,5 +1,7 @@
 # Vue Tables 2
 
+> Note: As of version 0.6.70 the `orderBy` option no longer defaults to the first column. Omitting this option will display the data in its original order.
+
 [![npm version](https://badge.fury.io/js/vue-tables-2.svg)](https://badge.fury.io/js/vue-tables-2) [![GitHub stars](https://img.shields.io/github/stars/matfish2/vue-tables-2.svg)](https://github.com/matfish2/vue-tables-2/stargazers) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/matfish2/vue-tables-2/master/LICENSE)
 
 - [Usage](#usage)
@@ -406,6 +408,11 @@ Fires off when a filter is changed. Sends through the name and value in case of 
 Same as above, only this one has the name attached to the event itself, and only sends through the value.
 Releveant only for non-vuex tables with `filterByColumn` set to true.
 
+* `vue-tables.sorted / `tableName/SORTED`
+
+Fires off when the user sorts the table. Sends through the column and direction.
+In case of multisorting (Shift+Click) an array will be sent sorted by precedence.
+
 * `vue-tables.loading` / `tableName/LOADING` (server)
 
 Fires off when a request is sent to the server. Sends through the request data.
@@ -615,7 +622,7 @@ initFilters | Object | Set initial values for all filter types: generic, by colu
 listColumns | Object | See [documentation](#list-filters) | {}
 multiSorting (client-side) | Object | See [documentation](#multiple-sotring) | {}
 orderBy.ascending | Boolean | initial order direction | `orderBy: { ascending:true }`
-orderBy.column | String | initial column to sort by | First column
+orderBy.column | String | initial column to sort by | Original dataset order
 pagination.chunk | Number | maximum pages in a chunk of pagination | `pagination: { chunk:10 }`
 pagination.dropdown | Boolean | use a dropdown select pagination next to the records-per-page list, instead of links at the bottom of the table. | `pagination: { dropdown:false }`
 params (server-side) | Object | Additional parameters to send along with the request | `{}`
@@ -636,8 +643,6 @@ templates | Object | See [documentation](#templates) | {}
 texts | Object | Table default labels:<br><br>`{ count:'Showing {from} to {to} of {count} records {count} records One record', filter:'Filter Results:',filterPlaceholder:'Search query', limit:'Records:', noResults:'No matching records', page:'Page:', // for dropdown pagination filterBy: 'Filter by {column}', // Placeholder for search fields when filtering by column loading:'Loading...', // First request to server defaultOption:'Select {column}' // default option for list filters }`
 toMomentFormat (client-side) | String | transform date columns string values to momentjs objects using this format. If this option is not used the consumer is expected to pass momentjs objects himself | `false`
 uniqueKey | String | The key of a unique identifier in your dataset, used to track the child rows, and return the original row in row click event | `id`
-
-> Note: You can check this [demo](https://jsfiddle.net/matfish2/823jzuzc/) of the Client Side implementation and a nicer way to go over the options.
 
 # VueJS 1
 

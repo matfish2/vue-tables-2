@@ -13,7 +13,7 @@ exports.default = function (self) {
     data: self.source == 'client' ? self.data : [],
     query: self.initQuery(),
     customQueries: self.initCustomFilters(),
-    sortBy: self.opts.orderBy && self.opts.orderBy.column ? self.opts.orderBy.column : self.columns[0],
+    sortBy: self.opts.orderBy && self.opts.orderBy.column ? self.opts.orderBy.column : false,
     ascending: self.opts.orderBy && self.opts.orderBy.hasOwnProperty('ascending') ? self.opts.orderBy.ascending : true
   };
 

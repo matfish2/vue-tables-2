@@ -65,8 +65,10 @@ exports.default = function (source) {
           this.setUserMultiSort(column);
         } else {
           var ascending = this.orderBy.column === column ? !this.orderBy.ascending : true;
-          this.updateState('orderBy', { column: column, ascending: ascending });
-          this.commit('SORT', { column: column, ascending: ascending });
+          var orderBy = { column: column, ascending: ascending };
+          this.updateState('orderBy', orderBy);
+          this.commit('SORT', orderBy);
+          this.dispatch('sorted', orderBy);
         }
       },
       setLimit: function setLimit(e) {

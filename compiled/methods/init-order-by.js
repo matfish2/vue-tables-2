@@ -1,12 +1,9 @@
-"use strict";
+'use strict';
 
 module.exports = function (column) {
 
-  if (!this.opts.orderBy) {
-    this.orderBy.column = column;
-    return;
-  }
+  if (!this.opts.orderBy) return;
 
   this.orderBy.column = this.opts.orderBy.column;
-  this.orderBy.ascending = this.opts.orderBy.ascending;
+  this.orderBy.ascending = this.opts.orderBy.hasOwnProperty('ascending') ? this.opts.orderBy.ascending : true;
 };
