@@ -17,7 +17,7 @@ module.exports = function () {
     initFilters: {},
     customFilters: [],
     templates: {},
-    debounce: 500,
+    debounce: 250,
     dateFormat: "DD/MM/YYYY",
     toMomentFormat: false,
     skin: "table-striped table-bordered table-hover",
