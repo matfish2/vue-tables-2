@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function (page) {
+module.exports = function (page, preventRequest) {
 
   page = page ? page : this.$refs.page.value;
 
@@ -10,5 +10,5 @@ module.exports = function (page) {
 
   this.updateState('page', page);
 
-  if (this.source == 'server') this.getData();
+  if (this.source == 'server' && !preventRequest) this.getData();
 };

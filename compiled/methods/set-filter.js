@@ -4,15 +4,16 @@ var merge = require('merge');
 
 module.exports = function (filter) {
 
-  if (this.opts.filterByColumn) filter = merge(this.query, filter);
+  var mergedFilter = this.opts.filterByColumn ? merge(this.query, filter) : filter;
 
   if (this.vuex) {
-    this.commit('SET_FILTER', filter);
+    this.commit('SET_FILTER', mergedFilter);
   } else {
-    this.query = filter;
+    this.query = mergedFilter;
+    this.setPage(1, true);
   }
 
-  this.setDateFilterText(filter);
+  this._setFiltersDOM(filter);
 
   if (this.source == 'server') {
     this.getData();
