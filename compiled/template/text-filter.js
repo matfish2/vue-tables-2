@@ -11,16 +11,14 @@ module.exports = function (h, that) {
                   'input',
                   {
                         on: {
-                              'keyup': debounce(search, that.opts.debounce)
+                              keyup: debounce(search, that.opts.debounce)
                         },
 
                         'class': 'form-control',
                         attrs: { name: 'vf__' + column,
                               type: 'text',
-                              placeholder: that.display('filterBy', { column: that.getHeading(column) })
-                        },
-                        domProps: {
-                              'value': that.query[column]
+                              placeholder: that.display('filterBy', { column: that.getHeading(column) }),
+                              value: that.query[column]
                         }
                   },
                   []

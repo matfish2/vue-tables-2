@@ -34,6 +34,7 @@ module.exports = function () {
       defaultOption: 'Select {column}'
     },
     sortIcon: {
+      is: 'glyphicon-sort',
       base: 'glyphicon',
       up: 'glyphicon-chevron-up',
       down: 'glyphicon-chevron-down'

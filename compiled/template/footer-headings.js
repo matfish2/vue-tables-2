@@ -1,15 +1,15 @@
-"use strict";
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+'use strict';
 
 module.exports = function (h, that) {
 
   if (!that.opts.footerHeadings) return '';
 
+  var sortControl = require('./sort-control')(h, that);
+
   var footerHeadings = [];
 
   if (that.opts.childRow) footerHeadings.push(h(
-    "th",
+    'th',
     null,
     []
   ));
@@ -19,36 +19,27 @@ module.exports = function (h, that) {
   columns.map(function (column) {
 
     footerHeadings.push(h(
-      "th",
+      'th',
       {
         on: {
-          "click": that.orderByColumn.bind(that, column)
+          click: that.orderByColumn.bind(that, column)
         },
-        "class": that.sortableClass(column) },
-      [h(
-        "span",
-        { "class": "VueTables__heading" },
-        [that.getHeading(column)]
-      ), h(
-        "span",
-        _defineProperty({
-          directives: [{
-            name: "show",
-            value: that.sortable(column)
-          }],
 
-          "class": "VueTables__sort-icon pull-right"
-        }, "class", that.sortableChevronClass(column)),
-        []
-      )]
+        'class': that.sortableClass(column) },
+      [h(
+        'span',
+        { 'class': 'VueTables__heading', attrs: { title: that.getHeadingTooltip(column, h) }
+        },
+        [that.getHeading(column, h)]
+      ), sortControl(column)]
     ));
   });
 
   return h(
-    "tfoot",
+    'tfoot',
     null,
     [h(
-      "tr",
+      'tr',
       null,
       [footerHeadings]
     )]
