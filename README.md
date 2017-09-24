@@ -636,7 +636,7 @@ rowClassCallback | Function | Add dynamic classes to table rows.<br><br> E.g fun
 saveState | Boolean | Constantly save table state and reload it each time the component mounts. When setting it to true, use the `name` prop to set an identifier for the table | `false`
 serverMultiSorting | Boolean | Enable multiple columns sorting using Shift + Click on the server component | `false`
 skin | String | Space separated Bootstrap table styling classes | `table-striped table-bordered table-hover`
-sortIcon | String | Sort icon classes | `{ base:'glyphicon', up:'glyphicon-chevron-up', down:'glyphicon-chevron-down' }`
+sortIcon | String | Sort icon classes | `{ base:'glyphicon', up:'glyphicon-chevron-up', down:'glyphicon-chevron-down', is:'glyphicon-sort' }`
 sortable | Array |  Sortable columns | All columns
 storage | String | Which persistance mechanism should be used when saveState is set to true: `local` - localStorage. `session` - sessionStorage | `local`
 templates | Object | See [documentation](#templates) | {}
