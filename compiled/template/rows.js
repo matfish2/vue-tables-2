@@ -11,7 +11,7 @@ module.exports = function (h, that) {
   data.map(function (row, index) {
     columns = [];
 
-    if (that.opts.childRow) columns.push(h(
+    if (that.hasChildRow) columns.push(h(
       'td',
       null,
       [h(
@@ -47,13 +47,10 @@ module.exports = function (h, that) {
       [columns, ' ']
     ));
 
-    if (that.opts.childRow && this.rowsToggleState['row_' + row[rowKey]]) {
-      var childRow = that.opts.childRow;
-      var template = typeof childRow === 'function' ? childRow.apply(that, [h, row]) : h(childRow, {
-        attrs: {
-          data: row
-        }
-      });
+    if (that.hasChildRow && this.rowsToggleState['row_' + row[rowKey]]) {
+
+      var template = this._getChildRowTemplate(h, row);
+
       rows.push(h(
         'tr',
         { 'class': 'VueTables__child-row' },

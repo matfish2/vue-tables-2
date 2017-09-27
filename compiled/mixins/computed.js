@@ -8,6 +8,7 @@ module.exports = {
     tableData: require('../computed/table-data'),
     storage: require('../computed/storage'),
     filterableColumns: require('../computed/filterable-columns'),
+    hasChildRow: require('../computed/has-child-row'),
     stateKey: function stateKey() {
         var key = this.name ? this.name : this.id;
         return 'vuetables_' + key;

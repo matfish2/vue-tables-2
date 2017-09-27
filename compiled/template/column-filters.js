@@ -19,7 +19,7 @@ module.exports = function (h, that) {
   var filters = [];
   var filter;
 
-  if (that.opts.childRow) filters.push(h(
+  if (that.hasChildRow) filters.push(h(
     'th',
     null,
     []

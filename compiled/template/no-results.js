@@ -4,7 +4,7 @@ module.exports = function (h, that) {
   if (that.count == 0) {
 
     var colspan = that.allColumns.length;
-    if (that.opts.childRow) colspan++;
+    if (that.hasChildRow) colspan++;
 
     return h(
       "tr",

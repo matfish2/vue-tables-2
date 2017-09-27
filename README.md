@@ -11,9 +11,9 @@
 - [Server Side](#server-side)
 - [Implementations](#implementations)
 - [Templates](#templates)
-- [JSX](#jsx)
-- [Vue Component](#vue-component)
-- [Scoped Slots](#scoped-slots)
+  - [Scoped Slots](#scoped-slots)
+  - [Virtual DOM Functions](#virtual-dom-functions)
+  - [Vue Components](#vue-components)
 - [Child Rows](#child-rows)
 - [Methods](#methods)
 - [Events](#events)
@@ -181,12 +181,26 @@ If you happen to write other implementations for PHP or other languages, a pull 
 
 # Templates
 
-Templates allow you to wrap your cells with vue-compiled HTML.
+Templates allow you to wrap your cells with vue-compiled HTML. It can be used in any of the following ways:
 
-Their syntax is similar to that of `render` functions, as it leverages the virtual DOM to bind the templates into the main table template.
+## Scoped Slots
+If you are using Vue 2.1.0 and above, you can use [scoped slots](https://vuejs.org/v2/guide/components.html#Scoped-Slots) to create templates:
 
-## JSX
-It is recommended to use JSX, which closely resembles HTML, to write the templates (To compile jsx you need to install the [vue jsx transform](https://github.com/vuejs/babel-plugin-transform-vue-jsx)).
+```vue
+<v-client-table :data="entries" :columns="['id', 'name' ,'age', 'edit']">
+  <template slot="edit" scope="props">
+    <div>
+      <a class="fa fa-edit" :href="edit(props.row.id)"></a>
+    </div>
+  </template>
+</v-client-table>
+```
+
+## Virtual DOM Functions
+
+The syntax for Virtual DOM function is similar to that of `render` functions, as it leverages the virtual DOM to bind the templates into the main table template.
+
+If you choose this option, it is recommended to use JSX, which closely resembles HTML, to write the templates (To compile `jsx` you need to install the [vue jsx transform](https://github.com/vuejs/babel-plugin-transform-vue-jsx)).
 
 E.g.:
 
@@ -230,8 +244,8 @@ app.vue
 </script>
 ```
 
-## Vue Component
-A Second option to for creating templates is to encapsulate the template within a component and pass the name. The component must have a `data` property, which will receive the row object. E.g:
+## Vue Components
+Another option to for creating templates is to encapsulate the template within a component and pass the name. The component must have a `data` property, which will receive the row object. E.g:
 
 ```js
 Vue.component('delete', {
@@ -282,19 +296,6 @@ app.vue
 </script>
 ```
 
-## Scoped Slots
-If you are using Vue 2.1.0 and above, you can use [scoped slots](https://vuejs.org/v2/guide/components.html#Scoped-Slots) to create templates:
-
-```html
-<v-client-table :data="entries" :columns="['id', 'name' ,'age', 'edit']">
-  <template slot="edit" scope="props">
-    <div>
-      <a class="fa fa-edit" :href="edit(props.row.id)"></a>
-    </div>
-  </template>
-</v-client-table>
-```
-
 **Important**:
 * To use components in your templates they must be declared **globally** using `Vue.component()`.
 * Templates must be declared in the `columns` prop
@@ -312,6 +313,17 @@ If your identifer key is not `id`, use the `uniqueKey` option to set it.
 
 The syntax is identincal to that of templates:
 
+Using Scoped Slots:
+
+```vue
+<template slot="child_row" scope="props">
+  <div><b>First name:</b> {{props.row.first_name}}</div>
+  <div><b>Last name:</b> {{props.row.last_name}}</div>
+</template>
+```
+
+Using a function and (optional) JSX:
+
 ```js
 options:{
 ...
@@ -322,7 +334,7 @@ return <div>My custom content for row {row.id}</div>
 }
 ```
 
-Or you can pass a component name: (See [Templates](#templates) above for a complete example)
+Using a component name or a `.vue` file: (See [Templates](#templates) above for a complete example)
 
 ```js
 options:{
