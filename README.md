@@ -304,6 +304,26 @@ app.vue
 
 > CSS Note: to center the pagination apply `text-align:center` to the wrapping element
 
+Also there is possible override something template of table.
+Example(for override template no-result):
+
+```js
+options:{
+...
+templates: {
+  _main: {
+    noresult: function(h) {
+      return <div>My custom content for no result</div>
+    }
+  }
+}
+...
+}
+```
+
+Makes it possible to use the property current vue-instance.
+
+
 # Child Rows
 
 Child rows allow for a custom designed output area, namely a hidden child row underneath each row, whose content you are free to set yourself.

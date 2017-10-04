@@ -14,7 +14,7 @@ module.exports = function (h, that) {
         { "class": "text-center",
           attrs: { colspan: colspan }
         },
-        [that.display(that.loading ? 'loading' : 'noResults')]
+        [!that.loading && that.opts.templates._main && that.opts.templates._main.noresult ? that.opts.templates._main.noresult(h) : that.display(that.loading ? 'loading' : 'noResults')]
       )]
     );
   }
