@@ -6,7 +6,7 @@ module.exports = function (h, that) {
 
   var headings = [];
 
-  if (that.opts.childRow) headings.push(h(
+  if (that.hasChildRow) headings.push(h(
     "th",
     null,
     []

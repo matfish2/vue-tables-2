@@ -8,7 +8,7 @@ module.exports = function (h, that) {
 
   var footerHeadings = [];
 
-  if (that.opts.childRow) footerHeadings.push(h(
+  if (that.hasChildRow) footerHeadings.push(h(
     'th',
     null,
     []
