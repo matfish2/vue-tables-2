@@ -54,7 +54,7 @@ module.exports = function () {
       chunk: 10
     },
     childRow: false,
-    childRowKey: 'id',
+    childRowTogglerFirst: true,
     uniqueKey: 'id',
     requestFunction: false,
     requestAdapter: function requestAdapter(data) {

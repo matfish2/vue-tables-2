@@ -19,7 +19,7 @@ module.exports = function (h, that) {
   var filters = [];
   var filter;
 
-  if (that.hasChildRow) filters.push(h(
+  if (that.hasChildRow && that.opts.childRowTogglerFirst) filters.push(h(
     'th',
     null,
     []
@@ -58,6 +58,12 @@ module.exports = function (h, that) {
       )]
     ));
   });
+
+  if (that.hasChildRow && !that.opts.childRowTogglerFirst) filters.push(h(
+    'th',
+    null,
+    []
+  ));
 
   return h(
     'tr',

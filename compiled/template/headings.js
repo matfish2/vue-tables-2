@@ -6,7 +6,7 @@ module.exports = function (h, that) {
 
   var headings = [];
 
-  if (that.hasChildRow) headings.push(h(
+  if (that.hasChildRow && that.opts.childRowTogglerFirst) headings.push(h(
     "th",
     null,
     []
@@ -29,6 +29,12 @@ module.exports = function (h, that) {
       ), sortControl(column)]
     ));
   }.bind(that));
+
+  if (that.hasChildRow && !that.opts.childRowTogglerFirst) headings.push(h(
+    "th",
+    null,
+    []
+  ));
 
   return headings;
 };

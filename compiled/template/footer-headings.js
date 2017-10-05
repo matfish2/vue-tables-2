@@ -8,7 +8,7 @@ module.exports = function (h, that) {
 
   var footerHeadings = [];
 
-  if (that.hasChildRow) footerHeadings.push(h(
+  if (that.hasChildRow && that.opts.childRowTogglerFirst) footerHeadings.push(h(
     'th',
     null,
     []
@@ -34,6 +34,12 @@ module.exports = function (h, that) {
       ), sortControl(column)]
     ));
   });
+
+  if (that.hasChildRow && !that.opts.childRowTogglerFirst) footerHeadings.push(h(
+    'th',
+    null,
+    []
+  ));
 
   return h(
     'tfoot',

@@ -11,19 +11,22 @@ module.exports = function (h, that) {
   data.map(function (row, index) {
     columns = [];
 
-    if (that.hasChildRow) columns.push(h(
-      'td',
-      null,
-      [h(
-        'span',
-        {
-          on: {
-            click: that.toggleChildRow.bind(that, row[rowKey])
-          },
-          'class': 'VueTables__child-row-toggler ' + that.childRowTogglerClass(row[rowKey]) },
-        []
-      )]
-    ));
+    if (that.hasChildRow) {
+      var childRowToggler = h(
+        'td',
+        null,
+        [h(
+          'span',
+          {
+            on: {
+              click: that.toggleChildRow.bind(that, row[rowKey])
+            },
+            'class': 'VueTables__child-row-toggler ' + that.childRowTogglerClass(row[rowKey]) },
+          []
+        )]
+      );
+      if (that.opts.childRowTogglerFirst) columns.push(childRowToggler);
+    }
 
     that.allColumns.map(function (column) {
       var rowTemplate = that.$scopedSlots && that.$scopedSlots[column];
@@ -34,6 +37,8 @@ module.exports = function (h, that) {
         [rowTemplate ? rowTemplate({ row: row, column: column, index: index }) : that.render(row, column, h)]
       ));
     }.bind(that));
+
+    if (that.hasChildRow && !that.opts.childRowTogglerFirst) columns.push(childRowToggler);
 
     rowClass = that.opts.rowClassCallback ? that.opts.rowClassCallback(row) : '';
 

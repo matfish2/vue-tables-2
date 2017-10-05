@@ -616,6 +616,7 @@ Options are set in three layers, where the more particular overrides the more ge
 Option | Type | Description | Default
 -------|------|-------------|--------
 childRow | Function| [See documentation](#child-rows) | `false`
+childRowTogglerFirst | Boolean | Should the child row be positioned at the first column or the last one | `true`
 clientMultiSorting | Boolean | Enable multiple columns sorting using Shift + Click on the client component | `true`
 columnsClasses | Object | Add class(es) to the specified columns.<br> Takes key-value pairs, where the key is the column name and the value is a string of space-separated classes | `{}`
 columnsDisplay | Object | Responsive display for the specified columns.<br><br> Columns will only be shown when the window width is within the defined limits. <br><br>Accepts key-value pairs of column name and device.<br><br> Possible values are `mobile` (x < 480), `mobileP` (x < 320), `mobileL` (320 <= x < 480), `tablet` (480 <= x < 1024), `tabletP` (480 <= x < 768), `tabletL` (768 <= x < 1024), `desktop` (x >= 1024).<br><br> All options can be preceded by the logical operators min,max, and not followed by an underscore.<br><br>For example, a column which is set to `not_mobile` will be shown when the width of the window is greater than or equal to 480px, while a column set to `max_tabletP` will only be shown when the width is under 768px | `{}`
