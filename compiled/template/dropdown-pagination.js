@@ -43,7 +43,7 @@ module.exports = function (h, that) {
                         id: id
                     },
                     ref: 'page', on: {
-                        change: that.setPage.bind(that, null)
+                        'change': that.setPage.bind(that, null)
                     }
                 },
                 [pages]
