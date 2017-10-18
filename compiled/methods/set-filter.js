@@ -13,6 +13,8 @@ module.exports = function (filter) {
     this.setPage(1, true);
   }
 
+  this.updateState('query', mergedFilter);
+
   this._setFiltersDOM(filter);
 
   if (this.source == 'server') {
