@@ -91,10 +91,16 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
       }.bind(this));
     },
     mounted: function mounted() {
+      var _this = this;
 
       if (this.opts.saveState) {
         var state = JSON.parse(this.storage.getItem(this.stateKey));
-        this._setDateFilterText(state.query);
+
+        if (this.hasDateFilters) {
+          this.opts.dateColumns.forEach(function (column) {
+            return _this._setDateFilterText(state.query[column]);
+          });
+        }
       }
 
       if (this.vuex) return;
@@ -122,7 +128,7 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
       serverSearch: require('./methods/server-search'),
       registerServerFilters: require('./methods/register-server-filters'),
       loadState: function loadState() {
-        var _this = this;
+        var _this2 = this;
 
         if (!this.opts.saveState) return;
 
@@ -151,7 +157,7 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
 
         if (!this.opts.pagination.dropdown) {
           setTimeout(function () {
-            _this.$refs.pagination.Page = state.page;
+            _this2.$refs.pagination.Page = state.page;
           }, 0);
         }
 
