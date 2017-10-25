@@ -13,6 +13,12 @@ module.exports = function (source) {
     var dropdownPaginationCount = require('./template/dropdown-pagination-count')(h, this);
     var headings = require('./template/headings')(h, this);
     var perPage = require('./template/per-page')(h, this);
+    var beforeFilters = this.$slots.beforeFilters ? this.$slots.beforeFilters : '';
+    var afterFilters = this.$slots.afterFilters ? this.$slots.afterFilters : '';
+    var beforeBody = this.$slots.beforeBody ? this.$slots.beforeBody : '';
+    var prependBody = this.$slots.prependBody ? this.$slots.prependBody : '';
+    var appendBody = this.$slots.appendBody ? this.$slots.appendBody : '';
+    var afterBody = this.$slots.afterBody ? this.$slots.afterBody : '';
 
     return h(
       'div',
@@ -42,12 +48,12 @@ module.exports = function (source) {
               'tr',
               null,
               [headings]
-            ), this.$slots.beforeFilters, columnFilters, this.$slots.afterFilters]
-          ), footerHeadings, this.$slots.beforeBody, h(
+            ), beforeFilters, columnFilters, afterFilters]
+          ), footerHeadings, beforeBody, h(
             'tbody',
             null,
-            [this.$slots.prependBody, noResults, rows, this.$slots.appendBody]
-          ), this.$slots.afterBody]
+            [prependBody, noResults, rows, appendBody]
+          ), afterBody]
         )]
       ), pagination, dropdownPaginationCount]
     );

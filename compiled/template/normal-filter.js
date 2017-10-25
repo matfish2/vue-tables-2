@@ -23,10 +23,13 @@ module.exports = function (h, that) {
                 'input',
                 { 'class': 'form-control',
                     attrs: { type: 'text',
-                        value: that.query,
+
                         placeholder: that.display('filterPlaceholder'),
 
                         id: id
+                    },
+                    domProps: {
+                        'value': that.query
                     },
                     on: {
                         'keyup': debounce(search, that.opts.debounce)

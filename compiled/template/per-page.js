@@ -19,9 +19,11 @@ module.exports = function (h, that) {
         'select',
         { 'class': 'form-control',
           attrs: { name: 'limit',
-            value: that.limit,
 
             id: id
+          },
+          domProps: {
+            'value': that.limit
           },
           on: {
             'change': that.setLimit.bind(that)

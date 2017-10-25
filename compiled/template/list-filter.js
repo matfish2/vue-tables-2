@@ -14,7 +14,10 @@ module.exports = function (h, that) {
                   options.push(h(
                         'option',
                         {
-                              attrs: { value: option.id, selected: selected }
+                              domProps: {
+                                    'value': option.id,
+                                    'selected': selected
+                              }
                         },
                         [option.text]
                   ));
@@ -32,8 +35,11 @@ module.exports = function (h, that) {
                                     'change': search
                               },
                               attrs: {
-                                    name: 'vf__' + column,
-                                    value: that.query[column] }
+                                    name: 'vf__' + column
+                              },
+                              domProps: {
+                                    'value': that.query[column]
+                              }
                         },
                         [h(
                               'option',

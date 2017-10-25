@@ -12,7 +12,10 @@ module.exports = function (h, that) {
             pages.push(h(
                 'option',
                 {
-                    attrs: { value: pag, selected: selected }
+                    domProps: {
+                        'value': pag,
+                        'selected': selected
+                    }
                 },
                 [pag]
             ));
@@ -38,11 +41,13 @@ module.exports = function (h, that) {
                 { 'class': 'form-control',
                     attrs: { name: 'page',
 
-                        value: that.page,
-
                         id: id
                     },
-                    ref: 'page', on: {
+                    ref: 'page',
+                    domProps: {
+                        'value': that.page
+                    },
+                    on: {
                         'change': that.setPage.bind(that, null)
                     }
                 },
