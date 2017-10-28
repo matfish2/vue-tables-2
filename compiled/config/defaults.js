@@ -9,6 +9,7 @@ module.exports = function () {
         cancelLabel: 'Clear'
       }
     },
+    initialPage: 1,
     perPage: 10,
     perPageValues: [10, 25, 50, 100],
     params: {},

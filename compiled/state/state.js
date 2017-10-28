@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 
 exports.default = function (self) {
   var state = {
-    page: 1,
+    page: self.opts.initialPage ? self.opts.initialPage : 1,
     limit: self.opts.perPage,
     count: self.source == 'server' ? 0 : self.data.length,
     columns: self.columns,

@@ -632,6 +632,7 @@ headings | Object | Table headings. | Can be either a string or a function, if y
 headingsTooltips | Object | Table headings tooltips. | Can be either a string or a function, if you wish to inject vue-compiled HTML. Renders as `title` attribute of `<th>`. <br>E.g: `function(h) { return 'Expanded Title'}`<br>The `this` context inside the function refers to the direct parent of the table instance.
 highlightMatches | Boolean | Highlight matches | `false`
 initFilters | Object | Set initial values for all filter types: generic, by column or custom.<br><br> Accepts an object of key-value pairs, where the key is one of the following: <br><br>a. "GENERIC" - for the generic filter<br>b. column name - for by column filters.<br>c. filter name - for custom filters. <br><br>In case of date filters the date range should be passed as an object comprised of start and end properties, each being a moment object. | `{}`
+initialPage | Number | Set the initial page to be displayed when the table loads | 1
 listColumns | Object | See [documentation](#list-filters) | {}
 multiSorting (client-side) | Object | See [documentation](#multiple-sotring) | {}
 orderBy.ascending | Boolean | initial order direction | `orderBy: { ascending:true }`

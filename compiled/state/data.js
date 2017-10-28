@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function (useVuex, source) {
+  var page = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+
 
   if (useVuex) return {
     vuex: true,
@@ -17,11 +19,11 @@ exports.default = function (useVuex, source) {
     count: 0,
     customQueries: {},
     query: null,
-    page: 1,
+    page: page,
     limit: 10,
     windowWidth: window.innerWidth,
     orderBy: {
-      column: 'id',
+      column: false,
       ascending: true
     }
   };

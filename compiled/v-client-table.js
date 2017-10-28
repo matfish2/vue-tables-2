@@ -65,7 +65,7 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
 
       if (!this.vuex) {
 
-        this.initOrderBy(this.Columns[0]);
+        this.initOrderBy();
 
         this.query = this.initQuery();
 
@@ -84,6 +84,8 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
       if (!this.vuex) {
         this.registerClientFilters();
 
+        if (this.options.initialPage) this.setPage(this.options.initialPage);
+
         _vuePagination.PaginationEvent.$on('vue-pagination::' + this.id, function (page) {
           this.setPage(page);
           this.dispatch('pagination', page);
@@ -99,7 +101,7 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
         globalOptions: globalOptions,
         currentlySorting: {},
         time: Date.now()
-      }, (0, _data3.default)(useVuex, 'client'));
+      }, (0, _data3.default)(useVuex, 'client', this.options.initialPage));
     },
     computed: {
       q: require('./computed/q'),

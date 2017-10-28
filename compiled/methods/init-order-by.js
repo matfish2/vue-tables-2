@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function (column) {
+module.exports = function () {
 
   if (!this.opts.orderBy) return;
 
