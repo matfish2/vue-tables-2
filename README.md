@@ -198,6 +198,8 @@ If you are using Vue 2.1.0 and above, you can use [scoped slots](https://vuejs.o
 </v-client-table>
 ```
 
+Note: You can get the index of the current row relative to the entire data set using `props.index`
+
 ## Virtual DOM Functions
 
 The syntax for Virtual DOM function is similar to that of `render` functions, as it leverages the virtual DOM to bind the templates into the main table template.
@@ -212,7 +214,7 @@ columns: ['erase'],
 options: {
 ...
 templates: {
-erase: function(h, row) {
+erase: function(h, row, index) {
 return <delete id={row.id}></delete>
 }
 }
@@ -229,7 +231,7 @@ Note: when using a `.vue` file `jsx` must be imported from a dedicated `.jsx` fi
 edit.jsx
 
 ```js
-export default function(h, row) {
+export default function(h, row, index) {
 return <a class='fa fa-edit' href={'#/' + row.id + '/edit'}></a>
 }
 ```
@@ -247,11 +249,11 @@ app.vue
 ```
 
 ## Vue Components
-Another option to for creating templates is to encapsulate the template within a component and pass the name. The component must have a `data` property, which will receive the row object. E.g:
+Another option to for creating templates is to encapsulate the template within a component and pass the name. The component must have a `data` property, which will receive the row object. You can also add an optional `index` prop, to get the non-zero-based index of the current row relative to the entire dataset. E.g:
 
 ```js
 Vue.component('delete', {
-props:['data'],
+props:['data', 'index'],
 template:`<a class='delete' @click='erase'></a>`,
 methods:{
 erase() {
@@ -281,7 +283,7 @@ edit.vue
 </template>
 <script>
   export default {
-    props:['data'],
+    props:['data', 'index'],
   }
 </script>
 ```

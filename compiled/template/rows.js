@@ -7,8 +7,12 @@ module.exports = function (h, that) {
 
       var rowClass;
       var data = that.source == 'client' ? that.filteredData : that.tableData;
+      var recordCount = (that.Page - 1) * that.limit;
 
       data.map(function (row, index) {
+
+            index = recordCount + index + 1;
+
             columns = [];
 
             if (that.hasChildRow) {
@@ -34,7 +38,7 @@ module.exports = function (h, that) {
                   columns.push(h(
                         'td',
                         { 'class': that.columnClass(column) },
-                        [rowTemplate ? rowTemplate({ row: row, column: column, index: index }) : that.render(row, column, h)]
+                        [rowTemplate ? rowTemplate({ row: row, column: column, index: index }) : that.render(row, column, index, h)]
                   ));
             }.bind(that));
 
