@@ -19,7 +19,7 @@ module.exports = function () {
   data = this.search(data);
 
   if (this.vuex) {
-    if (this.count != data.length) this.commit('SET_COUNT', data.length, true);
+    if (this.count != data.length) this.commit('SET_COUNT', data.length);
   } else {
     this.count = data.length;
   }

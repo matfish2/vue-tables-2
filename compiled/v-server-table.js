@@ -136,6 +136,7 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
 
         if (!this.storage.getItem(this.stateKey)) {
           this.initState();
+          this.activeState = true;
           return;
         }
 

@@ -53,9 +53,8 @@ exports.default = function (source) {
       }
     },
     methods: {
-      commit: function commit(action, payload, silent) {
-        silent = { silent: silent };
-        return this.$store.commit(this.name + '/' + action, payload, silent);
+      commit: function commit(action, payload) {
+        return this.$store.commit(this.name + '/' + action, payload);
       },
       orderByColumn: function orderByColumn(column, ev) {
 
@@ -80,7 +79,7 @@ exports.default = function (source) {
         this.updateState('orderBy', { column: column, ascending: ascending });
         this.commit('SORT', { column: column, ascending: ascending });
       },
-      setPage: function setPage(page, silent) {
+      setPage: function setPage(page) {
 
         if (!page) {
           page = this.$refs.page.value;
@@ -88,7 +87,7 @@ exports.default = function (source) {
 
         if (!this.opts.pagination.dropdown) this.$refs.pagination.Page = page;
 
-        this.commit('PAGINATE', page, silent);
+        this.commit('PAGINATE', page);
       }
 
     }

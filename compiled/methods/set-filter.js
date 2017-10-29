@@ -4,6 +4,21 @@ var merge = require('merge');
 
 module.exports = function (filter) {
 
+  if (!this.opts.filterable) {
+    console.warn("vue-tables-2: Unable to set filter. Filtering is disabled (filterable: false)");
+    return;
+  };
+
+  if (this.opts.filterByColumn && typeof filter === 'string') {
+    console.warn("vue-tables-2: Unable to set filter. Filter value must be an object (`filterByColumn` is set to `true`)");
+    return;
+  };
+
+  if (!this.opts.filterByColumn && typeof filter !== 'string') {
+    console.warn("vue-tables-2: Unable to set filter. Filter value must be a string (`filterByColumn` is set to `false`)");
+    return;
+  };
+
   var mergedFilter = this.opts.filterByColumn ? merge(this.query, filter) : filter;
 
   if (this.vuex) {

@@ -129,12 +129,14 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
 
         if (!this.storage.getItem(this.stateKey)) {
           this.initState();
+          this.activeState = true;
           return;
         }
 
         var state = JSON.parse(this.storage.getItem(this.stateKey));
 
-        this.setFilter(state.query);
+        if (this.opts.filterable) this.setFilter(state.query);
+
         this.setOrder(state.orderBy.column, state.orderBy.ascending);
 
         if (this.vuex) {
