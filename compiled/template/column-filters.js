@@ -9,7 +9,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 module.exports = function (h, that) {
-
   if (!that.opts.filterByColumn || !that.opts.filterable) return '';
 
   var textFilter = require('./text-filter')(h, that);
@@ -17,7 +16,6 @@ module.exports = function (h, that) {
   var listFilter = require('./list-filter')(h, that);
 
   var filters = [];
-  var filter;
 
   if (that.hasChildRow && that.opts.childRowTogglerFirst) filters.push(h(
     'th',
@@ -26,18 +24,21 @@ module.exports = function (h, that) {
   ));
 
   that.allColumns.map(function (column) {
-
     var filter = '';
 
     if (that.filterable(column)) {
-      switch (true) {
-        case that.isTextFilter(column):
-          filter = textFilter(column);break;
-        case that.isDateFilter(column):
-          filter = dateFilter(column);break;
-        case that.isListFilter(column):
-          filter = listFilter(column);break;
-      }
+      if (that.opts.customsFilterBy) {
+        filter = that.opts.customsFilterBy[column] && that.opts.customsFilterBy[column](h) || '';
+      } else {
+        switch (true) {
+          case that.isTextFilter(column):
+            filter = textFilter(column);break;
+          case that.isDateFilter(column):
+            filter = dateFilter(column);break;
+          case that.isListFilter(column):
+            filter = listFilter(column);break;
+        }
+      };
     }
 
     if (typeof that.$slots['filter__' + column] !== 'undefined') {
