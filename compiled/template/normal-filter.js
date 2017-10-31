@@ -25,11 +25,8 @@ module.exports = function (h, that) {
                     attrs: { type: 'text',
 
                         placeholder: that.display('filterPlaceholder'),
-
+                        'value': that.query,
                         id: id
-                    },
-                    domProps: {
-                        'value': that.query
                     },
                     on: {
                         'keyup': debounce(search, that.opts.debounce)
