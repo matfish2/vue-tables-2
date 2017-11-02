@@ -98,7 +98,7 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
 
         if (this.hasDateFilters) {
           this.opts.dateColumns.forEach(function (column) {
-            return _this._setDateFilterText(state.query[column]);
+            return _this._setDateFilterText(column, state.query[column]);
           });
         }
       }
