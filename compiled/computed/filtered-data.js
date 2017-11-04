@@ -13,7 +13,7 @@ module.exports = function () {
     // dummy var to force compilation
     if (this.time) this.time = this.time;
 
-    data.sort(this.getSortFn(column));
+    data = this.opts.sortingAlgorithm(data, column);
   }
 
   data = this.search(data);

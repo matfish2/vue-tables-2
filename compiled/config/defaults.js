@@ -40,6 +40,10 @@ module.exports = function () {
       up: 'glyphicon-chevron-up',
       down: 'glyphicon-chevron-down'
     },
+    sortingAlgorithm: function sortingAlgorithm(data, column) {
+      return data.sort(this.getSortFn(column));
+    },
+
     customSorting: {},
     multiSorting: {},
     clientMultiSorting: true,
