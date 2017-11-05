@@ -109,6 +109,10 @@ function serverExtra() {
 
         this.commit('SET_DATA', { data: data, count: count });
         this.commit('LOADED', { data: data, count: count });
+
+        setTimeout(function () {
+          this.dispatch('loaded', data);
+        }.bind(this), 0);
       }
     }
   };
