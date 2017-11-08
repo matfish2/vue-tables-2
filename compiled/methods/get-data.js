@@ -5,14 +5,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var merge = require('merge');
 
 module.exports = function (promiseOnly) {
-  var _opts$requestAdapter;
+  var _data;
 
   var additionalData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
 
   var keys = this.opts.requestKeys;
 
-  var data = this.opts.requestAdapter((_opts$requestAdapter = {}, _defineProperty(_opts$requestAdapter, keys.query, this.query), _defineProperty(_opts$requestAdapter, keys.limit, this.limit), _defineProperty(_opts$requestAdapter, keys.ascending, this.orderBy.ascending ? 1 : 0), _defineProperty(_opts$requestAdapter, keys.page, this.page), _defineProperty(_opts$requestAdapter, keys.byColumn, this.opts.filterByColumn ? 1 : 0), _opts$requestAdapter));
+  var data = (_data = {}, _defineProperty(_data, keys.query, this.query), _defineProperty(_data, keys.limit, this.limit), _defineProperty(_data, keys.ascending, this.orderBy.ascending ? 1 : 0), _defineProperty(_data, keys.page, this.page), _defineProperty(_data, keys.byColumn, this.opts.filterByColumn ? 1 : 0), _data);
 
   if (this.orderBy.hasOwnProperty('column') && this.orderBy.column) data[keys.orderBy] = this.orderBy.column;
 
@@ -21,6 +21,8 @@ module.exports = function (promiseOnly) {
   if (this.hasMultiSort && this.orderBy.column && this.userMultiSorting[this.orderBy.column]) {
     data.multiSort = this.userMultiSorting[this.orderBy.column];
   }
+
+  data = this.opts.requestAdapter(data);
 
   this.dispatch('loading', data);
 
