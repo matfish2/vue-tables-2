@@ -21,4 +21,3 @@ global.count = function(selector, count) {
 	expect(wrapper.findAll(selector)).toHaveLength(count);
 }
 
-
