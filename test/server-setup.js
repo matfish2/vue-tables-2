@@ -14,14 +14,14 @@ beforeEach(()=>{
 	moxios.stubRequest(/get\-data.*/, {
 		status:200,
 		response:{
-			data,
-			count:5
+			data:data.slice(0,10),
+			count:data.length
 		}
 	});
 
 	global.wrapper = mount(ServerTable.install(Vue), {
 		propsData:{
-			columns:['name','age','favorite_game'],
+			columns:['code','name','uri'],
 			url:'get-data'
 		}
 	});

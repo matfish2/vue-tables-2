@@ -13,7 +13,7 @@ global.run = function(cb, done) {
 
 global.wrapper = mount(ClientTable.install(Vue), {
 	propsData:{
-		columns:['name','age','favorite_game'],
+		columns:['code','name','uri'],
 		data
 	}
 });

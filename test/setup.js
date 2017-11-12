@@ -4,6 +4,10 @@ require('jsdom-global')()
 // make expect available globally
 global.expect = require('expect')
 
+global.vm = function() {
+	return wrapper.vm;
+}
+
 global.see = function(text, selector) {
 	
 	var el = selector?wrapper.find(selector):wrapper;
@@ -20,4 +24,6 @@ global.exists = function(selector) {
 global.count = function(selector, count) {
 	expect(wrapper.findAll(selector)).toHaveLength(count);
 }
+
+
 
