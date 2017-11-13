@@ -27,10 +27,10 @@
   },
   "scripts": {
     "build": "babel lib -d compiled",
-    "test-client": "cross-env NODE_ENV=test mocha-webpack --webpack-config webpack.config.js --require test/setup.js test/client-setup.js test/*.spec.js test/client/*.spec.js",
-    "watch-client": "cross-env NODE_ENV=test mocha-webpack --webpack-config webpack.config.js --watch --require test/setup.js test/client-setup.js test/*.spec.js test/client/*.spec.js",
-    "test-server": "cross-env NODE_ENV=test mocha-webpack --webpack-config webpack.config.js --require test/setup.js test/server-setup.js test/*.spec.js test/server/*.spec.js",
-    "watch-server": "cross-env NODE_ENV=test mocha-webpack --webpack-config webpack.config.js --watch --require test/setup.js test/server-setup.js test/*.spec.js test/server/*.spec.js"
+    "test-client": "cross-env NODE_ENV=test mocha-webpack --webpack-config webpack.config.js --require test/setup/setup.js test/setup/client-setup.js test/*.spec.js test/client/*.spec.js",
+    "watch-client": "cross-env NODE_ENV=test mocha-webpack --webpack-config webpack.config.js --watch --require test/setup/setup.js test/setup/client-setup.js test/*.spec.js test/client/*.spec.js",
+    "test-server": "cross-env NODE_ENV=test mocha-webpack --webpack-config webpack.config.js --require test/setup/setup.js test/setup/server-setup.js test/*.spec.js test/server/*.spec.js",
+    "watch-server": "cross-env NODE_ENV=test mocha-webpack --webpack-config webpack.config.js --watch --require test/setup/setup.js test/setup/server-setup.js test/*.spec.js test/server/*.spec.js"
   },
   "license": "MIT",
   "main": "compiled/index.js",

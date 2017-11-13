@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { mount } from 'vue-test-utils'
-import ServerTable from '../compiled/v-server-table.js'
+import ServerTable from '../../compiled/v-server-table.js'
 
 global.suite = 'Server';
 global.axios = require('axios');
@@ -22,7 +22,8 @@ beforeEach(()=>{
 	global.wrapper = mount(ServerTable.install(Vue), {
 		propsData:{
 			columns:['code','name','uri'],
-			url:'get-data'
+			url:'get-data',
+			options:{}
 		}
 	});
 

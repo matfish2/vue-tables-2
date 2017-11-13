@@ -25,5 +25,13 @@ global.count = function(selector, count) {
 	expect(wrapper.findAll(selector)).toHaveLength(count);
 }
 
+global.setOptions = function(options) {
+	wrapper.setProps({options});
+}
+
+global.click = function(selector) {
+	wrapper.find(selector).trigger('click');
+}
+
 
 

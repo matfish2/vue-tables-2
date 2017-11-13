@@ -33,6 +33,15 @@ describe(suite +': Basic Display (default options)', () => {
 		exists('.VueTables__search input');
 	});
 
+	it('displays sort icons for all columns', () => {
+		exists('table thead tr:first-child th:first-child .glyphicon.glyphicon-sort');
+		exists('table thead tr:first-child th:nth-child(2) .glyphicon.glyphicon-sort');
+		exists('table thead tr:first-child th:nth-child(3) .glyphicon.glyphicon-sort');
+	});
+
+	it('displays pagination links', ()=>{
+		count('ul.VuePagination__pagination li',9) // 50 records = prev-chunk + prev + 5 pages + next + next-chunk 
+	});
 
 
 })
