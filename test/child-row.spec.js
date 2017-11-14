@@ -7,7 +7,7 @@ describe(suite + ': Child row', () => {
 	beforeEach(()=>{
 
 		setOptions({
-			childRow
+			childRow,
 		});
 
 	});
@@ -41,6 +41,43 @@ describe(suite + ': Child row', () => {
 			count('.VueTables__child-row-toggler--closed', 9);
 			exists('table tbody tr:first-child .VueTables__child-row-toggler--open');
 		},done);
+	});
+
+	it('can programmaticaly open a child row', (done)=>{
+
+		vm().toggleChildRow(245);
+
+		run(function() {
+			count('.VueTables__child-row',1);
+		},done);
+	});
+
+	it('can programmaticaly close a child row', (done)=>{
+
+		click(firstRowToggler);
+		
+		count('.VueTables__child-row',1);
+
+		vm().toggleChildRow(245);
+
+		run(function() {
+			count('.VueTables__child-row',0);
+		},done);
+	});
+
+	it('can use a user-defined key as a unique id', (done)=>{
+
+		setOptions({
+			childRow,
+			uniqueKey:'code'
+		});
+
+		vm().toggleChildRow('ZW');
+
+		run(function() {
+			count('.VueTables__child-row',1);
+		},done);
+
 	});
 
 

@@ -7,8 +7,10 @@ import data from './example-data'
 global.suite = 'Client';
 
 global.run = function(cb, done) {
-	cb();
-	done();
+	setTimeout(()=>{
+		cb();
+		done();
+	}, 0);
 }
 
 beforeEach(function() {
