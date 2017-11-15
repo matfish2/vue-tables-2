@@ -1,5 +1,5 @@
 describe(suite +': Basic Display (default options)', () => {
-
+	
 	var records = 50;
 
 	it('Discerns the headings based on the columns prop', () => {

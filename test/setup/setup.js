@@ -20,6 +20,9 @@ global.exists = function(selector) {
 	expect(wrapper.contains(selector)).toBe(true);
 }
 
+global.not_exists = function(selector) {
+	expect(wrapper.contains(selector)).toBe(false);
+}
 
 global.count = function(selector, count) {
 	expect(wrapper.findAll(selector)).toHaveLength(count);
@@ -33,5 +36,8 @@ global.click = function(selector) {
 	wrapper.find(selector).trigger('click');
 }
 
+global.withVuex = function() {
+	return typeof useVuex!='undefined';
+}
 
 

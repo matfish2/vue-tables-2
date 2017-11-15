@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Vuex from 'vuex'
 import { mount } from 'vue-test-utils'
 import ServerTable from '../../compiled/v-server-table.js'
 
@@ -7,6 +8,11 @@ global.axios = require('axios');
 global.moxios = require('moxios');
 
 import data from './example-data';
+
+if (withVuex()) {
+	Vue.use(Vuex);
+	suite+=' - Vuex';
+}
 
 beforeEach(()=>{
 	moxios.install(axios);
@@ -18,16 +24,9 @@ beforeEach(()=>{
 			count:data.length
 		}
 	});
-
-	global.wrapper = mount(ServerTable.install(Vue), {
-		propsData:{
-			columns:['code','name','uri'],
-			url:'get-data',
-			options:{}
-		}
-	});
-
 	
+	createWrapper();
+
 });
 
 
@@ -42,3 +41,20 @@ global.run = function(cb, done) {
 	});
 }
 
+global.createWrapper = function(options = {}, columns = null) {
+
+	var params = {
+		propsData:{
+			name:'server',
+			columns:columns?columns:['code','name','uri'],
+			url:'get-data',
+			options
+		}
+	};
+
+	if (withVuex()) {
+		params.store = new Vuex.Store();
+	}
+
+	global.wrapper = mount(ServerTable.install(Vue, {} ,withVuex()), params);
+}

@@ -1,13 +1,13 @@
 import childRow from './setup/ChildRow.vue';
+import {mount} from 'vue-test-utils';
 
 describe(suite + ': Child row', () => {
 
 	var firstRowToggler = 'table tbody tr td:first-child span'; 
 	
 	beforeEach(()=>{
-
 		setOptions({
-			childRow,
+			childRow
 		});
 
 	});
@@ -80,5 +80,39 @@ describe(suite + ': Child row', () => {
 
 	});
 
+	it('can position the toggler in the last column', (done)=>{
+
+		setOptions({
+			childRow,
+			childRowTogglerFirst:false
+		});
+
+		run(function() {
+			not_exists('table tbody tr td:first-child .VueTables__child-row-toggler');
+			exists('table tbody tr td:last-child .VueTables__child-row-toggler');
+		},done);
+
+
+	});
+
+	// it.only('only mount the clicked row, without remounting other open rows (regression test for issue #272)', (done)=>{
+
+	// 	// The issue only occurs with open rows that come AFTER the clicked row 
+
+	// 	const FIRST_ROW_ID = 245;
+	// 	const SECOND_ROW_ID = 244;
+
+	// 	vm().toggleChildRow(SECOND_ROW_ID); 
+
+	// 	setTimeout(()=>{
+	// 		vm().toggleChildRow(FIRST_ROW_ID);
+	// 	},100);
+
+	// 	run(()=>{			
+	// 		console.log(wrapper.emitted());
+	// 		expect(wrapper.emitted().mounted_child_row.length).toBe(2);
+	// 	},done,1000);
+
+	// });
 
 });

@@ -1,4 +1,4 @@
-describe('Server: Request', () => {
+describe(suite + ': Request', () => {
 
 	var initialParams = { 
 		query: '', 
