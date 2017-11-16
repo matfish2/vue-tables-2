@@ -12,12 +12,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 module.exports = function (self) {
 
+  var store = {
+    state: (0, _state2.default)(self),
+    mutations: (0, _mutations2.default)(self)
+  };
+
   if (typeof self.$store.state[self.name] !== 'undefined') {
     self.$store.unregisterModule(self.name);
   }
 
-  self.$store.registerModule(self.name, {
-    state: (0, _state2.default)(self),
-    mutations: (0, _mutations2.default)(self)
-  });
+  self.$store.registerModule(self.name, store);
 };

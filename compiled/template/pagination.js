@@ -4,6 +4,7 @@ module.exports = function (h, that) {
   if (that.opts.pagination && !that.opts.pagination.dropdown) {
 
     var name = that.vuex ? that.name : that.id;
+
     return h(
       "pagination",
       {
