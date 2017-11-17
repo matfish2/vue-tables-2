@@ -29,7 +29,6 @@ beforeEach(()=>{
 
 });
 
-
 afterEach(()=>{
 	moxios.uninstall(axios);
 });
@@ -40,6 +39,12 @@ global.run = function(cb, done) {
 		done();
 	});
 }
+
+global.requestHas = function(key, value) {
+	var request = moxios.requests.mostRecent();
+	expect(request.config.params[key]).toEqual(value);	
+}
+
 
 global.createWrapper = function(options = {}, columns = null) {
 

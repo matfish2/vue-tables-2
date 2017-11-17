@@ -19,22 +19,25 @@ module.exports = function (h, that) {
                     attrs: { 'for': id }
                 },
                 [that.display('filter')]
-                ), h(
+            ), h(
                 'input',
                 { 'class': 'form-control',
-                attrs: { type: 'text',
+                    attrs: { type: 'text',
 
-                placeholder: that.display('filterPlaceholder'),
-                'value': that.query,
-                id: id
-            },
-            on: {
-                'keyup': debounce(search, that.opts.debounce)
-            }
-        },
-        []
-        )]
-                );
+                        placeholder: that.display('filterPlaceholder'),
+
+                        id: id
+                    },
+                    domProps: {
+                        'value': that.query
+                    },
+                    on: {
+                        'keyup': debounce(search, that.opts.debounce)
+                    }
+                },
+                []
+            )]
+        );
     }
 
     return '';

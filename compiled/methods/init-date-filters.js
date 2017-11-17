@@ -4,6 +4,11 @@ var merge = require('merge');
 
 module.exports = function () {
 
+  if (typeof $ === 'undefined') {
+    console.error('Date filters require jquery and daterangepicker');
+    return;
+  }
+
   var el;
   var that = this;
   var query = this.vuex ? JSON.parse(JSON.stringify(this.query)) : this.query;

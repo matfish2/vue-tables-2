@@ -34,5 +34,16 @@ describe(suite  + ': Filters (Common)', function() {
 			see('Zambia', '.VueTables__filters-row select[name="vf__id"] option:nth-child(3)');
 
 	});
+
+	it('can display date filters', ()=>{
+
+		createWrapper({
+			filterByColumn:true,
+			dateColumns:['created_at']
+		}, ['code','name','uri','created_at']);
+
+		exists('#VueTables__created_at-filter.VueTables__date-filter');
+
+	});
 	
 });

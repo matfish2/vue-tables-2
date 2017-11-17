@@ -1,3 +1,5 @@
+global.moment = require('moment');
+
 // setup JSDOM
 require('jsdom-global')()
 
@@ -36,8 +38,15 @@ global.click = function(selector) {
 	wrapper.find(selector).trigger('click');
 }
 
+global.type = function(selector, text) {
+	var w = wrapper.find(selector);
+	w.element.value = text;
+	w.trigger('keyup');
+}
+
 global.withVuex = function() {
 	return typeof useVuex!='undefined';
 }
+
 
 
