@@ -17,9 +17,7 @@ module.exports = function (h, that) {
                 'class': 'form-control',
                 attrs: { name: 'vf__' + column,
                     type: 'text',
-                    placeholder: that.display('filterBy', { column: that.getHeading(column) })
-                },
-                domProps: {
+                    placeholder: that.display('filterBy', { column: that.getHeading(column) }),
                     'value': that.query[column]
                 }
             },
