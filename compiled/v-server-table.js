@@ -66,11 +66,7 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
 
       if (!this.vuex) {
         this.query = this.initQuery();
-
         this.initOrderBy();
-      }
-
-      if (!this.vuex) {
         this.customQueries = this.initCustomFilters();
       }
 

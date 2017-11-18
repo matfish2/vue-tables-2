@@ -25,7 +25,7 @@ beforeEach(function() {
 	createWrapper();
 });
 
-global.createWrapper = function(options = {}, columns = null) {
+global.createWrapper = function(options = {debounce:0}, columns = null) {
 
 	let params = {
 		propsData:{

@@ -5,10 +5,6 @@ describe(suite + ': Filters', ()=>{
 	triggers.forEach(trigger=>{
 		it(trigger + ': filters by generic filter', (done)=>{
 
-			setOptions({
-				debounce:0
-			});
-
 			count("tbody tr", 10);
 			see('Zimb',"tbody tr:first-child td:nth-child(2)");	
 
