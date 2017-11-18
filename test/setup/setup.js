@@ -44,8 +44,23 @@ global.type = function(selector, text) {
 	w.trigger('keyup');
 }
 
+global.select = function(selector, option) {
+	var w = wrapper.find(selector);
+	w.element.value = option;
+	w.trigger('change');	
+}
+
 global.withVuex = function() {
 	return typeof useVuex!='undefined';
+}
+
+global.enterQuery = function(key, selector, query, method, fieldType='input') {
+	if (method==='UI') {
+		fieldType==='input'?type(selector,query):select(selector, query);
+	} else {
+		var value = key?{[key]:query}:query;			
+		vm().setFilter(value);
+	}
 }
 
 

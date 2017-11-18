@@ -1,0 +1,77 @@
+describe(suite + ': Filters', ()=>{
+	
+	const triggers = ['UI','Method call'];
+	
+	triggers.forEach(trigger=>{
+		it(trigger + ': filters by generic filter', (done)=>{
+
+			setOptions({
+				debounce:0
+			});
+
+			count("tbody tr", 10);
+			see('Zimb',"tbody tr:first-child td:nth-child(2)");	
+
+
+			enterQuery(null,'.VueTables__search input','yemen', trigger);
+			
+			run(function() {
+				count("tbody tr", 1);
+				see('Yemen',"tbody tr:first-child td:nth-child(2)");			
+			}, done, 100);
+		});
+
+		it(trigger + ': filters by text column filter', (done)=>{
+
+			createWrapper({
+				debounce:0,
+				filterByColumn:true
+			});
+
+			count("tbody tr", 10);
+			see('Zimb',"tbody tr:first-child td:nth-child(2)");	
+
+			enterQuery('code','[name=vf__code]', 'ye',trigger);
+			enterQuery('name','[name=vf__name]', 'yem', trigger);
+
+			run(function() {
+				count("tbody tr", 1);
+				see('Yemen',"tbody tr:first-child td:nth-child(2)");			
+			}, done, 100);
+		});
+
+		it(trigger + ': filters by list column filter', (done)=>{
+			createWrapper({
+				filterByColumn:true, 
+				debounce:0,
+				listColumns:{
+					id:[
+					{
+						id:242,
+						text:'Western Sahara'
+					},
+					{
+						id:245,
+						text:'Zimbabwe'
+					},
+					{
+						id:244,
+						text:'Zambia'
+					}
+					]
+				}}, ['id','name','code','uri']);
+
+			see('Zimb',"tbody tr:first-child td:nth-child(2)");	
+
+			enterQuery('id','.VueTables__filters-row select[name="vf__id"]', 242, trigger, 'select');
+
+			run(function() {
+				count("tbody tr", 1);
+				see('Western',"tbody tr:first-child td:nth-child(2)");			
+			}, done, 100);
+		});
+
+	});
+
+
+});
