@@ -18,6 +18,12 @@ global.see = function(text, selector) {
 
 }
 
+global.not_see = function(text, selector) {
+	var el = selector?wrapper.find(selector):wrapper;
+
+	expect(el.text()).not.toContain(text);	
+}
+
 global.exists = function(selector) {
 	expect(wrapper.contains(selector)).toBe(true);
 }

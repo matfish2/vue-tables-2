@@ -531,9 +531,9 @@ var lastA = a.name[a.name.length-1].toLowerCase();
 var lastB = b.name[b.name.length-1].toLowerCase();
 
 if (ascending)
-return lastA <= lastB?1:-1;
-
 return lastA >= lastB?1:-1;
+
+return lastA <= lastB?1:-1;
 }
 }
 }

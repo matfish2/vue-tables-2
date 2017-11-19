@@ -18,7 +18,7 @@ module.exports = function (h, that) {
                 attrs: { name: 'vf__' + column,
                     type: 'text',
                     placeholder: that.display('filterBy', { column: that.getHeading(column) }),
-                    'value': that.query[column]
+                    value: that.query[column]
                 }
             },
             []

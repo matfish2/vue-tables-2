@@ -23,9 +23,9 @@ module.exports = function (h, that) {
                 'input',
                 { 'class': 'form-control',
                     attrs: { type: 'text',
-
+                        value: that.query,
                         placeholder: that.display('filterPlaceholder'),
-                        'value': that.query,
+
                         id: id
                     },
                     on: {
