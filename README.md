@@ -45,7 +45,7 @@ To help me maintain this project and add cool new features at your request, any 
 
 ## Installation
 
-```js
+```bash
 npm install vue-tables-2
 ```
 
@@ -97,20 +97,20 @@ Create a new Vue instance (You can also nest it within other components). An exa
 
 ```js
 new Vue({
-el:"#people",
-data: {
-columns: ['id','name','age'],
-tableData: [
-{id:1, name:"John",age:"20"},
-{id:2, name:"Jane",age:"24"},
-{id:3, name:"Susan",age:"16"},
-{id:4, name:"Chris",age:"55"},
-{id:5, name:"Dan",age:"40"}
-],
-options: {
-// see the options API
-}
-}
+    el: "#people",
+    data: {
+        columns: ['id', 'name', 'age'],
+        tableData: [
+            { id: 1, name: "John", age: "20" },
+            { id: 2, name: "Jane", age: "24" },
+            { id: 3, name: "Susan", age: "16" },
+            { id: 4, name: "Chris", age: "55" },
+            { id: 5, name: "Dan", age: "40" }
+        ],
+        options: {
+            // see the options API
+        }
+    }
 });
 ```
 
@@ -130,13 +130,13 @@ Javascript:
 
 ```js
 new Vue({
-el: "#people",
-data: {
-columns: ['id','name','age'],
-options: {
-// see the options API
-}
-}
+    el: "#people",
+    data: {
+        columns: ['id', 'name', 'age'],
+        options: {
+            // see the options API
+        }
+    }
 });
 ```
 
@@ -160,12 +160,14 @@ by default the library supports `JQuery`, `vue-resource` and `axios` as ajax lib
 If you wish to use a different library, or somehow alter the request (e.g add auth headers, or manipulate the data) use the `requestFunction` option. E.g:
 
 ```js
-options:{
-  requestFunction: function(data) {
-    return axios.get(this.url, { params: data }).catch(function (e) {
-      this.dispatch('error', e);
-    }.bind(this));
-}
+options: {
+    requestFunction: function (data) {
+        return axios.get(this.url, {
+            params: data
+        }).catch(function (e) {
+            this.dispatch('error', e);
+        }.bind(this));
+    }
 }
 ```
 
@@ -209,17 +211,17 @@ If you choose this option, it is recommended to use JSX, which closely resembles
 E.g.:
 
 ```js
-data : {
-columns: ['erase'],
-options: {
-...
-templates: {
-erase: function(h, row, index) {
-return <delete id={row.id}></delete>
-}
-}
-...
-}
+data: {
+    columns: ['erase'],
+    options: {
+        ...
+        templates: {
+            erase: function (h, row, index) {
+                return <delete id = {row.id}>< /delete>
+            }
+        }
+        ...
+    }
 }
 ```
 
@@ -243,8 +245,8 @@ app.vue
   import edit from './edit'
 
   templates: {
-   edit
- }
+      edit
+  }
 </script>
 ```
 
@@ -253,23 +255,23 @@ Another option to for creating templates is to encapsulate the template within a
 
 ```js
 Vue.component('delete', {
-props:['data', 'index'],
-template:`<a class='delete' @click='erase'></a>`,
-methods:{
-erase() {
-let id = this.data.id; // delete the item
-}
-}
+    props: ['data', 'index'],
+    template: `<a class='delete' @click='erase'></a>`,
+    methods: {
+        erase() {
+            let id = this.data.id; // delete the item
+        }
+    }
 });
 ```
 
 ```js
 options: {
-...
-templates: {
-erase: 'delete'
-}
-...
+    ...
+    templates: {
+        erase: 'delete'
+    }
+    ...
 }
 ```
 
@@ -281,9 +283,10 @@ edit.vue
 <template>
   <a class="fa fa-edit" :href="edit(data.id)">Edit</a>
 </template>
+
 <script>
   export default {
-    props:['data', 'index'],
+      props: ['data', 'index'],
   }
 </script>
 ```
@@ -294,9 +297,9 @@ app.vue
 <script>
   import edit from './edit'
 
-  templates:{
-   edit
- }
+  templates: {
+      edit
+  }
 </script>
 ```
 
@@ -329,22 +332,22 @@ Using Scoped Slots:
 Using a function and (optional) JSX:
 
 ```js
-options:{
-...
-childRow: function(h, row) {
-return <div>My custom content for row {row.id}</div>
-}
-...
+    options:{
+    ...
+    childRow: function(h, row) {
+      return <div>My custom content for row {row.id}</div>
+    }
+    ...
 }
 ```
 
 Using a component name or a `.vue` file: (See [Templates](#templates) above for a complete example)
 
 ```js
-options:{
-...
-childRow: 'row-component'
-...
+    options:{
+    ...
+        childRow: 'row-component'
+    ...
 }
 ```
 
@@ -353,20 +356,20 @@ When the plugin detects a `childRow` function it appends the child rows and prep
 Example styling (also found in `style.css`):
 ```css
 .VueTables__child-row-toggler {
-width:16px;
-height:16px;
-line-height: 16px;
-display: block;
-margin: auto;
-text-align: center;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    display: block;
+    margin: auto;
+    text-align: center;
 }
 
 .VueTables__child-row-toggler--closed::before {
-content: "+";
+    content: "+";
 }
 
-.VueTables__child-row-toggler--open::before  {
-content: "-";
+.VueTables__child-row-toggler--open::before {
+    content: "-";
 }
 ```
 
@@ -398,7 +401,7 @@ Using Custom Events (For child-parent communication):
 
 ```js
 Event.$on('vue-tables.loaded', function (data) {
-// Do something
+    // Do something
 });
 ```
 
@@ -408,10 +411,10 @@ The event name will then take the shape of `vue-tables.tableName.eventName`.
 * Using Vuex:
 
 ```js
-mutations:{
-['tableName/LOADED'] (state, data) {
-// Do something
-}
+mutations: {
+    ['tableName/LOADED'](state, data) {
+        // Do something
+    }
 }
 ```
 
@@ -463,10 +466,10 @@ Custom filters allow you to integrate your own filters into the plugin using Vue
 
 ```js
 customFilters: [{
-name:'alphabet',
-callback: function(row, query) {
-return row.name[0] == query;
-}
+    name: 'alphabet',
+    callback: function (row, query) {
+        return row.name[0] == query;
+    }
 }]
 ```
 
@@ -500,15 +503,26 @@ For example:
 
 ```js
 options: {
-filterByColumn: true,
-listColumns: {
-animal: [
-{ id: 1, text: 'Dog' },
-{ id: 2, text: 'Cat' },
-{ id: 3, text: 'Tiger' },
-{ id: 4, text: 'Bear' }
-]
-}
+    filterByColumn: true,
+    listColumns: {
+        animal: [{
+                id: 1,
+                text: 'Dog'
+            },
+            {
+                id: 2,
+                text: 'Cat'
+            },
+            {
+                id: 3,
+                text: 'Tiger'
+            },
+            {
+                id: 4,
+                text: 'Bear'
+            }
+        ]
+    }
 }
 ```
 
@@ -524,18 +538,18 @@ To do so use the `customSorting` option. This is an object that recieves custom 
 E.g, to sort the `name` column by the last character:
 
 ```js
-customSorting:{
-name: function(ascending) {
-return function(a, b) {
-var lastA = a.name[a.name.length-1].toLowerCase();
-var lastB = b.name[b.name.length-1].toLowerCase();
+customSorting: {
+    name: function (ascending) {
+        return function (a, b) {
+            var lastA = a.name[a.name.length - 1].toLowerCase();
+            var lastB = b.name[b.name.length - 1].toLowerCase();
 
-if (ascending)
-return lastA <= lastB?1:-1;
+            if (ascending)
+                return lastA <= lastB ? 1 : -1;
 
-return lastA >= lastB?1:-1;
-}
-}
+            return lastA >= lastB ? 1 : -1;
+        }
+    }
 }
 ```
 
@@ -551,20 +565,20 @@ Simply put, when the primary column (i.e the column the user is currently sortin
 Example usage:
 ```js
 {
-  ...
-  multiSorting:{
-  name:[
-  {
-  column:'age',
-  matchDir:false
-},
-{
- column:'birth_date',
- matchDir:true
-}
-]
-}
-...
+    ...
+    multiSorting: {
+        name: [
+            {
+                column: 'age',
+                matchDir: false
+            },
+            {
+                column: 'birth_date',
+                matchDir: true
+            }
+        ]
+    }
+    ...
 }
 ```
 
@@ -604,9 +618,9 @@ For example, to insert a checkbox on the `id` column instead of the normal input
 ```
 
 ```html
- <div slot="filter__id">
-    <input type="checkbox" class="form-control" v-model='allMarked' @change="markAll()">
-  </div>
+<div slot="filter__id">
+    <input type="checkbox" class="form-control" v-model="allMarked" @change="markAll()">
+</div>
  ```
 
 # Options
