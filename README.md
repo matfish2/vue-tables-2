@@ -446,6 +446,10 @@ You can listen to those complementary events on a parent component and use them 
 
 Fires off whenever the user changes a page. Send through the page number.
 
+* `vue-tables.limit` / `tableName/LIMIT`
+
+Fires off when the per page limit is changed
+
 * `vue-tables.error` / `tableName/ERROR` (server)
 
 Fires off if the server returns an invalid code. Sends through the error

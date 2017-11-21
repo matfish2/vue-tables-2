@@ -60,6 +60,20 @@ global.withVuex = function() {
 	return typeof useVuex!='undefined';
 }
 
+global.eventEmitted = function(event, payload) {
+
+	if (withVuex()) {
+		console.info("Testing commits is not implemented yet");
+		return true;
+	}
+
+	var emitted = wrapper.emitted(); 
+
+	expect(emitted[event]).toBeTruthy();
+	
+	if (payload) expect(emitted[event][0][0]).toEqual(payload);
+}
+
 global.enterQuery = function(key, selector, query, method, fieldType='input') {
 	if (method==='UI') {
 		fieldType==='input'?type(selector,query):select(selector, query);
@@ -69,5 +83,8 @@ global.enterQuery = function(key, selector, query, method, fieldType='input') {
 	}
 }
 
+global.gotoPage = function(page) {
+	click('.VuePagination ul li:nth-child('  + (page+2) + ') a'); 
+}
 
 
