@@ -12,14 +12,24 @@ describe(suite + ': Child row', () => {
 
 	});
 
-	it('generates a child row when toggler is clicked, and removes it when clicked again', (done) =>{
+	it('generates a child row when toggler is clicked and row is closed', (done) =>{
 		
 		click(firstRowToggler); 
 
 		run(function() {
 			see('My Child Row ZW','table tbody tr:nth-child(2)');
-			click(firstRowToggler);
-			see('Zambia','table tbody tr:nth-child(2)');
+		},done);
+
+	});
+
+	
+	it('removes a child row when toggler is clicked and row is open', (done) =>{
+		
+		click(firstRowToggler); 
+		click(firstRowToggler); 
+
+		run(function() {
+			not_see('My Child Row ZW','table tbody tr:nth-child(2)');
 		},done);
 
 	});
@@ -95,7 +105,7 @@ describe(suite + ': Child row', () => {
 
 	});
 
-	it.only('only mount the clicked row, without remounting other open rows (regression test for issue #272)', (done)=>{
+	it('only mount the clicked row, without remounting other open rows (regression test for issue #272)', (done)=>{
 
 		// The issue only occurs with open rows that come AFTER the clicked row, which is why we toggle first the second row
 
@@ -108,9 +118,9 @@ describe(suite + ': Child row', () => {
 			vm().toggleChildRow(FIRST_ROW_ID);
 		},100);
 
-		run(()=>{			
+		run(()=>{						
 			expect(wrapper.emitted().mounted_child_row.length).toBe(2); // and NOT 3 (1 on the first click, 2 on the second)
-		},done,1000);
+		},done,500);
 
 	});
 

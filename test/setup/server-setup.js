@@ -33,11 +33,11 @@ afterEach(()=>{
 	moxios.uninstall(axios);
 });
 
-global.run = function(cb, done) {
+global.run = function(cb, done, timeout = 0) {
 	moxios.wait(()=>{
 		cb();
 		done();
-	});
+	}, timeout);
 }
 
 global.requestHas = function(key, value) {
