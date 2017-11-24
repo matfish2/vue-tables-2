@@ -95,24 +95,23 @@ describe(suite + ': Child row', () => {
 
 	});
 
-	// it.only('only mount the clicked row, without remounting other open rows (regression test for issue #272)', (done)=>{
+	it.only('only mount the clicked row, without remounting other open rows (regression test for issue #272)', (done)=>{
 
-	// 	// The issue only occurs with open rows that come AFTER the clicked row 
+		// The issue only occurs with open rows that come AFTER the clicked row, which is why we toggle first the second row
 
-	// 	const FIRST_ROW_ID = 245;
-	// 	const SECOND_ROW_ID = 244;
+		const FIRST_ROW_ID = 245;
+		const SECOND_ROW_ID = 244;
 
-	// 	vm().toggleChildRow(SECOND_ROW_ID); 
+		vm().toggleChildRow(SECOND_ROW_ID); 
 
-	// 	setTimeout(()=>{
-	// 		vm().toggleChildRow(FIRST_ROW_ID);
-	// 	},100);
+		setTimeout(()=>{ // should mount only the first row
+			vm().toggleChildRow(FIRST_ROW_ID);
+		},100);
 
-	// 	run(()=>{			
-	// 		console.log(wrapper.emitted());
-	// 		expect(wrapper.emitted().mounted_child_row.length).toBe(2);
-	// 	},done,1000);
+		run(()=>{			
+			expect(wrapper.emitted().mounted_child_row.length).toBe(2); // and NOT 3 (1 on the first click, 2 on the second)
+		},done,1000);
 
-	// });
+	});
 
 });

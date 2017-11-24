@@ -56,7 +56,7 @@ module.exports = function (h, that) {
                   [columns, ' ']
             ));
 
-            if (that.hasChildRow && this.rowsToggleState['row_' + row[rowKey]]) {
+            if (that.hasChildRow && this.openChildRows.includes(row[rowKey])) {
 
                   var template = this._getChildRowTemplate(h, row);
 
