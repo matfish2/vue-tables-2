@@ -55,7 +55,7 @@ Require the script:
 import {ServerTable, ClientTable, Event} from 'vue-tables-2';
 ```
 
-## Register the component(s)
+### Register the component(s)
 
 ```js
 Vue.use(ClientTable, [options], [useVuex], [customTemplate]);
@@ -80,6 +80,23 @@ Copy it to your project and modify to your needs.
 
 ```js
 Vue.use(ClientTable, {}, false, require('./template.js')('client'))
+```
+
+### Using Script Tag
+
+If you are not using NPM you can also import the minified version found in `dist/vue-tables-2.min.js`.
+Copy the file into your project and import it:
+
+```html
+<script src="/path/to/vue-tables-2.min.js"></script>
+```
+
+This will expose a global `VueTables` object containing `ClientTable`, `ServerTable` and `Event` as properties.
+
+E.g:
+
+```js
+Vue.use(VueTables.ClientTable);
 ```
 
 ## Client Side
