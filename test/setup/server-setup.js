@@ -46,7 +46,7 @@ global.requestHas = function(key, value) {
 }
 
 
-global.createWrapper = function(options = {}, columns = null) {
+global.createWrapper = function(options = {}, columns = null, slots = {}) {
 
 	var params = {
 		propsData:{
@@ -54,7 +54,8 @@ global.createWrapper = function(options = {}, columns = null) {
 			columns:columns?columns:['code','name','uri'],
 			url:'get-data',
 			options
-		}
+		},
+		slots
 	};
 
 	if (withVuex()) {

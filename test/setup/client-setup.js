@@ -25,7 +25,7 @@ beforeEach(function() {
 	createWrapper();
 });
 
-global.createWrapper = function(options = {debounce:0}, columns = null) {
+global.createWrapper = function(options = {debounce:0}, columns = null, slots = {}) {
 
 	let params = {
 		propsData:{
@@ -33,7 +33,8 @@ global.createWrapper = function(options = {debounce:0}, columns = null) {
 			columns:columns?columns:['code','name','uri'],
 			data,
 			options
-		}
+		},
+		slots
 	};
 
 	if (withVuex()) {

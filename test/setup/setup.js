@@ -11,7 +11,7 @@ global.vm = function() {
 }
 
 global.see = function(text, selector) {
-	
+
 	var el = selector?wrapper.find(selector):wrapper;
 
 	expect(el.text()).toContain(text);
@@ -22,6 +22,14 @@ global.not_see = function(text, selector) {
 	var el = selector?wrapper.find(selector):wrapper;
 
 	expect(el.text()).not.toContain(text);	
+}
+
+global.getHeading = function(cellIndex) {
+	return wrapper.find('table thead tr:first-child th:nth-child(' + cellIndex + ')')
+}
+
+global.seeInHeadings = function(text, cellIndex) {
+	see(text, 'table thead tr:first-child th:nth-child(' + cellIndex + ')');
 }
 
 global.exists = function(selector) {
