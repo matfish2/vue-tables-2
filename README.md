@@ -131,6 +131,8 @@ new Vue({
 });
 ```
 
+[Click here to see it in action and fiddle with the various options](https://jsfiddle.net/matfish2/jfa5t4sm/)
+
 You can access the filtered dataset at any given moment by fetching the `filteredData` computed property of the table, using `ref` as a pointer (`this.$refs.myTable.filteredData`);
 
 > Important: when loading data asynchronously add a `v-if` conditional to the component along with some `loaded` flag, so it will only compile once the data is attached.
