@@ -33,7 +33,7 @@
     "test-server": "cross-env NODE_ENV=test mocha-webpack --webpack-config webpack.config.js --require test/setup/setup.js test/setup/server-setup.js test/*.spec.js test/server/*.spec.js",
     "test-server-vuex": "cross-env NODE_ENV=test mocha-webpack --webpack-config webpack.config.js --require test/setup/setup.js test/setup/with-vuex.js test/setup/server-setup.js test/*.spec.js test/server/*.spec.js",
     "watch-server": "cross-env NODE_ENV=test mocha-webpack --webpack-config webpack.config.js --watch --require test/setup/setup.js test/setup/server-setup.js test/*.spec.js test/server/*.spec.js",
-    "build-dist": "webpack --config webpack.config.js"
+    "build-dist": "webpack --config webpack.config.dist.js"
   },
   "license": "MIT",
   "main": "compiled/index.js",
