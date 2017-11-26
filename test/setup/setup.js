@@ -68,12 +68,13 @@ global.withVuex = function() {
 	return typeof useVuex!='undefined';
 }
 
-global.eventEmitted = function(event, payload) {
+global.getEventData = function(event) {
 
-	if (withVuex()) {
-		console.info("Testing commits is not implemented yet");
-		return true;
-	}
+	return wrapper.emitted()[event][0][0];
+
+}
+
+global.eventEmitted = function(event, payload) {
 
 	var emitted = wrapper.emitted(); 
 

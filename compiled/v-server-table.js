@@ -75,7 +75,7 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
       this.getData(true).then(function (response) {
 
         var data = this.getResponseData(response);
-        this.setData(this.opts.responseAdapter(data));
+        this.setData(this.opts.responseAdapter.call(this.$root, data));
 
         this.loading = false;
 

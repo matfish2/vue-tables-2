@@ -74,6 +74,7 @@ exports.default = function (source) {
         var limit = (typeof e === 'undefined' ? 'undefined' : _typeof(e)) === 'object' ? parseInt(e.target.value) : e;
         this.updateState('perPage', limit);
         this.commit('SET_LIMIT', limit);
+        this.dispatch('limit', limit);
       },
       setOrder: function setOrder(column, ascending) {
         this.updateState('orderBy', { column: column, ascending: ascending });
@@ -103,12 +104,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function serverExtra() {
   return {
     methods: {
-      setData: function setData(_ref) {
-        var data = _ref.data,
-            count = _ref.count;
-
-        this.commit('SET_DATA', { data: data, count: count });
-        this.commit('LOADED', { data: data, count: count });
+      setData: function setData(data) {
+        this.commit('SET_DATA', data);
+        this.commit('LOADED', data);
 
         setTimeout(function () {
           this.dispatch('loaded', data);

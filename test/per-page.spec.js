@@ -5,7 +5,7 @@ describe(suite + ': Per page selection', ()=>{
 		select("select[name=limit]", "25");
 
 		run(()=>{
-			eventEmitted('limit', "25");
+			eventEmitted('limit', 25);
 		},done);
 	});
 });
