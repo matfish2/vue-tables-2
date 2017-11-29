@@ -1,7 +1,7 @@
 {
   "name": "vue-tables-2",
   "description": "Vue.js 2 grid components",
-  "main": "dist/index.js",
+  "main": "dist/vue-tables-2.min.js",
   "license": "MIT",
   "keywords": [
     "vue",
