@@ -1,7 +1,7 @@
 {
   "name": "vue-tables-2",
   "description": "Vue.js 2 grid components",
-  "version": "0.6.97",
+  "version": "0.6.98",
   "keywords": [
     "vue2",
     "vuex",
@@ -14,7 +14,8 @@
     "url": "https://github.com/matfish2/vue-tables-2"
   },
   "files": [
-    "compiled"
+    "compiled",
+    "dist"
   ],
   "dependencies": {
     "array-intersection": "^0.1.2",
