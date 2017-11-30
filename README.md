@@ -211,7 +211,7 @@ If you are using Vue 2.1.0 and above, you can use [scoped slots](https://vuejs.o
 
 ```vue
 <v-client-table :data="entries" :columns="['id', 'name' ,'age', 'edit']">
-  <template slot="edit" scope="props">
+  <template slot="edit" slot-scope="props">
     <div>
       <a class="fa fa-edit" :href="edit(props.row.id)"></a>
     </div>
