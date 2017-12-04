@@ -9,4 +9,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 module.exports = function () {
     _bus2.default.$off();
     _bus2.default.$destroy();
+
+    if (this.vuex && !this.opts.preserveState) {
+        this.$store.unregisterModule(this.name);
+    }
 };

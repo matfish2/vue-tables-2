@@ -8,6 +8,7 @@ import data from './example-data'
 
 global.VueEvent = Event;
 global.suite = 'Client';
+global.source = 'client';
 
 if (withVuex()) {
 	suite+=" - Vuex";	
@@ -42,5 +43,7 @@ global.createWrapper = function(options = {debounce:0}, columns = null, slots = 
 	}
 
 	global.wrapper = mount(ClientTable.install(Vue,{},withVuex()), params);
+
+	return wrapper;
 }
 

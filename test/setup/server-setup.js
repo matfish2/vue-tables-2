@@ -4,6 +4,7 @@ import { mount } from 'vue-test-utils'
 import ServerTable from '../../compiled/v-server-table.js'
 
 global.suite = 'Server';
+global.source = 'server';
 global.axios = require('axios');
 global.moxios = require('moxios');
 

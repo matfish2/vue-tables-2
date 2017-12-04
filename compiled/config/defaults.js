@@ -80,7 +80,7 @@ module.exports = function () {
       byColumn: 'byColumn'
     },
     rowClassCallback: false,
-    config: false,
+    preserveState: false,
     saveState: false,
     storage: 'local',
     columnsClasses: {}
