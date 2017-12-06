@@ -33,8 +33,8 @@ module.exports = function () {
     el.on('apply.daterangepicker', function (ev, picker) {
 
       query[column] = {
-        start: picker.startDate.format('YYYY-MM-DD'),
-        end: picker.endDate.format('YYYY-MM-DD')
+        start: picker.startDate.format('YYYY-MM-DD HH:mm:ss'),
+        end: picker.endDate.format('YYYY-MM-DD HH:mm:ss')
       };
 
       if (!that.vuex) that.query = query;
