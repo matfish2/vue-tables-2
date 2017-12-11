@@ -6,6 +6,9 @@ module.exports = function (h, that) {
 
     if (!that.opts.filterable) return '';
 
+    var beforeFilter = that.$slots.beforeFilter ? that.$slots.beforeFilter : '';
+    var afterFilter = that.$slots.afterFilter ? that.$slots.afterFilter : '';
+
     var search = that.source == 'client' ? that.search.bind(that, that.data) : that.serverSearch.bind(that);
 
     if (that.opts.filterable && !that.opts.filterByColumn) {
@@ -13,7 +16,7 @@ module.exports = function (h, that) {
         return h(
             'div',
             { 'class': 'form-group form-inline pull-left VueTables__search' },
-            [h(
+            [beforeFilter, h(
                 'label',
                 {
                     attrs: { 'for': id }
@@ -33,7 +36,7 @@ module.exports = function (h, that) {
                     }
                 },
                 []
-            )]
+            ), afterFilter]
         );
     }
 

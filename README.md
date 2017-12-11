@@ -614,12 +614,21 @@ To enable it set `serverMultiSorting` to `true`. The request will then contain a
 
 Slots allow you to insert you own custom HTML in predefined positions within the component:
 
-* `beforeFilters`: Before the filters row
+* `beforeFilter`: Before the global filter (`filterByColumn: false`)
+* `afterFilter`: After the global filter
+* `appendFilterContainer`: Append to global filter container (`filterByColumn: false`)
+* `prependFilterContainer`: Prepend to global filter container
+* `beforeLimit`: Before the per page control
+* `afterLimit`: After the per page control
+* `appendLimitContainer`: Append to per page control container
+* `prependLimitContainer`: Prepend to per page control container
+* `beforeFilters`: Before the filters row (`filterByColumn: true`)
 * `afterFilters`: After the filters row
 * `beforeBody`: Before the `<tbody>` tag
 * `afterBody`: After the `<tbody>` tag
 * `prependBody`: Prepend to the `<tbody>` tag
 * `appendBody`: Append to the `<tbody>` tag
+
 
 In addition to these slots you can insert your own filter HTML in the filters row, or add content to the existing filter, e.g a button (When `filterByColumn` is set to `true`):
 

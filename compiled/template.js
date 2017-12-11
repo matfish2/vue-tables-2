@@ -20,6 +20,12 @@ module.exports = function (source) {
     var appendBody = this.$slots.appendBody ? this.$slots.appendBody : '';
     var afterBody = this.$slots.afterBody ? this.$slots.afterBody : '';
 
+    var prependFilterContainer = this.$slots.prependFilterContainer ? this.$slots.prependFilterContainer : '';
+    var appendFilterContainer = this.$slots.appendFilterContainer ? this.$slots.appendFilterContainer : '';
+
+    var prependLimitContainer = this.$slots.prependLimitContainer ? this.$slots.prependLimitContainer : '';
+    var appendLimitContainer = this.$slots.appendLimitContainer ? this.$slots.appendLimitContainer : '';
+
     return h(
       'div',
       { 'class': "VueTables VueTables--" + this.source },
@@ -28,12 +34,12 @@ module.exports = function (source) {
         { 'class': 'row' },
         [h(
           'div',
-          { 'class': 'col-md-6' },
-          [normalFilter]
+          { 'class': 'col-md-6 VueTables__search-wrapper' },
+          [prependFilterContainer, normalFilter, appendFilterContainer]
         ), h(
           'div',
-          { 'class': 'col-md-6' },
-          [dropdownPagination, perPage]
+          { 'class': 'col-md-6 VueTables__limit-wrapper' },
+          [prependLimitContainer, dropdownPagination, perPage, appendLimitContainer]
         )]
       ), h(
         'div',

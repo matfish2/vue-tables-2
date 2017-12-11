@@ -32,8 +32,9 @@ global.seeInHeadings = function(text, cellIndex) {
 	see(text, 'table thead tr:first-child th:nth-child(' + cellIndex + ')');
 }
 
-global.exists = function(selector) {
-	expect(wrapper.contains(selector)).toBe(true);
+global.exists = function(selector, scope = null) {
+	var w = scope?wrapper.find(scope):wrapper;
+	expect(w.contains(selector)).toBe(true);
 }
 
 global.not_exists = function(selector) {
