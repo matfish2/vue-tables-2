@@ -621,6 +621,7 @@ To enable it set `serverMultiSorting` to `true`. The request will then contain a
 
 Slots allow you to insert you own custom HTML in predefined positions within the component:
 
+* `beforeTable`: Before the table wrapper. After the controls row
 * `beforeFilter`: Before the global filter (`filterByColumn: false`)
 * `afterFilter`: After the global filter
 * `appendFilterContainer`: Append to global filter container (`filterByColumn: false`)

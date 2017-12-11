@@ -19,6 +19,7 @@ module.exports = function (source) {
     var prependBody = this.$slots.prependBody ? this.$slots.prependBody : '';
     var appendBody = this.$slots.appendBody ? this.$slots.appendBody : '';
     var afterBody = this.$slots.afterBody ? this.$slots.afterBody : '';
+    var beforeTable = this.$slots.beforeTable ? this.$slots.beforeTable : '';
 
     var prependFilterContainer = this.$slots.prependFilterContainer ? this.$slots.prependFilterContainer : '';
     var appendFilterContainer = this.$slots.appendFilterContainer ? this.$slots.appendFilterContainer : '';
@@ -41,7 +42,7 @@ module.exports = function (source) {
           { 'class': 'col-md-6 VueTables__limit-wrapper' },
           [prependLimitContainer, dropdownPagination, perPage, appendLimitContainer]
         )]
-      ), h(
+      ), beforeTable, h(
         'div',
         { 'class': 'table-responsive' },
         [h(

@@ -148,6 +148,15 @@ describe(suite + ': Slots', () => {
         exists('.appended', '.VueTables__limit-wrapper');            
         
     });
+
+    it('can insert content before the table wrapper', ()=>{
+        createWrapper({}, null, {
+            beforeTable:'<div class="before-table">I was added before the table</div>'
+        });
+
+        exists('.before-table');            
+        
+    });
     
     
 });
