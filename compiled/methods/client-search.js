@@ -99,8 +99,8 @@ function foundMatch(query, value, isListFilter) {
 
   // Date range
 
-  var start = moment(query.start, 'YYYY-MM-DD');
-  var end = moment(query.end, 'YYYY-MM-DD');
+  var start = moment(query.start, 'YYYY-MM-DD HH:mm:ss');
+  var end = moment(query.end, 'YYYY-MM-DD HH:mm:ss');
 
   return value >= start && value <= end;
 }
