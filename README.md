@@ -402,7 +402,14 @@ Call methods on your instance using the [`ref`](http://vuejs.org/api/#ref) attri
 * `setLimit(recordsPerPage)`
 * `setOrder(column, isAscending)`
 * `setFilter(query)` - `query` should be a string, or an object if `filterByColumn` is set to `true`.
-* `refresh()` Server component only
+* `refresh()` Refresh the table. Server component only
+* `getOpenChildRows(rows = null)` 
+If no argument is supplied returns all open child row components in the page. 
+To limit the returned dataset you can pass the `rows` arguemnt, which should be an array of unique identifiers.
+
+Note: 
+A. This method is only to be used when the child row is a component. 
+B. In order for this method to work you need to set the `name` property on your component to `ChildRow`
 
 ### Events
 
