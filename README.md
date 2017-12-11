@@ -614,8 +614,10 @@ To enable it set `serverMultiSorting` to `true`. The request will then contain a
 
 Slots allow you to insert you own custom HTML in predefined positions within the component:
 
-* `beforeFilters`: Before the filters row
-* `afterFilters`: After the filters row
+* `beforeNormalFilters`: Before the normal filters div
+* `afterNormalFilters`: After the normal filters div
+* `beforeFilters`: Before the column filters row
+* `afterFilters`: After the column filters row
 * `beforeBody`: Before the `<tbody>` tag
 * `afterBody`: After the `<tbody>` tag
 * `prependBody`: Prepend to the `<tbody>` tag

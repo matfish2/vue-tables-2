@@ -13,6 +13,8 @@ module.exports = function (source) {
     var dropdownPaginationCount = require('./template/dropdown-pagination-count')(h, this);
     var headings = require('./template/headings')(h, this);
     var perPage = require('./template/per-page')(h, this);
+    var beforeNormalFilters = this.$slots.beforeNormalFilters ? this.$slots.beforeNormalFilters : '';
+    var afterNormalFilters = this.$slots.afterNormalFilters ? this.$slots.afterNormalFilters : '';
     var beforeFilters = this.$slots.beforeFilters ? this.$slots.beforeFilters : '';
     var afterFilters = this.$slots.afterFilters ? this.$slots.afterFilters : '';
     var beforeBody = this.$slots.beforeBody ? this.$slots.beforeBody : '';
@@ -23,7 +25,7 @@ module.exports = function (source) {
     return h(
       'div',
       { 'class': "VueTables VueTables--" + this.source },
-      [h(
+      [beforeNormalFilters, h(
         'div',
         { 'class': 'row' },
         [h(
@@ -35,7 +37,7 @@ module.exports = function (source) {
           { 'class': 'col-md-6' },
           [dropdownPagination, perPage]
         )]
-      ), h(
+      ), afterNormalFilters, h(
         'div',
         { 'class': 'table-responsive' },
         [h(
