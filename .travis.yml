@@ -8,3 +8,4 @@ script:
   - npm run test-client-vuex
   - npm run test-server
   - npm run test-server-vuex
+after_success: npm run coveralls
