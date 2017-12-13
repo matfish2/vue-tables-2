@@ -3,9 +3,5 @@ node_js:
   - "6.11.4"
 install:
   - npm install    
-script:
-  - npm run test-client
-  - npm run test-client-vuex
-  - npm run test-server
-  - npm run test-server-vuex
+script: npm run test
 after_success: npm run coveralls

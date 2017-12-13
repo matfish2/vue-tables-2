@@ -2,7 +2,7 @@
 
 module.exports = function (h, that) {
 
-    var columns = that.columns.map(function (column) {
+    var cols = that.columns.map(function (column) {
         return h(
             "li",
             null,
@@ -14,7 +14,8 @@ module.exports = function (h, that) {
                 [h(
                     "input",
                     {
-                        attrs: { type: "checkbox", value: column
+                        attrs: { type: "checkbox", value: column,
+                            disabled: that._onlyColumn(column)
                         },
                         on: {
                             "change": that.toggleColumn.bind(that, column)
@@ -31,12 +32,16 @@ module.exports = function (h, that) {
 
     return h(
         "div",
-        { "class": "btn-group" },
+        { "class": "btn-group pull-right" },
         [h(
             "button",
             {
-                attrs: { type: "button", "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false" },
-                "class": "btn btn-default dropdown-toggle" },
+                attrs: { type: "button" },
+                "class": "btn btn-default dropdown-toggle",
+                on: {
+                    "click": that._toggleColumnsDropdown.bind(that)
+                }
+            },
             [that.display('columns'), " ", h(
                 "span",
                 { "class": "caret" },
@@ -44,8 +49,8 @@ module.exports = function (h, that) {
             )]
         ), h(
             "ul",
-            { "class": "dropdown-menu" },
-            [columns]
+            { "class": "dropdown-menu", style: that.displayColumnsDropdown ? 'display:block' : 'display:none' },
+            [cols]
         )]
     );
 };

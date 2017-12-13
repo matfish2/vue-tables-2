@@ -32,7 +32,8 @@ module.exports = function () {
       noResults: "No matching records",
       filterBy: "Filter by {column}",
       loading: 'Loading...',
-      defaultOption: 'Select {column}'
+      defaultOption: 'Select {column}',
+      columns: 'Columns'
     },
     sortIcon: {
       is: 'glyphicon-sort',

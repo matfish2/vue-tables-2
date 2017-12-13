@@ -8,14 +8,18 @@ exports.default = function (useVuex, source) {
   var page = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
 
 
-  if (useVuex) return {
+  var data = {
     vuex: true,
-    activeState: false
+    activeState: false,
+    userColumnsDisplay: [],
+    userControlsColumns: false,
+    displayColumnsDropdown: false
   };
 
-  var data = {
+  if (useVuex) return data;
+
+  data = (0, _merge2.default)(data, {
     vuex: false,
-    activeState: false,
     count: 0,
     customQueries: {},
     query: null,
@@ -26,9 +30,15 @@ exports.default = function (useVuex, source) {
       column: false,
       ascending: true
     }
-  };
+  });
 
   if (source == 'server') data.data = [];
 
   return data;
 };
+
+var _merge = require('merge');
+
+var _merge2 = _interopRequireDefault(_merge);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

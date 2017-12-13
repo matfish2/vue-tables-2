@@ -1,21 +1,35 @@
 'use strict';
 
 module.exports = function () {
-     return displayableColumns(this.Columns, this.windowWidth, this.columnsDisplay);
+  var _this = this;
+
+  var display = this.columnsDisplay;
+
+  // default - return all columns
+
+  if (!display && !this.userControlsColumns) {
+    return this.Columns;
+  }
+
+  // user toggled columns - return user selected columns
+
+  if (this.userControlsColumns) {
+    return this.columns.filter(function (column) {
+      return _this.userColumnsDisplay.includes(column);
+    });
+  }
+
+  // developer defined columns display
+
+  return this.Columns.filter(function (column) {
+
+    if (!display[column]) return true;
+
+    var range = display[column];
+    var operator = range[2];
+
+    var inRange = (!range[0] || _this.windowWidth >= range[0]) && (!range[1] || _this.windowWidth < range[1]);
+
+    return operator == 'not' ? !inRange : inRange;
+  });
 };
-
-function displayableColumns(columns, windowWidth, display) {
-
-     if (!display) return columns;
-
-     return columns.filter(function (column) {
-          if (!display[column]) return true;
-
-          var range = display[column];
-          var operator = range[2];
-
-          var inRange = (!range[0] || windowWidth >= range[0]) && (!range[1] || windowWidth < range[1]);
-
-          return operator == 'not' ? !inRange : inRange;
-     });
-}

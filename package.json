@@ -28,6 +28,7 @@
   },
   "scripts": {
     "build": "babel lib -d compiled",
+    "test": "npm run test-client && npm run test-client-vuex && npm run test-server && npm run test-server-vuex",
     "test-client": "cross-env NODE_ENV=test mocha-webpack --webpack-config webpack.config.js --require test/setup/setup.js test/setup/client-setup.js test/*.spec.js test/client/*.spec.js",
     "test-client-vuex": "cross-env NODE_ENV=test mocha-webpack --webpack-config webpack.config.js --require test/setup/setup.js test/setup/with-vuex.js test/setup/client-setup.js test/*.spec.js test/client/*.spec.js",
     "watch-client": "cross-env NODE_ENV=test mocha-webpack --webpack-config webpack.config.js --watch --require test/setup/setup.js test/setup/client-setup.js test/*.spec.js test/client/*.spec.js",
@@ -35,7 +36,7 @@
     "test-server-vuex": "cross-env NODE_ENV=test mocha-webpack --webpack-config webpack.config.js --require test/setup/setup.js test/setup/with-vuex.js test/setup/server-setup.js test/*.spec.js test/server/*.spec.js",
     "watch-server": "cross-env NODE_ENV=test mocha-webpack --webpack-config webpack.config.js --watch --require test/setup/setup.js test/setup/server-setup.js test/*.spec.js test/server/*.spec.js",
     "build-dist": "webpack --config webpack.config.dist.js",
-    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "license": "MIT",
   "main": "compiled/index.js",
@@ -61,6 +62,7 @@
     "jsdom": "^11.3.0",
     "jsdom-global": "^3.0.2",
     "mocha": "^3.5.3",
+    "mocha-lcov-reporter": "^1.3.0",
     "mocha-webpack": "^1.0.0-rc.1",
     "moment": "^2.19.2",
     "moxios": "^0.4.0",

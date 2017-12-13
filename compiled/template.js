@@ -13,6 +13,7 @@ module.exports = function (source) {
     var dropdownPaginationCount = require('./template/dropdown-pagination-count')(h, this);
     var headings = require('./template/headings')(h, this);
     var perPage = require('./template/per-page')(h, this);
+    var columnsDropdown = require('./template/columns-dropdown')(h, this);
     var beforeFilters = this.$slots.beforeFilters ? this.$slots.beforeFilters : '';
     var afterFilters = this.$slots.afterFilters ? this.$slots.afterFilters : '';
     var beforeBody = this.$slots.beforeBody ? this.$slots.beforeBody : '';
@@ -40,7 +41,7 @@ module.exports = function (source) {
         ), h(
           'div',
           { 'class': 'col-md-6 VueTables__limit-wrapper' },
-          [prependLimitContainer, dropdownPagination, perPage, appendLimitContainer]
+          [prependLimitContainer, dropdownPagination, perPage, columnsDropdown, appendLimitContainer]
         )]
       ), beforeTable, h(
         'div',
