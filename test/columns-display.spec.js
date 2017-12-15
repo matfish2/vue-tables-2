@@ -69,6 +69,22 @@ describe(suite + ': Columns Display', () => {
         
     });
 
+    it('disables the checked checkbox when only one column remains', () => {
+        toggleColumn(1);
+        toggleColumn(2);
+
+        var els = getCheckboxes();
+
+        expect(els[2].element.disabled).toBe(true);
+        
+        els[2].element.disabled = false;
+
+        toggleColumn(3);
+
+        count('table thead tr:first-child th',1);
+    
+    });
+
 
 });
 
