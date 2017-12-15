@@ -23,6 +23,7 @@ module.exports = function () {
     toMomentFormat: false,
     skin: "table-striped table-bordered table-hover",
     columnsDisplay: {},
+    columnsDropdown: false,
     texts: {
       count: "Showing {from} to {to} of {count} records|{count} records|One record",
       filter: "Filter Results:",

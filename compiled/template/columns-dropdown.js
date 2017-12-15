@@ -2,6 +2,8 @@
 
 module.exports = function (h, that) {
 
+    if (!that.opts.columnsDropdown) return '';
+
     var cols = that.columns.map(function (column) {
         return h(
             "li",
@@ -32,7 +34,7 @@ module.exports = function (h, that) {
 
     return h(
         "div",
-        { "class": "btn-group pull-right" },
+        { "class": "btn-group pull-right VueTables__columns-dropdown" },
         [h(
             "button",
             {
