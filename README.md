@@ -25,6 +25,7 @@ To help me maintain this project and add cool new features at your request, any 
 - [Client Side Filters](#client-side-filters)
 - [Server Side Filters](#server-side-filters)
 - [List Filters](#list-filters)
+- [Columns Visibility](#columns-visibility)
 - [Custom Sorting](#custom-sorting)
 - [Client Side Sorting](#client-side-sorting)
 - [Server Side Sorting](#server-side-sorting)
@@ -555,6 +556,13 @@ options: {
 > Note: The values of this column should correspond to the `id`'s passed to the list.
 They will be automatically converted to their textual representation.
 
+# Columns Visibility
+
+If you would like to enable the user to control the columns' visibility set the `columnsDropdown` option to `true`.
+This will add a dropdown button to the left of the per-page control. The drop down will contain a list of the columns with checkboxes to toggle visibility.
+
+The `columnsDropdown` option can work in conjunction with `columnsDisplay`. The rule is that as long as the user hasn't toggled a column himself, the rules you have declared in `columnsDisplay` takes precedence. Once the user toggled a column, he is in charge of columns' visibility, and the settings of `columnsDisplay` are disregarded. 
+
 # Custom Sorting
 
 ## Client Side Sorting
@@ -674,6 +682,7 @@ childRowTogglerFirst | Boolean | Should the child row be positioned at the first
 clientMultiSorting | Boolean | Enable multiple columns sorting using Shift + Click on the client component | `true`
 columnsClasses | Object | Add class(es) to the specified columns.<br> Takes key-value pairs, where the key is the column name and the value is a string of space-separated classes | `{}`
 columnsDisplay | Object | Responsive display for the specified columns.<br><br> Columns will only be shown when the window width is within the defined limits. <br><br>Accepts key-value pairs of column name and device.<br><br> Possible values are `mobile` (x < 480), `mobileP` (x < 320), `mobileL` (320 <= x < 480), `tablet` (480 <= x < 1024), `tabletP` (480 <= x < 768), `tabletL` (768 <= x < 1024), `desktop` (x >= 1024).<br><br> All options can be preceded by the logical operators min,max, and not followed by an underscore.<br><br>For example, a column which is set to `not_mobile` will be shown when the width of the window is greater than or equal to 480px, while a column set to `max_tabletP` will only be shown when the width is under 768px | `{}`
+columnsDropdown | Boolean | See [documentation](#columns-visibility) | `false`
 customFilters | Array | See [documentation](#custom-filters) | `[]`
 customSorting (client-side) | Object | See [documentation](#custom-sorting) | `{}`
 dateColumns | Array | Use daterangepicker as a filter for the specified columns (when filterByColumn is set to true).<br><br>Dates should be passed as moment objects, or as strings in conjunction with the toMomentFormat option | `[]`
@@ -709,7 +718,7 @@ sortable | Array |  Sortable columns | All columns
 sortingAlgorithm | Function | define your own sorting algorithm  | `function (data, column) { return data.sort(this.getSortFn(column));}`
 storage | String | Which persistance mechanism should be used when saveState is set to true: `local` - localStorage. `session` - sessionStorage | `local`
 templates | Object | See [documentation](#templates) | {}
-texts | Object | Table default labels:<br><br><code>{ count:'Showing {from} to {to} of {count} records {count} records&#124;{count} records&#124;One record', filter:'Filter Results:',filterPlaceholder:'Search query', limit:'Records:', noResults:'No matching records', page:'Page:', // for dropdown pagination filterBy: 'Filter by {column}', // Placeholder for search fields when filtering by column loading:'Loading...', // First request to server defaultOption:'Select {column}' // default option for list filters }</code>
+texts | Object | see the `texts` object in [defaults.js](https://github.com/matfish2/vue-tables-2/blob/master/lib/config/defaults.js)</code>
 toMomentFormat (client-side) | String | transform date columns string values to momentjs objects using this format. If this option is not used the consumer is expected to pass momentjs objects himself | `false`
 uniqueKey | String | The key of a unique identifier in your dataset, used to track the child rows, and return the original row in row click event | `id`
 

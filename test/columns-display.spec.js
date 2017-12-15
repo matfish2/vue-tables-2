@@ -8,7 +8,7 @@ describe(suite + ': Columns Display', () => {
         });
     });
 
-    it.only('can optionally add a columns display dropdown', () => {
+    it('can optionally add a columns display dropdown', () => {
 
         setOptions({
             columnsDropdown: false
@@ -23,7 +23,7 @@ describe(suite + ': Columns Display', () => {
         exists(dropdown);
     });
 
-    it.only('Toggles the dropdown', ()=>{
+    it('Toggles the dropdown', ()=>{
 
         expect(vm().displayColumnsDropdown).toBe(false);
 
@@ -33,7 +33,7 @@ describe(suite + ': Columns Display', () => {
         
     });
 
-    it.only('Checks all columns by default', ()=>{
+    it('Checks all columns by default', ()=>{
         var els = getCheckboxes();
 
         els.forEach(el => {
@@ -42,7 +42,7 @@ describe(suite + ': Columns Display', () => {
 
     });
 
-    it.only('can toggle columns', ()=>{
+    it('can toggle columns', ()=>{
         var els = getCheckboxes();
 
         see('Code','table thead tr:first-child th:first-child');
