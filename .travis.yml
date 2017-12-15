@@ -3,5 +3,5 @@ node_js:
   - "6.11.4"
 install:
   - npm install   
-  - npm install -g coveralls 
+  - npm install -g coveralls nyc
 script: nyc npm test && nyc report --reporter=text-lcov | coveralls
