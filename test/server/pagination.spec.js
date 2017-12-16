@@ -30,4 +30,19 @@ describe(suite + ' :Pagination', ()=>{
 		}, done)
 	});
 
+	it('can use dropdown pagination', (done)=>{
+		setOptions({
+			pagination:{
+				dropdown: true
+			}
+		});
+
+		select('.dropdown-pagination', "2");
+
+		run(()=>{
+			requestHas('page',"2");			
+		},done);
+	});
+
+
 });

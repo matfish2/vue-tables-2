@@ -27,9 +27,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _data = require('./mixins/data');
 var _created = require('./mixins/created');
 
-var template = require('./template');
+var templateCompiler = require('./template-compiler');
 
-exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
+exports.install = function (Vue, globalOptions, useVuex) {
+  var template = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'bootstrap3';
+
 
   var state = useVuex ? (0, _vuex2.default)('server') : (0, _normal2.default)();
 
@@ -38,7 +40,7 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
     components: {
       Pagination: _vuePagination.Pagination
     },
-    render: customTemplate ? customTemplate : template('server'),
+    render: templateCompiler.call(this, template),
     props: {
       columns: {
         type: Array,

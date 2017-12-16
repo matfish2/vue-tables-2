@@ -27,16 +27,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _data = require('./mixins/data');
 var _created = require('./mixins/created');
 
-var template = require('./template');
+var templateCompiler = require('./template-compiler');
 
-exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
+exports.install = function (Vue, globalOptions, useVuex) {
+  var template = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'bootstrap3';
+
 
   var client = _merge2.default.recursive(true, (0, _table2.default)(), {
     name: 'client-table',
     components: {
       Pagination: _vuePagination.Pagination
     },
-    render: customTemplate ? customTemplate : template('client'),
+    render: templateCompiler.call(this, template),
     props: {
       columns: {
         type: Array,
