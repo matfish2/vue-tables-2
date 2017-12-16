@@ -33,7 +33,7 @@ module.exports = function (h, modules) {
       [h(
         'div',
         { 'class': 'col-md-6 VueTables__search-wrapper' },
-        [prependFilterContainer, normalFilter(modules.normalFilter), appendFilterContainer]
+        [prependFilterContainer, normalFilter.call(this, h, modules.normalFilter.bind(this)), appendFilterContainer]
       )]
     )]
   );
