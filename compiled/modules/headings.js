@@ -26,7 +26,7 @@ module.exports = function (h) {
         { "class": "VueTables__heading", attrs: { title: this.getHeadingTooltip(column, h) }
         },
         [this.getHeading(column, h)]
-      ), sortControl(column)]
+      ), sortControl.call(this, column)]
     ));
   }.bind(this));
 

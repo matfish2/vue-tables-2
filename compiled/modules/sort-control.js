@@ -9,5 +9,5 @@ module.exports = function (h) {
       { 'class': 'VueTables__sort-icon pull-right ' + this.sortableChevronClass(column) },
       []
     );
-  }.bind(this);
+  };
 };

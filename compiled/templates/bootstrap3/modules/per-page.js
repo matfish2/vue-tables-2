@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function (h) {
+module.exports = function (h, perPage) {
 
     var beforeLimit = this.$slots.beforeLimit ? this.$slots.beforeLimit : '';
     var afterLimit = this.$slots.afterLimit ? this.$slots.afterLimit : '';
@@ -16,6 +16,6 @@ module.exports = function (h) {
                 attrs: { 'for': id }
             },
             [this.display('limit')]
-        ), perPage, afterLimit]
+        ), perPage(h), afterLimit]
     );
 };
