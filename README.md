@@ -538,7 +538,8 @@ options: {
             },
             {
                 id: 2,
-                text: 'Cat'
+                text: 'Cat',
+                hide:true
             },
             {
                 id: 3,
@@ -555,6 +556,8 @@ options: {
 
 > Note: The values of this column should correspond to the `id`'s passed to the list.
 They will be automatically converted to their textual representation.
+
+> Adding `hide:true` to an item, will exclude it from the options presented to the user
 
 # Columns Visibility
 

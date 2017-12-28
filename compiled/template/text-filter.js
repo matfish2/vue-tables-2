@@ -2,23 +2,23 @@
 
 var debounce = require('debounce');
 
-module.exports = function (h, that) {
+module.exports = function (h) {
 
-    var search = that.source == 'client' ? that.search.bind(that, that.data) : that.serverSearch.bind(that);
+    var search = this.source == 'client' ? this.search.bind(this, this.data) : this.serverSearch.bind(this);
 
     return function (column) {
         return h(
             'input',
             {
                 on: {
-                    'keyup': debounce(search, that.opts.debounce)
+                    'keyup': debounce(search, this.opts.debounce)
                 },
 
                 'class': 'form-control',
                 attrs: { name: 'vf__' + column,
                     type: 'text',
-                    placeholder: that.display('filterBy', { column: that.getHeading(column) }),
-                    value: that.query[column]
+                    placeholder: this.display('filterBy', { column: this.getHeading(column) }),
+                    value: this.query[column]
                 }
             },
             []

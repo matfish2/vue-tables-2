@@ -12,9 +12,9 @@ module.exports = function (h, that) {
 
   if (!that.opts.filterByColumn || !that.opts.filterable) return '';
 
-  var textFilter = require('./text-filter')(h, that);
-  var dateFilter = require('./date-filter')(h, that);
-  var listFilter = require('./list-filter')(h, that);
+  var textFilter = require('./text-filter').call(that, h);
+  var dateFilter = require('./date-filter').call(that, h);
+  var listFilter = require('./list-filter').call(that, h);
 
   var filters = [];
   var filter;
@@ -32,11 +32,11 @@ module.exports = function (h, that) {
     if (that.filterable(column)) {
       switch (true) {
         case that.isTextFilter(column):
-          filter = textFilter(column);break;
+          filter = textFilter.call(that, column);break;
         case that.isDateFilter(column):
-          filter = dateFilter(column);break;
+          filter = dateFilter.call(that, column);break;
         case that.isListFilter(column):
-          filter = listFilter(column);break;
+          filter = listFilter.call(that, column);break;
       }
     }
 

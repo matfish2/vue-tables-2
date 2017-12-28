@@ -1,16 +1,21 @@
 'use strict';
 
-module.exports = function (h, that) {
+module.exports = function (h) {
 
       return function (column) {
+            var _this = this;
 
             var options = [];
             var selected = void 0;
 
-            var search = that.source == 'client' ? that.search.bind(that, that.data) : that.serverSearch.bind(that);
+            var search = this.source == 'client' ? this.search.bind(this, this.data) : this.serverSearch.bind(this);
 
-            that.opts.listColumns[column].map(function (option) {
-                  selected = option.id == that.query[column] && that.query[column] !== '';
+            var displayable = this.opts.listColumns[column].filter(function (item) {
+                  return !item.hide;
+            });
+
+            displayable.map(function (option) {
+                  selected = option.id == _this.query[column] && _this.query[column] !== '';
                   options.push(h(
                         'option',
                         {
@@ -38,7 +43,7 @@ module.exports = function (h, that) {
                                     name: 'vf__' + column
                               },
                               domProps: {
-                                    'value': that.query[column]
+                                    'value': this.query[column]
                               }
                         },
                         [h(
@@ -46,7 +51,7 @@ module.exports = function (h, that) {
                               {
                                     attrs: { value: '' }
                               },
-                              [that.display('defaultOption', { column: that.opts.headings[column] ? that.opts.headings[column] : column })]
+                              [this.display('defaultOption', { column: this.opts.headings[column] ? this.opts.headings[column] : column })]
                         ), options]
                   )]
             );
