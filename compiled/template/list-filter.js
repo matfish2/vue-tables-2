@@ -1,16 +1,16 @@
 'use strict';
 
-module.exports = function (h, selectClass) {
-      var _this = this;
+module.exports = function (h) {
 
       return function (column) {
+            var _this = this;
 
             var options = [];
             var selected = void 0;
 
-            var search = _this.source == 'client' ? _this.search.bind(_this, _this.data) : _this.serverSearch.bind(_this);
+            var search = this.source == 'client' ? this.search.bind(this, this.data) : this.serverSearch.bind(this);
 
-            var displayable = _this.opts.listColumns[column].filter(function (item) {
+            var displayable = this.opts.listColumns[column].filter(function (item) {
                   return !item.hide;
             });
 
@@ -35,7 +35,7 @@ module.exports = function (h, selectClass) {
                   },
                   [h(
                         'select',
-                        { 'class': selectClass,
+                        { 'class': 'form-control',
                               on: {
                                     'change': search
                               },
@@ -43,7 +43,7 @@ module.exports = function (h, selectClass) {
                                     name: 'vf__' + column
                               },
                               domProps: {
-                                    'value': _this.query[column]
+                                    'value': this.query[column]
                               }
                         },
                         [h(
@@ -51,7 +51,7 @@ module.exports = function (h, selectClass) {
                               {
                                     attrs: { value: '' }
                               },
-                              [_this.display('defaultOption', { column: _this.opts.headings[column] ? _this.opts.headings[column] : column })]
+                              [this.display('defaultOption', { column: this.opts.headings[column] ? this.opts.headings[column] : column })]
                         ), options]
                   )]
             );

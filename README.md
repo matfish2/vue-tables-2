@@ -1,12 +1,10 @@
 # Vue Tables 2
 
+> Breaking change notice: As of version 1.2.0, multiple templates and\or themes are supported. If you were using the `customTemplate` option, please refer to the documentation below.
+
 [![npm version](https://badge.fury.io/js/vue-tables-2.svg)](https://badge.fury.io/js/vue-tables-2) [![GitHub stars](https://img.shields.io/github/stars/matfish2/vue-tables-2.svg)](https://github.com/matfish2/vue-tables-2/stargazers) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/matfish2/vue-tables-2/master/LICENSE) [![npm](https://img.shields.io/npm/dt/vue-tables-2.svg)](https://www.npmjs.com/package/vue-tables-2) [![Build Status](https://travis-ci.org/matfish2/vue-tables-2.svg?branch=master)](https://travis-ci.org/matfish2/vue-tables-2)
 
 [Click here](https://jsfiddle.net/matfish2/jfa5t4sm/) to see it in action and fiddle with the various [options](#options)
-
-To help me maintain this project and add cool new features at your request, any donation would be appreciated.
-
-[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=W7EU772PUC3V4)
 
 - [Usage](#usage)
 - [Dependencies](#dependencies)
@@ -44,7 +42,7 @@ To help me maintain this project and add cool new features at your request, any 
 ## Compatibility
 
 * Vuex (>=2.0)
-* Bootstrap 3 compatible html output
+* Bootstrap 3 / Bootstrap 4 / Bulma
 
 ## Installation
 
@@ -61,29 +59,29 @@ import {ServerTable, ClientTable, Event} from 'vue-tables-2';
 ### Register the component(s)
 
 ```js
-Vue.use(ClientTable, [options], [useVuex], [customTemplate]);
+Vue.use(ClientTable, [options = {}], [useVuex = false], [theme = 'bootstrap3'], [template = 'default']);
 ```
 
 Or/And:
 
 ```js
-Vue.use(ServerTable, [options], [useVuex], [customTemplate]);
+Vue.use(ServerTable, [options = {}], [useVuex = false], [theme = 'bootstrap3'], [template = 'default']);
 ```
 
 * `useVuex` is a boolean indicating whether to use `vuex` for state management, or manage state on the component itself.
 If you set it to `true` you must add a `name` prop to your table, which will be used to to register a module on your store.
 Use `vue-devtools` to look under the hood and see the current state.
 
-* `customTemplate` argument allows you to pass a custom template for the entire table.
-You can find the main template file under `lib/template.js`, which in turn requires the partials in the `template` folder.
-The template is written using `jsx`, so you will need a [jsx compiler](https://github.com/vuejs/babel-plugin-transform-vue-jsx) to modify it (the package is using the compiled version under the `compiled` folder).
-Copy it to your project and modify to your needs.
+* `theme` Use this option to select a CSS framework. Options:'bootstrap3','bootstrap4','bulma'. 
+You can also pass you own theme. Use a file from the `themes` folder as boilerplate.
 
-> Note: The template file is a function that receives a `source` parameter (`client` or `server`). E.g:
+* `template` Use this option to select an HTML template. Currently supported: 'default', 'footerPagination'
+You can also pass your own template. Use a file from the `templates` folder as boilerplate.
 
-```js
-Vue.use(ClientTable, {}, false, require('./template.js')('client'))
-```
+> Note: You may need to add a little styling of your own. 
+If you come up with some improvments to the templates or themes, which brings them closer to the optimum, you are welcome to send a PR.
+
+> Note: The template is written using `jsx`, so you will need a [jsx compiler](https://github.com/vuejs/babel-plugin-transform-vue-jsx) to modify it (the package is using the compiled version under the `compiled` folder).
 
 ### Using Script Tag
 

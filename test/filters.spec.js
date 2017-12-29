@@ -35,7 +35,7 @@ describe(suite  + ': Filters (Common)', function() {
 
 	});
 
-	it.only('can hide some options in list filters', ()=>{
+	it('can hide some options in list filters', ()=>{
 		createWrapper({
 			filterByColumn:true, 
 			listColumns:{
