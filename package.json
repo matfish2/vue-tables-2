@@ -23,7 +23,7 @@
     "debounce": "^1.1",
     "merge": "^1.2.0",
     "vue": ">=2.0.0",
-    "vue-pagination-2": "^1",
+    "vue-pagination-2": "^1.3",
     "vue-resource": "^0.9.0"
   },
   "babel": {
