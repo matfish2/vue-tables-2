@@ -5,6 +5,8 @@ module.exports = function (h) {
 
   return function (theme) {
 
+    if (_this.opts.pagination && _this.opts.pagination.dropdown) return '';
+
     var name = _this.vuex ? _this.name : _this.id;
 
     return h(
@@ -17,7 +19,11 @@ module.exports = function (h) {
           records: _this.count,
           "per-page": parseInt(_this.limit),
           chunk: _this.opts.pagination.chunk,
-          "count-text": _this.opts.texts.count }
+          "count-text": _this.opts.texts.count
+        },
+        on: {
+          "paginate": _this._onPagination.bind(_this)
+        }
       },
       []
     );

@@ -323,8 +323,6 @@ app.vue
 
 > Note: Don't include HTML directly in your dataset, as it will be parsed as plain text.
 
-> CSS Note: to center the pagination apply `text-align:center` to the wrapping element
-
 # Child Rows
 
 Child rows allow for a custom designed output area, namely a hidden child row underneath each row, whose content you are free to set yourself.

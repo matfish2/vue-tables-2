@@ -107,12 +107,6 @@ exports.install = function (Vue, globalOptions, useVuex) {
       this.registerServerFilters();
 
       if (this.options.initialPage) this.setPage(this.options.initialPage, true);
-
-      _vuePagination.PaginationEvent.$on('vue-pagination::' + this.id, function (page) {
-
-        this.setPage(page);
-        this.dispatch('pagination');
-      }.bind(this));
     },
     data: function data() {
       return _merge2.default.recursive(_data(), {
