@@ -16,6 +16,6 @@ module.exports = function (h, perPage) {
                 attrs: { 'for': id }
             },
             [this.display('limit')]
-        ), perPage(h), afterLimit]
+        ), perPage('form-control'), afterLimit]
     );
 };

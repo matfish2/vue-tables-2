@@ -17,6 +17,15 @@ module.exports = function () {
         contentCenter: 'justify-content-center',
         nomargin: 'm-0',
         small: '',
+        button: 'btn btn-secondary',
+        dropdown: {
+            container: 'dropdown',
+            trigger: 'dropdown-toggle',
+            menu: 'dropdown-menu',
+            content: '',
+            item: 'dropdown-item',
+            caret: 'caret'
+        },
         pagination: {
             nav: '',
             count: '',

@@ -6,9 +6,7 @@ var _merge2 = _interopRequireDefault(_merge);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-module.exports = function (h, modules, classes) {
-
-  var slots = require('../slots').call(this);
+module.exports = function (h, modules, classes, slots) {
 
   var filterId = 'VueTables__search_' + this.id;
   var perpageId = 'VueTables__limit_' + this.id;
@@ -28,7 +26,7 @@ module.exports = function (h, modules, classes) {
   var columnsDropdown = this.opts.columnsDropdown ? h(
     'div',
     { 'class': 'VueTables__columns-dropdown-wrapper' },
-    [modules.columnsDropdown()]
+    [modules.columnsDropdown(classes)]
   ) : '';
 
   return h(

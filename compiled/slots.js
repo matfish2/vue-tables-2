@@ -8,10 +8,10 @@ module.exports = function () {
     prependBody: this.$slots.prependBody ? this.$slots.prependBody : '',
     appendBody: this.$slots.appendBody ? this.$slots.appendBody : '',
     afterBody: this.$slots.afterBody ? this.$slots.afterBody : '',
-    beforeTable: this.$slots.beforeTable ? this.$slots.beforeTable : '',
-    prependFilterContainer: this.$slots.prependFilterContainer ? this.$slots.prependFilterContainer : '',
-    appendFilterContainer: this.$slots.appendFilterContainer ? this.$slots.appendFilterContainer : '',
-    prependLimitContainer: this.$slots.prependLimitContainer ? this.$slots.prependLimitContainer : '',
-    appendLimitContainer: this.$slots.appendLimitContainer ? this.$slots.appendLimitContainer : ''
+    beforeFilter: this.$slots.beforeFilter ? this.$slots.beforeFilter : '',
+    afterFilter: this.$slots.afterFilter ? this.$slots.afterFilter : '',
+    beforeLimit: this.$slots.beforeLimit ? this.$slots.beforeLimit : '',
+    afterLimit: this.$slots.afterLimit ? this.$slots.afterLimit : '',
+    beforeTable: this.$slots.beforeTable ? this.$slots.beforeTable : ''
   };
 };

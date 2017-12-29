@@ -6,9 +6,7 @@ var _merge2 = _interopRequireDefault(_merge);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-module.exports = function (h, modules, classes) {
-
-  var slots = require('../slots').call(this);
+module.exports = function (h, modules, classes, slots) {
 
   var filterId = 'VueTables__search_' + this.id;
   var ddpId = 'VueTables__dropdown-pagination_' + this.id;
@@ -31,7 +29,7 @@ module.exports = function (h, modules, classes) {
     { 'class': 'VueTables__pagination-wrapper' },
     [h(
       'div',
-      { 'class': classes.field + ' VueTables__dropdown-pagination',
+      { 'class': classes.field + ' ' + classes.inline + ' ' + classes.right + ' VueTables__dropdown-pagination',
         directives: [{
           name: 'show',
           value: this.totalPages > 1
@@ -43,14 +41,14 @@ module.exports = function (h, modules, classes) {
           attrs: { 'for': ddpId }
         },
         [this.display('page')]
-      ), modules.dropdownPagiantion(classes.select, ddpId)]
+      ), modules.dropdownPagination(classes.select, ddpId)]
     )]
   ) : '';
 
   var columnsDropdown = this.opts.columnsDropdown ? h(
     'div',
     { 'class': 'VueTables__columns-dropdown-wrapper' },
-    [modules.columnsDropdown()]
+    [modules.columnsDropdown(classes)]
   ) : '';
 
   var footerHeadings = this.opts.footerHeadings ? h(

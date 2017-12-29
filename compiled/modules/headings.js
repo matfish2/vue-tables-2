@@ -1,40 +1,43 @@
 "use strict";
 
 module.exports = function (h) {
+  var _this = this;
 
-  var sortControl = require('./sort-control')(h);
+  return function (right) {
+    var sortControl = require('./sort-control')(h, right);
 
-  var headings = [];
+    var headings = [];
 
-  if (this.hasChildRow && this.opts.childRowTogglerFirst) headings.push(h(
-    "th",
-    null,
-    []
-  ));
-
-  this.allColumns.map(function (column) {
-    headings.push(h(
+    if (_this.hasChildRow && _this.opts.childRowTogglerFirst) headings.push(h(
       "th",
-      {
-        on: {
-          "click": this.orderByColumn.bind(this, column)
-        },
-
-        "class": this.sortableClass(column) },
-      [h(
-        "span",
-        { "class": "VueTables__heading", attrs: { title: this.getHeadingTooltip(column, h) }
-        },
-        [this.getHeading(column, h)]
-      ), sortControl.call(this, column)]
+      null,
+      []
     ));
-  }.bind(this));
 
-  if (this.hasChildRow && !this.opts.childRowTogglerFirst) headings.push(h(
-    "th",
-    null,
-    []
-  ));
+    _this.allColumns.map(function (column) {
+      headings.push(h(
+        "th",
+        {
+          on: {
+            "click": this.orderByColumn.bind(this, column)
+          },
 
-  return headings;
+          "class": this.sortableClass(column) },
+        [h(
+          "span",
+          { "class": "VueTables__heading", attrs: { title: this.getHeadingTooltip(column, h) }
+          },
+          [this.getHeading(column, h)]
+        ), sortControl.call(this, column)]
+      ));
+    }.bind(_this));
+
+    if (_this.hasChildRow && !_this.opts.childRowTogglerFirst) headings.push(h(
+      "th",
+      null,
+      []
+    ));
+
+    return headings;
+  };
 };

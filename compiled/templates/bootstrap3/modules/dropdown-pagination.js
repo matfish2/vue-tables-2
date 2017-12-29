@@ -19,7 +19,7 @@ module.exports = function (h, dropdownPagiantion) {
                     attrs: { 'for': id }
                 },
                 [this.display('page')]
-            ), dropdownPagiantion(h)]
+            ), dropdownPagiantion()]
         );
     }
 

@@ -109,45 +109,6 @@ describe(suite + ': Slots', () => {
         
     });
 
-    it('can prepend custom content to the the filter container', () => {
-        createWrapper({}, null, {
-            prependFilterContainer:'<button class="prepended">prepend</button>'
-        });
-
-        exists('.prepended', '.VueTables__search-wrapper');            
-        
-        
-    });
-    
-
-    it('can append custom content to the the filter container', () => {
-        createWrapper({}, null, {
-            appendFilterContainer:'<button class="appended">append</button>'
-        });
-
-        exists('.appended', '.VueTables__search-wrapper');            
-        
-    });
-
-    it('can prepend custom content to the the limit container', () => {
-        createWrapper({}, null, {
-            prependLimitContainer:'<button class="prepended">prepend</button>'
-        });
-
-        exists('.prepended', '.VueTables__limit-wrapper');            
-        
-        
-    });
-    
-
-    it('can append custom content to the the limit container', () => {
-        createWrapper({}, null, {
-            appendLimitContainer:'<button class="appended">append</button>'
-        });
-
-        exists('.appended', '.VueTables__limit-wrapper');            
-        
-    });
 
     it('can insert content before the table wrapper', ()=>{
         createWrapper({}, null, {

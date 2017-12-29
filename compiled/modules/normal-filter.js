@@ -3,22 +3,26 @@
 var debounce = require('debounce');
 
 module.exports = function (h) {
-    var id = 'VueTables__search_' + this.id;
-    var search = this.source == 'client' ? this.search.bind(this, this.data) : this.serverSearch.bind(this);
+    var _this = this;
 
-    return h(
-        'input',
-        { 'class': 'form-control',
-            attrs: { type: 'text',
-                value: this.query,
-                placeholder: this.display('filterPlaceholder'),
+    return function (classes, id) {
 
-                id: id
+        var search = _this.source == 'client' ? _this.search.bind(_this, _this.data) : _this.serverSearch.bind(_this);
+
+        return h(
+            'input',
+            { 'class': classes.input + ' ' + classes.small,
+                attrs: { type: 'text',
+                    value: _this.query,
+                    placeholder: _this.display('filterPlaceholder'),
+
+                    id: id
+                },
+                on: {
+                    'keyup': debounce(search, _this.opts.debounce)
+                }
             },
-            on: {
-                'keyup': debounce(search, this.opts.debounce)
-            }
-        },
-        []
-    );
+            []
+        );
+    };
 };

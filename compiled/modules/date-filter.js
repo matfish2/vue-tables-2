@@ -1,6 +1,8 @@
 'use strict';
 
 module.exports = function (h) {
+  var _this = this;
+
   return function (column) {
     return h(
       'div',
@@ -10,7 +12,7 @@ module.exports = function (h) {
       [h(
         'span',
         { 'class': 'VueTables__filter-placeholder' },
-        [this.display('filterBy', { column: this.getHeading(column) })]
+        [_this.display('filterBy', { column: _this.getHeading(column) })]
       )]
     );
   };

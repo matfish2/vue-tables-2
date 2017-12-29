@@ -1,59 +1,58 @@
-"use strict";
+'use strict';
+
+var dropdownWrapper = require('./dropdown-wrapper');
+var dropdownItemWrapper = require('./dropdown-item-wrapper');
 
 module.exports = function (h) {
     var _this = this;
 
-    if (!this.opts.columnsDropdown) return '';
+    return function (classes) {
 
-    var cols = this.columns.map(function (column) {
-        return h(
-            "li",
-            null,
-            [h(
-                "a",
-                {
-                    attrs: { href: "#" }
+        var cols = _this.columns.map(function (column) {
+            return dropdownItemWrapper(h, classes, h(
+                'a',
+                { 'class': classes.dropdown.item, attrs: { href: '#' }
                 },
                 [h(
-                    "input",
+                    'input',
                     {
-                        attrs: { type: "checkbox", value: column,
+                        attrs: { type: 'checkbox', value: column,
                             disabled: _this._onlyColumn(column)
                         },
                         on: {
-                            "change": _this.toggleColumn.bind(_this, column)
+                            'change': _this.toggleColumn.bind(_this, column)
                         },
                         domProps: {
-                            "checked": _this.allColumns.includes(column)
+                            'checked': _this.allColumns.includes(column)
                         }
                     },
                     []
                 ), _this.getHeading(column)]
-            )]
-        );
-    });
+            ));
+        });
 
-    return h(
-        "div",
-        { "class": "btn-group pull-right VueTables__columns-dropdown" },
-        [h(
-            "button",
-            {
-                attrs: { type: "button" },
-                "class": "btn btn-default dropdown-toggle",
-                on: {
-                    "click": this._toggleColumnsDropdown.bind(this)
-                }
-            },
-            [this.display('columns'), " ", h(
-                "span",
-                { "class": "caret" },
-                []
-            )]
-        ), h(
-            "ul",
-            { "class": "dropdown-menu", style: this.displayColumnsDropdown ? 'display:block' : 'display:none' },
-            [cols]
-        )]
-    );
+        return h(
+            'div',
+            { 'class': classes.dropdown.container + ' ' + classes.right + ' VueTables__columns-dropdown' },
+            [h(
+                'button',
+                {
+                    attrs: { type: 'button' },
+                    'class': classes.button + ' ' + classes.dropdown.trigger,
+                    on: {
+                        'click': _this._toggleColumnsDropdown.bind(_this)
+                    }
+                },
+                [_this.display('columns'), h(
+                    'span',
+                    { 'class': classes.icon + ' ' + classes.small },
+                    [h(
+                        'i',
+                        { 'class': classes.dropdown.caret },
+                        []
+                    )]
+                )]
+            ), dropdownWrapper.call(_this, h, classes, cols)]
+        );
+    };
 };

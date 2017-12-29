@@ -10,7 +10,7 @@ module.exports = function (h, headings) {
     [h(
       'tr',
       null,
-      [headings(h)]
+      [headings()]
     )]
   );
 };

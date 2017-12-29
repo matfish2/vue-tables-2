@@ -1,20 +1,25 @@
 "use strict";
 
 module.exports = function (h) {
+  var _this = this;
 
-  var name = this.vuex ? this.name : this.id;
+  return function (theme) {
 
-  return h(
-    "pagination",
-    {
-      ref: "pagination",
-      attrs: { "for": name,
-        vuex: this.vuex,
-        records: this.count,
-        "per-page": parseInt(this.limit),
-        chunk: this.opts.pagination.chunk,
-        "count-text": this.opts.texts.count }
-    },
-    []
-  );
+    var name = _this.vuex ? _this.name : _this.id;
+
+    return h(
+      "pagination",
+      {
+        ref: "pagination",
+        attrs: { theme: theme,
+          "for": name,
+          vuex: _this.vuex,
+          records: _this.count,
+          "per-page": parseInt(_this.limit),
+          chunk: _this.opts.pagination.chunk,
+          "count-text": _this.opts.texts.count }
+      },
+      []
+    );
+  };
 };

@@ -1,16 +1,17 @@
 'use strict';
 
-module.exports = function (h) {
+module.exports = function (h, selectClass) {
+      var _this = this;
 
       return function (column) {
 
             var options = [];
             var selected = void 0;
 
-            var search = this.source == 'client' ? this.search.bind(this, this.data) : this.serverSearch.bind(this);
+            var search = _this.source == 'client' ? _this.search.bind(_this, _this.data) : _this.serverSearch.bind(_this);
 
-            this.opts.listColumns[column].map(function (option) {
-                  selected = option.id == this.query[column] && this.query[column] !== '';
+            _this.opts.listColumns[column].map(function (option) {
+                  selected = option.id == _this.query[column] && _this.query[column] !== '';
                   options.push(h(
                         'option',
                         {
@@ -30,7 +31,7 @@ module.exports = function (h) {
                   },
                   [h(
                         'select',
-                        { 'class': 'form-control',
+                        { 'class': selectClass,
                               on: {
                                     'change': search
                               },
@@ -38,7 +39,7 @@ module.exports = function (h) {
                                     name: 'vf__' + column
                               },
                               domProps: {
-                                    'value': this.query[column]
+                                    'value': _this.query[column]
                               }
                         },
                         [h(
@@ -46,7 +47,7 @@ module.exports = function (h) {
                               {
                                     attrs: { value: '' }
                               },
-                              [this.display('defaultOption', { column: this.opts.headings[column] ? this.opts.headings[column] : column })]
+                              [_this.display('defaultOption', { column: _this.opts.headings[column] ? _this.opts.headings[column] : column })]
                         ), options]
                   )]
             );

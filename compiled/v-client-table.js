@@ -30,7 +30,8 @@ var _created = require('./mixins/created');
 var templateCompiler = require('./template-compiler');
 
 exports.install = function (Vue, globalOptions, useVuex) {
-  var template = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'bootstrap3';
+  var theme = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'bootstrap3';
+  var template = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 'default';
 
 
   var client = _merge2.default.recursive(true, (0, _table2.default)(), {
@@ -38,7 +39,7 @@ exports.install = function (Vue, globalOptions, useVuex) {
     components: {
       Pagination: _vuePagination.Pagination
     },
-    render: templateCompiler.call(this, template),
+    render: templateCompiler.call(this, template, theme),
     props: {
       columns: {
         type: Array,

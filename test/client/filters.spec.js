@@ -23,17 +23,20 @@ describe(suite + ': Filters', ()=>{
 				debounce:0,
 				filterByColumn:true
 			});
+			vm().$nextTick(()=>{
+				count("tbody tr", 10);
+				see('Zimb',"tbody tr:first-child td:nth-child(2)");	
+	
+				enterQuery('code','[name=vf__code]', 'ye',trigger);
+				enterQuery('name','[name=vf__name]', 'yem', trigger);
+	
+				run(function() {
+					count("tbody tr", 1);
+					see('Yemen',"tbody tr:first-child td:nth-child(2)");			
+				}, done, 100);
+			});
 
-			count("tbody tr", 10);
-			see('Zimb',"tbody tr:first-child td:nth-child(2)");	
-
-			enterQuery('code','[name=vf__code]', 'ye',trigger);
-			enterQuery('name','[name=vf__name]', 'yem', trigger);
-
-			run(function() {
-				count("tbody tr", 1);
-				see('Yemen',"tbody tr:first-child td:nth-child(2)");			
-			}, done, 100);
+			
 		});
 
 		it(trigger + ': filters by list column filter', (done)=>{
@@ -56,15 +59,19 @@ describe(suite + ': Filters', ()=>{
 					}
 					]
 				}}, ['id','name','code','uri']);
+			
+			vm().$nextTick(()=>{
+				see('Zimb',"tbody tr:first-child td:nth-child(2)");	
+				
+							enterQuery('id','.VueTables__filters-row select[name="vf__id"]', 242, trigger, 'select');
+				
+							run(function() {
+								count("tbody tr", 1);
+								see('Western',"tbody tr:first-child td:nth-child(2)");			
+							}, done, 100);
+			});
 
-			see('Zimb',"tbody tr:first-child td:nth-child(2)");	
-
-			enterQuery('id','.VueTables__filters-row select[name="vf__id"]', 242, trigger, 'select');
-
-			run(function() {
-				count("tbody tr", 1);
-				see('Western',"tbody tr:first-child td:nth-child(2)");			
-			}, done, 100);
+		
 		});
 
 	});
