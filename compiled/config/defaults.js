@@ -21,12 +21,12 @@ module.exports = function () {
     debounce: 250,
     dateFormat: "DD/MM/YYYY",
     toMomentFormat: false,
-    skin: "table-striped table-bordered table-hover",
+    skin: false,
     columnsDisplay: {},
     columnsDropdown: false,
     texts: {
       count: "Showing {from} to {to} of {count} records|{count} records|One record",
-      filter: "Filter Results:",
+      filter: "Filter:",
       filterPlaceholder: "Search query",
       limit: "Records:",
       page: "Page:",
@@ -58,7 +58,8 @@ module.exports = function () {
     headingsTooltips: {},
     pagination: {
       dropdown: false,
-      chunk: 10
+      chunk: 10,
+      align: 'center'
     },
     childRow: false,
     childRowTogglerFirst: true,

@@ -30,5 +30,19 @@ describe(suite + ': Pagination', ()=>{
 		}, done)
 	});
 
+	it('can use dropdown pagination', (done)=>{
+		setOptions({
+			pagination:{
+				dropdown: true
+			}
+		});
+
+		select('.dropdown-pagination', 2);
+
+		run(()=>{
+			see('United States Virgin Islands','tbody tr:first-child td:nth-child(2)');
+		},done);
+	});
+
 
 });
