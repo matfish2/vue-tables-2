@@ -713,7 +713,7 @@ responseAdapter (server-side) | Function | Transform the server response to matc
 rowClassCallback | Function | Add dynamic classes to table rows.<br><br> E.g function(row) { return `row-${row.id}`} <br><br>This can be useful for manipulating the appearance of rows based on the data they contain | `false`
 saveState | Boolean | Constantly save table state and reload it each time the component mounts. When setting it to true, use the `name` prop to set an identifier for the table | `false`
 serverMultiSorting | Boolean | Enable multiple columns sorting using Shift + Click on the server component | `false`
-skin | String | Space separated Bootstrap table styling classes | `table-striped table-bordered table-hover`
+skin | String | Space separated table styling classes | `table-striped table-bordered table-hover`
 sortIcon | String | Sort icon classes | `{ base:'glyphicon', up:'glyphicon-chevron-up', down:'glyphicon-chevron-down', is:'glyphicon-sort' }`
 sortable | Array |  Sortable columns | All columns
 sortingAlgorithm | Function | define your own sorting algorithm  | `function (data, column) { return data.sort(this.getSortFn(column));}`
