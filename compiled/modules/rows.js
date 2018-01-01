@@ -3,7 +3,7 @@
 module.exports = function (h) {
   var _this = this;
 
-  return function () {
+  return function (classes) {
 
     var data = _this.source == 'client' ? _this.filteredData : _this.tableData;
 
@@ -18,7 +18,7 @@ module.exports = function (h) {
         [h(
           "td",
           { "class": "text-center",
-            attrs: { colspan: colspan }
+            attrs: { colspan: _this.colspan }
           },
           [_this.display(_this.loading ? 'loading' : 'noResults')]
         )]
@@ -31,8 +31,27 @@ module.exports = function (h) {
 
     var rowClass;
     var recordCount = (_this.Page - 1) * _this.limit;
+    var currentGroup;
 
     data.map(function (row, index) {
+
+      if (_this.opts.groupBy && _this.source === 'client' && row[_this.opts.groupBy] !== currentGroup) {
+        rows.push(h(
+          "tr",
+          { "class": classes.groupTr, on: {
+              "click": _this._toggleGroupDirection.bind(_this)
+            }
+          },
+          [h(
+            "td",
+            {
+              attrs: { colspan: _this.colspan }
+            },
+            [row[_this.opts.groupBy]]
+          )]
+        ));
+        currentGroup = row[_this.opts.groupBy];
+      }
 
       index = recordCount + index + 1;
 
@@ -85,7 +104,7 @@ module.exports = function (h) {
         [h(
           "td",
           {
-            attrs: { colspan: _this.allColumns.length + 1 }
+            attrs: { colspan: _this.colspan }
           },
           [_this._getChildRowTemplate(h, row)]
         )]

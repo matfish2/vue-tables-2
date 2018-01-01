@@ -17,6 +17,7 @@ module.exports = function () {
         contentCenter: '',
         small: '',
         nomargin: '',
+        groupTr: 'info',
         button: 'btn btn-secondary',
         dropdown: {
             container: 'dropdown',

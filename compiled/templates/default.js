@@ -101,7 +101,7 @@ module.exports = function (h, modules, classes, slots) {
         ), footerHeadings, slots.beforeBody, h(
           'tbody',
           null,
-          [slots.prependBody, modules.rows(), slots.appendBody]
+          [slots.prependBody, modules.rows(classes), slots.appendBody]
         ), slots.afterBody]
       )]
     ), modules.pagination((0, _merge2.default)(classes.pagination, {

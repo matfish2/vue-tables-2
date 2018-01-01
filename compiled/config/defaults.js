@@ -12,6 +12,7 @@ module.exports = function () {
     initialPage: 1,
     perPage: 10,
     perPageValues: [10, 25, 50, 100],
+    groupBy: false,
     params: {},
     sortable: true,
     filterable: true,

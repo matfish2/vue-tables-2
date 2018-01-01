@@ -90,6 +90,10 @@ exports.install = function (Vue, globalOptions, useVuex) {
         if (this.options.initialPage) this.setPage(this.options.initialPage);
       }
 
+      if (this.opts.groupBy && !this.opts.orderBy) {
+        this.orderBy.column = this.opts.groupBy;
+      }
+
       this.loadState();
     },
 

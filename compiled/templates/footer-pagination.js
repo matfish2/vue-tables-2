@@ -75,7 +75,7 @@ module.exports = function (h, modules, classes, slots) {
             [h(
               'td',
               {
-                attrs: { colspan: this.allColumns.length + 1 }
+                attrs: { colspan: this.colspan }
               },
               [modules.pagination((0, _merge2.default)(classes.pagination, {
                 list: classes.pagination.list + ' ' + classes.right + ' ' + classes.nomargin,
@@ -86,7 +86,7 @@ module.exports = function (h, modules, classes, slots) {
         ), slots.beforeBody, h(
           'tbody',
           null,
-          [slots.prependBody, modules.rows(), slots.appendBody]
+          [slots.prependBody, modules.rows(classes), slots.appendBody]
         ), slots.afterBody]
       )]
     )]

@@ -19,6 +19,7 @@ module.exports = function () {
         small: 'is-small',
         nomargin: 'marginless',
         button: 'button',
+        groupTr: 'is-selected',
         dropdown: {
             container: 'dropdown',
             trigger: 'dropdown-trigger',

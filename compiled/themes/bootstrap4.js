@@ -16,6 +16,7 @@ module.exports = function () {
         center: 'text-center',
         contentCenter: 'justify-content-center',
         nomargin: 'm-0',
+        groupTr: 'table-info',
         small: '',
         button: 'btn btn-secondary',
         dropdown: {
