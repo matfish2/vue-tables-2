@@ -11,8 +11,9 @@ module.exports = function (h, modules, classes, slots) {
   var filterId = 'VueTables__search_' + this.id;
   var ddpId = 'VueTables__dropdown-pagination_' + this.id;
   var perpageId = 'VueTables__limit_' + this.id;
+  var perpageValues = require('../modules/per-page-values').call(this, h);
 
-  var genericFilter = this.opts.filterByColumn ? '' : h(
+  var genericFilter = this.opts.filterByColumn || !this.opts.filterable ? '' : h(
     'div',
     { 'class': classes.field + ' ' + classes.inline + ' ' + classes.left + ' VueTables__search' },
     [slots.beforeFilter, h(
@@ -23,6 +24,17 @@ module.exports = function (h, modules, classes, slots) {
       [this.display('filter')]
     ), modules.normalFilter(classes, filterId), slots.afterFilter]
   );
+
+  var perpage = perpageValues.length > 1 ? h(
+    'div',
+    { 'class': classes.field + ' ' + classes.inline + ' ' + classes.right + ' VueTables__limit' },
+    [slots.beforeLimit, h(
+      'label',
+      { 'class': classes.label, attrs: { 'for': perpageId }
+      },
+      [this.display('limit')]
+    ), modules.perPage(perpageValues, classes.select, perpageId), slots.afterLimit]
+  ) : '';
 
   var dropdownPagination = this.opts.pagination && this.opts.pagination.dropdown ? h(
     'div',
@@ -70,16 +82,7 @@ module.exports = function (h, modules, classes, slots) {
       [h(
         'div',
         { 'class': classes.column },
-        [genericFilter, h(
-          'div',
-          { 'class': classes.field + ' ' + classes.inline + ' ' + classes.right + ' VueTables__limit' },
-          [slots.beforeLimit, h(
-            'label',
-            { 'class': classes.label, attrs: { 'for': perpageId }
-            },
-            [this.display('limit')]
-          ), modules.perPage(classes.select, perpageId), slots.afterLimit]
-        ), dropdownPagination, columnsDropdown]
+        [genericFilter, perpage, dropdownPagination, columnsDropdown]
       )]
     ), slots.beforeTable, h(
       'div',

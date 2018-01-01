@@ -74,5 +74,15 @@ describe(suite  + ': Filters (Common)', function() {
 		exists('#VueTables__created_at-filter.VueTables__date-filter');
 
 	});
+
+	it('can hide the generic filter (regression test for #377)', () =>{
+		exists('.VueTables__search');
+
+		setOptions({
+			filterable:false
+		})
+
+		not_exists('.VueTables__search');
+	});
 	
 });
