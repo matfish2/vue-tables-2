@@ -17,7 +17,7 @@ describe(suite + ': Filters', ()=>{
 			}, done, 100);
 		});
 		
-		it.only(trigger + ': can search nested data structures (object)', (done) => {
+		it(trigger + ': can search nested data structures (object)', (done) => {
 			createTable();
 
 			enterQuery(null,'.VueTables__search input','33', trigger);
@@ -29,7 +29,7 @@ describe(suite + ': Filters', ()=>{
 
 		});
 
-		it.only(trigger + ': can recursively search nested data structures (array)', (done) => {
+		it(trigger + ': can recursively search nested data structures (array)', (done) => {
 			createTable();
 
 			enterQuery(null,'.VueTables__search input','golf', trigger);
@@ -42,7 +42,7 @@ describe(suite + ': Filters', ()=>{
 
 		});
 
-		it.only(trigger + ': can recursively search nested data structures (object)', (done) => {
+		it(trigger + ': can recursively search nested data structures (object)', (done) => {
 			createTable();
 
 			enterQuery(null,'.VueTables__search input','trudy', trigger);
@@ -55,7 +55,7 @@ describe(suite + ': Filters', ()=>{
 
 		});
 
-		it.only(trigger + ': can search nested data structures (filter by column)', (done) => {
+		it(trigger + ': can search nested data structures (filter by column)', (done) => {
 			createTable(true);
 
 			enterQuery('meta','[name=vf__meta]', '10',trigger);
