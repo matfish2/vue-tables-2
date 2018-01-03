@@ -95,12 +95,25 @@ function foundMatch(query, value, isListFilter) {
   if (isListFilter) return value == query;
 
   //Text Filter
-  if (typeof value == 'string') return value.indexOf(query) > -1;
+  if (['string', 'number'].includes(typeof value === 'undefined' ? 'undefined' : _typeof(value))) {
+    return String(value).toLowerCase().indexOf(query) > -1;
+  }
 
   // Date range
 
-  var start = moment(query.start, 'YYYY-MM-DD HH:mm:ss');
-  var end = moment(query.end, 'YYYY-MM-DD HH:mm:ss');
+  if (is_valid_moment_object(value)) {
+    var start = moment(query.start, 'YYYY-MM-DD HH:mm:ss');
+    var end = moment(query.end, 'YYYY-MM-DD HH:mm:ss');
+  }
+
+  if ((typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object') {
+
+    for (var key in value) {
+      if (foundMatch(query, value[key])) return true;
+    }
+
+    return false;
+  }
 
   return value >= start && value <= end;
 }
@@ -113,5 +126,5 @@ function getValue(val, filterByDate, dateFormat) {
     return val.format(dateFormat);
   }
 
-  return String(val).toLowerCase();
+  return val;
 }

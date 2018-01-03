@@ -17,43 +17,52 @@ describe(suite + ': Filters', ()=>{
 			}, done, 100);
 		});
 		
-		it.only(trigger + ': can search nested data structures', (done) => {
-			createWrapper({},['name','meta'], {}, [
-				{
-					name:'Miriam',
-					meta:{
-						age: 35,
-						job: 'Lawyer'
-					}
-				},
-				{
-					name:'Sandra',
-					meta:{
-						age: 43,
-						job: 'Salesman'
-					}
-				},
-				{
-					name:'Bill',
-					meta:{
-						age: 25,
-						job: 'Waiter'
-					}
-				},
-				{
-					name:'John',
-					meta:{
-						age: 33,
-						job: 'Developer'
-					}
-				}
-			]);
-			
-			enterQuery('meta', 33);
+		it.only(trigger + ': can search nested data structures (object)', (done) => {
+			createTable();
+
+			enterQuery(null,'.VueTables__search input','33', trigger);
 
 			run(function() {
 				count("tbody tr", 1);
 				see('John',"tbody tr:first-child td:nth-child(1)");			
+			}, done, 100);
+
+		});
+
+		it.only(trigger + ': can recursively search nested data structures (array)', (done) => {
+			createTable();
+
+			enterQuery(null,'.VueTables__search input','golf', trigger);
+
+			run(function() {
+				count("tbody tr", 2);
+				see('Miriam',"tbody tr:first-child td:nth-child(1)");
+				see('Sandra',"tbody tr:nth-child(2) td:nth-child(1)");									
+			}, done, 100);
+
+		});
+
+		it.only(trigger + ': can recursively search nested data structures (object)', (done) => {
+			createTable();
+
+			enterQuery(null,'.VueTables__search input','trudy', trigger);
+
+			run(function() {
+				count("tbody tr", 2);
+				see('Sandra',"tbody tr:first-child td:nth-child(1)");
+				see('John',"tbody tr:nth-child(2) td:nth-child(1)");									
+			}, done, 100);
+
+		});
+
+		it.only(trigger + ': can search nested data structures (filter by column)', (done) => {
+			createTable(true);
+
+			enterQuery('meta','[name=vf__meta]', '10',trigger);
+			
+			run(function() {
+				count("tbody tr", 1);
+				see('Sandra',"tbody tr:first-child td:nth-child(1)");			
 			}, done, 100);
 
 		});
@@ -119,3 +128,75 @@ describe(suite + ': Filters', ()=>{
 		
 		
 	});
+
+	function createTable(filterByColumn) {
+		createWrapper({debounce:0, filterByColumn},['name','meta'], {}, [
+			{
+				name:'Miriam',
+				meta:{
+					age: 35,
+					job: 'Lawyer',
+					hobbies:['Writing','Reading','Golf']
+				}
+			},
+			{
+				name:'Sandra',
+				meta:{
+					age: 43,
+					job: 'Salesman',
+					hobbies:['Tennis','Golf'],
+					children:[
+						{
+						name:'Trudy',
+						age:10
+					},
+					{
+						name:'Josh',
+						age:8
+					}
+				]
+				}
+			},
+			{
+				name:'Bill',
+				meta:{
+					age: 25,
+					job: 'Waiter',
+					hobbies:['Painting','Singing'],
+					children:[
+						{
+						name:'Uriel',
+						age:11
+					},
+					{
+						name:'Amitai',
+						age:9
+					}
+				]
+				}
+			},
+			{
+				name:'John',
+				meta:{
+					age: 33,
+					job: 'Developer',
+					hobbies:['Horseback riding','Motorbikes'],
+					children:[
+						{
+						name:'Trudy',
+						age:12
+					},
+					{
+						name:'Anna',
+						age:9
+					},
+					{
+						name:'Sara',
+						age:6
+					}
+				]
+				}
+			}
+		]);
+		
+	}
