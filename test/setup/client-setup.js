@@ -26,13 +26,13 @@ beforeEach(function() {
 	createWrapper();
 });
 
-global.createWrapper = function(options = {debounce:0}, columns = null, slots = {}) {
+global.createWrapper = function(options = {debounce:0}, columns = null, slots = {}, dataOverride = null) {
 
 	let params = {
 		propsData:{
 			name:'client',
 			columns:columns?columns:['code','name','uri'],
-			data,
+			data:dataOverride?dataOverride:data,
 			options
 		},
 		slots
