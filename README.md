@@ -69,7 +69,7 @@ Vue.use(ServerTable, [options = {}], [useVuex = false], [theme = 'bootstrap3'], 
 ```
 
 * `useVuex` is a boolean indicating whether to use `vuex` for state management, or manage state on the component itself.
-If you set it to `true` you must add a `name` prop to your table, which will be used to to register a module on your store.
+If you set it to `true` you must add a `name` prop to your table, which will be used to register a module on your store.
 Use `vue-devtools` to look under the hood and see the current state.
 
 * `theme` Use this option to select a CSS framework. Options:'bootstrap3','bootstrap4','bulma'. 
