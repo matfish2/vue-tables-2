@@ -10,14 +10,14 @@ describe(suite + ': Per page selection', ()=>{
 	});
 
 	it('hides the per page control when there is only one item to select (regression test for #377)', (done)=>{
-		exists('.VueTables__limit');
+		exists('.VueTables__limit-field');
 		
 		setOptions({
 			perPageValues:[25]
 		});
 
 		run(()=>{
-			not_exists('.VueTables__limit');
+			not_exists('.VueTables__limit-field');
 		}, done);
 	});
 });

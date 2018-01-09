@@ -76,13 +76,13 @@ describe(suite  + ': Filters (Common)', function() {
 	});
 
 	it('can hide the generic filter (regression test for #377)', () =>{
-		exists('.VueTables__search');
+		exists('.VueTables__search-field');
 
 		setOptions({
 			filterable:false
 		})
 
-		not_exists('.VueTables__search');
+		not_exists('.VueTables__search-field');
 	});
 	
 });

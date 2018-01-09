@@ -14,25 +14,25 @@ module.exports = function (h, modules, classes, slots) {
 
   var genericFilter = this.opts.filterByColumn || !this.opts.filterable ? '' : h(
     'div',
-    { 'class': classes.field + ' ' + classes.inline + ' ' + classes.left + ' VueTables__search' },
-    [slots.beforeFilter, h(
+    { 'class': 'VueTables__search-field' },
+    [h(
       'label',
       {
         attrs: { 'for': filterId },
         'class': classes.label },
       [this.display('filter')]
-    ), modules.normalFilter(classes, filterId), slots.afterFilter]
+    ), modules.normalFilter(classes, filterId)]
   );
 
   var perpage = perpageValues.length > 1 ? h(
     'div',
-    { 'class': classes.field + ' ' + classes.inline + ' ' + classes.right + ' VueTables__limit' },
-    [slots.beforeLimit, h(
+    { 'class': 'VueTables__limit-field' },
+    [h(
       'label',
       { 'class': classes.label, attrs: { 'for': perpageId }
       },
       [this.display('limit')]
-    ), modules.perPage(perpageValues, classes.select, perpageId), slots.afterLimit]
+    ), modules.perPage(perpageValues, classes.select, perpageId)]
   ) : '';
 
   var columnsDropdown = this.opts.columnsDropdown ? h(
@@ -50,7 +50,15 @@ module.exports = function (h, modules, classes, slots) {
       [h(
         'div',
         { 'class': classes.column },
-        [genericFilter, perpage, columnsDropdown]
+        [h(
+          'div',
+          { 'class': classes.field + ' ' + classes.inline + ' ' + classes.left + ' VueTables__search' },
+          [slots.beforeFilter, genericFilter, slots.afterFilter]
+        ), h(
+          'div',
+          { 'class': classes.field + ' ' + classes.inline + ' ' + classes.right + ' VueTables__limit' },
+          [slots.beforeLimit, perpage, slots.afterLimit]
+        ), columnsDropdown]
       )]
     ), slots.beforeTable, h(
       'div',
