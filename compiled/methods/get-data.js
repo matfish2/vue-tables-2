@@ -8,6 +8,7 @@ module.exports = function (promiseOnly) {
   var _data;
 
   var additionalData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var emitLoading = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
 
 
   var keys = this.opts.requestKeys;
@@ -24,7 +25,9 @@ module.exports = function (promiseOnly) {
 
   data = this.opts.requestAdapter(data);
 
-  this.dispatch('loading', data);
+  if (emitLoading) {
+    this.dispatch('loading', data);
+  }
 
   var promise = this.sendRequest(data);
 
