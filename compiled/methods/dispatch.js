@@ -18,6 +18,6 @@ module.exports = function (event, payload) {
   _bus2.default.$emit('vue-tables.' + event, payload);
 
   if (this.name) {
-    _bus2.default.$emit('vue-tables.' + name + '.' + event, payload);
+    _bus2.default.$emit('vue-tables.' + this.name + '.' + event, payload);
   }
 };
