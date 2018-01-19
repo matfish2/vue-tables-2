@@ -104,6 +104,8 @@ function foundMatch(query, value, isListFilter) {
   if (is_valid_moment_object(value)) {
     var start = moment(query.start, 'YYYY-MM-DD HH:mm:ss');
     var end = moment(query.end, 'YYYY-MM-DD HH:mm:ss');
+
+    return value >= start && value <= end;
   }
 
   if ((typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object') {
