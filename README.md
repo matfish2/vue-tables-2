@@ -72,6 +72,8 @@ Vue.use(ServerTable, [options = {}], [useVuex = false], [theme = 'bootstrap3'], 
 If you set it to `true` you must add a `name` prop to your table, which will be used to register a module on your store.
 Use `vue-devtools` to look under the hood and see the current state.
 
+> Note: If you are using `vue-router` or simply toggling the table with `v-if`, set the `preserveState` option to `true`.
+
 * `theme` Use this option to select a CSS framework. Options:'bootstrap3','bootstrap4','bulma'. 
 You can also pass you own theme. Use a file from the `themes` folder as boilerplate.
 
@@ -701,6 +703,7 @@ pagination.dropdown | Boolean | use a dropdown select pagination next to the rec
 params (server-side) | Object | Additional parameters to send along with the request | `{}`
 perPage | number | Initial records per page | `10`
 perPageValues | Array | Records per page options | `[10,25,50,100]`
+preserveState | Boolean | Preserve dynamically created vuex module when the table is destroyed | `false`
 requestAdapter (server-side) | Function | Set a custom request format | `function(data) { return data; }`
 requestFunction (server-side) | Function | Set a custom request function | See documentation
 requestKeys (server-side) | Object | Set your own request keys | `{ query:'query', limit:'limit', orderBy:'orderBy', ascending:'ascending', page:'page', byColumn:'byColumn' }`
