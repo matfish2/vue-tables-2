@@ -195,7 +195,7 @@ options: {
 
 ### Implementations
 
-I have included [an Eloquent implementation](https://github.com/matfish2/vue-tables/tree/master/server/PHP) for Laravel Users.
+I have included [an Eloquent implementation](https://raw.githubusercontent.com/matfish2/vue-tables-2/master/server/PHP/EloquentVueTables.php) for Laravel Users.
 
 If you happen to write other implementations for PHP or other languages, a pull request would be most welcome, under the following guidelines:
 
