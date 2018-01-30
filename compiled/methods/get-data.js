@@ -34,9 +34,6 @@ module.exports = function (promiseOnly) {
   if (promiseOnly) return promise;
 
   return promise.then(function (response) {
-
-    var data = this.getResponseData(response);
-
-    return this.setData(this.opts.responseAdapter.call(this.$root, data));
+    return this.setData(response);
   }.bind(this));
 };

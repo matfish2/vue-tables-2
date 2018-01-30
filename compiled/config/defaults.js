@@ -70,9 +70,12 @@ module.exports = function () {
       return data;
     },
     responseAdapter: function responseAdapter(resp) {
+
+      var data = this.getResponseData(resp);
+
       return {
-        data: resp.data,
-        count: resp.count
+        data: data.data,
+        count: data.count
       };
     },
     requestKeys: {

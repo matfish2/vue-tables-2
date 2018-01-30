@@ -1,6 +1,6 @@
 # Vue Tables 2
 
-> Breaking change notice: As of version 1.2.0, multiple templates and\or themes are supported. If you were using the `customTemplate` option, please refer to the documentation below.
+> Breaking change notice: As of version 1.3.0 the `loaded` event passes the full response object, not just the response data. In the same manner, the `responseAdapter` option recieves the original response.
 
 [![npm version](https://badge.fury.io/js/vue-tables-2.svg)](https://badge.fury.io/js/vue-tables-2) [![GitHub stars](https://img.shields.io/github/stars/matfish2/vue-tables-2.svg)](https://github.com/matfish2/vue-tables-2/stargazers) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/matfish2/vue-tables-2/master/LICENSE) [![npm](https://img.shields.io/npm/dt/vue-tables-2.svg)](https://www.npmjs.com/package/vue-tables-2) [![Build Status](https://travis-ci.org/matfish2/vue-tables-2.svg?branch=master)](https://travis-ci.org/matfish2/vue-tables-2) [![](https://data.jsdelivr.com/v1/package/npm/vue-tables-2/badge)](https://www.jsdelivr.com/package/npm/vue-tables-2)
 
@@ -403,7 +403,8 @@ Call methods on your instance using the [`ref`](http://vuejs.org/api/#ref) attri
 * `setLimit(recordsPerPage)`
 * `setOrder(column, isAscending)`
 * `setFilter(query)` - `query` should be a string, or an object if `filterByColumn` is set to `true`.
-* `refresh()` Refresh the table. Server component only
+* `getData()` Get table data using the existing request parameters. Server component only.
+* `refresh()` Refresh the table. This method is simply a wrapper for the `serverSearch` method, and thus resets the pagination. Server component only
 * `getOpenChildRows(rows = null)` 
 If no argument is supplied returns all open child row components in the page. 
 To limit the returned dataset you can pass the `rows` arguemnt, which should be an array of unique identifiers.
@@ -709,7 +710,7 @@ preserveState | Boolean | Preserve dynamically created vuex module when the tabl
 requestAdapter (server-side) | Function | Set a custom request format | `function(data) { return data; }`
 requestFunction (server-side) | Function | Set a custom request function | See documentation
 requestKeys (server-side) | Object | Set your own request keys | `{ query:'query', limit:'limit', orderBy:'orderBy', ascending:'ascending', page:'page', byColumn:'byColumn' }`
-responseAdapter (server-side) | Function | Transform the server response to match the format expected by the client. This is especially useful when calling a foreign API, where you cannot control the response on the server-side | `function(resp) { return { data: resp.data, count: resp.count } }`
+responseAdapter (server-side) | Function | Transform the server response to match the format expected by the client. This is especially useful when calling a foreign API, where you cannot control the response on the server-side | `function(resp) { var data = this.getResponseData(resp); return { data: data.data, count: data.count } }`
 rowClassCallback | Function | Add dynamic classes to table rows.<br><br> E.g function(row) { return `row-${row.id}`} <br><br>This can be useful for manipulating the appearance of rows based on the data they contain | `false`
 saveState | Boolean | Constantly save table state and reload it each time the component mounts. When setting it to true, use the `name` prop to set an identifier for the table | `false`
 serverMultiSorting | Boolean | Enable multiple columns sorting using Shift + Click on the server component | `false`

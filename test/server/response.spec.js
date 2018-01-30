@@ -2,10 +2,13 @@ describe(suite + ': Response', () => {
     it('can use a response adapter', (done) => {
         setOptions({
             responseAdapter(resp) { 
+
+                var data = this.getResponseData(resp);
+
                 return { 
                     data:{
-                        data: resp.data, 
-                        count: resp.count 
+                        data: data.data, 
+                        count: data.count 
                     }
                 } 
             }
@@ -26,24 +29,27 @@ describe(suite + ': Response', () => {
     
     it('sends through the "loaded" event additional properties other than data and count (Regression test for issue #338).', (done)=>{
         setOptions({
-            responseAdapter(resp) { 
+            responseAdapter(resp) {
+                
+                var data = this.getResponseData(resp);
+
                 return {                     
-                    data: resp.data, 
-                    count: resp.count, 
+                    data: data.data, 
+                    count: data.count, 
                     other:'More data'
                 } 
             }
         });
         
         run(()=> {
-            var data = getEventData('loaded');
+            var resp = getEventData('loaded');
             
-            if (!data) return; // vuex commits not yet implemented
+            if (!resp) return; // vuex commits not yet implemented
 
-            var response = vm().opts.responseAdapter.call(vm(), data);
-            expect(response.data.length).toEqual(10);
-            expect(response.count).toEqual(50);
-            expect(response.other).toEqual('More data');
+            var data = vm().opts.responseAdapter.call(vm(), resp);
+            expect(data.data.length).toEqual(10);
+            expect(data.count).toEqual(50);
+            expect(data.other).toEqual('More data');
         },done);
         
     });

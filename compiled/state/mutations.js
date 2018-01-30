@@ -5,15 +5,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function (self) {
-  var _ref2, _merge$recursive;
+  var _ref, _merge$recursive;
 
-  var extra = self.source == 'server' ? (_ref2 = {}, _defineProperty(_ref2, self.name + '/SET_DATA', function undefined(state, _ref) {
-    var data = _ref.data,
-        count = _ref.count;
+  var extra = self.source == 'server' ? (_ref = {}, _defineProperty(_ref, self.name + '/SET_DATA', function undefined(state, response) {
 
-    state.data = data;
-    state.count = parseInt(count);
-  }), _defineProperty(_ref2, self.name + '/LOADING', function undefined(state, payload) {}), _defineProperty(_ref2, self.name + '/LOADED', function undefined(state, payload) {}), _defineProperty(_ref2, self.name + '/ERROR', function undefined(state, payload) {}), _ref2) : _defineProperty({}, self.name + '/SET_COUNT', function undefined(state, count) {
+    var data = self.getResponseData(response);
+
+    state.data = data.data;
+    state.count = parseInt(data.count);
+  }), _defineProperty(_ref, self.name + '/LOADING', function undefined(state, payload) {}), _defineProperty(_ref, self.name + '/LOADED', function undefined(state, payload) {}), _defineProperty(_ref, self.name + '/ERROR', function undefined(state, payload) {}), _ref) : _defineProperty({}, self.name + '/SET_COUNT', function undefined(state, count) {
     state.count = count;
   });
 
@@ -34,9 +34,9 @@ exports.default = function (self) {
     if (self.source == 'server') {
       self.getData();
     }
-  }), _defineProperty(_merge$recursive, self.name + '/PAGINATION', function undefined(state, page) {}), _defineProperty(_merge$recursive, self.name + '/SET_CUSTOM_FILTER', function undefined(state, _ref4) {
-    var filter = _ref4.filter,
-        value = _ref4.value;
+  }), _defineProperty(_merge$recursive, self.name + '/PAGINATION', function undefined(state, page) {}), _defineProperty(_merge$recursive, self.name + '/SET_CUSTOM_FILTER', function undefined(state, _ref3) {
+    var filter = _ref3.filter,
+        value = _ref3.value;
 
 
     state.page = 1;
@@ -46,12 +46,12 @@ exports.default = function (self) {
     if (self.source == 'server') {
       self.getData();
     }
-  }), _defineProperty(_merge$recursive, self.name + '/SET_STATE', function undefined(state, _ref5) {
-    var page = _ref5.page,
-        query = _ref5.query,
-        customQueries = _ref5.customQueries,
-        limit = _ref5.limit,
-        orderBy = _ref5.orderBy;
+  }), _defineProperty(_merge$recursive, self.name + '/SET_STATE', function undefined(state, _ref4) {
+    var page = _ref4.page,
+        query = _ref4.query,
+        customQueries = _ref4.customQueries,
+        limit = _ref4.limit,
+        orderBy = _ref4.orderBy;
 
     state.customQueries = customQueries;
     state.query = query;
@@ -66,9 +66,9 @@ exports.default = function (self) {
     state.limit = limit;
 
     if (self.source == 'server') self.getData();
-  }), _defineProperty(_merge$recursive, self.name + '/SORT', function undefined(state, _ref6) {
-    var column = _ref6.column,
-        ascending = _ref6.ascending;
+  }), _defineProperty(_merge$recursive, self.name + '/SORT', function undefined(state, _ref5) {
+    var column = _ref5.column,
+        ascending = _ref5.ascending;
 
 
     state.ascending = ascending;
