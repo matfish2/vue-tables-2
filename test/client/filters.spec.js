@@ -124,7 +124,43 @@ describe(suite + ': Filters', ()=>{
 				
 			});
 			
+
 		});
+
+		it('UI: list filter is case insensitive (regression test for #415)', (done)=>{
+			createWrapper({
+				filterByColumn:true, 
+				debounce:0,
+				listColumns:{
+					code:[
+						{
+							id:'Eh',
+							text:'EH'
+						},
+						{
+							id:'Zw',
+							text:'ZW'
+						},
+						{
+							id:'zm',
+							text:'ZM'
+						}
+					]
+				}}, ['id','name','code','uri']);
+				
+				vm().$nextTick(()=>{
+					see('Zimb',"tbody tr:first-child td:nth-child(2)");	
+					
+					enterQuery('id','.VueTables__filters-row select[name="vf__code"]', 'Eh', 'UI', 'select');
+					
+					run(function() {
+						count("tbody tr", 1);
+						see('Western',"tbody tr:first-child td:nth-child(2)");			
+					}, done, 100);
+				});
+				
+				
+			});
 		
 		
 	});

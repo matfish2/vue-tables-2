@@ -91,12 +91,18 @@ function setCurrentQuery(query) {
 
 function foundMatch(query, value, isListFilter) {
 
+  if (['string', 'number'].indexOf(typeof value === 'undefined' ? 'undefined' : _typeof(value)) > -1) {
+    value = String(value).toLowerCase();
+  }
+
   // List Filter
-  if (isListFilter) return value == query;
+  if (isListFilter) {
+    return value == query;
+  }
 
   //Text Filter
-  if (['string', 'number'].includes(typeof value === 'undefined' ? 'undefined' : _typeof(value))) {
-    return String(value).toLowerCase().indexOf(query) > -1;
+  if (typeof value === 'string') {
+    return value.indexOf(query) > -1;
   }
 
   // Date range
