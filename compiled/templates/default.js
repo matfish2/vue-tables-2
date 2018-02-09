@@ -112,7 +112,7 @@ module.exports = function (h, modules, classes, slots) {
           [slots.prependBody, modules.rows(classes), slots.appendBody]
         ), slots.afterBody]
       )]
-    ), modules.pagination((0, _merge2.default)(classes.pagination, {
+    ), slots.afterTable, modules.pagination((0, _merge2.default)(classes.pagination, {
       wrapper: classes.row + ' ' + classes.column + ' ' + classes.contentCenter,
       nav: classes.center,
       count: classes.center + ' ' + classes.column

@@ -97,6 +97,6 @@ module.exports = function (h, modules, classes, slots) {
           [slots.prependBody, modules.rows(classes), slots.appendBody]
         ), slots.afterBody]
       )]
-    )]
+    ), slots.afterTable]
   );
 };

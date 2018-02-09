@@ -118,6 +118,16 @@ describe(suite + ': Slots', () => {
         exists('.before-table');            
         
     });
+
+    it('can insert content after the table wrapper', ()=>{
+        createWrapper({}, null, {
+            afterTable:'<div class="after-table">I was added after the table</div>'
+        });
+
+        exists('.after-table');            
+        
+    });
+
     
     
 });
