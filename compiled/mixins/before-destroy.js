@@ -18,8 +18,10 @@ module.exports = function () {
         this.$store.unregisterModule(this.name);
     }
 
-    this.opts.dateColumns.forEach(function (column) {
-        el = $(_this.$el).find("#VueTables__" + column + "-filter");
-        el.data('daterangepicker').remove();
-    });
+    if (this.opts.filterByColumn) {
+        this.opts.dateColumns.forEach(function (column) {
+            el = $(_this.$el).find("#VueTables__" + column + "-filter").data('daterangepicker');
+            if (el) el.remove();
+        });
+    }
 };
