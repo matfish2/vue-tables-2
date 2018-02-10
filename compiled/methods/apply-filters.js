@@ -1,16 +1,26 @@
 'use strict';
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 module.exports = function (data) {
-  return data.map(function (row) {
-    for (var column in row) {
+  var _this = this;
 
-      if (this.source === 'client') row[column] = this.formatDate(row[column], this.opts.dateFormat);
+  try {
+    return data.map(function (row) {
+      for (var column in row) {
 
-      if (this.isListFilter(column) && !this.opts.templates[column] && !this.$scopedSlots[column]) {
-        row[column] = this.optionText(row[column], column);
+        if (_this.source === 'client') row[column] = _this.formatDate(row[column], _this.opts.dateFormat);
+
+        if (_this.isListFilter(column) && !_this.opts.templates[column] && !_this.$scopedSlots[column]) {
+          row[column] = _this.optionText(row[column], column);
+        }
       }
-    }
 
-    return row;
-  }.bind(this));
+      return row;
+    });
+  } catch (e) {
+    console.error('vue-tables-2: non-iterable data property. Expected array, got ' + (typeof data === 'undefined' ? 'undefined' : _typeof(data)) + '. Make sure that your response conforms to the expected format, or use the \'responseAdapter\' option to match the currently returned format');
+    console.error('Data equals', data);
+    throw new Error();
+  }
 };
