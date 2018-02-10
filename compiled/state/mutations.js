@@ -39,9 +39,11 @@ exports.default = function (self) {
         value = _ref3.value;
 
 
-    state.page = 1;
-    self.updateState('page', 1);
     state.customQueries[filter] = value;
+    state.page = 1;
+
+    self.updateState('page', 1);
+    self.updateState('customQueries', state.customQueries);
 
     if (self.source == 'server') {
       self.getData();
