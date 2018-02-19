@@ -4,62 +4,61 @@ namespace App;
 
 use Carbon\Carbon;
 
-Class EloquentVueTables  implements VueTablesInterface  {
+class EloquentVueTables implements VueTablesInterface
+{
+    public function get($model, array $fields)
+    {
+        extract(request()->only(['query', 'limit', 'page', 'orderBy', 'ascending', 'byColumn']));
 
-  public function get($model, Array $fields) {
+        $data = $model->select($fields);
 
-    extract(request()->only(['query', 'limit', 'page', 'orderBy', 'ascending', 'byColumn']));
+        if (isset($query) && $query) {
+            $data = $byColumn == 1 ?
+      $this->filterByColumn($data, $query) :
+      $this->filter($data, $query, $fields);
+        }
 
-    $data = $model->select($fields);
+        $count = $data->count();
 
-    if (isset($query) && $query) {
-     $data = $byColumn==1?$this->filterByColumn($data, $query):
-     $this->filter($data, $query, $fields);
-   }
+        $data->limit($limit)
+    ->skip($limit * ($page - 1));
 
-   $count = $data->count();
+        if (isset($orderBy)):
+      $direction = $ascending == 1 ? 'ASC' : 'DESC';
+        $data->orderBy($orderBy, $direction);
+        endif;
 
-   $data->limit($limit)
-   ->skip($limit * ($page-1));
+        $results = $data->get()->toArray();
 
-   if (isset($orderBy)):
-    $direction = $ascending==1?"ASC":"DESC";
-    $data->orderBy($orderBy,$direction);
-  endif;
+        return [
+      'data' => $results,
+      'count' => $count];
+    }
 
-  $results = $data->get()->toArray();
+    protected function filterByColumn($data, $queries)
+    {
+        return $data->where(function ($q) use ($queries) {
+            foreach ($queries as $field => $query):
 
-  return ['data'=>$results,
-  'count'=>$count];
+          if (is_string($query)) {
+              $q->where($field, 'LIKE', "%{$query}%");
+          } else {
+              $start = Carbon::createFromFormat('Y-m-d', $query['start'])->startOfDay();
+              $end = Carbon::createFromFormat('Y-m-d', $query['end'])->endOfDay();
 
-}
+              $q->whereBetween($field, [$start, $end]);
+          }
+            endforeach;
+        });
+    }
 
-protected function filterByColumn($data, $query) {
-  foreach ($query as $field=>$query):
-
-    if (!$query) continue;
-
-    if (is_string($query)) {
-     $data->where($field,'LIKE',"%{$query}%");
-   } else {
-
-    $start = Carbon::createFromFormat('Y-m-d',$query['start'])->startOfDay();
-    $end = Carbon::createFromFormat('Y-m-d',$query['end'])->endOfDay();
-
-    $data->whereBetween($field,[$start, $end]);
-  }
-endforeach;
-
-return $data;
-}
-
-protected function filter($data, $query, $fields) {
-  foreach ($fields as $index=>$field):
-    $method = $index?"orWhere":"where";
-    $data->{$method}($field,'LIKE',"%{$query}%");
-  endforeach;
-
-  return $data;
-}
-
+    protected function filter($data, $query, $fields)
+    {
+        return $data->where(function ($q) use ($query, $fields) {
+            foreach ($fields as $index => $field):
+          $method = $index ? 'orWhere' : 'where';
+            $q->{$method}($field, 'LIKE', "%{$query}%");
+            endforeach;
+        });
+    }
 }
