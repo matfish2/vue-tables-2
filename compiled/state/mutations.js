@@ -9,7 +9,7 @@ exports.default = function (self) {
 
   var extra = self.source == 'server' ? (_ref = {}, _defineProperty(_ref, self.name + '/SET_DATA', function undefined(state, response) {
 
-    var data = self.getResponseData(response);
+    var data = self.opts.responseAdapter.call(self, response);
 
     state.data = data.data;
     state.count = parseInt(data.count);
