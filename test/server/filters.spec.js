@@ -31,11 +31,10 @@ describe(suite + ": Filters", () => {
 			enterQuery('code','[name=vf__code]', 'zw',trigger);
 
 			setTimeout(()=>{
-				expect(vm().query).toEqual({name:'zim',code:'zw',uri:''});
-				requestHas('query',{name:'zim',code:'zw',uri:''});
+				expect(vm().filteredQuery).toEqual({name:'zim',code:'zw'});
+				requestHas('query',{name:'zim',code:'zw'});
 				done();
 			},100);
-
 
 		});
 
@@ -62,10 +61,7 @@ describe(suite + ": Filters", () => {
 			setTimeout(()=>{
 				expect(vm().query.id).toEqual("244");
 				requestHas('query',{
-					id:"244",
-					name:'',
-					code:'',
-					uri:''
+					id:"244"				
 				});
 				done();
 			},100);

@@ -161,6 +161,7 @@ exports.install = function (Vue, globalOptions, useVuex) {
     },
     computed: {
       totalPages: require('./computed/total-pages'),
+      filteredQuery: require('./computed/filtered-query'),
       hasMultiSort: function hasMultiSort() {
         return this.opts.serverMultiSorting;
       }
