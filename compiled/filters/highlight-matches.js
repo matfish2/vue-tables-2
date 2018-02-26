@@ -4,6 +4,8 @@ module.exports = function (value, column, h) {
 
   if (!this.opts.highlightMatches || this.filterableColumns.indexOf(column) === -1) return value;
 
+  if (typeof value === 'undefined') return value;
+
   var query = this.opts.filterByColumn ? this.query[column] : this.query;
 
   if (!query) return value;
