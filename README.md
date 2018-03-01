@@ -1,7 +1,5 @@
 # Vue Tables 2
 
-> Breaking change notice: As of version 1.3.0 the `loaded` event passes the full response object, not just the response data. In the same manner, the `responseAdapter` option recieves the original response.
-
 [![npm version](https://badge.fury.io/js/vue-tables-2.svg)](https://badge.fury.io/js/vue-tables-2) [![GitHub stars](https://img.shields.io/github/stars/matfish2/vue-tables-2.svg)](https://github.com/matfish2/vue-tables-2/stargazers) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/matfish2/vue-tables-2/master/LICENSE) [![npm](https://img.shields.io/npm/dt/vue-tables-2.svg)](https://www.npmjs.com/package/vue-tables-2) [![Build Status](https://travis-ci.org/matfish2/vue-tables-2.svg?branch=master)](https://travis-ci.org/matfish2/vue-tables-2) [![](https://data.jsdelivr.com/v1/package/npm/vue-tables-2/badge)](https://www.jsdelivr.com/package/npm/vue-tables-2)
 
 [Click here](https://jsfiddle.net/matfish2/jfa5t4sm/) to see it in action and fiddle with the various [options](#options)
@@ -704,6 +702,7 @@ orderBy.ascending | Boolean | initial order direction | `orderBy: { ascending:tr
 orderBy.column | String | initial column to sort by | Original dataset order
 pagination.chunk | Number | maximum pages in a chunk of pagination | `pagination: { chunk:10 }`
 pagination.dropdown | Boolean | use a dropdown select pagination next to the records-per-page list, instead of links at the bottom of the table. | `pagination: { dropdown:false }`
+pagination.nav | String | Which method to use when navigating outside of chunk boundries. Options are : `scroll` - the range of pages presented will incrementally change when navigating to a page outside the chunk (e.g 1-10 will become 2-11 once the user presses the next arrow to move to page 11). `fixed` - navigation will occur between fixed chunks (e.g 1-10, 11-20, 21-30 etc.). Double arrows will be added to allow navigation to the beginning of the previous or next chunk | `pagination: { nav: 'fixed' }` 
 params (server-side) | Object | Additional parameters to send along with the request | `{}`
 perPage | number | Initial records per page | `10`
 perPageValues | Array | Records per page options | `[10,25,50,100]`

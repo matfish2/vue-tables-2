@@ -19,6 +19,7 @@ module.exports = function (h) {
           records: _this.count,
           "per-page": parseInt(_this.limit),
           chunk: _this.opts.pagination.chunk,
+          "chunks-navigation": _this.opts.pagination.nav,
           "count-text": _this.opts.texts.count
         },
         on: {

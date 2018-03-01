@@ -60,7 +60,8 @@ module.exports = function () {
     pagination: {
       dropdown: false,
       chunk: 10,
-      align: 'center'
+      align: 'center',
+      nav: 'fixed'
     },
     childRow: false,
     childRowTogglerFirst: true,
