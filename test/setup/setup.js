@@ -14,6 +14,10 @@ global.see = function(text, selector) {
 
 	var el = selector?wrapper.find(selector):wrapper;
 
+	if (!text) {
+		expect(el.text()).toEqual(text);
+	}
+	
 	expect(el.text()).toContain(text);
 
 }
