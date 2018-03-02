@@ -41,26 +41,28 @@ module.exports = function (h, modules, classes, slots) {
     [modules.columnsDropdown(classes)]
   ) : '';
 
+  var tableTop = genericFilter || perpage || columnsDropdown || slots.beforeFilter || slots.afterFilter || slots.beforeLimit || slots.afterLimit ? h(
+    'div',
+    { 'class': classes.row },
+    [h(
+      'div',
+      { 'class': classes.column },
+      [h(
+        'div',
+        { 'class': classes.field + ' ' + classes.inline + ' ' + classes.left + ' VueTables__search' },
+        [slots.beforeFilter, genericFilter, slots.afterFilter]
+      ), h(
+        'div',
+        { 'class': classes.field + ' ' + classes.inline + ' ' + classes.right + ' VueTables__limit' },
+        [slots.beforeLimit, perpage, slots.afterLimit]
+      ), columnsDropdown]
+    )]
+  ) : '';
+
   return h(
     'div',
     { 'class': "VueTables VueTables--" + this.source },
-    [h(
-      'div',
-      { 'class': classes.row },
-      [h(
-        'div',
-        { 'class': classes.column },
-        [h(
-          'div',
-          { 'class': classes.field + ' ' + classes.inline + ' ' + classes.left + ' VueTables__search' },
-          [slots.beforeFilter, genericFilter, slots.afterFilter]
-        ), h(
-          'div',
-          { 'class': classes.field + ' ' + classes.inline + ' ' + classes.right + ' VueTables__limit' },
-          [slots.beforeLimit, perpage, slots.afterLimit]
-        ), columnsDropdown]
-      )]
-    ), slots.beforeTable, h(
+    [tableTop, slots.beforeTable, h(
       'div',
       { 'class': 'table-responsive' },
       [h(

@@ -73,26 +73,28 @@ module.exports = function (h, modules, classes, slots) {
     )]
   ) : '';
 
+  var tableTop = genericFilter || perpage || dropdownPagination || columnsDropdown || slots.beforeFilter || slots.afterFilter || slots.beforeLimit || slots.afterLimit ? h(
+    'div',
+    { 'class': classes.row },
+    [h(
+      'div',
+      { 'class': classes.column },
+      [h(
+        'div',
+        { 'class': classes.field + ' ' + classes.inline + ' ' + classes.left + ' VueTables__search' },
+        [slots.beforeFilter, genericFilter, slots.afterFilter]
+      ), h(
+        'div',
+        { 'class': classes.field + ' ' + classes.inline + ' ' + classes.right + ' VueTables__limit' },
+        [slots.beforeLimit, perpage, slots.afterLimit]
+      ), dropdownPagination, columnsDropdown]
+    )]
+  ) : '';
+
   return h(
     'div',
     { 'class': "VueTables VueTables--" + this.source },
-    [h(
-      'div',
-      { 'class': classes.row },
-      [h(
-        'div',
-        { 'class': classes.column },
-        [h(
-          'div',
-          { 'class': classes.field + ' ' + classes.inline + ' ' + classes.left + ' VueTables__search' },
-          [slots.beforeFilter, genericFilter, slots.afterFilter]
-        ), h(
-          'div',
-          { 'class': classes.field + ' ' + classes.inline + ' ' + classes.right + ' VueTables__limit' },
-          [slots.beforeLimit, perpage, slots.afterLimit]
-        ), dropdownPagination, columnsDropdown]
-      )]
-    ), slots.beforeTable, h(
+    [tableTop, slots.beforeTable, h(
       'div',
       { 'class': 'table-responsive' },
       [h(
