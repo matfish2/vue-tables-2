@@ -1,5 +1,5 @@
 describe(source + ': Dates', ()=>{
-    it('can convert date strings to moment objects and display them using a predefined format', (done)=>{
+    it.only('can convert date strings to moment objects and display them using a predefined format', (done)=>{
         createWrapper({
             dateColumns:['created_at'],            
             toMomentFormat:'YYYY-MM-DDTh:mm:ss',
@@ -8,7 +8,7 @@ describe(source + ': Dates', ()=>{
 
         run(function() {
             see('24-04-15 01:46:50',"tbody tr:first-child td:nth-child(2)");			
-        }, done);
+        }, done,100);
 
     });
 
