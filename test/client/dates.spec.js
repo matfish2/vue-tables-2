@@ -1,5 +1,5 @@
 describe(source + ': Dates', ()=>{
-    it.only('can convert date strings to moment objects and display them using a predefined format', (done)=>{
+    it('can convert date strings to moment objects and display them using a predefined format', (done)=>{
         createWrapper({
             dateColumns:['created_at'],            
             toMomentFormat:'YYYY-MM-DDTh:mm:ss',

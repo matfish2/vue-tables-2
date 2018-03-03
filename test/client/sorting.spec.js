@@ -1,7 +1,6 @@
 describe(suite + ': Sorting', function() {
 	
 	it('sorts initially by orderBy option', (done)=>{
-
 		see('Zimb', 'tbody tr:first-child td:nth-child(2)');
 		exists('table thead tr:first-child th:nth-child(2) .glyphicon.glyphicon-sort');
 

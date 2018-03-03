@@ -1,4 +1,5 @@
-var data =   [
+var data = function() {
+return  [
 {
 	code: "ZW",
 	name: "Zimbabwe",
@@ -450,5 +451,7 @@ var data =   [
 	id: 196
 }
 ];
+
+}();
 
 export default data;
