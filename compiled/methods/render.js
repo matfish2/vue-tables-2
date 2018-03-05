@@ -13,9 +13,5 @@ module.exports = function (row, column, index, h) {
     }
   });
 
-  return h(
-    'span',
-    { 'class': 'VueTables__template' },
-    [template]
-  );
+  return template;
 };
