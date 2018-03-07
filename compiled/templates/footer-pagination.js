@@ -12,7 +12,7 @@ module.exports = function (h, modules, classes, slots) {
   var perpageId = 'VueTables__limit_' + this.id;
   var perpageValues = require('../modules/per-page-values').call(this, h);
 
-  var genericFilter = this.opts.filterByColumn || !this.opts.filterable ? '' : h(
+  var genericFilter = this.hasGenericFilter ? h(
     'div',
     { 'class': 'VueTables__search-field' },
     [h(
@@ -22,7 +22,7 @@ module.exports = function (h, modules, classes, slots) {
         'class': classes.label },
       [this.display('filter')]
     ), modules.normalFilter(classes, filterId)]
-  );
+  ) : '';
 
   var perpage = perpageValues.length > 1 ? h(
     'div',
