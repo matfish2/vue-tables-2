@@ -57,5 +57,13 @@ describe(suite + ': Pagination', ()=>{
 		},done);
 	});
 
+	it('does not try to navigate to last page if current page is 1 (regression test for #456)', (done)=>{
+		createWrapper({debounce:0},null,{}, []);
+
+		run(()=>{
+			count('tbody tr',1);
+		}, done);
+	});
+
 
 });

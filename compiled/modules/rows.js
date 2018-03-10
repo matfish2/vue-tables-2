@@ -10,7 +10,7 @@ module.exports = function (h) {
     if (_this.source === 'client') {
       data = _this.filteredData;
 
-      if (!data.length && _this.source === 'client') {
+      if (!data.length && _this.source === 'client' && _this.page !== 1) {
         // data was dynamically removed go to last page
         _this.setPage(_this.totalPages ? _this.totalPages : 1);
       }
