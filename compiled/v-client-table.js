@@ -78,10 +78,6 @@ exports.install = function (Vue, globalOptions, useVuex) {
 
     mounted: function mounted() {
 
-      if (this.hasDateFilters()) {
-        this.initDateFilters();
-      }
-
       if (this.opts.toMomentFormat) this.transformDateStringsToMoment();
 
       if (!this.vuex) {
@@ -95,6 +91,10 @@ exports.install = function (Vue, globalOptions, useVuex) {
       }
 
       this.loadState();
+
+      if (this.hasDateFilters()) {
+        this.initDateFilters();
+      }
     },
 
     data: function data() {

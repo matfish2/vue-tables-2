@@ -6,15 +6,18 @@ module.exports = function (query) {
 
   if (this.opts.filterByColumn) {
     for (var column in query) {
+
       if (this.isDateFilter(column)) {
-        this._setDateFilterText(column, query[column]);
+        // handled by init-date-filters
+        continue;
+      }
+
+      el = this.$el.querySelector('[name=\'vf__' + column + '\']');
+
+      if (el) {
+        el.value = query[column];
       } else {
-        el = this.$el.querySelector('[name=\'vf__' + column + '\']');
-        if (el) {
-          el.value = query[column];
-        } else {
-          console.error('vue-tables-2: Error in setting filter value. Column \'' + column + '\' does not exist.');
-        }
+        console.error('vue-tables-2: Error in setting filter value. Column \'' + column + '\' does not exist.');
       }
     }
   } else {
