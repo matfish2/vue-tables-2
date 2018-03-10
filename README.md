@@ -703,6 +703,7 @@ orderBy.column | String | initial column to sort by | Original dataset order
 pagination.chunk | Number | maximum pages in a chunk of pagination | `pagination: { chunk:10 }`
 pagination.dropdown | Boolean | use a dropdown select pagination next to the records-per-page list, instead of links at the bottom of the table. | `pagination: { dropdown:false }`
 pagination.nav | String | Which method to use when navigating outside of chunk boundries. Options are : `scroll` - the range of pages presented will incrementally change when navigating to a page outside the chunk (e.g 1-10 will become 2-11 once the user presses the next arrow to move to page 11). `fixed` - navigation will occur between fixed chunks (e.g 1-10, 11-20, 21-30 etc.). Double arrows will be added to allow navigation to the beginning of the previous or next chunk | `pagination: { nav: 'fixed' }` 
+pagination.edge | Boolean | Show 'First' and 'Last' buttons | `pagination: { edge: false }`
 params (server-side) | Object | Additional parameters to send along with the request | `{}`
 perPage | number | Initial records per page | `10`
 perPageValues | Array | Records per page options | `[10,25,50,100]`

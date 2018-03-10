@@ -27,6 +27,8 @@ module.exports = function () {
     columnsDropdown: false,
     texts: {
       count: "Showing {from} to {to} of {count} records|{count} records|One record",
+      first: 'First',
+      last: 'Last',
       filter: "Filter:",
       filterPlaceholder: "Search query",
       limit: "Records:",
@@ -60,6 +62,7 @@ module.exports = function () {
     pagination: {
       dropdown: false,
       chunk: 10,
+      edge: false,
       align: 'center',
       nav: 'fixed'
     },
