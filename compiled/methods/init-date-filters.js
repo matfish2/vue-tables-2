@@ -12,6 +12,7 @@ module.exports = function () {
   var el;
   var that = this;
   var query = this.vuex ? JSON.parse(JSON.stringify(this.query)) : this.query;
+  var columnOptions;
 
   var search = function search(query, e) {
     return that.source == 'client' ? that.search(that.data, e) : that.serverSearch(query, e);
@@ -42,7 +43,10 @@ module.exports = function () {
     }
 
     el = $(that.$el).find("#VueTables__" + column + "-filter");
-    el.daterangepicker(merge(datepickerOptions, range));
+
+    columnOptions = typeof that.opts.datepickerPerColumnOptions[column] !== 'undefined' ? that.opts.datepickerPerColumnOptions[column] : {};
+
+    el.daterangepicker(merge(datepickerOptions, columnOptions, range));
 
     el.on('apply.daterangepicker', function (ev, picker) {
 
