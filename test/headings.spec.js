@@ -25,4 +25,12 @@ describe(suite + ': Headings', () => {
         expect(getHeading(2).html()).toContain('<h2>Country</h2>');
 
     });
+
+    it('can use a slot for the heading', ()=>{
+        createWrapper({debounce:0},null, {
+            h__code:'<p class="the-code">Code</p>'
+        });
+
+        expect(getHeading(1).html()).toContain('<p class="the-code">Code</p>');
+    });
 });

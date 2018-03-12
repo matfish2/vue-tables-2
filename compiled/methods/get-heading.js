@@ -10,8 +10,8 @@ module.exports = function (value, h) {
 
 	if (typeof value !== 'string') return '';
 
-	if (this.$scopedSlots && typeof this.$scopedSlots['h__' + value] !== 'undefined') {
-		return this.$scopedSlots['h__' + value]();
+	if (typeof this.$slots['h__' + value] !== 'undefined') {
+		return this.$slots['h__' + value];
 	}
 
 	var derivedHeading = (0, _ucfirst2.default)(value.split("_").join(" "));
