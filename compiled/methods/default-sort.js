@@ -10,8 +10,8 @@ module.exports = function (column, ascending) {
 
     return function (a, b) {
 
-        var aVal = a[column];
-        var bVal = b[column];
+        var aVal = a[column] || '';
+        var bVal = b[column] || '';
         var dir = ascending ? 1 : -1;
         var secondaryAsc;
 
