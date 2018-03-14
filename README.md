@@ -16,6 +16,7 @@
   - [Vue Components](#vue-components)
 - [Child Rows](#child-rows)
 - [Methods](#methods)
+- [Properties](#properties)
 - [Events](#events)
 - [Date Columns](#date-columns)
 - [Custom Filters](#custom-filters)
@@ -412,7 +413,13 @@ Note:
 A. This method is only to be used when the child row is a component. 
 B. In order for this method to work you need to set the `name` property on your component to `ChildRow`
 
-### Events
+# Properties
+
+Get properties off your instance using the [`ref`](http://vuejs.org/api/#ref) attribute.
+
+* `openChildRows` `array` The ids of all the currently open child rows
+
+# Events
 
 Using Custom Events (For child-parent communication):
 
