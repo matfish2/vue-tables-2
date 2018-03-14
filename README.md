@@ -17,6 +17,7 @@
 - [Child Rows](#child-rows)
 - [Methods](#methods)
 - [Events](#events)
+- [Date Columns](#date-columns)
 - [Custom Filters](#custom-filters)
 - [Client Side Filters](#client-side-filters)
 - [Server Side Filters](#server-side-filters)
@@ -481,6 +482,28 @@ Fires off if the server returns an invalid code. Sends through the error
 Fires off after a row was clicked. sends through the row and the mouse event.
 When using the client component, if you want to recieve the *original* row, so that it can be directly mutated, you must have a unique row identifier.
 The key defaults to `id`, but can be changed using the `uniqueKey` option.
+
+# Date Columns
+
+For date columns you can use [daterangepicker](https://github.com/dangrossman/bootstrap-daterangepicker) as a filter instead of the normal free-text input. Note that you must import all the dependencies (JQuery + moment.js + daterangepicker) GLOBALLY, i.e on the `window` scope. You can check if this is so by typing `typeof $().daterangepicker` in the console. If it returns `function` you are good to go.
+To tell the plugin which columns should be treated as date columns use the `dateColumns` option. (E.g: `dateColumns:['created_at','executed_at']`).
+
+For the client component the date must be rendered as a `moment` object for the filtering to work. You can use the `toMomentFormat` option to do that for you. It accepts the current format of the dates in your dataset, and uses it to convert those dates to `moment` objects. E.g, if you have a `created_at` column with a date like `2017-12-31`, you can use `toMomentFormat: 'YYYY-MM-DD'`. To decide the presentation of the dates use the `dateFormat` option.
+
+On the server component the filter will be sent along with the request in the following format: 
+
+```js
+{
+    query:{
+        created_at:{
+            start: '2010-12-31 00:00:00',
+            end: '2011-12-31 00:00:00'       
+        }
+    }
+}
+``` 
+
+date presentation on the server component is completely up to you. If you are unable to control the server response, you can use the `templates` option to "massage" the date you get from the server into the desired format.
 
 # Custom Filters
 
