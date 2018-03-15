@@ -36,7 +36,8 @@ module.exports = function () {
             link: 'page-link',
             next: '',
             prev: '',
-            active: 'active'
+            active: 'active',
+            disabled: 'disabled'
         }
     };
 };
