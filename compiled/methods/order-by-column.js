@@ -8,7 +8,7 @@ module.exports = function (colName, ev) {
     this.setUserMultiSort(colName);
   } else {
     this.userMultiSorting = {};
-    this.orderBy.ascending = colName == this.orderBy.column ? !this.orderBy.ascending : true;
+    this.orderBy.ascending = colName == this.orderBy.column ? !this.orderBy.ascending : this._initialOrderAscending(colName);
     this.orderBy.column = colName;
 
     this.updateState('orderBy', this.orderBy);

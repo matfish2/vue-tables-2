@@ -57,6 +57,7 @@ module.exports = function () {
     filterByColumn: false,
     highlightMatches: false,
     orderBy: false,
+    descOrderColumns: [],
     footerHeadings: false,
     headings: {},
     headingsTooltips: {},
