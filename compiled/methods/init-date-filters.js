@@ -43,13 +43,13 @@ module.exports = function () {
 
     columnOptions = typeof that.opts.datepickerPerColumnOptions[column] !== 'undefined' ? that.opts.datepickerPerColumnOptions[column] : {};
 
-    columnOptions = merge(columnOptions, {
+    columnOptions = merge.recursive(columnOptions, {
       locale: {
         format: that.dateFormat(column)
       }
     });
 
-    el.daterangepicker(merge(datepickerOptions, columnOptions, range));
+    el.daterangepicker(merge.recursive(datepickerOptions, columnOptions, range));
 
     el.on('apply.daterangepicker', function (ev, picker) {
 
