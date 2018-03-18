@@ -22,6 +22,7 @@ module.exports = function () {
     templates: {},
     debounce: 250,
     dateFormat: "DD/MM/YYYY",
+    dateFormatPerColumn: {},
     toMomentFormat: false,
     skin: false,
     columnsDisplay: {},

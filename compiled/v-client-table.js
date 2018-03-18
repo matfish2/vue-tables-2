@@ -114,12 +114,6 @@ exports.install = function (Vue, globalOptions, useVuex) {
         return this.opts.clientMultiSorting;
       }
     },
-
-    filters: {
-      setCount: require('./filters/set-count'),
-      date: require('./filters/date')
-    },
-
     methods: {
       transformDateStringsToMoment: require('./methods/transform-date-strings-to-moment'),
       registerClientFilters: require('./methods/register-client-filters'),
