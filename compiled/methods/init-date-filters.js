@@ -45,7 +45,7 @@ module.exports = function () {
 
     columnsOptions = merge(columnOptions, {
       locale: {
-        format: this.dateFormat(column)
+        format: that.dateFormat(column)
       }
     });
 
