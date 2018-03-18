@@ -43,7 +43,7 @@ module.exports = function () {
 
     columnOptions = typeof that.opts.datepickerPerColumnOptions[column] !== 'undefined' ? that.opts.datepickerPerColumnOptions[column] : {};
 
-    columnsOptions = merge(columnOptions, {
+    columnOptions = merge(columnOptions, {
       locale: {
         format: that.dateFormat(column)
       }
