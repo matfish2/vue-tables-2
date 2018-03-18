@@ -9,7 +9,7 @@ module.exports = function (data) {
     return data.map(function (row) {
       for (var column in row) {
 
-        if (_this.source === 'client') row[column] = _this.formatDate(row[column], _this.opts.dateFormat);
+        if (_this.source === 'client') row[column] = _this.formatDate(row[column], _this.dateFormat(column));
 
         if (_this.isListFilter(column) && !_this.opts.templates[column] && !_this.$scopedSlots[column]) {
           row[column] = _this.optionText(row[column], column);

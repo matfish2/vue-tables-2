@@ -716,7 +716,8 @@ columnsDropdown | Boolean | See [documentation](#columns-visibility) | `false`
 customFilters | Array | See [documentation](#custom-filters) | `[]`
 customSorting (client-side) | Object | See [documentation](#custom-sorting) | `{}`
 dateColumns | Array | Use daterangepicker as a filter for the specified columns (when filterByColumn is set to true).<br><br>Dates should be passed as moment objects, or as strings in conjunction with the toMomentFormat option | `[]`
-dateFormat (client-side) | String | Format to display date objects. Using [momentjs](https://momentjs.com/) | `DD/MM/YYYY`
+dateFormat | String | Format to display date objects (client component). Using [momentjs](https://momentjs.com/). This will also affect the datepicker on both components | `DD/MM/YYYY`
+dateFormatPerColumn | Object | override the default date format for specific columns | `{}`
 datepickerOptions | Object | Options for the daterangepicker when using a date filter (see dateColumns) | `{ locale: { cancelLabel: 'Clear' } }`
 datepickerPerColumnOptions | Object | additional options for specific columns, to be merged with `datepickerOptions`. Expects an object where the key is a column name, and the value is an options object | `{}`
 debounce | Number | Number of idle milliseconds (no key stroke) to wait before sending a request. Used to detect when the user finished his query in order to avoid redundant requests (server) or rendering (client) | `500`

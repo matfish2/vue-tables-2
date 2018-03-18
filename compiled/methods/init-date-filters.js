@@ -20,10 +20,7 @@ module.exports = function () {
 
   var datepickerOptions = merge.recursive(this.opts.datepickerOptions, {
     autoUpdateInput: false,
-    singleDatePicker: false,
-    locale: {
-      format: this.opts.dateFormat
-    }
+    singleDatePicker: false
   });
 
   that.opts.dateColumns.forEach(function (column) {
@@ -45,6 +42,12 @@ module.exports = function () {
     el = $(that.$el).find("#VueTables__" + column + "-filter");
 
     columnOptions = typeof that.opts.datepickerPerColumnOptions[column] !== 'undefined' ? that.opts.datepickerPerColumnOptions[column] : {};
+
+    columnsOptions = merge(columnOptions, {
+      locale: {
+        format: this.dateFormat(column)
+      }
+    });
 
     el.daterangepicker(merge(datepickerOptions, columnOptions, range));
 

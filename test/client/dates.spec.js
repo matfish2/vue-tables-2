@@ -12,6 +12,23 @@ describe(source + ': Dates', ()=>{
 
     });
 
+    it('allows a per column format', (done)=>{
+        createWrapper({
+            dateColumns:['created_at','updated_at'],            
+            toMomentFormat:'YYYY-MM-DDTh:mm:ss',
+            dateFormat:'DD-MM-YY HH:mm:ss',
+            dateFormatPerColumn:{
+                updated_at:'YYYY'
+            }
+        },['name','created_at','updated_at']);
+
+        run(function() {
+            see('24-04-15 01:46:50',"tbody tr:first-child td:nth-child(2)");
+            see('2015',"tbody tr:first-child td:nth-child(3)");				
+        }, done,100);
+
+    });
+
     it('does not convert to moment falsy values (regression test for #443)', (done) => {
 
         createWrapper({
