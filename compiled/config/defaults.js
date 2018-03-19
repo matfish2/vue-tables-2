@@ -17,6 +17,7 @@ module.exports = function () {
     params: {},
     sortable: true,
     filterable: true,
+    groupMeta: [],
     initFilters: {},
     customFilters: [],
     templates: {},

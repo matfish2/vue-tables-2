@@ -43,10 +43,12 @@ module.exports = function (h) {
     var rowClass;
     var recordCount = (_this.Page - 1) * _this.limit;
     var currentGroup;
+    var groupSlot;
 
     data.map(function (row, index) {
 
       if (_this.opts.groupBy && _this.source === 'client' && row[_this.opts.groupBy] !== currentGroup) {
+        groupSlot = _this.getGroupSlot(row[_this.opts.groupBy]);
         rows.push(h(
           'tr',
           { 'class': classes.groupTr, on: {
@@ -58,7 +60,7 @@ module.exports = function (h) {
             {
               attrs: { colspan: _this.colspan }
             },
-            [row[_this.opts.groupBy]]
+            [row[_this.opts.groupBy], groupSlot]
           )]
         ));
         currentGroup = row[_this.opts.groupBy];

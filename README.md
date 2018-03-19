@@ -9,6 +9,7 @@ or [here](https://jsfiddle.net/matfish2/js4bmdbL/) for a rudimentary server comp
 - [Dependencies](#dependencies)
 - [Installation](#installation)
 - [Client Side](#client-side)
+  - [Grouping](#grouping)
 - [Server Side](#server-side)
 - [Implementations](#implementations)
 - [Templates](#templates)
@@ -141,6 +142,45 @@ You can access the filtered dataset at any given moment by fetching the `filtere
 
 > Important: when loading data asynchronously add a `v-if` conditional to the component along with some `loaded` flag, so it will only compile once the data is attached.
 
+### Grouping
+
+The client component supports simple grouping of rows by a common value. By simple we mean that the grouping is merely *presentational*, and not backed by a real model-level data grouping (i.e the data is NOT divided into distinct arrays). you can group by any property on your dataset. For example, for a table of countries you can group by a `continent` property. Simply declare in your options `groupBy:'continent'`.
+
+If you want to present some additional meta-data realted to each value, you can use the `groupMeta` option, along with the dedicated `__group_meta` scoped slot. For example:
+
+```js
+groupBy:'continent',
+groupMeta:[
+   {
+       value:'Africa',
+       data:{
+           population:1216,
+           countries:54
+       }
+   },
+   {
+       value:'Asia',
+       data:{
+           population:4436
+           countries:48
+       }
+   },
+   {
+       value:'Europe',
+       data:{
+           population:741.4,
+           countries:50
+       }
+   }
+   // etc...
+]
+```
+
+```vue
+<span slot="__group_meta" slot-scope="{ value, data }">
+  {value} has {data.countries} countries and a population of {data.population} million
+</span>
+```
 ## Server side
 
 ```html
@@ -726,6 +766,7 @@ filterable | Array / Boolean | Filterable columns `true` - All columns. | Set to
 footerHeadings | Boolean | Display headings at the bottom of the table too | `false`
 headings | Object | Table headings. | Can be either a string or a function, if you wish to inject vue-compiled HTML.<br>E.g: `function(h) { return <h2>Title</h2>}`<br>Note that this example uses jsx, and not HTML.<br>The `this` context inside the function refers to the direct parent of the table instance.<br> Another option is to use a slot, named "h__{column}"<br>If no heading is provided the default rule is to extract it from the first row properties, where underscores become spaces and the first letter is capitalized
 groupBy (client-side) | String | Group rows by a common property. E.g, for a list of countries, group by the `continent` property | `false`
+groupMeta (client-side) | Array | Meta data associated with each group value. To be used in conjunction with `groupBy`. See documentation for a full example | `[]`
 headingsTooltips | Object | Table headings tooltips. | Can be either a string or a function, if you wish to inject vue-compiled HTML. Renders as `title` attribute of `<th>`. <br>E.g: `function(h) { return 'Expanded Title'}`<br>The `this` context inside the function refers to the direct parent of the table instance.
 highlightMatches | Boolean | Highlight matches | `false`
 initFilters | Object | Set initial values for all filter types: generic, by column or custom.<br><br> Accepts an object of key-value pairs, where the key is one of the following: <br><br>a. "GENERIC" - for the generic filter<br>b. column name - for by column filters.<br>c. filter name - for custom filters. <br><br>In case of date filters the date range should be passed as an object comprised of start and end properties, each being a moment object. | `{}`

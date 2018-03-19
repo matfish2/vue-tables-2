@@ -119,6 +119,7 @@ exports.install = function (Vue, globalOptions, useVuex) {
       registerClientFilters: require('./methods/register-client-filters'),
       search: require('./methods/client-search'),
       defaultSort: require('./methods/default-sort'),
+      getGroupSlot: require('./methods/get-group-slot'),
       loadState: function loadState() {
 
         if (!this.opts.saveState) return;
