@@ -13,6 +13,7 @@ module.exports = function () {
   var that = this;
   var query = this.vuex ? JSON.parse(JSON.stringify(this.query)) : this.query;
   var columnOptions;
+  var dpOptions;
 
   var search = function search(query, e) {
     return that.source == 'client' ? that.search(that.data, e) : that.serverSearch(query, e);
@@ -49,7 +50,13 @@ module.exports = function () {
       }
     });
 
-    el.daterangepicker(merge.recursive(datepickerOptions, columnOptions, range));
+    dpOptions = merge(true, datepickerOptions);
+
+    if (columnOptions.ranges === false) {
+      dpOptions.ranges = {};
+    }
+
+    el.daterangepicker(merge.recursive(dpOptions, columnOptions, range));
 
     el.on('apply.daterangepicker', function (ev, picker) {
 
@@ -60,7 +67,7 @@ module.exports = function () {
 
       if (!that.vuex) that.query = query;
 
-      that._setDatepickerText($(this), picker.startDate, picker.endDate);
+      that._setDatepickerText(column, picker.startDate, picker.endDate);
 
       that.updateState('query', query);
 
