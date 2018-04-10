@@ -3,6 +3,7 @@
 module.exports = function () {
   return {
     id: makeId(),
+    allFilteredData: [],
     openChildRows: [],
     windowWidth: window.innerWidth,
     userMultiSorting: {}

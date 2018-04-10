@@ -21,11 +21,7 @@ module.exports = function (h) {
     var filters = [];
     var filter;
 
-    if (_this.hasChildRow && _this.opts.childRowTogglerFirst) filters.push(h(
-      'th',
-      null,
-      []
-    ));
+    if (_this.hasChildRow && _this.opts.childRowTogglerFirst) filters.push(h('th'));
 
     _this.allColumns.map(function (column) {
 
@@ -43,11 +39,7 @@ module.exports = function (h) {
       }
 
       if (typeof _this.$slots['filter__' + column] !== 'undefined') {
-        filter = filter ? h(
-          'div',
-          null,
-          [filter, _this.$slots['filter__' + column]]
-        ) : _this.$slots['filter__' + column];
+        filter = filter ? h('div', [filter, _this.$slots['filter__' + column]]) : _this.$slots['filter__' + column];
       }
 
       filters.push(h(
@@ -61,11 +53,7 @@ module.exports = function (h) {
       ));
     });
 
-    if (_this.hasChildRow && !_this.opts.childRowTogglerFirst) filters.push(h(
-      'th',
-      null,
-      []
-    ));
+    if (_this.hasChildRow && !_this.opts.childRowTogglerFirst) filters.push(h('th'));
 
     return h(
       'tr',

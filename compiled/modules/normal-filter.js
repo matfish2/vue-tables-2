@@ -9,20 +9,19 @@ module.exports = function (h) {
 
         var search = _this.source == 'client' ? _this.search.bind(_this, _this.data) : _this.serverSearch.bind(_this);
 
-        return h(
-            'input',
-            { 'class': classes.input + ' ' + classes.small,
-                attrs: { type: 'text',
-                    value: _this.query,
-                    placeholder: _this.display('filterPlaceholder'),
+        return h('input', { 'class': classes.input + ' ' + classes.small,
+            attrs: { type: 'text',
 
-                    id: id
-                },
-                on: {
-                    'keyup': debounce(search, _this.opts.debounce)
-                }
+                placeholder: _this.display('filterPlaceholder'),
+
+                id: id
             },
-            []
-        );
+            domProps: {
+                'value': _this.query
+            },
+            on: {
+                'keyup': _this.opts.debounce ? debounce(search, _this.opts.debounce) : search
+            }
+        });
     };
 };

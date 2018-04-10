@@ -28,6 +28,8 @@ module.exports = function () {
 
   var offset = (this.page - 1) * this.limit;
 
+  this.allFilteredData = JSON.parse(JSON.stringify(data));
+
   data = data.splice(offset, this.limit);
 
   return this.applyFilters(data);

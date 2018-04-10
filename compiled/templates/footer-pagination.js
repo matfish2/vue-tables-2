@@ -68,36 +68,16 @@ module.exports = function (h, modules, classes, slots) {
       [h(
         'table',
         { 'class': 'VueTables__table ' + (this.opts.skin ? this.opts.skin : classes.table) },
-        [h(
-          'thead',
-          null,
-          [h(
-            'tr',
-            null,
-            [modules.headings(classes.right)]
-          ), slots.beforeFilters, modules.columnFilters(classes), slots.afterFilters]
-        ), h(
-          'tfoot',
-          null,
-          [h(
-            'tr',
-            null,
-            [h(
-              'td',
-              {
-                attrs: { colspan: this.colspan }
-              },
-              [modules.pagination((0, _merge2.default)(classes.pagination, {
-                list: classes.pagination.list + ' ' + classes.right + ' ' + classes.nomargin,
-                count: '' + classes.left
-              }))]
-            )]
-          )]
-        ), slots.beforeBody, h(
-          'tbody',
-          null,
-          [slots.prependBody, modules.rows(classes), slots.appendBody]
-        ), slots.afterBody]
+        [h('thead', [h('tr', [modules.headings(classes.right)]), slots.beforeFilters, modules.columnFilters(classes), slots.afterFilters]), h('tfoot', [h('tr', [h(
+          'td',
+          {
+            attrs: { colspan: this.colspan }
+          },
+          [modules.pagination((0, _merge2.default)(classes.pagination, {
+            list: classes.pagination.list + ' ' + classes.right + ' ' + classes.nomargin,
+            count: '' + classes.left
+          }))]
+        )])]), slots.beforeBody, h('tbody', [slots.prependBody, modules.rows(classes), slots.appendBody]), slots.afterBody]
       )]
     ), slots.afterTable]
   );

@@ -13,21 +13,18 @@ module.exports = function (h) {
                 'a',
                 { 'class': classes.dropdown.item, attrs: { href: '#' }
                 },
-                [h(
-                    'input',
-                    {
-                        attrs: { type: 'checkbox', value: column,
-                            disabled: _this._onlyColumn(column)
-                        },
-                        on: {
-                            'change': _this.toggleColumn.bind(_this, column)
-                        },
-                        domProps: {
-                            'checked': _this.allColumns.includes(column)
-                        }
+                [h('input', {
+                    attrs: { type: 'checkbox',
+                        disabled: _this._onlyColumn(column)
                     },
-                    []
-                ), _this.getHeading(column)]
+                    domProps: {
+                        'value': column,
+                        'checked': _this.allColumns.includes(column)
+                    },
+                    on: {
+                        'change': _this.toggleColumn.bind(_this, column)
+                    }
+                }), _this.getHeading(column)]
             ));
         });
 
@@ -46,11 +43,7 @@ module.exports = function (h) {
                 [_this.display('columns'), h(
                     'span',
                     { 'class': classes.icon + ' ' + classes.small },
-                    [h(
-                        'i',
-                        { 'class': classes.dropdown.caret },
-                        []
-                    )]
+                    [h('i', { 'class': classes.dropdown.caret })]
                 )]
             ), dropdownWrapper.call(_this, h, classes, cols)]
         );

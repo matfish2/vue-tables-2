@@ -8,11 +8,7 @@ module.exports = function (h) {
 
     var headings = [];
 
-    if (_this.hasChildRow && _this.opts.childRowTogglerFirst) headings.push(h(
-      "th",
-      null,
-      []
-    ));
+    if (_this.hasChildRow && _this.opts.childRowTogglerFirst) headings.push(h("th"));
 
     _this.allColumns.map(function (column) {
       headings.push(h(
@@ -32,11 +28,7 @@ module.exports = function (h) {
       ));
     }.bind(_this));
 
-    if (_this.hasChildRow && !_this.opts.childRowTogglerFirst) headings.push(h(
-      "th",
-      null,
-      []
-    ));
+    if (_this.hasChildRow && !_this.opts.childRowTogglerFirst) headings.push(h("th"));
 
     return headings;
   };

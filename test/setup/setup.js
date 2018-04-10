@@ -62,6 +62,7 @@ global.type = function(selector, text) {
 	var w = wrapper.find(selector);
 	w.element.value = text;
 	w.trigger('keyup');
+	
 }
 
 global.select = function(selector, option) {

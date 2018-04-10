@@ -162,7 +162,15 @@ describe(suite + ': Filters', ()=>{
 				
 			});
 		
-		
+			it('allows the user access to the entire filtered dataset (#492)', (done)=>{
+				createWrapper();
+				vm().setFilter('k');
+	
+				run(()=>{
+					expect(vm().allFilteredData.length).toEqual(11);
+				},done);
+	
+			});
 	});
 
 	function createTable(filterByColumn) {

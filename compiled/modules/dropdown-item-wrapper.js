@@ -5,9 +5,5 @@ module.exports = function (h, classes, item) {
         return item;
     }
 
-    return h(
-        'li',
-        null,
-        [item]
-    );
+    return h('li', [item]);
 };
