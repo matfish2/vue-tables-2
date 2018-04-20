@@ -13,7 +13,8 @@ exports.default = function (useVuex, source) {
     activeState: false,
     userColumnsDisplay: [],
     userControlsColumns: false,
-    displayColumnsDropdown: false
+    displayColumnsDropdown: false,
+    openGroups: []
   };
 
   if (useVuex) return data;

@@ -44,11 +44,24 @@ module.exports = function (h) {
     var recordCount = (_this.Page - 1) * _this.limit;
     var currentGroup;
     var groupSlot;
+    var groupValue;
+    var groupByContent;
 
     data.map(function (row, index) {
 
       if (_this.opts.groupBy && _this.source === 'client' && row[_this.opts.groupBy] !== currentGroup) {
         groupSlot = _this.getGroupSlot(row[_this.opts.groupBy]);
+        groupValue = row[_this.opts.groupBy];
+
+        groupByContent = _this.opts.collapseGroups ? h(
+          'button',
+          { 'class': classes.button, on: {
+              'click': _this.toggleGroup.bind(_this, groupValue)
+            }
+          },
+          [groupValue, h('span', { 'class': _this.groupToggleIcon(groupValue) })]
+        ) : groupValue;
+
         rows.push(h(
           'tr',
           { 'class': classes.groupTr, on: {
@@ -60,10 +73,14 @@ module.exports = function (h) {
             {
               attrs: { colspan: _this.colspan }
             },
-            [row[_this.opts.groupBy], groupSlot]
+            [groupByContent, groupSlot]
           )]
         ));
         currentGroup = row[_this.opts.groupBy];
+      }
+
+      if (_this.opts.collapseGroups && !_this.openGroups.includes(currentGroup)) {
+        return;
       }
 
       index = recordCount + index + 1;

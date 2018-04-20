@@ -14,6 +14,7 @@ module.exports = function () {
     perPage: 10,
     perPageValues: [10, 25, 50, 100],
     groupBy: false,
+    collapseGroups: false,
     params: {},
     sortable: true,
     filterable: true,
