@@ -41,9 +41,15 @@ module.exports = function (h, modules, classes, slots) {
     [modules.columnsDropdown(classes)]
   ) : '';
 
-  var tableTop = genericFilter || perpage || columnsDropdown || slots.beforeFilter || slots.afterFilter || slots.beforeLimit || slots.afterLimit ? h(
+  var shouldShowTop = genericFilter || perpage || columnsDropdown || slots.beforeFilter || slots.afterFilter || slots.beforeLimit || slots.afterLimit;
+
+  var tableTop = h(
     'div',
-    { 'class': classes.row },
+    { 'class': classes.row, directives: [{
+        name: 'show',
+        value: shouldShowTop
+      }]
+    },
     [h(
       'div',
       { 'class': classes.column },
@@ -57,7 +63,7 @@ module.exports = function (h, modules, classes, slots) {
         [slots.beforeLimit, perpage, slots.afterLimit]
       ), columnsDropdown]
     )]
-  ) : '';
+  );
 
   return h(
     'div',

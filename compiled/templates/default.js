@@ -65,9 +65,15 @@ module.exports = function (h, modules, classes, slots) {
 
   var footerHeadings = this.opts.footerHeadings ? h('tfoot', [h('tr', [modules.headings(classes.right)])]) : '';
 
-  var tableTop = genericFilter || perpage || dropdownPagination || columnsDropdown || slots.beforeFilter || slots.afterFilter || slots.beforeLimit || slots.afterLimit ? h(
+  var shouldShowTop = genericFilter || perpage || dropdownPagination || columnsDropdown || slots.beforeFilter || slots.afterFilter || slots.beforeLimit || slots.afterLimit;
+
+  var tableTop = h(
     'div',
-    { 'class': classes.row },
+    { 'class': classes.row, directives: [{
+        name: 'show',
+        value: shouldShowTop
+      }]
+    },
     [h(
       'div',
       { 'class': classes.column },
@@ -81,7 +87,7 @@ module.exports = function (h, modules, classes, slots) {
         [slots.beforeLimit, perpage, slots.afterLimit]
       ), dropdownPagination, columnsDropdown]
     )]
-  ) : '';
+  );
 
   return h(
     'div',
