@@ -11,8 +11,10 @@ module.exports = function () {
 
     var el;
 
-    _bus2.default.$off();
-    _bus2.default.$destroy();
+    if (this.opts.destroyEventBus) {
+        _bus2.default.$off();
+        _bus2.default.$destroy();
+    }
 
     if (this.vuex && !this.opts.preserveState) {
         this.$store.unregisterModule(this.name);
