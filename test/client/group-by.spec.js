@@ -22,8 +22,8 @@ describe(suite + ': Row grouping', () => {
     });
 
     it('can make groups collapsible', ()=>{
-        createWrapper({groupBy:'continent',collapseGroups:true});        
-        
+        createWrapper({groupBy:'continent',toggleGroups:true});        
+        click('tbody tr:first-child .btn');
         see('Africa','tbody tr:first-child');
         exists('tbody tr:first-child span.glyphicon');
         not_exists('tbody tr:nth-child(2) td:nth-child(2)');
