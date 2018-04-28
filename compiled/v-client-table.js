@@ -121,17 +121,19 @@ exports.install = function (Vue, globalOptions, useVuex) {
       defaultSort: require('./methods/default-sort'),
       getGroupSlot: require('./methods/get-group-slot'),
       toggleGroup: function toggleGroup(group, e) {
+
         e.stopPropagation();
-        var i = this.openGroups.indexOf(group);
+
+        var i = this.collapsedGroups.indexOf(group);
         if (i >= 0) {
-          this.openGroups.splice(i, 1);
+          this.collapsedGroups.splice(i, 1);
         } else {
-          this.openGroups.push(group);
+          this.collapsedGroups.push(group);
         }
       },
       groupToggleIcon: function groupToggleIcon(group) {
         var cls = this.opts.sortIcon.base + ' ';
-        cls += this.openGroups.indexOf(group) > -1 ? this.opts.sortIcon.up : this.opts.sortIcon.down;
+        cls += this.collapsedGroups.indexOf(group) > -1 ? this.opts.sortIcon.down : this.opts.sortIcon.up;
 
         return cls;
       },

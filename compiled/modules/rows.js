@@ -53,7 +53,7 @@ module.exports = function (h) {
         groupSlot = _this.getGroupSlot(row[_this.opts.groupBy]);
         groupValue = row[_this.opts.groupBy];
 
-        groupByContent = _this.opts.collapseGroups ? h(
+        groupByContent = _this.opts.toggleGroups ? h(
           'button',
           { 'class': classes.button, on: {
               'click': _this.toggleGroup.bind(_this, groupValue)
@@ -79,7 +79,7 @@ module.exports = function (h) {
         currentGroup = row[_this.opts.groupBy];
       }
 
-      if (_this.opts.collapseGroups && !_this.openGroups.includes(currentGroup)) {
+      if (_this.opts.toggleGroups && _this.collapsedGroups.includes(currentGroup)) {
         return;
       }
 

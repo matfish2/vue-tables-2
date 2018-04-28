@@ -14,7 +14,7 @@ exports.default = function (useVuex, source) {
     userColumnsDisplay: [],
     userControlsColumns: false,
     displayColumnsDropdown: false,
-    openGroups: []
+    collapsedGroups: []
   };
 
   if (useVuex) return data;
