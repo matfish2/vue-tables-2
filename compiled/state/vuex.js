@@ -106,7 +106,6 @@ function serverExtra() {
     methods: {
       setData: function setData(data) {
         this.commit('SET_DATA', data);
-        this.commit('LOADED', data);
 
         setTimeout(function () {
           this.dispatch('loaded', data);
