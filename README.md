@@ -310,11 +310,11 @@ app.vue
 ```
 
 ## Vue Components
-Another option to for creating templates is to encapsulate the template within a component and pass the name. The component must have a `data` property, which will receive the row object. You can also add an optional `index` prop, to get the non-zero-based index of the current row relative to the entire dataset. E.g:
+Another option to for creating templates is to encapsulate the template within a component and pass the name. The component must have a `data` property, which will receive the row object. You can also add an optional `index` prop, to get the non-zero-based index of the current row relative to the entire dataset, and an optional `column` prop to get the current column. E.g:
 
 ```js
 Vue.component('delete', {
-    props: ['data', 'index'],
+    props: ['data', 'index', 'column'],
     template: `<a class='delete' @click='erase'></a>`,
     methods: {
         erase() {

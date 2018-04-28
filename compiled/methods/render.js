@@ -6,9 +6,10 @@ module.exports = function (row, column, index, h) {
 
   var template = this.opts.templates[column];
 
-  template = typeof template == 'function' ? template.apply(this.$root, [h, row, index]) : h(template, {
+  template = typeof template == 'function' ? template.apply(this.$root, [h, row, index, column]) : h(template, {
     attrs: {
       data: row,
+      column: column,
       index: index
     }
   });
