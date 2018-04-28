@@ -48,8 +48,7 @@ exports.install = function (Vue, globalOptions, useVuex) {
         required: true
       },
       url: {
-        type: String,
-        required: true
+        type: String
       },
       name: {
         type: String,
@@ -64,6 +63,10 @@ exports.install = function (Vue, globalOptions, useVuex) {
       }
     },
     created: function created() {
+
+      if (!this.opts.requestFunction && !this.url) {
+        throw 'vue-tables-2: you must provide either a "url" prop or a custom request function. Aborting';
+      }
 
       _created(this);
 

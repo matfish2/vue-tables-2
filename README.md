@@ -234,6 +234,8 @@ options: {
 }
 ```
 
+Note: when using a custom request function, the `url` prop is not required.
+
 ### Implementations
 
 I have included [an Eloquent implementation](https://raw.githubusercontent.com/matfish2/vue-tables-2/master/server/PHP/EloquentVueTables.php) for Laravel Users.
