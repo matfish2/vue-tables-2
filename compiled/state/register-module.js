@@ -8,6 +8,10 @@ var _mutations = require('./mutations');
 
 var _mutations2 = _interopRequireDefault(_mutations);
 
+var _addHasModuleToVuex = require('../helpers/add-has-module-to-vuex');
+
+var _addHasModuleToVuex2 = _interopRequireDefault(_addHasModuleToVuex);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 module.exports = function (self) {
@@ -17,5 +21,7 @@ module.exports = function (self) {
     mutations: (0, _mutations2.default)(self)
   };
 
-  self.$store.registerModule(self.name, store);
+  if (!self.$store.hasModule(self.name)) {
+    self.$store.registerModule(self.name, store);
+  }
 };
