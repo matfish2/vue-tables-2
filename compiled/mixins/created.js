@@ -1,11 +1,5 @@
 'use strict';
 
-var _addHasModuleToVuex = require('../helpers/add-has-module-to-vuex');
-
-var _addHasModuleToVuex2 = _interopRequireDefault(_addHasModuleToVuex);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 var is_empty = require('../helpers/is-empty');
 
 var registerVuexModule = require('../state/register-module');
@@ -13,7 +7,6 @@ var registerVuexModule = require('../state/register-module');
 module.exports = function (self) {
 
   if (self.vuex) {
-    (0, _addHasModuleToVuex2.default)(self.$store);
     registerVuexModule(self);
   } else {
     self.limit = self.opts.perPage;
