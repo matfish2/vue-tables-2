@@ -94,4 +94,21 @@ describe(suite + ': Request', () => {
 
 	});
 
+	it('refreshes the table when the URL changes (regression test for #510)', (done)=>{
+
+		var request = moxios.requests.mostRecent();
+
+		expect(request.config.url).toEqual('get-data');
+
+		vm().url = '/new-url';
+
+		setTimeout(()=>{
+			var request = moxios.requests.mostRecent();
+			expect(request.config.url).toEqual('/new-url');
+			done();
+		},100);
+		
+
+	});
+
 });

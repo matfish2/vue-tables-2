@@ -151,6 +151,11 @@ exports.install = function (Vue, globalOptions, useVuex) {
         this.activeState = true;
       }
     },
+    watch: {
+      url: function url() {
+        this.refresh();
+      }
+    },
     computed: {
       totalPages: require('./computed/total-pages'),
       filteredQuery: require('./computed/filtered-query'),

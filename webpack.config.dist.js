@@ -6,7 +6,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'vue-tables-2.min.js',
+    filename: env.production?'vue-tables-2.min.js':'vue-tables.js',
     libraryTarget:'var',
     library:'VueTables'
   },
@@ -31,23 +31,26 @@ module.exports = {
   }
 }
 
-module.exports.plugins = (module.exports.plugins || []).concat([
-  //  new webpack.IgnorePlugin(/^vue$/),
-  new webpack.DefinePlugin({
-    'process.env': {
-      NODE_ENV: '"production"'
-    }
-  }),
-  new webpack.optimize.UglifyJsPlugin({
-    sourceMap:false,
-    output:{
-      comments:false
-    },
-    compress: {
-      warnings: false
-    }
-  }),
-  new webpack.LoaderOptionsPlugin({
-    minimize: true
-  })
-])
+if (env.production) {
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    //  new webpack.IgnorePlugin(/^vue$/),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap:false,
+      output:{
+        comments:false
+      },
+      compress: {
+        warnings: false
+      }
+    }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true
+    })
+  ])
+  
+}
