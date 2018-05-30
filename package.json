@@ -1,7 +1,7 @@
 {
   "name": "vue-tables-2",
   "description": "Vue.js 2 grid components",
-  "version": "1.4.50",
+  "version": "1.4.51",
   "keywords": [
     "vue2",
     "vuex",
@@ -18,6 +18,7 @@
     "dist"
   ],
   "dependencies": {
+    "@babel/helper-module-imports": "^7.0.0-beta.49",
     "array-intersection": "^0.1.2",
     "clone": "^2.1.0",
     "debounce": "^1.1",
@@ -41,7 +42,7 @@
     "test-server-vuex": "cross-env NODE_ENV=test mocha-webpack --require test/setup/setup.js test/setup/with-vuex.js test/setup/server-setup.js test/*.spec.js test/server/*.spec.js",
     "watch-server": "cross-env NODE_ENV=test mocha-webpack --watch --require test/setup/setup.js test/setup/server-setup.js test/*.spec.js test/server/*.spec.js",
     "build-dist": "cross-env NODE_ENV=production webpack --config webpack.config.dist.js",
-    "build-dist-dev": "cross-env NODE_ENV=dev webpack --config webpack.config.dist.js"    
+    "build-dist-dev": "cross-env NODE_ENV=dev webpack --config webpack.config.dist.js"
   },
   "license": "MIT",
   "main": "compiled/index.js",
@@ -49,13 +50,11 @@
     "axios": "^0.17.0",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.26.0",
-    "babel-helper-vue-jsx-merge-props": "^2.0.2",
+    "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-loader": "^7.1.2",
     "babel-plugin-syntax-jsx": "^6.18.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-plugin-transform-vue-jsx": "^3.5.0",
-    "babel-preset-env": "^1.6.0",
+    "babel-plugin-transform-vue-jsx": "^3.7.0",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
