@@ -19,8 +19,8 @@ module.exports = function (h, selectClass) {
                   options.push(h(
                         'option',
                         {
+                              attrs: { value: option.id },
                               domProps: {
-                                    'value': option.id,
                                     'selected': selected
                               }
                         },
@@ -40,11 +40,8 @@ module.exports = function (h, selectClass) {
                                     'change': search
                               },
                               attrs: {
-                                    name: 'vf__' + column
-                              },
-                              domProps: {
-                                    'value': _this.query[column]
-                              }
+                                    name: 'vf__' + column,
+                                    value: _this.query[column] }
                         },
                         [h(
                               'option',

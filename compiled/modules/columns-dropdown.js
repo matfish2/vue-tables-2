@@ -14,15 +14,14 @@ module.exports = function (h) {
                 { 'class': classes.dropdown.item, attrs: { href: '#' }
                 },
                 [h('input', {
-                    attrs: { type: 'checkbox',
+                    attrs: { type: 'checkbox', value: column,
                         disabled: _this._onlyColumn(column)
-                    },
-                    domProps: {
-                        'value': column,
-                        'checked': _this.allColumns.includes(column)
                     },
                     on: {
                         'change': _this.toggleColumn.bind(_this, column)
+                    },
+                    domProps: {
+                        'checked': _this.allColumns.includes(column)
                     }
                 }), _this.getHeading(column)]
             ));
