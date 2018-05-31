@@ -3399,8 +3399,8 @@ module.exports = function (h) {
     perpageValues.push(h(
       "option",
       {
+        attrs: { value: value },
         domProps: {
-          "value": value,
           "selected": selected
         }
       },
@@ -11218,13 +11218,10 @@ module.exports = function (h) {
 
         return h('input', { 'class': classes.input + ' ' + classes.small,
             attrs: { type: 'text',
-
+                value: _this.query,
                 placeholder: _this.display('filterPlaceholder'),
 
                 id: id
-            },
-            domProps: {
-                'value': _this.query
             },
             on: {
                 'keyup': _this.opts.debounce ? debounce(search, _this.opts.debounce) : search
@@ -11255,8 +11252,8 @@ module.exports = function (h) {
       pages.push(h(
         "option",
         {
+          attrs: { value: pag },
           domProps: {
-            "value": pag,
             "selected": selected
           }
         },
@@ -11273,13 +11270,11 @@ module.exports = function (h) {
         attrs: {
           name: "page",
 
+          value: _this.page,
+
           id: id
         },
-        ref: "page",
-        domProps: {
-          "value": _this.page
-        },
-        on: {
+        ref: "page", on: {
           "change": _this.setPage.bind(_this, null, false)
         }
       },
@@ -11432,10 +11427,8 @@ module.exports = function (h, inputClass) {
       'class': inputClass,
       attrs: { name: 'vf__' + column,
         type: 'text',
-        placeholder: _this.display('filterBy', { column: _this.getHeading(column) })
-      },
-      domProps: {
-        'value': _this.query[column]
+        placeholder: _this.display('filterBy', { column: _this.getHeading(column) }),
+        value: _this.query[column]
       }
     });
   };
@@ -11492,8 +11485,8 @@ module.exports = function (h, selectClass) {
                   options.push(h(
                         'option',
                         {
+                              attrs: { value: option.id },
                               domProps: {
-                                    'value': option.id,
                                     'selected': selected
                               }
                         },
@@ -11513,11 +11506,8 @@ module.exports = function (h, selectClass) {
                                     'change': search
                               },
                               attrs: {
-                                    name: 'vf__' + column
-                              },
-                              domProps: {
-                                    'value': _this.query[column]
-                              }
+                                    name: 'vf__' + column,
+                                    value: _this.query[column] }
                         },
                         [h(
                               'option',
@@ -11646,11 +11636,9 @@ module.exports = function (h) {
       "select",
       { "class": cls,
         attrs: { name: "limit",
+          value: _this.limit,
 
           id: id
-        },
-        domProps: {
-          "value": _this.limit
         },
         on: {
           "change": _this.setLimit.bind(_this)
@@ -11682,15 +11670,14 @@ module.exports = function (h) {
                 { 'class': classes.dropdown.item, attrs: { href: '#' }
                 },
                 [h('input', {
-                    attrs: { type: 'checkbox',
+                    attrs: { type: 'checkbox', value: column,
                         disabled: _this._onlyColumn(column)
-                    },
-                    domProps: {
-                        'value': column,
-                        'checked': _this.allColumns.includes(column)
                     },
                     on: {
                         'change': _this.toggleColumn.bind(_this, column)
+                    },
+                    domProps: {
+                        'checked': _this.allColumns.includes(column)
                     }
                 }), _this.getHeading(column)]
             ));
