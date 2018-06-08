@@ -11,14 +11,18 @@ module.exports = function (h) {
         var cols = _this.columns.map(function (column) {
             return dropdownItemWrapper(h, classes, h(
                 'a',
-                { 'class': classes.dropdown.item, attrs: { href: '#' }
+                { 'class': classes.dropdown.item,
+                    attrs: { href: '#'
+                    },
+                    on: {
+                        'click': function click() {
+                            return _this.toggleColumn(column);
+                        }
+                    }
                 },
                 [h('input', {
                     attrs: { type: 'checkbox', value: column,
                         disabled: _this._onlyColumn(column)
-                    },
-                    on: {
-                        'change': _this.toggleColumn.bind(_this, column)
                     },
                     domProps: {
                         'checked': _this.allColumns.includes(column)
