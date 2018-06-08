@@ -78,6 +78,8 @@ exports.install = function (Vue, globalOptions, useVuex) {
 
     mounted: function mounted() {
 
+      this._setColumnsDropdownCloseListener();
+
       if (this.opts.toMomentFormat) this.transformDateStringsToMoment();
 
       if (!this.vuex) {

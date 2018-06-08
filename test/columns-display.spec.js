@@ -33,6 +33,7 @@ describe(suite + ': Columns Display', () => {
         
     });
 
+
     it('Checks all columns by default', ()=>{
         var els = getCheckboxes();
 
@@ -93,5 +94,5 @@ function getCheckboxes() {
 }
 
 function toggleColumn(num) {
-    click(`ul.dropdown-menu li:nth-child(${num}) input`);    
+    click(`ul.dropdown-menu li:nth-child(${num}) a`);    
 }

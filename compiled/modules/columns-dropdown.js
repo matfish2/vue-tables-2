@@ -33,7 +33,7 @@ module.exports = function (h) {
 
         return h(
             'div',
-            { 'class': classes.dropdown.container + ' ' + classes.right + ' VueTables__columns-dropdown' },
+            { ref: 'columnsdropdown', 'class': classes.dropdown.container + ' ' + classes.right + ' VueTables__columns-dropdown' },
             [h(
                 'button',
                 {

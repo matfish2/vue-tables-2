@@ -93,6 +93,8 @@ exports.install = function (Vue, globalOptions, useVuex) {
     },
     mounted: function mounted() {
 
+      this._setColumnsDropdownCloseListener();
+
       if (this.vuex) return;
 
       this.registerServerFilters();
