@@ -165,6 +165,11 @@ exports.install = function (Vue, globalOptions, useVuex) {
 
         this.activeState = true;
 
+        if (state.userControlsColumns){
+          this.userColumnsDisplay = state.userColumnsDisplay;
+          this.userControlsColumns = state.userControlsColumns;
+        }
+
         // TODO: Custom Queries
       }
     }
