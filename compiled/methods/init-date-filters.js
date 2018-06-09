@@ -71,7 +71,7 @@ module.exports = function () {
 
       that.updateState('query', query);
 
-      search(query, { target: { name: 'vf__' + column, value: query[column] } });
+      search(query, { target: { name: that._getColumnName(column), value: query[column] } });
     });
 
     el.on('cancel.daterangepicker', function (ev, picker) {
@@ -87,7 +87,7 @@ module.exports = function () {
 
       $(this).html("<span class='VueTables__filter-placeholder'>" + that.display('filterBy', { column: that.getHeading(column) }) + "</span>");
 
-      search(query, { target: { name: 'vf__' + column, value: query[column] } });
+      search(query, { target: { name: that._getColumnName(column), value: query[column] } });
     });
   });
 };

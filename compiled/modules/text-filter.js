@@ -27,7 +27,7 @@ module.exports = function (h, inputClass) {
       },
 
       'class': inputClass,
-      attrs: { name: 'vf__' + column,
+      attrs: { name: _this._getColumnName(column),
         type: 'text',
         placeholder: _this.display('filterBy', { column: _this.getHeading(column) }),
         value: _this.query[column]

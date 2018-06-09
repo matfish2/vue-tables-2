@@ -54,5 +54,7 @@ module.exports = {
       _setDatepickerText: require('../methods/set-datepicker-text'),
       _initialOrderAscending: require('../methods/initial-order-ascending'),
       dateFormat: require('../methods/date-format'),
-      _setColumnsDropdownCloseListener: require('../methods/set-columns-dropdown-close-listener')
+      _setColumnsDropdownCloseListener: require('../methods/set-columns-dropdown-close-listener'),
+      _getValue: require('../methods/get-value'),
+      _getColumnName: require('../methods/get-column-name')
 };

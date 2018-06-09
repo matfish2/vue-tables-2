@@ -7,7 +7,10 @@ module.exports = function (query) {
   var el;
 
   if (this.opts.filterByColumn) {
+
     for (var column in query) {
+
+      var columnName = this._getColumnName(column);
 
       if (this.isDateFilter(column)) {
         if (query[column] && _typeof(query[column]) === 'object') {
@@ -20,8 +23,7 @@ module.exports = function (query) {
         }
         continue;
       }
-
-      el = this.$el.querySelector('[name=\'vf__' + column + '\']');
+      el = this.$el.querySelector('[name=\'' + columnName + '\']');
 
       if (el) {
         el.value = query[column];

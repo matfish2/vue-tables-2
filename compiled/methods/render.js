@@ -2,7 +2,16 @@
 
 module.exports = function (row, column, index, h) {
 
-  if (this.templatesKeys.indexOf(column) == -1) return this.highlightMatch(row[column], column, h);
+  var value = this._getValue(row, column);
+
+  if (this.templatesKeys.indexOf(column) == -1) {
+
+    if (typeof value === 'undefined' || !this.opts.highlightMatches || this.filterableColumns.indexOf(column) === -1) {
+      return value;
+    }
+
+    return this.highlightMatch(value, column, h);
+  }
 
   var template = this.opts.templates[column];
 

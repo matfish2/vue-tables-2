@@ -40,7 +40,7 @@ module.exports = function (h, selectClass) {
                                     'change': search
                               },
                               attrs: {
-                                    name: 'vf__' + column,
+                                    name: _this._getColumnName(column),
                                     value: _this.query[column] }
                         },
                         [h(

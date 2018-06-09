@@ -66,6 +66,19 @@ describe(suite + ': Filters', ()=>{
 			}, done, 100);
 
 		});
+
+		it.only(trigger + ':can filter by specific property give the column value', (done)=>{
+			createWrapper({debounce:0,
+				filterByColumn:true            
+			   },['id','name','meta.population','meta.area','meta.fauna.lions']);    
+
+			   enterQuery('meta.area','[name="vf__meta@@@area"]', '6000',trigger);
+			   run(()=>{
+				see('Yemen','table tbody tr:first-child td:nth-child(2)');
+				count("tbody tr", 1);
+			   },done);
+				
+		});
 		
 		it(trigger + ': filters by text column filter', (done)=>{
 			

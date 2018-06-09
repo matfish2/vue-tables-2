@@ -7,7 +7,15 @@ return  [
 	updated_at: "2015-04-24T01:46:50.459593",
 	uri: "http://api.lobbyfacts.eu/api/1/country/245",
 	continent:'Africa',
-	id: 245
+	id: 245,
+	meta: {
+		population:123456,
+		area: 2000,
+		fauna:{
+			bears:0,
+			lions:5123
+		}
+	}
 },
 {
 	code: "ZM",
@@ -16,7 +24,11 @@ return  [
 	updated_at: "2015-04-24T01:46:50.457468",
 	uri: "http://api.lobbyfacts.eu/api/1/country/244",
 	continent:'Africa',	
-	id: 244
+	id: 244,
+	meta: {
+		population:10000,
+		area: 3000
+	}
 },
 {
 	code: "YE",
@@ -25,7 +37,11 @@ return  [
 	updated_at: "2015-04-24T01:46:50.454741",
 	uri: "http://api.lobbyfacts.eu/api/1/country/243",
 	continent:'Africa',	
-	id: 243
+	id: 243,
+	meta: {
+		population:11000000,
+		area: 6000
+	}
 },
 {
 	code: "EH",
@@ -34,7 +50,11 @@ return  [
 	updated_at: "2015-04-24T01:46:50.452011",
 	uri: "http://api.lobbyfacts.eu/api/1/country/242",
 	continent:'Africa',	
-	id: 242
+	id: 242,
+	meta: {
+		population:10000,
+		area: 3000
+	}
 },
 {
 	code: "WF",
@@ -43,7 +63,11 @@ return  [
 	updated_at: "2015-04-24T01:46:50.449355",
 	uri: "http://api.lobbyfacts.eu/api/1/country/241",
 	continent:'Asia',	
-	id: 241
+	id: 241,
+	meta: {
+		population:10000,
+		area: 3000
+	}
 },
 {
 	code: "VN",
@@ -52,7 +76,11 @@ return  [
 	updated_at: "2015-04-24T01:46:50.446652",
 	uri: "http://api.lobbyfacts.eu/api/1/country/240",
 	continent:'Asia',	
-	id: 240
+	id: 240,
+	meta: {
+		population:10000,
+		area: 3000
+	}
 },
 {
 	code: "VE",
@@ -61,7 +89,11 @@ return  [
 	updated_at: "2015-04-24T01:46:50.444040",
 	uri: "http://api.lobbyfacts.eu/api/1/country/239",
 	continent:'South America',
-	id: 239
+	id: 239,
+	meta: {
+		population:10000,
+		area: 3000
+	}
 },
 {
 	code: "VU",
@@ -70,7 +102,11 @@ return  [
 	updated_at: "2015-04-24T01:46:50.441433",
 	uri: "http://api.lobbyfacts.eu/api/1/country/238",
 	continent:'Asia',	
-	id: 238
+	id: 238,
+	meta: {
+		population:10000,
+		area: 3000
+	}
 },
 {
 	code: "UZ",
@@ -79,7 +115,11 @@ return  [
 	updated_at: "2015-04-24T01:46:50.438757",
 	uri: "http://api.lobbyfacts.eu/api/1/country/237",
 	continent:'Asia',	
-	id: 237
+	id: 237,
+	meta: {
+		population:10000,
+		area: 3000
+	}
 },
 {
 	code: "UY",
@@ -88,7 +128,11 @@ return  [
 	updated_at: "2015-04-24T01:46:50.435770",
 	uri: "http://api.lobbyfacts.eu/api/1/country/236",
 	continent:'South America',	
-	id: 236
+	id: 236,
+	meta: {
+		population:10000,
+		area: 3000
+	}
 },
 {
 	code: "VI",
