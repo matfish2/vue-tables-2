@@ -3735,6 +3735,11 @@ exports.install = function (Vue, globalOptions, useVuex) {
 
         this.activeState = true;
 
+        if (state.userControlsColumns) {
+          this.userColumnsDisplay = state.userColumnsDisplay;
+          this.userControlsColumns = state.userControlsColumns;
+        }
+
         // TODO: Custom Queries
       }
     }
@@ -9898,6 +9903,9 @@ module.exports = function (column) {
     } else {
         this.userColumnsDisplay.push(column);
     }
+
+    this.updateState('userControlsColumns', true);
+    this.updateState('userColumnsDisplay', this.userColumnsDisplay);
 };
 
 /***/ }),

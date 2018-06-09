@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 module.exports = function (column) {
 
@@ -17,6 +17,7 @@ module.exports = function (column) {
     } else {
         this.userColumnsDisplay.push(column);
     }
+
     this.updateState('userControlsColumns', true);
     this.updateState('userColumnsDisplay', this.userColumnsDisplay);
 };
