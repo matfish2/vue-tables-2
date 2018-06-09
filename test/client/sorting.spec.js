@@ -88,7 +88,7 @@ describe(suite + ': Sorting', function() {
 
 	});
 
-	it.only('can sort by nested values', ()=>{
+	it('can sort by nested values', ()=>{
         createWrapper({debounce:0,             
             orderBy:{
             column:'meta.population',

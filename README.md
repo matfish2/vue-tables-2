@@ -11,7 +11,8 @@ or [here](https://jsfiddle.net/matfish2/js4bmdbL/) for a rudimentary server comp
 - [Client Side](#client-side)
   - [Grouping](#grouping)
 - [Server Side](#server-side)
-- [Implementations](#implementations)
+  - [Implementations](#implementations)
+- [Nested Data](#nested-data)
 - [Templates](#templates)
   - [Scoped Slots](#scoped-slots)
   - [Virtual DOM Functions](#virtual-dom-functions)
@@ -247,6 +248,21 @@ If you happen to write other implementations for PHP or other languages, a pull 
 1. if this is the first implementation in this language add an interface similar to the one found in the PHP folder.
 1. Have it implement the interface.
 1. TEST IT.
+
+# Nested Data
+
+Oftentimes your dataset will consist of *objects*, rather than primitive types.
+By default, the package has no knowledge of how those objects should be presented.
+To tell the package how to handle those fields you can use one of two options, depending on your needs:
+
+1. Decide which *primitive* property you would like to refer to as the relevant piece of data, by using the dot notation when declaring you `columns` prop. E.g: `['name','age','meta.education.degree']` 
+2. Use [Templates](#templates)
+
+Option 1 is more simple and straight-forward. However, it disregards all the other properties, which means that sorting, filtering and presentation will all refer to the single piece of primitive data at the "end of the chain".
+
+If you want to use the entire object, option 2 is your best route. This will allow you to incorporate all the properties in the presentation. When using the client component note that:
+* Default filtering behaviour will recursively scan the entire object for the query. 
+* If the column is sortable, you will need to define a sorting algorithm, using the `customSorting`[#custom-sorting] option. 
 
 # Templates
 

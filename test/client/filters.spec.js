@@ -67,7 +67,7 @@ describe(suite + ': Filters', ()=>{
 
 		});
 
-		it.only(trigger + ':can filter by specific property give the column value', (done)=>{
+		it(trigger + ':can filter by specific property give the column value', (done)=>{
 			createWrapper({debounce:0,
 				filterByColumn:true            
 			   },['id','name','meta.population','meta.area','meta.fauna.lions']);    
