@@ -18,7 +18,6 @@ module.exports = function () {
     document.addEventListener('click', handler);
 
     this.$once('hook:beforeDestroy', function () {
-      console.log("destory listerns");
       document.removeEventListener('click', handler);
       _this.$refs.columnsdropdown.removeEventListener('click', stopProp);
     });
