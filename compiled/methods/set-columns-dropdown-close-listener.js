@@ -8,7 +8,6 @@ module.exports = function () {
     var stopProp = function stopProp(e) {
       return e.stopPropagation();
     };
-
     var handler = function handler() {
       if (_this.displayColumnsDropdown) {
         _this.displayColumnsDropdown = false;
@@ -18,7 +17,8 @@ module.exports = function () {
     this.$refs.columnsdropdown.addEventListener('click', stopProp);
     document.addEventListener('click', handler);
 
-    this.$once('hook:destroyed', function () {
+    this.$once('hook:beforeDestroy', function () {
+      console.log("destory listerns");
       document.removeEventListener('click', handler);
       _this.$refs.columnsdropdown.removeEventListener('click', stopProp);
     });
