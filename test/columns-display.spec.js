@@ -70,6 +70,25 @@ describe(suite + ': Columns Display', () => {
         
     });
 
+    it('When a column is hidden it does NOT pass the filter value to the next column (Regression test for #529)', (done)=>{
+        createWrapper({
+            filterByColumn:true,
+            debounce:0,
+            columnsDropdown:true
+        });
+
+        enterQuery('code','[name=vf__code]', 'ZW','UI');
+        see('Code','table thead tr:first-child th:first-child');        
+        expect(wrapper.find('table thead tr:nth-child(2) th:first-child input').element.value).toEqual('ZW');
+        toggleColumn(1);
+        vm().$nextTick(()=>{
+            expect(wrapper.find('table thead tr:nth-child(2) th:first-child input').element.name).toEqual('vf__name');      
+            expect(wrapper.find('table thead tr:nth-child(2) th:first-child input').element.value).not.toEqual('ZW');
+            done();
+        });
+             
+    })
+
     it('disables the checked checkbox when only one column remains', () => {
         toggleColumn(1);
         toggleColumn(2);

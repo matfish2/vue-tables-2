@@ -1,7 +1,7 @@
 {
   "name": "vue-tables-2",
   "description": "Vue.js 2 grid components",
-  "version": "1.4.56",
+  "version": "1.4.57",
   "keywords": [
     "vue2",
     "vuex",
@@ -20,7 +20,7 @@
   "dependencies": {
     "@babel/helper-module-imports": "^7.0.0-beta.49",
     "array-intersection": "^0.1.2",
-    "clone": "^2.1.0",
+    "clone": "^2.1.1",
     "debounce": "^1.1",
     "merge": "^1.2.0",
     "vue": ">=2.0.0",

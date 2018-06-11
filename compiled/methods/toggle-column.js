@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = function (column) {
+    var _this = this;
 
     if (!this.userControlsColumns) {
         this.userColumnsDisplay = JSON.parse(JSON.stringify(this.allColumns));
@@ -20,4 +21,8 @@ module.exports = function (column) {
 
     this.updateState('userControlsColumns', true);
     this.updateState('userColumnsDisplay', this.userColumnsDisplay);
+
+    this.$nextTick(function () {
+        _this._setFiltersDOM(_this.query);
+    });
 };

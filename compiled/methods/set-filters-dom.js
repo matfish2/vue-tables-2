@@ -27,7 +27,7 @@ module.exports = function (query) {
 
       if (el) {
         el.value = query[column];
-      } else {
+      } else if (this.columns.indexOf(column) === -1) {
         console.error('vue-tables-2: Error in setting filter value. Column \'' + column + '\' does not exist.');
       }
     }

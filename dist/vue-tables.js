@@ -9887,6 +9887,7 @@ module.exports = function (name) {
 
 
 module.exports = function (column) {
+    var _this = this;
 
     if (!this.userControlsColumns) {
         this.userColumnsDisplay = JSON.parse(JSON.stringify(this.allColumns));
@@ -9906,6 +9907,10 @@ module.exports = function (column) {
 
     this.updateState('userControlsColumns', true);
     this.updateState('userColumnsDisplay', this.userColumnsDisplay);
+
+    this.$nextTick(function () {
+        _this._setFiltersDOM(_this.query);
+    });
 };
 
 /***/ }),
@@ -10004,7 +10009,7 @@ module.exports = function (query) {
 
       if (el) {
         el.value = query[column];
-      } else {
+      } else if (this.columns.indexOf(column) === -1) {
         console.error('vue-tables-2: Error in setting filter value. Column \'' + column + '\' does not exist.');
       }
     }
@@ -12120,13 +12125,7 @@ function clone(parent, circular, depth, prototype, includeNonEnumerable) {
     } else if (clone.__isDate(parent)) {
       child = new Date(parent.getTime());
     } else if (useBuffer && Buffer.isBuffer(parent)) {
-      if (Buffer.allocUnsafe) {
-        // Node.js >= 4.5.0
-        child = Buffer.allocUnsafe(parent.length);
-      } else {
-        // Older Node.js versions
-        child = new Buffer(parent.length);
-      }
+      child = new Buffer(parent.length);
       parent.copy(child);
       return child;
     } else if (_instanceof(parent, Error)) {
