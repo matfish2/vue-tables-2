@@ -16,6 +16,7 @@ module.exports = function () {
     groupBy: false,
     collapseGroups: false,
     destroyEventBus: false,
+    sendEmptyFilters: false,
     params: {},
     sortable: true,
     filterable: true,

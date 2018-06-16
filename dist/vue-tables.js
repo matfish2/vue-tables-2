@@ -10383,6 +10383,7 @@ module.exports = function () {
     groupBy: false,
     collapseGroups: false,
     destroyEventBus: false,
+    sendEmptyFilters: false,
     params: {},
     sortable: true,
     filterable: true,
@@ -12686,7 +12687,8 @@ module.exports = function () {
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 module.exports = function () {
-    if (_typeof(this.query) !== 'object') {
+
+    if (_typeof(this.query) !== 'object' || this.opts.sendEmptyFilters) {
         return this.query;
     }
 
