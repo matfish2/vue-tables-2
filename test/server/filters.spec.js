@@ -65,12 +65,7 @@ describe(suite + ": Filters", () => {
 			},done);
 		});
 		
-		
-		it(trigger + ": does not send empty filters", (done)=>{
-			enterQuery('name','[name=vf__name]', '', trigger);
-			expect(vm().filteredQuery).toEqual({});
-		});
-		
+			
 		it(trigger + ': sends list columns request', (done)=>{
 			
 			createWrapper({
