@@ -10675,25 +10675,25 @@ var _mutations = __webpack_require__(163);
 
 var _mutations2 = _interopRequireDefault(_mutations);
 
+var _merge = __webpack_require__(0);
+
+var _merge2 = _interopRequireDefault(_merge);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 module.exports = function (self) {
 
-  var initialState;
-
-  if (self.$store && self.$store.state && self.$store.state[self.name]) {
-    initialState = self.$store.state[self.name];
-    self.$store.unregisterModule(self.name);
-  } else {
-    initialState = (0, _state2.default)(self);
-  }
-
-  var store = {
-    state: initialState,
+  var Module = {
+    state: (0, _state2.default)(self),
     mutations: (0, _mutations2.default)(self)
   };
 
-  self.$store.registerModule(self.name, store);
+  if (self.$store && self.$store.state && self.$store.state[self.name]) {
+    Module.state = _merge2.default.recursive(Module.state, self.$store.state[self.name]);
+    self.$store.unregisterModule(self.name);
+  }
+
+  self.$store.registerModule(self.name, Module);
 };
 
 /***/ }),
