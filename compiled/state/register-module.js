@@ -22,7 +22,6 @@ module.exports = function (self) {
   };
 
   if (self.$store && self.$store.state && self.$store.state[self.name]) {
-    console.log("unregister module");
     Module.state = _merge2.default.recursive(Module.state, self.$store.state[self.name]);
     self.$store.unregisterModule(self.name);
   }
