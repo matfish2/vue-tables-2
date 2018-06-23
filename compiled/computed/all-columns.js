@@ -19,6 +19,8 @@ module.exports = function () {
     });
   }
 
+  if (this.opts.ssr) return this.Columns;
+
   // developer defined columns display
 
   return this.Columns.filter(function (column) {

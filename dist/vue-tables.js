@@ -3180,7 +3180,7 @@ exports.default = function (useVuex, source) {
     query: null,
     page: page,
     limit: 10,
-    windowWidth: window.innerWidth,
+    windowWidth: typeof window !== 'undefined' ? window.innerWidth : null,
     orderBy: {
       column: false,
       ascending: true
@@ -3210,7 +3210,7 @@ module.exports = function () {
     id: makeId(),
     allFilteredData: [],
     openChildRows: [],
-    windowWidth: window.innerWidth,
+    windowWidth: typeof window !== 'undefined' ? window.innerWidth : null,
     userMultiSorting: {}
   };
 };
@@ -3243,7 +3243,7 @@ module.exports = function (self) {
     self.limit = self.opts.perPage;
   }
 
-  if (is_empty(self.opts.columnsDisplay)) return;
+  if (is_empty(self.opts.columnsDisplay) || typeof window === 'undefined') return;
 
   self.columnsDisplay = getColumnsDisplay(self.opts.columnsDisplay);
 
@@ -10321,6 +10321,8 @@ module.exports = function () {
       return _this.userColumnsDisplay.includes(column);
     });
   }
+
+  if (this.opts.ssr) return this.Columns;
 
   // developer defined columns display
 

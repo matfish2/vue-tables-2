@@ -5,7 +5,7 @@ module.exports = function () {
     id: makeId(),
     allFilteredData: [],
     openChildRows: [],
-    windowWidth: window.innerWidth,
+    windowWidth: typeof window !== 'undefined' ? window.innerWidth : null,
     userMultiSorting: {}
   };
 };

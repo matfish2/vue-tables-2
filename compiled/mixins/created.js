@@ -12,7 +12,7 @@ module.exports = function (self) {
     self.limit = self.opts.perPage;
   }
 
-  if (is_empty(self.opts.columnsDisplay)) return;
+  if (is_empty(self.opts.columnsDisplay) || typeof window === 'undefined') return;
 
   self.columnsDisplay = getColumnsDisplay(self.opts.columnsDisplay);
 
