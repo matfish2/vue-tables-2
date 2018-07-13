@@ -5,8 +5,8 @@
 
 namespace App\Services\VueTables;
 
-Interface VueTablesInterface {
+interface VueTablesInterface {
 
-  public function get($table, Array $fields);
+    public function get($table, array $fields);
 
 }
