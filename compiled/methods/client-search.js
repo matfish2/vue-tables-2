@@ -96,7 +96,7 @@ function setCurrentQuery(query) {
 
 function foundMatch(query, value, isListFilter) {
 
-  if (['string', 'number'].indexOf(typeof value === 'undefined' ? 'undefined' : _typeof(value)) > -1) {
+  if (['string', 'number', 'boolean'].indexOf(typeof value === 'undefined' ? 'undefined' : _typeof(value)) > -1) {
     value = String(value).toLowerCase();
   }
 
