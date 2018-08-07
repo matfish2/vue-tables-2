@@ -5,7 +5,7 @@ module.exports = function (h) {
 
   return function (theme) {
 
-    if (_this.opts.pagination && _this.opts.pagination.dropdown) return '';
+    if ((_this.opts.pagination && _this.opts.pagination.dropdown) || _this.opts.pagination.disable) return '';
 
     var options = {
       theme: theme,
