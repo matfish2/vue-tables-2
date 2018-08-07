@@ -8,7 +8,7 @@ module.exports = function (h) {
 
     var headings = [];
 
-    if (_this.hasChildRow && _this.opts.childRowTogglerFirst) headings.push(h("th"));
+    if (_this.hasChildRow && _this.opts.childRowTogglerFirst) headings.push(h("th", {class: "_toggler"}));
 
     _this.allColumns.map(function (column) {
       var heading = this.getHeading(column, h);
@@ -19,7 +19,8 @@ module.exports = function (h) {
             "click": this.orderByColumn.bind(this, column)
           },
 
-          "class": this.sortableClass(column) },
+          class: this.sortableClass(column)
+        },
         [h(
           "span",
           { "class": "VueTables__heading", attrs: { title: this.getHeadingTooltip(column, h) }
@@ -32,7 +33,7 @@ module.exports = function (h) {
       ));
     }.bind(_this));
 
-    if (_this.hasChildRow && !_this.opts.childRowTogglerFirst) headings.push(h("th"));
+    if (_this.hasChildRow && !_this.opts.childRowTogglerFirst) headings.push(h("th", {class: "_toggler"}));
 
     return headings;
   };
