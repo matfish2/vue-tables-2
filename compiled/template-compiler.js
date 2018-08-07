@@ -7,7 +7,8 @@ module.exports = function (template, theme) {
     var themes = {
         bootstrap3: require('./themes/bootstrap3')(),
         bootstrap4: require('./themes/bootstrap4')(),
-        bulma: require('./themes/bulma')()
+        bulma: require('./themes/bulma')(),
+        semanticui: require('./themes/semanticui')()
     };
 
     var templates = {
