@@ -11,6 +11,7 @@ module.exports = function (h) {
     if (_this.hasChildRow && _this.opts.childRowTogglerFirst) headings.push(h("th"));
 
     _this.allColumns.map(function (column) {
+      var heading = this.getHeading(column, h);
       headings.push(h(
         "th",
         {
@@ -23,7 +24,10 @@ module.exports = function (h) {
           "span",
           { "class": "VueTables__heading", attrs: { title: this.getHeadingTooltip(column, h) }
           },
-          [this.getHeading(column, h)]
+          [typeof heading === "function"
+           ? heading({col: column, name: this.opts.headings[column]})
+           : heading]
+
         ), sortControl.call(this, column)]
       ));
     }.bind(_this));
