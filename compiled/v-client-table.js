@@ -66,6 +66,8 @@ exports.install = function (Vue, globalOptions, useVuex) {
 
       _created(this);
 
+      if (this.opts.toMomentFormat) this.transformDateStringsToMoment();
+
       if (!this.vuex) {
 
         this.initOrderBy();
@@ -79,8 +81,6 @@ exports.install = function (Vue, globalOptions, useVuex) {
     mounted: function mounted() {
 
       this._setColumnsDropdownCloseListener();
-
-      if (this.opts.toMomentFormat) this.transformDateStringsToMoment();
 
       if (!this.vuex) {
         this.registerClientFilters();

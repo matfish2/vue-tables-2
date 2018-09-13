@@ -9,9 +9,11 @@ module.exports = function (h) {
       "select",
       { "class": cls,
         attrs: { name: "limit",
-          value: _this.limit,
 
           id: id
+        },
+        domProps: {
+          "value": _this.limit
         },
         on: {
           "change": _this.setLimit.bind(_this)

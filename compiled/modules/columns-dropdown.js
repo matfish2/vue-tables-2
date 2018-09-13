@@ -21,10 +21,11 @@ module.exports = function (h) {
                     }
                 },
                 [h('input', {
-                    attrs: { type: 'checkbox', value: column,
+                    attrs: { type: 'checkbox',
                         disabled: _this._onlyColumn(column)
                     },
                     domProps: {
+                        'value': column,
                         'checked': _this.allColumns.includes(column)
                     }
                 }), _this.getHeading(column)]

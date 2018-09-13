@@ -15,8 +15,8 @@ module.exports = function (h) {
       pages.push(h(
         "option",
         {
-          attrs: { value: pag },
           domProps: {
+            "value": pag,
             "selected": selected
           }
         },
@@ -33,11 +33,13 @@ module.exports = function (h) {
         attrs: {
           name: "page",
 
-          value: _this.page,
-
           id: id
         },
-        ref: "page", on: {
+        ref: "page",
+        domProps: {
+          "value": _this.page
+        },
+        on: {
           "change": _this.setPage.bind(_this, null, false)
         }
       },

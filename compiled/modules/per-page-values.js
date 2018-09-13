@@ -11,8 +11,8 @@ module.exports = function (h) {
     perpageValues.push(h(
       "option",
       {
-        attrs: { value: value },
         domProps: {
+          "value": value,
           "selected": selected
         }
       },
