@@ -2,7 +2,7 @@ global.moment = require('moment');
 
 // setup JSDOM
 require('jsdom-global')()
-window.localStorage = require('mock-local-storage');
+// window.localStorage = require('mock-local-storage');
 // make expect available globally
 global.expect = require('expect')
 
