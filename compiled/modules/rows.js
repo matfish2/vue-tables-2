@@ -88,7 +88,7 @@ module.exports = function (h) {
       columns = [];
 
       if (_this.hasChildRow) {
-        var childRowToggler = h('td', [h('span', {
+        var childRowToggler = h('td', {class: "_toggler"},[h('span', {
           on: {
             'click': _this.toggleChildRow.bind(_this, row[rowKey])
           },

@@ -14,24 +14,25 @@ module.exports = function (self) {
 
   if (is_empty(self.opts.columnsDisplay) || typeof window === 'undefined') return;
 
-  self.columnsDisplay = getColumnsDisplay(self.opts.columnsDisplay);
+  self.columnsDisplay = getColumnsDisplay(self.opts);
 
   window.addEventListener('resize', function () {
     self.windowWidth = window.innerWidth;
   }.bind(self));
 };
 
-function getColumnsDisplay(columnsDisplay) {
+function getColumnsDisplay(opts) {
   var res = {};
   var range;
   var device;
   var operator;
+  var columnsDisplay = opts.columnsDisplay;
 
   for (var column in columnsDisplay) {
     operator = getOperator(columnsDisplay[column]);
     try {
       device = getDevice(columnsDisplay[column]);
-      range = getRange(device, operator);
+      range = getRange(device, operator, opts.devices);
       res[column] = range.concat([operator]);
     } catch (err) {
       console.warn('Unknown device ' + device);
@@ -41,7 +42,7 @@ function getColumnsDisplay(columnsDisplay) {
   return res;
 }
 
-function getRange(device, operator) {
+function getRange(device, operator, optDevices) {
 
   var devices = {
     desktop: [1024, null],
@@ -52,6 +53,7 @@ function getRange(device, operator) {
     mobileL: [320, 480],
     mobileP: [0, 320]
   };
+  if (typeof optDevices != undefined) devices = optDevices;
 
   switch (operator) {
     case 'min':
