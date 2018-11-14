@@ -3378,8 +3378,8 @@ module.exports = function (h) {
     perpageValues.push(h(
       "option",
       {
-        attrs: { value: value },
         domProps: {
+          "value": value,
           "selected": selected
         }
       },
@@ -3505,7 +3505,7 @@ function setCurrentQuery(query) {
 
 function foundMatch(query, value, isListFilter) {
 
-  if (['string', 'number'].indexOf(typeof value === 'undefined' ? 'undefined' : _typeof(value)) > -1) {
+  if (['string', 'number', 'boolean'].indexOf(typeof value === 'undefined' ? 'undefined' : _typeof(value)) > -1) {
     value = String(value).toLowerCase();
   }
 
@@ -3636,6 +3636,8 @@ exports.install = function (Vue, globalOptions, useVuex) {
 
       _created(this);
 
+      if (this.opts.toMomentFormat) this.transformDateStringsToMoment();
+
       if (!this.vuex) {
 
         this.initOrderBy();
@@ -3649,8 +3651,6 @@ exports.install = function (Vue, globalOptions, useVuex) {
     mounted: function mounted() {
 
       this._setColumnsDropdownCloseListener();
-
-      if (this.opts.toMomentFormat) this.transformDateStringsToMoment();
 
       if (!this.vuex) {
         this.registerClientFilters();
@@ -4625,7 +4625,7 @@ var merge = __webpack_require__(0);
 
 module.exports = function () {
 
-  if (typeof $ === 'undefined') {
+  if (typeof $ === 'undefined' || typeof $(this.$el).daterangepicker === 'undefined') {
     console.error('Date filters require jquery and daterangepicker');
     return;
   }
@@ -4661,7 +4661,7 @@ module.exports = function () {
       range = {};
     }
 
-    el = $(that.$el).find("#VueTables__" + column + "-filter");
+    el = $(that.$el).find("#VueTables__" + $.escapeSelector(column) + "-filter");
 
     columnOptions = typeof that.opts.datepickerPerColumnOptions[column] !== 'undefined' ? that.opts.datepickerPerColumnOptions[column] : {};
 
@@ -11352,10 +11352,13 @@ module.exports = function (h) {
 
         return h('input', { 'class': classes.input + ' ' + classes.small,
             attrs: { type: 'text',
-                value: _this.query,
+
                 placeholder: _this.display('filterPlaceholder'),
 
                 id: id
+            },
+            domProps: {
+                'value': _this.query
             },
             on: {
                 'keyup': _this.opts.debounce ? debounce(search, _this.opts.debounce) : search
@@ -11386,8 +11389,8 @@ module.exports = function (h) {
       pages.push(h(
         "option",
         {
-          attrs: { value: pag },
           domProps: {
+            "value": pag,
             "selected": selected
           }
         },
@@ -11404,11 +11407,13 @@ module.exports = function (h) {
         attrs: {
           name: "page",
 
-          value: _this.page,
-
           id: id
         },
-        ref: "page", on: {
+        ref: "page",
+        domProps: {
+          "value": _this.page
+        },
+        on: {
           "change": _this.setPage.bind(_this, null, false)
         }
       },
@@ -11561,8 +11566,10 @@ module.exports = function (h, inputClass) {
       'class': inputClass,
       attrs: { name: _this._getColumnName(column),
         type: 'text',
-        placeholder: _this.display('filterBy', { column: _this.getHeading(column) }),
-        value: _this.query[column]
+        placeholder: _this.display('filterBy', { column: _this.getHeading(column) })
+      },
+      domProps: {
+        'value': _this.query[column]
       }
     });
   };
@@ -11619,8 +11626,8 @@ module.exports = function (h, selectClass) {
                   options.push(h(
                         'option',
                         {
-                              attrs: { value: option.id },
                               domProps: {
+                                    'value': option.id,
                                     'selected': selected
                               }
                         },
@@ -11640,8 +11647,11 @@ module.exports = function (h, selectClass) {
                                     'change': search
                               },
                               attrs: {
-                                    name: _this._getColumnName(column),
-                                    value: _this.query[column] }
+                                    name: _this._getColumnName(column)
+                              },
+                              domProps: {
+                                    'value': _this.query[column]
+                              }
                         },
                         [h(
                               'option',
@@ -11770,9 +11780,11 @@ module.exports = function (h) {
       "select",
       { "class": cls,
         attrs: { name: "limit",
-          value: _this.limit,
 
           id: id
+        },
+        domProps: {
+          "value": _this.limit
         },
         on: {
           "change": _this.setLimit.bind(_this)
@@ -11811,10 +11823,11 @@ module.exports = function (h) {
                     }
                 },
                 [h('input', {
-                    attrs: { type: 'checkbox', value: column,
+                    attrs: { type: 'checkbox',
                         disabled: _this._onlyColumn(column)
                     },
                     domProps: {
+                        'value': column,
                         'checked': _this.allColumns.includes(column)
                     }
                 }), _this.getHeading(column)]
