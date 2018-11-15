@@ -10001,7 +10001,7 @@ module.exports = function (query) {
 
           this._setDatepickerText(column, start, end);
         } else {
-          $(this.$el).find('#VueTables__' + column + '-filter').html("<span class='VueTables__filter-placeholder'>" + this.display('filterBy', { column: this.getHeading(column) }) + "</span>");
+          $(this.$el).find("#VueTables__" + $.escapeSelector(column) + "-filter").html("<span class='VueTables__filter-placeholder'>" + this.display('filterBy', { column: this.getHeading(column) }) + "</span>");
         }
         continue;
       }
@@ -10144,7 +10144,7 @@ module.exports = function (column) {
 module.exports = function (column, start, end) {
 
     var dateFormat = this.dateFormat(column);
-    var el = typeof column === 'string' ? $(this.$el).find("#VueTables__" + column + "-filter") : column;
+    var el = typeof column === 'string' ? $(this.$el).find("#VueTables__" + $.escapeSelector(column) + "-filter") : column;
 
     el.text(start.format(dateFormat) + " - " + end.format(dateFormat));
 };
@@ -10632,7 +10632,7 @@ module.exports = function () {
 
     if (this.opts.filterByColumn) {
         this.opts.dateColumns.forEach(function (column) {
-            el = $(_this.$el).find("#VueTables__" + column + "-filter").data('daterangepicker');
+            el = $(_this.$el).find("#VueTables__" + $.escapeSelector(column) + "-filter").data('daterangepicker');
             if (el) el.remove();
         });
     }
