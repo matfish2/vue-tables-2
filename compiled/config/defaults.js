@@ -75,6 +75,7 @@ module.exports = function () {
     },
     childRow: false,
     childRowTogglerFirst: true,
+    childRowTr: true,
     childRowTd: true,
     uniqueKey: 'id',
     requestFunction: false,

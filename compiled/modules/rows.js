@@ -121,7 +121,7 @@ module.exports = function (h) {
       ));
 
       if (_this.hasChildRow && _this.openChildRows.includes(row[rowKey])) {
-        rows.push(h(
+        rows.push(_this.opts.childRowTr ? h(
           'tr',
           { 'class': 'VueTables__child-row' },
           [_this.opts.childRowTd ? h(
@@ -131,7 +131,7 @@ module.exports = function (h) {
             },
             [_this._getChildRowTemplate(h, row)]
           ) : _this._getChildRowTemplate(h, row)]
-        ));
+        ) : _this._getChildRowTemplate(h, row));
       } else {
         rows.push(h());
       }
