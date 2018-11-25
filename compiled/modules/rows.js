@@ -120,17 +120,21 @@ module.exports = function (h) {
         [columns, ' ']
       ));
 
-      rows.push(_this.hasChildRow && _this.openChildRows.includes(row[rowKey]) ? h(
-        'tr',
-        { 'class': 'VueTables__child-row' },
-        [h(
-          'td',
-          {
-            attrs: { colspan: _this.colspan }
-          },
-          [_this._getChildRowTemplate(h, row)]
-        )]
-      ) : h());
+      if (_this.hasChildRow && _this.openChildRows.includes(row[rowKey])) {
+        rows.push(h(
+          'tr',
+          { 'class': 'VueTables__child-row' },
+          [_this.opts.childRowTd ? h(
+            'td',
+            {
+              attrs: { colspan: _this.colspan }
+            },
+            [_this._getChildRowTemplate(h, row)]
+          ) : _this._getChildRowTemplate(h, row)]
+        ));
+      } else {
+        rows.push(h());
+      }
     });
 
     return rows;
