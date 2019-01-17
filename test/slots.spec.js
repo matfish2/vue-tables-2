@@ -87,6 +87,17 @@ describe(suite + ': Slots', () => {
         
     });
     
+    it('can insert custom content before the search control', (done) => {
+        createWrapper({}, null, {
+            beforeLimit:'<i class="material-icons input-group-addon">list</i>'
+        });
+        
+        run(()=>{
+            exists('.material-icons', '.VueTables__limit');            
+        }, done);
+        
+    });
+    
     it('can insert custom content before the per page control', (done) => {
         createWrapper({}, null, {
             beforeLimit:'<i class="material-icons input-group-addon">list</i>'

@@ -10,6 +10,7 @@ module.exports = function () {
     afterBody: this.$slots.afterBody ? this.$slots.afterBody : '',
     beforeFilter: this.$slots.beforeFilter ? this.$slots.beforeFilter : '',
     afterFilter: this.$slots.afterFilter ? this.$slots.afterFilter : '',
+    beforeSearch: this.$slots.beforeSearch ? this.$slots.beforeSearch : '',
     beforeLimit: this.$slots.beforeLimit ? this.$slots.beforeLimit : '',
     afterLimit: this.$slots.afterLimit ? this.$slots.afterLimit : '',
     beforeTable: this.$slots.beforeTable ? this.$slots.beforeTable : '',

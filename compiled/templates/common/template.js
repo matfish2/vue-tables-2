@@ -8,6 +8,7 @@ module.exports = function (h, modules, classes) {
   var pagination = require('./modules/pagination');
   var perPage = require('./modules/per-page');
 
+  var beforeSearch = this.$slots.beforeSearch ? this.$slots.beforeSearch : '';
   var beforeFilters = this.$slots.beforeFilters ? this.$slots.beforeFilters : '';
   var afterFilters = this.$slots.afterFilters ? this.$slots.afterFilters : '';
   var beforeBody = this.$slots.beforeBody ? this.$slots.beforeBody : '';
@@ -28,7 +29,7 @@ module.exports = function (h, modules, classes) {
     [h(
       'div',
       { 'class': classes.row },
-      [h(
+      [beforeSearch,h(
         'div',
         { 'class': classes.column + ' VueTables__search-wrapper' },
         [prependFilterContainer, normalFilter.call(this, h, modules.normalFilter, classes), appendFilterContainer]

@@ -65,7 +65,7 @@ module.exports = function (h, modules, classes, slots) {
 
   var footerHeadings = this.opts.footerHeadings ? h('tfoot', [h('tr', [modules.headings(classes.right)])]) : '';
 
-  var shouldShowTop = genericFilter || perpage || dropdownPagination || columnsDropdown || slots.beforeFilter || slots.afterFilter || slots.beforeLimit || slots.afterLimit;
+  var shouldShowTop = genericFilter || perpage || dropdownPagination || columnsDropdown || slots.beforeFilter || slots.afterFilter || slots.beforeSearch || slots.beforeLimit || slots.afterLimit;
 
   var tableTop = h(
     'div',
@@ -77,7 +77,7 @@ module.exports = function (h, modules, classes, slots) {
     [h(
       'div',
       { 'class': classes.column },
-      [h(
+      [slots.beforeSearch, h(
         'div',
         { 'class': classes.field + ' ' + classes.inline + ' ' + classes.left + ' VueTables__search' },
         [slots.beforeFilter, genericFilter, slots.afterFilter]
