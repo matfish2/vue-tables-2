@@ -454,6 +454,8 @@ You can also trigger the child row toggler programmtically. E.g, to toggle the r
 this.$refs.myTable.toggleChildRow(4); // replace myTable with your own ref
 ```
 
+Alternatively, you can use the `showChildRowToggler` option to prevent the child row toggler cells from being rendered. (See [options](#options))
+
 # Methods
 
 Call methods on your instance using the [`ref`](http://vuejs.org/api/#ref) attribute.
@@ -811,6 +813,7 @@ rowClassCallback | Function | Add dynamic classes to table rows.<br><br> E.g fun
 saveState | Boolean | Constantly save table state and reload it each time the component mounts. When setting it to true, use the `name` prop to set an identifier for the table | `false`
 sendEmptyFilters (server-side) | Boolean | When filtering by column send all request keys, including empty ones | `false` 
 serverMultiSorting | Boolean | Enable multiple columns sorting using Shift + Click on the server component | `false`
+showChildRowToggler | Boolean | Enable render of `child row toggler` cell | `true`
 skin | String | Space separated table styling classes | `table-striped table-bordered table-hover`
 sortIcon | String | Sort icon classes | `{ base:'glyphicon', up:'glyphicon-chevron-up', down:'glyphicon-chevron-down', is:'glyphicon-sort' }`
 sortable | Array |  Sortable columns | All columns
