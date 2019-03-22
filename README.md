@@ -807,6 +807,7 @@ requestAdapter (server-side) | Function | Set a custom request format | `functio
 requestFunction (server-side) | Function | Set a custom request function | See documentation
 requestKeys (server-side) | Object | Set your own request keys | `{ query:'query', limit:'limit', orderBy:'orderBy', ascending:'ascending', page:'page', byColumn:'byColumn' }`
 responseAdapter (server-side) | Function | Transform the server response to match the format expected by the client. This is especially useful when calling a foreign API, where you cannot control the response on the server-side | `function(resp) { var data = this.getResponseData(resp); return { data: data.data, count: data.count } }`
+rowAttributesCallback | Function | Add dynamic attributes to table rows.<br><br> E.g function(row) { return {id: row.id}} <br><br>This can be useful for manipulating the attributes of rows based on the data they contain | `{}`
 rowClassCallback | Function | Add dynamic classes to table rows.<br><br> E.g function(row) { return `row-${row.id}`} <br><br>This can be useful for manipulating the appearance of rows based on the data they contain | `false`
 saveState | Boolean | Constantly save table state and reload it each time the component mounts. When setting it to true, use the `name` prop to set an identifier for the table | `false`
 sendEmptyFilters (server-side) | Boolean | When filtering by column send all request keys, including empty ones | `false` 

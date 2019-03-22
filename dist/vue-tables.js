@@ -3378,8 +3378,8 @@ module.exports = function (h) {
     perpageValues.push(h(
       "option",
       {
-        attrs: { value: value },
         domProps: {
+          "value": value,
           "selected": selected
         }
       },
@@ -3505,7 +3505,7 @@ function setCurrentQuery(query) {
 
 function foundMatch(query, value, isListFilter) {
 
-  if (['string', 'number'].indexOf(typeof value === 'undefined' ? 'undefined' : _typeof(value)) > -1) {
+  if (['string', 'number', 'boolean'].indexOf(typeof value === 'undefined' ? 'undefined' : _typeof(value)) > -1) {
     value = String(value).toLowerCase();
   }
 
@@ -3636,6 +3636,8 @@ exports.install = function (Vue, globalOptions, useVuex) {
 
       _created(this);
 
+      if (this.opts.toMomentFormat) this.transformDateStringsToMoment();
+
       if (!this.vuex) {
 
         this.initOrderBy();
@@ -3649,8 +3651,6 @@ exports.install = function (Vue, globalOptions, useVuex) {
     mounted: function mounted() {
 
       this._setColumnsDropdownCloseListener();
-
-      if (this.opts.toMomentFormat) this.transformDateStringsToMoment();
 
       if (!this.vuex) {
         this.registerClientFilters();
@@ -4408,11 +4408,11 @@ var merge = __webpack_require__(0);
 
 module.exports = function (defaults, globalOptions, localOptions) {
 
-     if (globalOptions) defaults = merge.recursive(defaults, globalOptions);
+  if (globalOptions) defaults = merge.recursive(defaults, globalOptions);
 
-     localOptions = merge.recursive(defaults, localOptions);
+  localOptions = merge.recursive(defaults, localOptions);
 
-     return localOptions;
+  return localOptions;
 };
 
 /***/ }),
@@ -4471,16 +4471,16 @@ module.exports = function (column) {
 
 module.exports = function (text, replacements) {
 
-   if (!this.opts.texts) return '';
+  if (!this.opts.texts) return '';
 
-   var text = this.opts.texts[text];
+  var text = this.opts.texts[text];
 
-   if (replacements) for (var key in replacements) {
-      // console.log(key)
-      text = text.replace('{' + key + '}', replacements[key]);
-   }
+  if (replacements) for (var key in replacements) {
+    // console.log(key)
+    text = text.replace('{' + key + '}', replacements[key]);
+  }
 
-   return text;
+  return text;
 };
 
 /***/ }),
@@ -4625,7 +4625,7 @@ var merge = __webpack_require__(0);
 
 module.exports = function () {
 
-  if (typeof $ === 'undefined') {
+  if (typeof $ === 'undefined' || typeof $(this.$el).daterangepicker === 'undefined') {
     console.error('Date filters require jquery and daterangepicker');
     return;
   }
@@ -9815,17 +9815,17 @@ module.exports = function (column) {
 
 
 module.exports = function () {
-  var state = {
-    page: 1,
-    query: this.query,
-    orderBy: this.orderBy,
-    perPage: this.opts.perPage,
-    customQueries: this.customQueries
-  };
+    var state = {
+        page: 1,
+        query: this.query,
+        orderBy: this.orderBy,
+        perPage: this.opts.perPage,
+        customQueries: this.customQueries
+    };
 
-  this.storage.setItem(this.stateKey, JSON.stringify(state));
+    this.storage.setItem(this.stateKey, JSON.stringify(state));
 
-  return state;
+    return state;
 };
 
 /***/ }),
@@ -10565,15 +10565,15 @@ module.exports = {
 
 
 module.exports = {
-    twoWay: true,
-    bind: function bind(el, binding, vnode) {
+  twoWay: true,
+  bind: function bind(el, binding, vnode) {
 
-        el.addEventListener('keydown', function (e) {
-            vnode.context[binding.value] = e.target.value;
-        });
-    },
+    el.addEventListener('keydown', function (e) {
+      vnode.context[binding.value] = e.target.value;
+    });
+  },
 
-    update: function update(el, binding, vnode, oldVnode) {}
+  update: function update(el, binding, vnode, oldVnode) {}
 
 };
 
@@ -11237,6 +11237,7 @@ module.exports = function (h) {
     var columns;
     var rowKey = _this.opts.uniqueKey;
 
+    var rowAttributes;
     var rowClass;
     var recordCount = (_this.Page - 1) * _this.limit;
     var currentGroup;
@@ -11306,16 +11307,15 @@ module.exports = function (h) {
       if (_this.hasChildRow && !_this.opts.childRowTogglerFirst) columns.push(childRowToggler);
 
       rowClass = _this.opts.rowClassCallback ? _this.opts.rowClassCallback(row) : '';
+      rowAttributes = _this.opts.rowAttributesCallback ? _this.opts.rowAttributesCallback(row) : {};
 
-      rows.push(h(
-        'tr',
-        { 'class': rowClass, on: {
-            'click': _this.rowWasClicked.bind(_this, row),
-            'dblclick': _this.rowWasClicked.bind(_this, row)
-          }
-        },
-        [columns, ' ']
-      ));
+      rows.push(h('tr', {
+        attrs: rowAttributes,
+        'class': rowClass, on: {
+          'click': _this.rowWasClicked.bind(_this, row),
+          'dblclick': _this.rowWasClicked.bind(_this, row)
+        }
+      }, [columns, ' ']));
 
       rows.push(_this.hasChildRow && _this.openChildRows.includes(row[rowKey]) ? h(
         'tr',
@@ -11352,10 +11352,13 @@ module.exports = function (h) {
 
         return h('input', { 'class': classes.input + ' ' + classes.small,
             attrs: { type: 'text',
-                value: _this.query,
+
                 placeholder: _this.display('filterPlaceholder'),
 
                 id: id
+            },
+            domProps: {
+                'value': _this.query
             },
             on: {
                 'keyup': _this.opts.debounce ? debounce(search, _this.opts.debounce) : search
@@ -11386,8 +11389,8 @@ module.exports = function (h) {
       pages.push(h(
         "option",
         {
-          attrs: { value: pag },
           domProps: {
+            "value": pag,
             "selected": selected
           }
         },
@@ -11404,11 +11407,13 @@ module.exports = function (h) {
         attrs: {
           name: "page",
 
-          value: _this.page,
-
           id: id
         },
-        ref: "page", on: {
+        ref: "page",
+        domProps: {
+          "value": _this.page
+        },
+        on: {
           "change": _this.setPage.bind(_this, null, false)
         }
       },
@@ -11561,8 +11566,10 @@ module.exports = function (h, inputClass) {
       'class': inputClass,
       attrs: { name: _this._getColumnName(column),
         type: 'text',
-        placeholder: _this.display('filterBy', { column: _this.getHeading(column) }),
-        value: _this.query[column]
+        placeholder: _this.display('filterBy', { column: _this.getHeading(column) })
+      },
+      domProps: {
+        'value': _this.query[column]
       }
     });
   };
@@ -11601,58 +11608,61 @@ module.exports = function (h) {
 
 
 module.exports = function (h, selectClass) {
-      var _this = this;
+  var _this = this;
 
-      return function (column) {
+  return function (column) {
 
-            var options = [];
-            var selected = void 0;
+    var options = [];
+    var selected = void 0;
 
-            var search = _this.source == 'client' ? _this.search.bind(_this, _this.data) : _this.serverSearch.bind(_this);
+    var search = _this.source == 'client' ? _this.search.bind(_this, _this.data) : _this.serverSearch.bind(_this);
 
-            var displayable = _this.opts.listColumns[column].filter(function (item) {
-                  return !item.hide;
-            });
+    var displayable = _this.opts.listColumns[column].filter(function (item) {
+      return !item.hide;
+    });
 
-            displayable.map(function (option) {
-                  selected = option.id == _this.query[column] && _this.query[column] !== '';
-                  options.push(h(
-                        'option',
-                        {
-                              attrs: { value: option.id },
-                              domProps: {
-                                    'selected': selected
-                              }
-                        },
-                        [option.text]
-                  ));
-            });
+    displayable.map(function (option) {
+      selected = option.id == _this.query[column] && _this.query[column] !== '';
+      options.push(h(
+        'option',
+        {
+          domProps: {
+            'value': option.id,
+            'selected': selected
+          }
+        },
+        [option.text]
+      ));
+    });
 
-            return h(
-                  'div',
-                  { 'class': 'VueTables__list-filter',
-                        attrs: { id: 'VueTables__' + column + '-filter' }
-                  },
-                  [h(
-                        'select',
-                        { 'class': selectClass,
-                              on: {
-                                    'change': search
-                              },
-                              attrs: {
-                                    name: _this._getColumnName(column),
-                                    value: _this.query[column] }
-                        },
-                        [h(
-                              'option',
-                              {
-                                    attrs: { value: '' }
-                              },
-                              [_this.display('defaultOption', { column: _this.opts.headings[column] ? _this.opts.headings[column] : column })]
-                        ), options]
-                  )]
-            );
-      };
+    return h(
+      'div',
+      { 'class': 'VueTables__list-filter',
+        attrs: { id: 'VueTables__' + column + '-filter' }
+      },
+      [h(
+        'select',
+        { 'class': selectClass,
+          on: {
+            'change': search
+          },
+          attrs: {
+            name: _this._getColumnName(column)
+          },
+          domProps: {
+            'value': _this.query[column]
+          }
+        },
+        [h(
+          'option',
+          {
+            attrs: { value: '' }
+          },
+          [_this.display('defaultOption', { column: _this.opts.headings[column] ? _this.opts.headings[column] : column })]
+        ), options]
+      )]
+    );
+  };
 };
 
 /***/ }),
@@ -11770,9 +11780,11 @@ module.exports = function (h) {
       "select",
       { "class": cls,
         attrs: { name: "limit",
-          value: _this.limit,
 
           id: id
+        },
+        domProps: {
+          "value": _this.limit
         },
         on: {
           "change": _this.setLimit.bind(_this)
@@ -11811,10 +11823,11 @@ module.exports = function (h) {
                     }
                 },
                 [h('input', {
-                    attrs: { type: 'checkbox', value: column,
+                    attrs: { type: 'checkbox',
                         disabled: _this._onlyColumn(column)
                     },
                     domProps: {
+                        'value': column,
                         'checked': _this.allColumns.includes(column)
                     }
                 }), _this.getHeading(column)]

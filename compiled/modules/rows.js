@@ -40,6 +40,7 @@ module.exports = function (h) {
     var columns;
     var rowKey = _this.opts.uniqueKey;
 
+    var rowAttributes;
     var rowClass;
     var recordCount = (_this.Page - 1) * _this.limit;
     var currentGroup;
@@ -109,16 +110,15 @@ module.exports = function (h) {
       if (_this.hasChildRow && !_this.opts.childRowTogglerFirst) columns.push(childRowToggler);
 
       rowClass = _this.opts.rowClassCallback ? _this.opts.rowClassCallback(row) : '';
+      rowAttributes = _this.opts.rowAttributesCallback ? _this.opts.rowAttributesCallback(row) : {};
 
-      rows.push(h(
-        'tr',
-        { 'class': rowClass, on: {
-            'click': _this.rowWasClicked.bind(_this, row),
-            'dblclick': _this.rowWasClicked.bind(_this, row)
-          }
-        },
-        [columns, ' ']
-      ));
+      rows.push(h('tr', {
+        attrs: rowAttributes,
+        'class': rowClass, on: {
+          'click': _this.rowWasClicked.bind(_this, row),
+          'dblclick': _this.rowWasClicked.bind(_this, row)
+        }
+      }, [columns, ' ']));
 
       rows.push(_this.hasChildRow && _this.openChildRows.includes(row[rowKey]) ? h(
         'tr',
