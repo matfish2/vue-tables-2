@@ -1,5 +1,11 @@
 'use strict';
 
+var _babelHelperVueJsxMergeProps = require('babel-helper-vue-jsx-merge-props');
+
+var _babelHelperVueJsxMergeProps2 = _interopRequireDefault(_babelHelperVueJsxMergeProps);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 module.exports = function (h) {
   var _this = this;
 
@@ -112,13 +118,15 @@ module.exports = function (h) {
       rowClass = _this.opts.rowClassCallback ? _this.opts.rowClassCallback(row) : '';
       rowAttributes = _this.opts.rowAttributesCallback ? _this.opts.rowAttributesCallback(row) : {};
 
-      rows.push(h('tr', {
-        attrs: rowAttributes,
-        'class': rowClass, on: {
-          'click': _this.rowWasClicked.bind(_this, row),
-          'dblclick': _this.rowWasClicked.bind(_this, row)
-        }
-      }, [columns, ' ']));
+      rows.push(h(
+        'tr',
+        (0, _babelHelperVueJsxMergeProps2.default)([{ attrs: rowAttributes }, { 'class': rowClass, on: {
+            'click': _this.rowWasClicked.bind(_this, row),
+            'dblclick': _this.rowWasClicked.bind(_this, row)
+          }
+        }]),
+        [columns, ' ']
+      ));
 
       rows.push(_this.hasChildRow && _this.openChildRows.includes(row[rowKey]) ? h(
         'tr',
