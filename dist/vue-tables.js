@@ -11084,7 +11084,7 @@ module.exports = function (h, modules, classes, slots) {
       [h(
         'table',
         { 'class': 'VueTables__table ' + (this.opts.skin ? this.opts.skin : classes.table) },
-        [h('thead', [h('tr', [modules.headings(classes.right)]), slots.beforeFilters, modules.columnFilters(classes), slots.afterFilters]), footerHeadings, slots.beforeBody, h('tbody', [slots.prependBody, modules.rows(classes), slots.appendBody]), slots.afterBody]
+        [h('thead', [slots.prependHead, h('tr', [modules.headings(classes.right)]), slots.beforeFilters, modules.columnFilters(classes), slots.afterFilters]), footerHeadings, slots.beforeBody, h('tbody', [slots.prependBody, modules.rows(classes), slots.appendBody]), slots.afterBody]
       )]
     ), slots.afterTable, modules.pagination((0, _merge2.default)(classes.pagination, {
       wrapper: classes.row + ' ' + classes.column + ' ' + classes.contentCenter,
@@ -11175,7 +11175,7 @@ module.exports = function (h, modules, classes, slots) {
       [h(
         'table',
         { 'class': 'VueTables__table ' + (this.opts.skin ? this.opts.skin : classes.table) },
-        [h('thead', [h('tr', [modules.headings(classes.right)]), slots.beforeFilters, modules.columnFilters(classes), slots.afterFilters]), h('tfoot', [h('tr', [h(
+        [h('thead', [slots.prependHead, h('tr', [modules.headings(classes.right)]), slots.beforeFilters, modules.columnFilters(classes), slots.afterFilters]), h('tfoot', [h('tr', [h(
           'td',
           {
             attrs: { colspan: this.colspan }
@@ -11904,6 +11904,7 @@ module.exports = function () {
   return {
     beforeFilters: this.$slots.beforeFilters ? this.$slots.beforeFilters : '',
     afterFilters: this.$slots.afterFilters ? this.$slots.afterFilters : '',
+    prependHead: this.$slots.prependHead ? this.$slots.prependHead : '',
     beforeBody: this.$slots.beforeBody ? this.$slots.beforeBody : '',
     prependBody: this.$slots.prependBody ? this.$slots.prependBody : '',
     appendBody: this.$slots.appendBody ? this.$slots.appendBody : '',

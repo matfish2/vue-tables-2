@@ -74,7 +74,7 @@ module.exports = function (h, modules, classes, slots) {
       [h(
         'table',
         { 'class': 'VueTables__table ' + (this.opts.skin ? this.opts.skin : classes.table) },
-        [h('thead', [h('tr', [modules.headings(classes.right)]), slots.beforeFilters, modules.columnFilters(classes), slots.afterFilters]), h('tfoot', [h('tr', [h(
+        [h('thead', [slots.prependHead, h('tr', [modules.headings(classes.right)]), slots.beforeFilters, modules.columnFilters(classes), slots.afterFilters]), h('tfoot', [h('tr', [h(
           'td',
           {
             attrs: { colspan: this.colspan }
