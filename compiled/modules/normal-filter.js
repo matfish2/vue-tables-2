@@ -14,10 +14,8 @@ module.exports = function (h) {
 
                 placeholder: _this.display('filterPlaceholder'),
 
+                'value': _this.query,
                 id: id
-            },
-            domProps: {
-                'value': _this.query
             },
             on: {
                 'keyup': _this.opts.debounce ? debounce(search, _this.opts.debounce) : search
