@@ -5,6 +5,7 @@ require('jsdom-global')()
 // window.localStorage = require('mock-local-storage');
 // make expect available globally
 global.expect = require('expect')
+window.Date = Date; //temp bug fix, should be removed after vue-test-utils fixes #936
 
 global.vm = function() {
 	return wrapper.vm;

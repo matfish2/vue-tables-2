@@ -11,9 +11,13 @@ module.exports = function (h) {
 
         return h('input', { 'class': classes.input + ' ' + classes.small,
             attrs: { type: 'text',
+
                 placeholder: _this.display('filterPlaceholder'),
-                id: id,
-                value: _this.query
+
+                id: id
+            },
+            domProps: {
+                'value': _this.query
             },
             on: {
                 'keyup': _this.opts.debounce ? debounce(search, _this.opts.debounce) : search
