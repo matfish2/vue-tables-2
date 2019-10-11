@@ -25,7 +25,8 @@
     "merge": "^1.2.0",
     "vue": ">=2.0.0",
     "vue-pagination-2": "^1.6",
-    "vue-resource": "^0.9.0"
+    "vue-resource": "^0.9.0",
+    "vuedraggable": "^2.23.2"
   },
   "babel": {
     "presets": [
