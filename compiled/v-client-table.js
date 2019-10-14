@@ -42,7 +42,7 @@ exports.install = function (Vue, globalOptions, useVuex) {
     name: 'client-table',
     components: {
       Pagination: _vuePagination.Pagination,
-      VueDraggable: _vuedraggable2.default
+      Draggable: _vuedraggable2.default
     },
     render: templateCompiler.call(this, template, theme),
     props: {

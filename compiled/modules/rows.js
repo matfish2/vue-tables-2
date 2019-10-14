@@ -133,24 +133,6 @@ module.exports = function (h) {
       ) : h());
     });
 
-    if (_this.opts.draggableRows) {
-      rows = h(
-        'draggable',
-        {
-          directives: [{
-            name: 'model',
-            value: 'data'
-          }],
-          on: {
-            'update': function update(e) {
-              return _this.opts.draggableCalback(e);
-            }
-          },
-          'class': 'VueTables__draggable-rows' },
-        [rows]
-      );
-    }
-
     return rows;
   };
 };
