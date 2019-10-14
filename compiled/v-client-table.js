@@ -22,6 +22,10 @@ var _data2 = require('./state/data');
 
 var _data3 = _interopRequireDefault(_data2);
 
+var _vuedraggable = require('vuedraggable');
+
+var _vuedraggable2 = _interopRequireDefault(_vuedraggable);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _data = require('./mixins/data');
@@ -37,7 +41,8 @@ exports.install = function (Vue, globalOptions, useVuex) {
   var client = _merge2.default.recursive(true, (0, _table2.default)(), {
     name: 'client-table',
     components: {
-      Pagination: _vuePagination.Pagination
+      Pagination: _vuePagination.Pagination,
+      VueDraggable: _vuedraggable2.default
     },
     render: templateCompiler.call(this, template, theme),
     props: {

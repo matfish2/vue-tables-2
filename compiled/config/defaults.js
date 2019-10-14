@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 module.exports = function () {
   return {
@@ -25,22 +25,22 @@ module.exports = function () {
     customFilters: [],
     templates: {},
     debounce: 250,
-    dateFormat: "DD/MM/YYYY",
+    dateFormat: 'DD/MM/YYYY',
     dateFormatPerColumn: {},
     toMomentFormat: false,
     skin: false,
     columnsDisplay: {},
     columnsDropdown: false,
     texts: {
-      count: "Showing {from} to {to} of {count} records|{count} records|One record",
+      count: 'Showing {from} to {to} of {count} records|{count} records|One record',
       first: 'First',
       last: 'Last',
-      filter: "Filter:",
-      filterPlaceholder: "Search query",
-      limit: "Records:",
-      page: "Page:",
-      noResults: "No matching records",
-      filterBy: "Filter by {column}",
+      filter: 'Filter:',
+      filterPlaceholder: 'Search query',
+      limit: 'Records:',
+      page: 'Page:',
+      noResults: 'No matching records',
+      filterBy: 'Filter by {column}',
       loading: 'Loading...',
       defaultOption: 'Select {column}',
       columns: 'Columns'
@@ -81,7 +81,6 @@ module.exports = function () {
       return data;
     },
     responseAdapter: function responseAdapter(resp) {
-
       var data = this.getResponseData(resp);
 
       return {
@@ -101,6 +100,8 @@ module.exports = function () {
     preserveState: false,
     saveState: false,
     storage: 'local',
-    columnsClasses: {}
+    columnsClasses: {},
+    draggableRows: false,
+    draggableCalback: function draggableCalback(event) {}
   };
 };

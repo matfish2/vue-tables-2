@@ -4,7 +4,6 @@ module.exports = function (h) {
   var _this = this;
 
   return function (classes) {
-
     var data;
 
     if (_this.source === 'client') {
@@ -19,7 +18,6 @@ module.exports = function (h) {
     }
 
     if (_this.count === 0) {
-
       var colspan = _this.allColumns.length;
       if (_this.hasChildRow) colspan++;
 
@@ -28,8 +26,7 @@ module.exports = function (h) {
         { 'class': 'VueTables__no-results' },
         [h(
           'td',
-          { 'class': 'text-center',
-            attrs: { colspan: _this.colspan }
+          { 'class': 'text-center', attrs: { colspan: _this.colspan }
           },
           [_this.display(_this.loading ? 'loading' : 'noResults')]
         )]
@@ -48,7 +45,6 @@ module.exports = function (h) {
     var groupByContent;
 
     data.map(function (row, index) {
-
       if (_this.opts.groupBy && _this.source === 'client' && row[_this.opts.groupBy] !== currentGroup) {
         groupSlot = _this.getGroupSlot(row[_this.opts.groupBy]);
         groupValue = row[_this.opts.groupBy];
@@ -92,7 +88,9 @@ module.exports = function (h) {
           on: {
             'click': _this.toggleChildRow.bind(_this, row[rowKey])
           },
-          'class': 'VueTables__child-row-toggler ' + _this.childRowTogglerClass(row[rowKey]) })]);
+
+          'class': 'VueTables__child-row-toggler ' + _this.childRowTogglerClass(row[rowKey])
+        })]);
         if (_this.opts.childRowTogglerFirst) columns.push(childRowToggler);
       }
 
@@ -112,7 +110,9 @@ module.exports = function (h) {
 
       rows.push(h(
         'tr',
-        { 'class': rowClass, on: {
+        {
+          'class': rowClass,
+          on: {
             'click': _this.rowWasClicked.bind(_this, row),
             'dblclick': _this.rowWasClicked.bind(_this, row)
           }
@@ -132,6 +132,24 @@ module.exports = function (h) {
         )]
       ) : h());
     });
+
+    if (_this.opts.draggableRows) {
+      rows = h(
+        'draggable',
+        {
+          directives: [{
+            name: 'model',
+            value: 'data'
+          }],
+          on: {
+            'update': function update(e) {
+              return _this.opts.draggableCalback(e);
+            }
+          },
+          'class': 'VueTables__draggable-rows' },
+        [rows]
+      );
+    }
 
     return rows;
   };
