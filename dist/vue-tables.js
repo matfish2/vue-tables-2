@@ -18314,7 +18314,10 @@ module.exports = function (h) {
 
       rows.push(_this.hasChildRow && _this.openChildRows.includes(row[rowKey]) ? h(
         'tr',
-        { 'class': 'VueTables__child-row' },
+        {
+          'class': 'VueTables__child-row',
+          key: _this.opts.draggableRows ? 'child-row-' + row[_this.opts.draggableIdentity] : undefined // may be useful when dragging
+        },
         [h(
           'td',
           {
