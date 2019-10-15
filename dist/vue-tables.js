@@ -17969,6 +17969,8 @@ var _merge2 = _interopRequireDefault(_merge);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 module.exports = function (h, modules, classes, slots) {
   var _this = this;
 
@@ -18054,10 +18056,9 @@ module.exports = function (h, modules, classes, slots) {
   );
 
   var closeAllChildRows = function closeAllChildRows() {
-    var chr = _this.getOpenChildRows();
-    chr.forEach(function (row) {
-      console.log(row);
-      _this.toggleChildRow(row);
+    var chrs = [].concat(_toConsumableArray(_this.openChildRows));
+    chrs.forEach(function (row) {
+      if (row) _this.toggleChildRow(row);
     });
   };
 
