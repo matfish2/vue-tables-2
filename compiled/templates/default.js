@@ -107,11 +107,11 @@ module.exports = function (h, modules, classes, slots) {
               value: 'data'
             }],
             on: {
-              'update': function update(e) {
+              'end': function end(e) {
                 return _this.opts.draggableCalback(e);
               }
             },
-            'class': 'VueTables__draggable-rows', attrs: { tag: 'tbody' }
+            'class': 'VueTables__draggable-rows', attrs: { tag: 'tbody', draggable: 'tr:not(.VueTables__child-row)' }
           },
           [slots.prependBody, modules.rows(classes), slots.appendBody]
         ), slots.afterBody]
