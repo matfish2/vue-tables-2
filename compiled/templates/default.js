@@ -108,10 +108,10 @@ module.exports = function (h, modules, classes, slots) {
             }],
             on: {
               'end': function end(e) {
-                return _this.opts.draggableCalback(e);
+                _this.opts.draggableCalback(e);
               }
             },
-            'class': 'VueTables__draggable-rows', attrs: { tag: 'tbody', draggable: 'tr:not(.VueTables__child-row)' }
+            'class': 'VueTables__draggable-rows', attrs: { tag: 'tbody', draggable: 'tr:not(.VueTables__child-row):not(.VueTables__no-results)' }
           },
           [slots.prependBody, modules.rows(classes), slots.appendBody]
         ), slots.afterBody]

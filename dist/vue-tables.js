@@ -10476,7 +10476,8 @@ module.exports = function () {
     storage: 'local',
     columnsClasses: {},
     draggableRows: false,
-    draggableCalback: function draggableCalback(event) {}
+    draggableCalback: function draggableCalback(event) {},
+    draggableIdentity: 'id'
   };
 };
 
@@ -18070,10 +18071,10 @@ module.exports = function (h, modules, classes, slots) {
             }],
             on: {
               'end': function end(e) {
-                return _this.opts.draggableCalback(e);
+                _this.opts.draggableCalback(e);
               }
             },
-            'class': 'VueTables__draggable-rows', attrs: { tag: 'tbody', draggable: 'tr:not(.VueTables__child-row)' }
+            'class': 'VueTables__draggable-rows', attrs: { tag: 'tbody', draggable: 'tr:not(.VueTables__child-row):not(.VueTables__no-results)' }
           },
           [slots.prependBody, modules.rows(classes), slots.appendBody]
         ), slots.afterBody]
@@ -18304,7 +18305,9 @@ module.exports = function (h) {
           on: {
             'click': _this.rowWasClicked.bind(_this, row),
             'dblclick': _this.rowWasClicked.bind(_this, row)
-          }
+          },
+
+          key: _this.opts.draggableRows ? 'row-' + row[_this.opts.draggableIdentity] : undefined // may be useful when dragging
         },
         [columns, ' ']
       ));

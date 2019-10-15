@@ -115,7 +115,9 @@ module.exports = function (h) {
           on: {
             'click': _this.rowWasClicked.bind(_this, row),
             'dblclick': _this.rowWasClicked.bind(_this, row)
-          }
+          },
+
+          key: _this.opts.draggableRows ? 'row-' + row[_this.opts.draggableIdentity] : undefined // may be useful when dragging
         },
         [columns, ' ']
       ));

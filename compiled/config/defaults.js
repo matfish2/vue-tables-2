@@ -102,6 +102,7 @@ module.exports = function () {
     storage: 'local',
     columnsClasses: {},
     draggableRows: false,
-    draggableCalback: function draggableCalback(event) {}
+    draggableCalback: function draggableCalback(event) {},
+    draggableIdentity: 'id'
   };
 };
