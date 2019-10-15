@@ -18053,6 +18053,14 @@ module.exports = function (h, modules, classes, slots) {
     )]
   );
 
+  var closeAllChildRows = function closeAllChildRows() {
+    var chr = _this.getOpenChildRows();
+    chr.forEach(function (row) {
+      console.log(row);
+      _this.toggleChildRow(row);
+    });
+  };
+
   return h(
     'div',
     { 'class': "VueTables VueTables--" + this.source },
@@ -18069,9 +18077,10 @@ module.exports = function (h, modules, classes, slots) {
               name: 'model',
               value: 'data'
             }],
-            ref: 'draggable', on: {
+            on: {
+              'start': closeAllChildRows,
               'end': function end(e) {
-                _this.opts.draggableCalback(e, _this.$refs.draggable);
+                return _this.opts.draggableCalback(e);
               }
             },
             'class': 'VueTables__draggable-rows', attrs: { tag: 'tbody', draggable: 'tr:not(.VueTables__child-row):not(.VueTables__no-results)' }
@@ -18307,7 +18316,7 @@ module.exports = function (h) {
             'dblclick': _this.rowWasClicked.bind(_this, row)
           },
 
-          key: _this.opts.draggableRows ? 'row-' + row[_this.opts.draggableIdentity] : undefined // may be useful when dragging
+          key: _this.opts.draggableRows ? 'row-' + row[_this.opts.draggableIdentity] : undefined // useful when dragging
         },
         [columns, ' ']
       ));
