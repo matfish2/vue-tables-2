@@ -18069,9 +18069,9 @@ module.exports = function (h, modules, classes, slots) {
               name: 'model',
               value: 'data'
             }],
-            on: {
+            ref: 'draggable', on: {
               'end': function end(e) {
-                _this.opts.draggableCalback(e);
+                _this.opts.draggableCalback(e, _this.$refs.draggable);
               }
             },
             'class': 'VueTables__draggable-rows', attrs: { tag: 'tbody', draggable: 'tr:not(.VueTables__child-row):not(.VueTables__no-results)' }
