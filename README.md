@@ -464,6 +464,7 @@ Call methods on your instance using the [`ref`](http://vuejs.org/api/#ref) attri
 * `setLimit(recordsPerPage)`
 * `setOrder(column, isAscending)`
 * `setFilter(query)` - `query` should be a string, or an object if `filterByColumn` is set to `true`.
+* `resetQuery()` - Resets all query inputs (user-request filters) to empty strings.
 * `getData()` Get table data using the existing request parameters. Server component only.
 * `refresh()` Refresh the table. This method is simply a wrapper for the `serverSearch` method, and thus resets the pagination. Server component only
 * `getOpenChildRows(rows = null)` 
