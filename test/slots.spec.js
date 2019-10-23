@@ -55,6 +55,15 @@ describe(suite + ': Slots', () => {
         see('I am the before body slot', 'table tfoot tr td');            
         
     });
+
+    it('can insert custom content after the <thead> tag', () => {
+        createWrapper({}, null, {
+            prependHead: '<tr><td>I am a custom header row</td></tr>'
+        });
+
+        see('I am a custom header row', 'table thead tr td');
+
+    });
     
 
 

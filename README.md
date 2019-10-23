@@ -728,6 +728,7 @@ Slots allow you to insert you own custom HTML in predefined positions within the
 * `afterLimit`: After the per page control
 * `beforeFilters`: Before the filters row (`filterByColumn: true`)
 * `afterFilters`: After the filters row
+* `prependHead`: After the `<thead>` tag
 * `beforeBody`: Before the `<tbody>` tag
 * `afterBody`: After the `<tbody>` tag
 * `prependBody`: Prepend to the `<tbody>` tag
