@@ -11,6 +11,7 @@ module.exports = function (h, modules, classes) {
   var beforeSearch = this.$slots.beforeSearch ? this.$slots.beforeSearch : '';
   var beforeFilters = this.$slots.beforeFilters ? this.$slots.beforeFilters : '';
   var afterFilters = this.$slots.afterFilters ? this.$slots.afterFilters : '';
+  var prependHead = this.$slots.prependHead ? this.$slots.prependHead : '';
   var beforeBody = this.$slots.beforeBody ? this.$slots.beforeBody : '';
   var prependBody = this.$slots.prependBody ? this.$slots.prependBody : '';
   var appendBody = this.$slots.appendBody ? this.$slots.appendBody : '';
@@ -47,7 +48,7 @@ module.exports = function (h, modules, classes) {
         [h(
           'thead',
           null,
-          [h(
+          [prependHead, h(
             'tr',
             null,
             [modules.headings()]

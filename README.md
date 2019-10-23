@@ -454,6 +454,8 @@ You can also trigger the child row toggler programmtically. E.g, to toggle the r
 this.$refs.myTable.toggleChildRow(4); // replace myTable with your own ref
 ```
 
+Alternatively, you can use the `showChildRowToggler` option to prevent the child row toggler cells from being rendered. (See [options](#options))
+
 # Methods
 
 Call methods on your instance using the [`ref`](http://vuejs.org/api/#ref) attribute.
@@ -462,6 +464,7 @@ Call methods on your instance using the [`ref`](http://vuejs.org/api/#ref) attri
 * `setLimit(recordsPerPage)`
 * `setOrder(column, isAscending)`
 * `setFilter(query)` - `query` should be a string, or an object if `filterByColumn` is set to `true`.
+* `resetQuery()` - Resets all query inputs (user-request filters) to empty strings.
 * `getData()` Get table data using the existing request parameters. Server component only.
 * `refresh()` Refresh the table. This method is simply a wrapper for the `serverSearch` method, and thus resets the pagination. Server component only
 * `getOpenChildRows(rows = null)` 
@@ -729,6 +732,7 @@ Slots allow you to insert you own custom HTML in predefined positions within the
 * `afterLimit`: After the per page control
 * `beforeFilters`: Before the filters row (`filterByColumn: true`)
 * `afterFilters`: After the filters row
+* `prependHead`: After the `<thead>` tag
 * `beforeBody`: Before the `<tbody>` tag
 * `afterBody`: After the `<tbody>` tag
 * `prependBody`: Prepend to the `<tbody>` tag
@@ -808,10 +812,12 @@ requestAdapter (server-side) | Function | Set a custom request format | `functio
 requestFunction (server-side) | Function | Set a custom request function | See documentation
 requestKeys (server-side) | Object | Set your own request keys | `{ query:'query', limit:'limit', orderBy:'orderBy', ascending:'ascending', page:'page', byColumn:'byColumn' }`
 responseAdapter (server-side) | Function | Transform the server response to match the format expected by the client. This is especially useful when calling a foreign API, where you cannot control the response on the server-side | `function(resp) { var data = this.getResponseData(resp); return { data: data.data, count: data.count } }`
+rowAttributesCallback | Function | Add dynamic attributes to table rows.<br><br> E.g function(row) { return {id: row.id}} <br><br>This can be useful for manipulating the attributes of rows based on the data they contain | `{}`
 rowClassCallback | Function | Add dynamic classes to table rows.<br><br> E.g function(row) { return `row-${row.id}`} <br><br>This can be useful for manipulating the appearance of rows based on the data they contain | `false`
 saveState | Boolean | Constantly save table state and reload it each time the component mounts. When setting it to true, use the `name` prop to set an identifier for the table | `false`
 sendEmptyFilters (server-side) | Boolean | When filtering by column send all request keys, including empty ones | `false` 
 serverMultiSorting | Boolean | Enable multiple columns sorting using Shift + Click on the server component | `false`
+showChildRowToggler | Boolean | Enable render of `child row toggler` cell | `true`
 skin | String | Space separated table styling classes | `table-striped table-bordered table-hover`
 sortIcon | String | Sort icon classes | `{ base:'glyphicon', up:'glyphicon-chevron-up', down:'glyphicon-chevron-down', is:'glyphicon-sort' }`
 sortable | Array |  Sortable columns | All columns

@@ -1,5 +1,11 @@
 'use strict';
 
+var _babelHelperVueJsxMergeProps = require('babel-helper-vue-jsx-merge-props');
+
+var _babelHelperVueJsxMergeProps2 = _interopRequireDefault(_babelHelperVueJsxMergeProps);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 module.exports = function (h) {
   var _this = this;
 
@@ -21,7 +27,7 @@ module.exports = function (h) {
     if (_this.count === 0) {
 
       var colspan = _this.allColumns.length;
-      if (_this.hasChildRow) colspan++;
+      if (_this.hasChildRow && _this.opts.showChildRowToggler) colspan++;
 
       return h(
         'tr',
@@ -40,6 +46,7 @@ module.exports = function (h) {
     var columns;
     var rowKey = _this.opts.uniqueKey;
 
+    var rowAttributes;
     var rowClass;
     var recordCount = (_this.Page - 1) * _this.limit;
     var currentGroup;
@@ -87,7 +94,7 @@ module.exports = function (h) {
 
       columns = [];
 
-      if (_this.hasChildRow) {
+      if (_this.hasChildRow && _this.opts.showChildRowToggler) {
         var childRowToggler = h('td', [h('span', {
           on: {
             'click': _this.toggleChildRow.bind(_this, row[rowKey])
@@ -106,17 +113,18 @@ module.exports = function (h) {
         ));
       });
 
-      if (_this.hasChildRow && !_this.opts.childRowTogglerFirst) columns.push(childRowToggler);
+      if (_this.hasChildRow && !_this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) columns.push(childRowToggler);
 
       rowClass = _this.opts.rowClassCallback ? _this.opts.rowClassCallback(row) : '';
+      rowAttributes = _this.opts.rowAttributesCallback ? _this.opts.rowAttributesCallback(row) : {};
 
       rows.push(h(
         'tr',
-        { 'class': rowClass, on: {
+        (0, _babelHelperVueJsxMergeProps2.default)([{ attrs: rowAttributes }, { 'class': rowClass, on: {
             'click': _this.rowWasClicked.bind(_this, row),
             'dblclick': _this.rowWasClicked.bind(_this, row)
           }
-        },
+        }]),
         [columns, ' ']
       ));
 
