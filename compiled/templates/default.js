@@ -1,109 +1,115 @@
-'use strict';
+"use strict";
 
-var _merge = require('merge');
+var _merge = require("merge");
 
 var _merge2 = _interopRequireDefault(_merge);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 module.exports = function (h, modules, classes, slots) {
-
-  var filterId = 'VueTables__search_' + this.id;
-  var ddpId = 'VueTables__dropdown-pagination_' + this.id;
-  var perpageId = 'VueTables__limit_' + this.id;
-  var perpageValues = require('../modules/per-page-values').call(this, h);
+  var filterId = "VueTables__search_" + this.id;
+  var ddpId = "VueTables__dropdown-pagination_" + this.id;
+  var perpageId = "VueTables__limit_" + this.id;
+  var perpageValues = require("../modules/per-page-values").call(this, h);
 
   var genericFilter = this.hasGenericFilter ? h(
-    'div',
-    { 'class': 'VueTables__search-field' },
+    "div",
+    { "class": "VueTables__search-field" },
     [h(
-      'label',
+      "label",
       {
-        attrs: { 'for': filterId },
-        'class': classes.label },
-      [this.display('filter')]
+        attrs: { "for": filterId },
+        "class": classes.label },
+      [this.display("filter")]
     ), modules.normalFilter(classes, filterId)]
-  ) : '';
+  ) : "";
 
   var perpage = perpageValues.length > 1 ? h(
-    'div',
-    { 'class': 'VueTables__limit-field' },
+    "div",
+    { "class": "VueTables__limit-field" },
     [h(
-      'label',
-      { 'class': classes.label, attrs: { 'for': perpageId }
+      "label",
+      { "class": classes.label, attrs: { "for": perpageId }
       },
-      [this.display('limit')]
+      [this.display("limit")]
     ), modules.perPage(perpageValues, classes.select, perpageId)]
-  ) : '';
+  ) : "";
 
   var dropdownPagination = this.opts.pagination && this.opts.pagination.dropdown ? h(
-    'div',
-    { 'class': 'VueTables__pagination-wrapper' },
+    "div",
+    { "class": "VueTables__pagination-wrapper" },
     [h(
-      'div',
-      { 'class': classes.field + ' ' + classes.inline + ' ' + classes.right + ' VueTables__dropdown-pagination',
+      "div",
+      {
+        "class": classes.field + " " + classes.inline + " " + classes.right + " VueTables__dropdown-pagination",
         directives: [{
-          name: 'show',
+          name: "show",
           value: this.totalPages > 1
         }]
       },
       [h(
-        'label',
+        "label",
         {
-          attrs: { 'for': ddpId }
+          attrs: { "for": ddpId }
         },
-        [this.display('page')]
+        [this.display("page")]
       ), modules.dropdownPagination(classes.select, ddpId)]
     )]
-  ) : '';
+  ) : "";
 
   var columnsDropdown = this.opts.columnsDropdown ? h(
-    'div',
-    { 'class': 'VueTables__columns-dropdown-wrapper' },
+    "div",
+    { "class": "VueTables__columns-dropdown-wrapper" },
     [modules.columnsDropdown(classes)]
-  ) : '';
+  ) : "";
 
-  var footerHeadings = this.opts.footerHeadings ? h('tfoot', [h('tr', [modules.headings(classes.right)])]) : '';
+  var footerHeadings = this.opts.footerHeadings ? h("tfoot", [h("tr", [modules.headings(classes.right)])]) : "";
 
   var shouldShowTop = genericFilter || perpage || dropdownPagination || columnsDropdown || slots.beforeFilter || slots.afterFilter || slots.beforeLimit || slots.afterLimit;
 
   var tableTop = h(
-    'div',
-    { 'class': classes.row, directives: [{
-        name: 'show',
+    "div",
+    { "class": classes.row, directives: [{
+        name: "show",
         value: shouldShowTop
       }]
     },
     [h(
-      'div',
-      { 'class': classes.column },
+      "div",
+      { "class": classes.column },
       [h(
-        'div',
-        { 'class': classes.field + ' ' + classes.inline + ' ' + classes.left + ' VueTables__search' },
+        "div",
+        {
+          "class": classes.field + " " + classes.inline + " " + classes.left + " VueTables__search"
+        },
         [slots.beforeFilter, genericFilter, slots.afterFilter]
       ), h(
-        'div',
-        { 'class': classes.field + ' ' + classes.inline + ' ' + classes.right + ' VueTables__limit' },
+        "div",
+        {
+          "class": classes.field + " " + classes.inline + " " + classes.right + " VueTables__limit"
+        },
         [slots.beforeLimit, perpage, slots.afterLimit]
       ), dropdownPagination, columnsDropdown]
     )]
   );
 
   return h(
-    'div',
-    { 'class': "VueTables VueTables--" + this.source },
+    "div",
+    { "class": "VueTables VueTables--" + this.source },
     [tableTop, slots.beforeTable, h(
-      'div',
-      { 'class': 'table-responsive' },
+      "div",
+      { "class": "table-responsive" },
       [h(
-        'table',
-        { 'class': 'VueTables__table ' + (this.opts.skin ? this.opts.skin : classes.table) },
-        [h('thead', [h('tr', [modules.headings(classes.right)]), slots.beforeFilters, modules.columnFilters(classes), slots.afterFilters]), footerHeadings, slots.beforeBody, h('tbody', [slots.prependBody, modules.rows(classes), slots.appendBody]), slots.afterBody]
+        "table",
+        {
+          "class": "VueTables__table " + (this.opts.skin ? this.opts.skin : classes.table)
+        },
+        [h("thead", [slots.prependHead, h("tr", [modules.headings(classes.right)]), slots.beforeFilters, modules.columnFilters(classes), slots.afterFilters]), footerHeadings, slots.beforeBody, h("tbody", [slots.prependBody, modules.rows(classes), slots.appendBody]), slots.afterBody]
       )]
     ), slots.afterTable, modules.pagination((0, _merge2.default)(classes.pagination, {
-      wrapper: classes.row + ' ' + classes.column + ' ' + classes.contentCenter,
+      wrapper: classes.row + " " + classes.column + " " + classes.contentCenter,
       nav: classes.center,
-      count: classes.center + ' ' + classes.column
+      count: classes.center + " " + classes.column
     })), modules.dropdownPaginationCount()]
   );
 };
