@@ -10451,6 +10451,7 @@ module.exports = function () {
     },
     childRow: false,
     childRowTogglerFirst: true,
+    showChildRowToggler: true,
     uniqueKey: 'id',
     requestFunction: false,
     requestAdapter: function requestAdapter(data) {
@@ -11231,7 +11232,7 @@ module.exports = function (h) {
     if (_this.count === 0) {
 
       var colspan = _this.allColumns.length;
-      if (_this.hasChildRow) colspan++;
+      if (_this.hasChildRow && _this.opts.showChildRowToggler) colspan++;
 
       return h(
         'tr',
@@ -11298,7 +11299,8 @@ module.exports = function (h) {
 
       columns = [];
 
-      if (_this.hasChildRow) {
+      if (_this.hasChildRow && _this.opts.showChildRowToggler) {
+        console.log('showing toggler cell', _this.opts.showChildRowToggler);
         var childRowToggler = h('td', [h('span', {
           on: {
             'click': _this.toggleChildRow.bind(_this, row[rowKey])
@@ -11317,7 +11319,7 @@ module.exports = function (h) {
         ));
       });
 
-      if (_this.hasChildRow && !_this.opts.childRowTogglerFirst) columns.push(childRowToggler);
+      if (_this.hasChildRow && !_this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) columns.push(childRowToggler);
 
       rowClass = _this.opts.rowClassCallback ? _this.opts.rowClassCallback(row) : '';
       rowAttributes = _this.opts.rowAttributesCallback ? _this.opts.rowAttributesCallback(row) : {};
@@ -11559,7 +11561,7 @@ module.exports = function (h) {
     var filters = [];
     var filter;
 
-    if (_this.hasChildRow && _this.opts.childRowTogglerFirst) filters.push(h('th'));
+    if (_this.hasChildRow && _this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) filters.push(h('th'));
 
     _this.allColumns.map(function (column) {
 
@@ -11591,7 +11593,7 @@ module.exports = function (h) {
       ));
     });
 
-    if (_this.hasChildRow && !_this.opts.childRowTogglerFirst) filters.push(h('th'));
+    if (_this.hasChildRow && !_this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) filters.push(h('th'));
 
     return h(
       'tr',
@@ -11794,7 +11796,7 @@ module.exports = function (h) {
 
     var headings = [];
 
-    if (_this.hasChildRow && _this.opts.childRowTogglerFirst) headings.push(h("th"));
+    if (_this.hasChildRow && _this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) headings.push(h("th"));
 
     _this.allColumns.map(function (column) {
       headings.push(h(
@@ -11814,7 +11816,7 @@ module.exports = function (h) {
       ));
     }.bind(_this));
 
-    if (_this.hasChildRow && !_this.opts.childRowTogglerFirst) headings.push(h("th"));
+    if (_this.hasChildRow && !_this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) headings.push(h("th"));
 
     return headings;
   };

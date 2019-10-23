@@ -75,6 +75,7 @@ module.exports = function () {
     },
     childRow: false,
     childRowTogglerFirst: true,
+    showChildRowToggler: true,
     uniqueKey: 'id',
     requestFunction: false,
     requestAdapter: function requestAdapter(data) {
