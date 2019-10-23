@@ -11300,7 +11300,6 @@ module.exports = function (h) {
       columns = [];
 
       if (_this.hasChildRow && _this.opts.showChildRowToggler) {
-        console.log('showing toggler cell', _this.opts.showChildRowToggler);
         var childRowToggler = h('td', [h('span', {
           on: {
             'click': _this.toggleChildRow.bind(_this, row[rowKey])
