@@ -2,6 +2,7 @@
 
 module.exports = {
       initQuery: require('../methods/init-query'),
+      resetQuery: require('../methods/reset-query'),
       initCustomFilters: require('../methods/init-custom-filters'),
       initOptions: require('../methods/init-options'),
       sortableClass: require('../methods/sortable-class'),
