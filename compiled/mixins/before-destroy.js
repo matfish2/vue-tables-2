@@ -22,7 +22,7 @@ module.exports = function () {
 
     if (this.opts.filterByColumn) {
         this.opts.dateColumns.forEach(function (column) {
-            el = $(_this.$el).find("#VueTables__" + column + "-filter").data('daterangepicker');
+            el = $(_this.$el).find("#VueTables__" + $.escapeSelector(column) + "-filter").data('daterangepicker');
             if (el) el.remove();
         });
     }
