@@ -14,7 +14,7 @@ module.exports = function (h, modules, classes, slots) {
 
   var genericFilter = this.hasGenericFilter ? h(
     "div",
-    { "class": "VueTables__search-field " + classes.inline },
+    { "class": "VueTables__search-field" },
     [h(
       "label",
       {
@@ -26,7 +26,7 @@ module.exports = function (h, modules, classes, slots) {
 
   var perpage = perpageValues.length > 1 ? h(
     "div",
-    { "class": "VueTables__limit-field " + classes.inline },
+    { "class": "VueTables__limit-field" },
     [h(
       "label",
       { "class": classes.label, attrs: { "for": perpageId }

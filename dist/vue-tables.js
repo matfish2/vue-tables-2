@@ -11022,7 +11022,7 @@ module.exports = function (h, modules, classes, slots) {
 
   var genericFilter = this.hasGenericFilter ? h(
     "div",
-    { "class": "VueTables__search-field " + classes.inline },
+    { "class": "VueTables__search-field" },
     [h(
       "label",
       {
@@ -11034,7 +11034,7 @@ module.exports = function (h, modules, classes, slots) {
 
   var perpage = perpageValues.length > 1 ? h(
     "div",
-    { "class": "VueTables__limit-field " + classes.inline },
+    { "class": "VueTables__limit-field" },
     [h(
       "label",
       { "class": classes.label, attrs: { "for": perpageId }
@@ -12016,6 +12016,7 @@ module.exports = function () {
     afterBody: this.$slots.afterBody ? this.$slots.afterBody : '',
     beforeFilter: this.$slots.beforeFilter ? this.$slots.beforeFilter : '',
     afterFilter: this.$slots.afterFilter ? this.$slots.afterFilter : '',
+    beforeSearch: this.$slots.beforeSearch ? this.$slots.beforeSearch : '',
     beforeLimit: this.$slots.beforeLimit ? this.$slots.beforeLimit : '',
     afterLimit: this.$slots.afterLimit ? this.$slots.afterLimit : '',
     beforeTable: this.$slots.beforeTable ? this.$slots.beforeTable : '',
