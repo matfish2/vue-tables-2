@@ -47,8 +47,8 @@
   "license": "MIT",
   "main": "compiled/index.js",
   "devDependencies": {
-    "axios": "^0.17.0",
-    "babel-cli": "^6.24.1",
+    "axios": "^0.18.1",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-jest": "^23.0.1",

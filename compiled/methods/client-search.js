@@ -43,6 +43,13 @@ module.exports = function (data, e) {
 
   if (this.opts.filterByColumn) {
     totalQueries = object_filled_keys_count(query);
+    var dict = this.customQueries;
+    Object.keys(this.customQueries).forEach(function (customQueryKey) {
+      var customQueryValue = dict[customQueryKey];
+      if (customQueryValue != "") {
+        totalQueries--;
+      }
+    });
   }
 
   var value;
