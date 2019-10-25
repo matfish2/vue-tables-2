@@ -1,4 +1,14 @@
 {
-  "presets": ["@babel/preset-env"],
-  "plugins": ["@babel/plugin-syntax-jsx", "transform-vue-jsx"]
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "modules": "commonjs"
+      }
+    ]
+  ],
+  "plugins": [
+    "@babel/plugin-syntax-jsx",
+    "transform-vue-jsx"
+  ]
 }

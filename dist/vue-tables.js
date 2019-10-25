@@ -91,11 +91,11 @@ var VueTables =
 /*!********************!*\
   !*** ./lib/bus.js ***!
   \********************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"vue\");\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);\n\nvar bus = new vue__WEBPACK_IMPORTED_MODULE_0___default.a();\n/* harmony default export */ __webpack_exports__[\"default\"] = (bus);\n\n//# sourceURL=webpack://VueTables/./lib/bus.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = void 0;\n\nvar _vue = _interopRequireDefault(__webpack_require__(/*! vue */ \"vue\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nvar bus = new _vue[\"default\"]();\nvar _default = bus;\nexports[\"default\"] = _default;\n\n//# sourceURL=webpack://VueTables/./lib/bus.js?");
 
 /***/ }),
 
@@ -104,9 +104,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue_
   !*** ./lib/computed/all-columns.js ***!
   \*************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  var _this = this;\n\n  var display = this.columnsDisplay; // default - return all columns\n\n  if (!display && !this.userControlsColumns) {\n    return this.Columns;\n  } // user toggled columns - return user selected columns\n\n\n  if (this.userControlsColumns) {\n    return this.columns.filter(function (column) {\n      return _this.userColumnsDisplay.includes(column);\n    });\n  }\n\n  if (this.opts.ssr) return this.Columns; // developer defined columns display\n\n  return this.Columns.filter(function (column) {\n    if (!display[column]) return true;\n    var range = display[column];\n    var operator = range[2];\n    var inRange = (!range[0] || _this.windowWidth >= range[0]) && (!range[1] || _this.windowWidth < range[1]);\n    return operator == 'not' ? !inRange : inRange;\n  });\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/all-columns.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  var _this = this;\n\n  var display = this.columnsDisplay; // default - return all columns\n\n  if (!display && !this.userControlsColumns) {\n    return this.Columns;\n  } // user toggled columns - return user selected columns\n\n\n  if (this.userControlsColumns) {\n    return this.columns.filter(function (column) {\n      return _this.userColumnsDisplay.includes(column);\n    });\n  }\n\n  if (this.opts.ssr) return this.Columns; // developer defined columns display\n\n  return this.Columns.filter(function (column) {\n    if (!display[column]) return true;\n    var range = display[column];\n    var operator = range[2];\n    var inRange = (!range[0] || _this.windowWidth >= range[0]) && (!range[1] || _this.windowWidth < range[1]);\n    return operator == 'not' ? !inRange : inRange;\n  });\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/all-columns.js?");
 
 /***/ }),
 
@@ -115,9 +116,10 @@ eval("module.exports = function () {\n  var _this = this;\n\n  var display = thi
   !*** ./lib/computed/colspan.js ***!
   \*********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  return this.hasChildRow ? this.allColumns.length + 1 : this.allColumns.length;\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/colspan.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  return this.hasChildRow ? this.allColumns.length + 1 : this.allColumns.length;\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/colspan.js?");
 
 /***/ }),
 
@@ -126,9 +128,10 @@ eval("module.exports = function () {\n  return this.hasChildRow ? this.allColumn
   !*** ./lib/computed/custom-q.js ***!
   \**********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  return JSON.stringify(this.customQueries);\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/custom-q.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  return JSON.stringify(this.customQueries);\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/custom-q.js?");
 
 /***/ }),
 
@@ -139,7 +142,8 @@ eval("module.exports = function () {\n  return JSON.stringify(this.customQueries
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var intersect = __webpack_require__(/*! array-intersect */ \"./node_modules/array-intersect/dist/array-intersect.module.js\")[\"default\"];\n\nmodule.exports = function () {\n  if (this.opts.filterable === true) {\n    return this.opts.dateColumns;\n  }\n\n  if (this.opts.filterable === false) {\n    return [];\n  }\n\n  return intersect(this.opts.filterable, this.opts.dateColumns);\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/datepicker-columns.js?");
+"use strict";
+eval("\n\nvar intersect = __webpack_require__(/*! array-intersect */ \"./node_modules/array-intersect/dist/array-intersect.module.js\")[\"default\"];\n\nmodule.exports = function () {\n  if (this.opts.filterable === true) {\n    return this.opts.dateColumns;\n  }\n\n  if (this.opts.filterable === false) {\n    return [];\n  }\n\n  return intersect(this.opts.filterable, this.opts.dateColumns);\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/datepicker-columns.js?");
 
 /***/ }),
 
@@ -148,9 +152,10 @@ eval("var intersect = __webpack_require__(/*! array-intersect */ \"./node_module
   !*** ./lib/computed/filterable-columns.js ***!
   \********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  return this.opts.filterable && this.opts.filterable.length ? this.opts.filterable : this.Columns;\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/filterable-columns.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  return this.opts.filterable && this.opts.filterable.length ? this.opts.filterable : this.Columns;\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/filterable-columns.js?");
 
 /***/ }),
 
@@ -161,7 +166,8 @@ eval("module.exports = function () {\n  return this.opts.filterable && this.opts
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var search = __webpack_require__(/*! ../methods/client-search */ \"./lib/methods/client-search.js\");\n\nvar clone = __webpack_require__(/*! clone */ \"./node_modules/clone/clone.js\");\n\nmodule.exports = function () {\n  var data = clone(this.tableData);\n  var column = this.orderBy.column;\n  data = this.search(data);\n\n  if (column) {\n    // dummy var to force compilation\n    if (this.time) this.time = this.time;\n    data = this.opts.sortingAlgorithm.call(this, data, column);\n  } else if (this.opts.groupBy) {\n    data = this.opts.sortingAlgorithm.call(this, data, this.opts.groupBy);\n  }\n\n  if (this.vuex) {\n    if (this.count != data.length) this.commit('SET_COUNT', data.length);\n  } else {\n    this.count = data.length;\n  }\n\n  var offset = (this.page - 1) * this.limit;\n  this.allFilteredData = JSON.parse(JSON.stringify(data));\n  data = data.splice(offset, this.limit);\n  return this.applyFilters(data);\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/filtered-data.js?");
+"use strict";
+eval("\n\nvar search = __webpack_require__(/*! ../methods/client-search */ \"./lib/methods/client-search.js\");\n\nvar clone = __webpack_require__(/*! clone */ \"./node_modules/clone/clone.js\");\n\nmodule.exports = function () {\n  var data = clone(this.tableData);\n  var column = this.orderBy.column;\n  data = this.search(data);\n\n  if (column) {\n    // dummy var to force compilation\n    if (this.time) this.time = this.time;\n    data = this.opts.sortingAlgorithm.call(this, data, column);\n  } else if (this.opts.groupBy) {\n    data = this.opts.sortingAlgorithm.call(this, data, this.opts.groupBy);\n  }\n\n  if (this.vuex) {\n    if (this.count != data.length) this.commit('SET_COUNT', data.length);\n  } else {\n    this.count = data.length;\n  }\n\n  var offset = (this.page - 1) * this.limit;\n  this.allFilteredData = JSON.parse(JSON.stringify(data));\n  data = data.splice(offset, this.limit);\n  return this.applyFilters(data);\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/filtered-data.js?");
 
 /***/ }),
 
@@ -170,9 +176,10 @@ eval("var search = __webpack_require__(/*! ../methods/client-search */ \"./lib/m
   !*** ./lib/computed/filtered-query.js ***!
   \****************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("function _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nmodule.exports = function () {\n  if (_typeof(this.query) !== 'object' || this.opts.sendEmptyFilters) {\n    return this.query;\n  }\n\n  var result = {};\n\n  for (var key in this.query) {\n    if (this.query[key] !== '') {\n      result[key] = this.query[key];\n    }\n  }\n\n  return result;\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/filtered-query.js?");
+"use strict";
+eval("\n\nfunction _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nmodule.exports = function () {\n  if (_typeof(this.query) !== 'object' || this.opts.sendEmptyFilters) {\n    return this.query;\n  }\n\n  var result = {};\n\n  for (var key in this.query) {\n    if (this.query[key] !== '') {\n      result[key] = this.query[key];\n    }\n  }\n\n  return result;\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/filtered-query.js?");
 
 /***/ }),
 
@@ -181,9 +188,10 @@ eval("function _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbo
   !*** ./lib/computed/has-child-row.js ***!
   \***************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  return this.opts.childRow || this.$scopedSlots.child_row;\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/has-child-row.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  return this.opts.childRow || this.$scopedSlots.child_row;\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/has-child-row.js?");
 
 /***/ }),
 
@@ -192,9 +200,10 @@ eval("module.exports = function () {\n  return this.opts.childRow || this.$scope
   !*** ./lib/computed/has-generic-filter.js ***!
   \********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("function _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nmodule.exports = function () {\n  return !this.opts.filterByColumn && (typeof this.opts.filterable === 'boolean' && this.opts.filterable || _typeof(this.opts.filterable) === 'object' && this.opts.filterable.length);\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/has-generic-filter.js?");
+"use strict";
+eval("\n\nfunction _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nmodule.exports = function () {\n  return !this.opts.filterByColumn && (typeof this.opts.filterable === 'boolean' && this.opts.filterable || _typeof(this.opts.filterable) === 'object' && this.opts.filterable.length);\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/has-generic-filter.js?");
 
 /***/ }),
 
@@ -203,9 +212,10 @@ eval("function _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbo
   !*** ./lib/computed/list-columns-object.js ***!
   \*********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  var columns = Object.keys(this.opts.listColumns);\n  var res = {};\n  columns.forEach(function (column) {\n    res[column] = {};\n    this.opts.listColumns[column].forEach(function (item) {\n      res[column][item.id] = item.text;\n    });\n  }.bind(this));\n  return res;\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/list-columns-object.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  var columns = Object.keys(this.opts.listColumns);\n  var res = {};\n  columns.forEach(function (column) {\n    res[column] = {};\n    this.opts.listColumns[column].forEach(function (item) {\n      res[column][item.id] = item.text;\n    });\n  }.bind(this));\n  return res;\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/list-columns-object.js?");
 
 /***/ }),
 
@@ -216,7 +226,8 @@ eval("module.exports = function () {\n  var columns = Object.keys(this.opts.list
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  var defaults = __webpack_require__(/*! ../config/defaults */ \"./lib/config/defaults.js\")();\n\n  return this.initOptions(defaults, this.globalOptions, this.options);\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/opts.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  var defaults = __webpack_require__(/*! ../config/defaults */ \"./lib/config/defaults.js\")();\n\n  return this.initOptions(defaults, this.globalOptions, this.options);\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/opts.js?");
 
 /***/ }),
 
@@ -225,9 +236,10 @@ eval("module.exports = function () {\n  var defaults = __webpack_require__(/*! .
   !*** ./lib/computed/q.js ***!
   \***************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  return this.opts.filterByColumn ? JSON.stringify(this.query) : this.query;\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/q.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  return this.opts.filterByColumn ? JSON.stringify(this.query) : this.query;\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/q.js?");
 
 /***/ }),
 
@@ -236,9 +248,10 @@ eval("module.exports = function () {\n  return this.opts.filterByColumn ? JSON.s
   !*** ./lib/computed/storage.js ***!
   \*********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  if (typeof localStorage === 'undefined') return {};\n  return this.opts.storage === 'local' ? localStorage : sessionStorage;\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/storage.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  if (typeof localStorage === 'undefined') return {};\n  return this.opts.storage === 'local' ? localStorage : sessionStorage;\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/storage.js?");
 
 /***/ }),
 
@@ -247,9 +260,10 @@ eval("module.exports = function () {\n  if (typeof localStorage === 'undefined')
   !*** ./lib/computed/table-data.js ***!
   \************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  return this.data;\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/table-data.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  return this.data;\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/table-data.js?");
 
 /***/ }),
 
@@ -258,9 +272,10 @@ eval("module.exports = function () {\n  return this.data;\n};\n\n//# sourceURL=w
   !*** ./lib/computed/templates-keys.js ***!
   \****************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  return Object.keys(this.opts.templates);\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/templates-keys.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  return Object.keys(this.opts.templates);\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/templates-keys.js?");
 
 /***/ }),
 
@@ -269,9 +284,10 @@ eval("module.exports = function () {\n  return Object.keys(this.opts.templates);
   !*** ./lib/computed/total-pages.js ***!
   \*************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  return Math.ceil(this.count / this.limit);\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/total-pages.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  return Math.ceil(this.count / this.limit);\n};\n\n//# sourceURL=webpack://VueTables/./lib/computed/total-pages.js?");
 
 /***/ }),
 
@@ -280,9 +296,10 @@ eval("module.exports = function () {\n  return Math.ceil(this.count / this.limit
   !*** ./lib/config/defaults.js ***!
   \********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  return {\n    dateColumns: [],\n    listColumns: {},\n    datepickerOptions: {\n      locale: {\n        cancelLabel: \"Clear\"\n      }\n    },\n    datepickerPerColumnOptions: {},\n    initialPage: 1,\n    perPage: 10,\n    perPageValues: [10, 25, 50, 100],\n    groupBy: false,\n    collapseGroups: false,\n    destroyEventBus: false,\n    sendEmptyFilters: false,\n    params: {},\n    sortable: true,\n    filterable: true,\n    groupMeta: [],\n    initFilters: {},\n    sendInitialRequest: true,\n    customFilters: [],\n    templates: {},\n    debounce: 250,\n    dateFormat: \"DD/MM/YYYY\",\n    dateFormatPerColumn: {},\n    toMomentFormat: false,\n    skin: false,\n    columnsDisplay: {},\n    columnsDropdown: false,\n    texts: {\n      count: \"Showing {from} to {to} of {count} records|{count} records|One record\",\n      first: \"First\",\n      last: \"Last\",\n      filter: \"Filter:\",\n      filterPlaceholder: \"Search query\",\n      limit: \"Records:\",\n      page: \"Page:\",\n      noResults: \"No matching records\",\n      filterBy: \"Filter by {column}\",\n      loading: \"Loading...\",\n      defaultOption: \"Select {column}\",\n      columns: \"Columns\"\n    },\n    sortIcon: {\n      is: \"glyphicon-sort\",\n      base: \"glyphicon\",\n      up: \"glyphicon-chevron-up\",\n      down: \"glyphicon-chevron-down\"\n    },\n    sortingAlgorithm: function sortingAlgorithm(data, column) {\n      return data.sort(this.getSortFn(column));\n    },\n    customSorting: {},\n    multiSorting: {},\n    clientMultiSorting: true,\n    serverMultiSorting: false,\n    filterByColumn: false,\n    highlightMatches: false,\n    orderBy: false,\n    descOrderColumns: [],\n    footerHeadings: false,\n    headings: {},\n    headingsTooltips: {},\n    pagination: {\n      dropdown: false,\n      chunk: 10,\n      edge: false,\n      align: \"center\",\n      nav: \"fixed\"\n    },\n    childRow: false,\n    childRowTogglerFirst: true,\n    showChildRowToggler: true,\n    uniqueKey: \"id\",\n    requestFunction: false,\n    requestAdapter: function requestAdapter(data) {\n      return data;\n    },\n    responseAdapter: function responseAdapter(resp) {\n      var data = this.getResponseData(resp);\n      return {\n        data: data.data,\n        count: data.count\n      };\n    },\n    requestKeys: {\n      query: \"query\",\n      limit: \"limit\",\n      orderBy: \"orderBy\",\n      ascending: \"ascending\",\n      page: \"page\",\n      byColumn: \"byColumn\"\n    },\n    rowClassCallback: false,\n    preserveState: false,\n    saveState: false,\n    storage: \"local\",\n    columnsClasses: {}\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/config/defaults.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  return {\n    dateColumns: [],\n    listColumns: {},\n    datepickerOptions: {\n      locale: {\n        cancelLabel: \"Clear\"\n      }\n    },\n    datepickerPerColumnOptions: {},\n    initialPage: 1,\n    perPage: 10,\n    perPageValues: [10, 25, 50, 100],\n    groupBy: false,\n    collapseGroups: false,\n    destroyEventBus: false,\n    sendEmptyFilters: false,\n    params: {},\n    sortable: true,\n    filterable: true,\n    groupMeta: [],\n    initFilters: {},\n    sendInitialRequest: true,\n    customFilters: [],\n    templates: {},\n    debounce: 250,\n    dateFormat: \"DD/MM/YYYY\",\n    dateFormatPerColumn: {},\n    toMomentFormat: false,\n    skin: false,\n    columnsDisplay: {},\n    columnsDropdown: false,\n    texts: {\n      count: \"Showing {from} to {to} of {count} records|{count} records|One record\",\n      first: \"First\",\n      last: \"Last\",\n      filter: \"Filter:\",\n      filterPlaceholder: \"Search query\",\n      limit: \"Records:\",\n      page: \"Page:\",\n      noResults: \"No matching records\",\n      filterBy: \"Filter by {column}\",\n      loading: \"Loading...\",\n      defaultOption: \"Select {column}\",\n      columns: \"Columns\"\n    },\n    sortIcon: {\n      is: \"glyphicon-sort\",\n      base: \"glyphicon\",\n      up: \"glyphicon-chevron-up\",\n      down: \"glyphicon-chevron-down\"\n    },\n    sortingAlgorithm: function sortingAlgorithm(data, column) {\n      return data.sort(this.getSortFn(column));\n    },\n    customSorting: {},\n    multiSorting: {},\n    clientMultiSorting: true,\n    serverMultiSorting: false,\n    filterByColumn: false,\n    highlightMatches: false,\n    orderBy: false,\n    descOrderColumns: [],\n    footerHeadings: false,\n    headings: {},\n    headingsTooltips: {},\n    pagination: {\n      dropdown: false,\n      chunk: 10,\n      edge: false,\n      align: \"center\",\n      nav: \"fixed\"\n    },\n    childRow: false,\n    childRowTogglerFirst: true,\n    showChildRowToggler: true,\n    uniqueKey: \"id\",\n    requestFunction: false,\n    requestAdapter: function requestAdapter(data) {\n      return data;\n    },\n    responseAdapter: function responseAdapter(resp) {\n      var data = this.getResponseData(resp);\n      return {\n        data: data.data,\n        count: data.count\n      };\n    },\n    requestKeys: {\n      query: \"query\",\n      limit: \"limit\",\n      orderBy: \"orderBy\",\n      ascending: \"ascending\",\n      page: \"page\",\n      byColumn: \"byColumn\"\n    },\n    rowClassCallback: false,\n    preserveState: false,\n    saveState: false,\n    storage: \"local\",\n    columnsClasses: {}\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/config/defaults.js?");
 
 /***/ }),
 
@@ -291,9 +308,10 @@ eval("module.exports = function () {\n  return {\n    dateColumns: [],\n    list
   !*** ./lib/directives/input.js ***!
   \*********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = {\n  twoWay: true,\n  bind: function bind(el, binding, vnode) {\n    el.addEventListener('keydown', function (e) {\n      vnode.context[binding.value] = e.target.value;\n    });\n  },\n  update: function update(el, binding, vnode, oldVnode) {}\n};\n\n//# sourceURL=webpack://VueTables/./lib/directives/input.js?");
+"use strict";
+eval("\n\nmodule.exports = {\n  twoWay: true,\n  bind: function bind(el, binding, vnode) {\n    el.addEventListener('keydown', function (e) {\n      vnode.context[binding.value] = e.target.value;\n    });\n  },\n  update: function update(el, binding, vnode, oldVnode) {}\n};\n\n//# sourceURL=webpack://VueTables/./lib/directives/input.js?");
 
 /***/ }),
 
@@ -302,9 +320,10 @@ eval("module.exports = {\n  twoWay: true,\n  bind: function bind(el, binding, vn
   !*** ./lib/directives/select.js ***!
   \**********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = {\n  twoWay: true,\n  bind: function bind(el, binding, vnode) {\n    el.addEventListener('change', function (e) {\n      console.log(\"SELECT CHANGE\");\n      vnode.context[binding.value.name] = e.target.value;\n      binding.value.cb.call(this, binding.value.params);\n    });\n  },\n  update: function update(el, binding, vnode, oldVnode) {// el.value = vnode.context[binding.value];\n    // console.log(binding.value + \" was updated\");\n    //  vnode.context[binding.value] = el.value;\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/directives/select.js?");
+"use strict";
+eval("\n\nmodule.exports = {\n  twoWay: true,\n  bind: function bind(el, binding, vnode) {\n    el.addEventListener('change', function (e) {\n      console.log(\"SELECT CHANGE\");\n      vnode.context[binding.value.name] = e.target.value;\n      binding.value.cb.call(this, binding.value.params);\n    });\n  },\n  update: function update(el, binding, vnode, oldVnode) {// el.value = vnode.context[binding.value];\n    // console.log(binding.value + \" was updated\");\n    //  vnode.context[binding.value] = el.value;\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/directives/select.js?");
 
 /***/ }),
 
@@ -313,9 +332,10 @@ eval("module.exports = {\n  twoWay: true,\n  bind: function bind(el, binding, vn
   !*** ./lib/filters/custom-filters.js ***!
   \***************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (data, customFilters, customQueries) {\n  var passing;\n  return data.filter(function (row) {\n    passing = true;\n    customFilters.forEach(function (filter) {\n      var value = customQueries[filter.name];\n      if (value && !filter.callback(row, value)) passing = false;\n    });\n    return passing;\n  });\n};\n\n//# sourceURL=webpack://VueTables/./lib/filters/custom-filters.js?");
+"use strict";
+eval("\n\nmodule.exports = function (data, customFilters, customQueries) {\n  var passing;\n  return data.filter(function (row) {\n    passing = true;\n    customFilters.forEach(function (filter) {\n      var value = customQueries[filter.name];\n      if (value && !filter.callback(row, value)) passing = false;\n    });\n    return passing;\n  });\n};\n\n//# sourceURL=webpack://VueTables/./lib/filters/custom-filters.js?");
 
 /***/ }),
 
@@ -326,7 +346,8 @@ eval("module.exports = function (data, customFilters, customQueries) {\n  var pa
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var validMoment = __webpack_require__(/*! ../helpers/is-valid-moment-object */ \"./lib/helpers/is-valid-moment-object.js\");\n\nmodule.exports = function (value, dateFormat) {\n  if (!validMoment(value)) return value;\n  return value.format(dateFormat);\n};\n\n//# sourceURL=webpack://VueTables/./lib/filters/format-date.js?");
+"use strict";
+eval("\n\nvar validMoment = __webpack_require__(/*! ../helpers/is-valid-moment-object */ \"./lib/helpers/is-valid-moment-object.js\");\n\nmodule.exports = function (value, dateFormat) {\n  if (!validMoment(value)) return value;\n  return value.format(dateFormat);\n};\n\n//# sourceURL=webpack://VueTables/./lib/filters/format-date.js?");
 
 /***/ }),
 
@@ -335,9 +356,10 @@ eval("var validMoment = __webpack_require__(/*! ../helpers/is-valid-moment-objec
   !*** ./lib/filters/highlight-matches.js ***!
   \******************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (value, column, h) {\n  var query = this.opts.filterByColumn ? this.query[column] : this.query;\n  if (!query) return value;\n  query = new RegExp(\"(\" + escapeRegex(query) + \")\", \"i\");\n  return h(\"span\", {\n    \"class\": 'VueTables__highlight'\n  }, matches(value, query, h));\n};\n\nfunction matches(value, query, h) {\n  var pieces = String(value).split(query);\n  return pieces.map(function (piece) {\n    if (query.test(piece)) {\n      return h(\"b\", {}, piece);\n    }\n\n    return piece;\n  });\n}\n\nfunction escapeRegex(s) {\n  return typeof s === 'string' ? s.replace(/[-\\/\\\\^$*+?.()|[\\]{}]/g, '\\\\$&') : s;\n}\n\n;\n\n//# sourceURL=webpack://VueTables/./lib/filters/highlight-matches.js?");
+"use strict";
+eval("\n\nmodule.exports = function (value, column, h) {\n  var query = this.opts.filterByColumn ? this.query[column] : this.query;\n  if (!query) return value;\n  query = new RegExp(\"(\" + escapeRegex(query) + \")\", \"i\");\n  return h(\"span\", {\n    \"class\": 'VueTables__highlight'\n  }, matches(value, query, h));\n};\n\nfunction matches(value, query, h) {\n  var pieces = String(value).split(query);\n  return pieces.map(function (piece) {\n    if (query.test(piece)) {\n      return h(\"b\", {}, piece);\n    }\n\n    return piece;\n  });\n}\n\nfunction escapeRegex(s) {\n  return typeof s === 'string' ? s.replace(/[-\\/\\\\^$*+?.()|[\\]{}]/g, '\\\\$&') : s;\n}\n\n;\n\n//# sourceURL=webpack://VueTables/./lib/filters/highlight-matches.js?");
 
 /***/ }),
 
@@ -346,9 +368,10 @@ eval("module.exports = function (value, column, h) {\n  var query = this.opts.fi
   !*** ./lib/filters/option-text.js ***!
   \************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (value, column) {\n  var list = this.listColumnsObject[column];\n  if (typeof list[value] == 'undefined') return value;\n  return list[value];\n};\n\n//# sourceURL=webpack://VueTables/./lib/filters/option-text.js?");
+"use strict";
+eval("\n\nmodule.exports = function (value, column) {\n  var list = this.listColumnsObject[column];\n  if (typeof list[value] == 'undefined') return value;\n  return list[value];\n};\n\n//# sourceURL=webpack://VueTables/./lib/filters/option-text.js?");
 
 /***/ }),
 
@@ -357,9 +380,10 @@ eval("module.exports = function (value, column) {\n  var list = this.listColumns
   !*** ./lib/helpers/is-empty.js ***!
   \*********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (obj) {\n  // null and undefined are \"empty\"\n  if (obj == null) return true; // Assume if it has a length property with a non-zero value\n  // that that property is correct.\n\n  if (obj.length > 0) return false;\n  if (obj.length === 0) return true; // Otherwise, does it have any properties of its own?\n\n  for (var key in obj) {\n    if (Object.prototype.hasOwnProperty.call(obj, key)) return false;\n  }\n\n  return true;\n};\n\n//# sourceURL=webpack://VueTables/./lib/helpers/is-empty.js?");
+"use strict";
+eval("\n\nmodule.exports = function (obj) {\n  // null and undefined are \"empty\"\n  if (obj == null) return true; // Assume if it has a length property with a non-zero value\n  // that that property is correct.\n\n  if (obj.length > 0) return false;\n  if (obj.length === 0) return true; // Otherwise, does it have any properties of its own?\n\n  for (var key in obj) {\n    if (Object.prototype.hasOwnProperty.call(obj, key)) return false;\n  }\n\n  return true;\n};\n\n//# sourceURL=webpack://VueTables/./lib/helpers/is-empty.js?");
 
 /***/ }),
 
@@ -368,9 +392,10 @@ eval("module.exports = function (obj) {\n  // null and undefined are \"empty\"\n
   !*** ./lib/helpers/is-valid-moment-object.js ***!
   \***********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (val) {\n  return val && typeof val.isValid == 'function' && val.isValid();\n};\n\n//# sourceURL=webpack://VueTables/./lib/helpers/is-valid-moment-object.js?");
+"use strict";
+eval("\n\nmodule.exports = function (val) {\n  return val && typeof val.isValid == 'function' && val.isValid();\n};\n\n//# sourceURL=webpack://VueTables/./lib/helpers/is-valid-moment-object.js?");
 
 /***/ }),
 
@@ -379,9 +404,10 @@ eval("module.exports = function (val) {\n  return val && typeof val.isValid == '
   !*** ./lib/helpers/object-filled-keys-count.js ***!
   \*************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("function _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nmodule.exports = function (obj) {\n  var count = 0;\n\n  for (var prop in obj) {\n    var isDateRange = _typeof(obj[prop]) == 'object';\n    if (isDateRange || obj[prop] && (!isNaN(obj[prop]) || obj[prop].trim())) count++;\n  }\n\n  return count;\n};\n\n//# sourceURL=webpack://VueTables/./lib/helpers/object-filled-keys-count.js?");
+"use strict";
+eval("\n\nfunction _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nmodule.exports = function (obj) {\n  var count = 0;\n\n  for (var prop in obj) {\n    var isDateRange = _typeof(obj[prop]) == 'object';\n    if (isDateRange || obj[prop] && (!isNaN(obj[prop]) || obj[prop].trim())) count++;\n  }\n\n  return count;\n};\n\n//# sourceURL=webpack://VueTables/./lib/helpers/object-filled-keys-count.js?");
 
 /***/ }),
 
@@ -389,11 +415,11 @@ eval("function _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbo
 /*!********************************!*\
   !*** ./lib/helpers/ucfirst.js ***!
   \********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (str) {\n  return str.charAt(0).toUpperCase() + str.slice(1);\n});\n\n//# sourceURL=webpack://VueTables/./lib/helpers/ucfirst.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = _default;\n\nfunction _default(str) {\n  return str.charAt(0).toUpperCase() + str.slice(1);\n}\n\n//# sourceURL=webpack://VueTables/./lib/helpers/ucfirst.js?");
 
 /***/ }),
 
@@ -401,11 +427,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ 
 /*!**********************!*\
   !*** ./lib/index.js ***!
   \**********************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var _bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bus */ \"./lib/bus.js\");\nvar ClientTable = __webpack_require__(/*! ./v-client-table */ \"./lib/v-client-table.js\");\n\nvar ServerTable = __webpack_require__(/*! ./v-server-table */ \"./lib/v-server-table.js\");\n\n\nmodule.exports = {\n  ClientTable: ClientTable,\n  ServerTable: ServerTable,\n  Event: _bus__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\n};\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/webpack/buildin/harmony-module.js */ \"./node_modules/webpack/buildin/harmony-module.js\")(module)))\n\n//# sourceURL=webpack://VueTables/./lib/index.js?");
+eval("\n\nvar _bus = _interopRequireDefault(__webpack_require__(/*! ./bus */ \"./lib/bus.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nvar ClientTable = __webpack_require__(/*! ./v-client-table */ \"./lib/v-client-table.js\");\n\nvar ServerTable = __webpack_require__(/*! ./v-server-table */ \"./lib/v-server-table.js\");\n\nmodule.exports = {\n  ClientTable: ClientTable,\n  ServerTable: ServerTable,\n  Event: _bus[\"default\"]\n};\n\n//# sourceURL=webpack://VueTables/./lib/index.js?");
 
 /***/ }),
 
@@ -414,9 +440,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(f
   !*** ./lib/methods/apply-filters.js ***!
   \**************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("function _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nmodule.exports = function (data) {\n  var _this = this;\n\n  try {\n    return data.map(function (row) {\n      for (var column in row) {\n        if (_this.source === 'client') row[column] = _this.formatDate(row[column], _this.dateFormat(column));\n\n        if (_this.isListFilter(column) && !_this.opts.templates[column] && !_this.$scopedSlots[column]) {\n          row[column] = _this.optionText(row[column], column);\n        }\n      }\n\n      return row;\n    });\n  } catch (e) {\n    console.error(\"vue-tables-2: non-iterable data property. Expected array, got \".concat(_typeof(data), \". Make sure that your response conforms to the expected format, or use the 'responseAdapter' option to match the currently returned format\"));\n    console.error('Data equals', data);\n    throw new Error();\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/apply-filters.js?");
+"use strict";
+eval("\n\nfunction _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nmodule.exports = function (data) {\n  var _this = this;\n\n  try {\n    return data.map(function (row) {\n      for (var column in row) {\n        if (_this.source === 'client') row[column] = _this.formatDate(row[column], _this.dateFormat(column));\n\n        if (_this.isListFilter(column) && !_this.opts.templates[column] && !_this.$scopedSlots[column]) {\n          row[column] = _this.optionText(row[column], column);\n        }\n      }\n\n      return row;\n    });\n  } catch (e) {\n    console.error(\"vue-tables-2: non-iterable data property. Expected array, got \".concat(_typeof(data), \". Make sure that your response conforms to the expected format, or use the 'responseAdapter' option to match the currently returned format\"));\n    console.error('Data equals', data);\n    throw new Error();\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/apply-filters.js?");
 
 /***/ }),
 
@@ -425,9 +452,10 @@ eval("function _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbo
   !*** ./lib/methods/child-row-toggler-class.js ***!
   \************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (rowId) {\n  return this.openChildRows.includes(rowId) ? 'VueTables__child-row-toggler--open' : 'VueTables__child-row-toggler--closed';\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/child-row-toggler-class.js?");
+"use strict";
+eval("\n\nmodule.exports = function (rowId) {\n  return this.openChildRows.includes(rowId) ? 'VueTables__child-row-toggler--open' : 'VueTables__child-row-toggler--closed';\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/child-row-toggler-class.js?");
 
 /***/ }),
 
@@ -438,7 +466,8 @@ eval("module.exports = function (rowId) {\n  return this.openChildRows.includes(
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("function _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nvar object_filled_keys_count = __webpack_require__(/*! ../helpers/object-filled-keys-count */ \"./lib/helpers/object-filled-keys-count.js\");\n\nvar is_valid_moment_object = __webpack_require__(/*! ../helpers/is-valid-moment-object */ \"./lib/helpers/is-valid-moment-object.js\");\n\nvar filterByCustomFilters = __webpack_require__(/*! ../filters/custom-filters */ \"./lib/filters/custom-filters.js\");\n\nmodule.exports = function (data, e) {\n  if (e) {\n    var _query = this.query;\n    this.setPage(1, true);\n    var name = this.getName(e.target.name);\n    var value = _typeof(e.target.value) === 'object' ? e.target.value : '' + e.target.value;\n\n    if (name) {\n      _query[name] = value;\n    } else {\n      _query = value;\n    }\n\n    this.vuex ? this.commit('SET_FILTER', _query) : this.query = _query;\n    this.updateState('query', _query);\n\n    if (name) {\n      this.dispatch('filter', {\n        name: name,\n        value: value\n      });\n      this.dispatch(\"filter::\".concat(name), value);\n    } else {\n      this.dispatch('filter', value);\n    }\n  }\n\n  var query = this.query;\n  var totalQueries = !query ? 0 : 1;\n  if (!this.opts) return data;\n\n  if (this.opts.filterByColumn) {\n    totalQueries = object_filled_keys_count(query);\n    var dict = this.customQueries;\n    Object.keys(this.customQueries).forEach(function (customQueryKey) {\n      var customQueryValue = dict[customQueryKey];\n\n      if (customQueryValue != \"\") {\n        totalQueries--;\n      }\n    });\n  }\n\n  var value;\n  var found;\n  var currentQuery;\n  var dateFormat;\n  var filterByDate;\n  var isListFilter;\n  var data = filterByCustomFilters(data, this.opts.customFilters, this.customQueries);\n  if (!totalQueries) return data;\n  return data.filter(function (row, index) {\n    found = 0;\n    this.filterableColumns.forEach(function (column) {\n      filterByDate = this.opts.dateColumns.indexOf(column) > -1 && this.opts.filterByColumn;\n      isListFilter = this.isListFilter(column) && this.opts.filterByColumn;\n      dateFormat = this.dateFormat(column);\n      value = this._getValue(row, column);\n\n      if (is_valid_moment_object(value) && !filterByDate) {\n        value = value.format(dateFormat);\n      }\n\n      currentQuery = this.opts.filterByColumn ? query[column] : query;\n      currentQuery = setCurrentQuery(currentQuery);\n      if (currentQuery && foundMatch(currentQuery, value, isListFilter)) found++;\n    }.bind(this));\n    return found >= totalQueries;\n  }.bind(this));\n};\n\nfunction setCurrentQuery(query) {\n  if (!query) return '';\n  if (typeof query == 'string') return query.toLowerCase(); // Date Range\n\n  return query;\n}\n\nfunction foundMatch(query, value, isListFilter) {\n  if (['string', 'number', 'boolean'].indexOf(_typeof(value)) > -1) {\n    value = String(value).toLowerCase();\n  } // List Filter\n\n\n  if (isListFilter) {\n    return value == query;\n  } //Text Filter\n\n\n  if (typeof value === 'string') {\n    return value.indexOf(query) > -1;\n  } // Date range\n\n\n  if (is_valid_moment_object(value)) {\n    var start = moment(query.start, 'YYYY-MM-DD HH:mm:ss');\n    var end = moment(query.end, 'YYYY-MM-DD HH:mm:ss');\n    return value >= start && value <= end;\n  }\n\n  if (_typeof(value) === 'object') {\n    for (var key in value) {\n      if (foundMatch(query, value[key])) return true;\n    }\n\n    return false;\n  }\n\n  return value >= start && value <= end;\n}\n\n//# sourceURL=webpack://VueTables/./lib/methods/client-search.js?");
+"use strict";
+eval("\n\nfunction _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nvar object_filled_keys_count = __webpack_require__(/*! ../helpers/object-filled-keys-count */ \"./lib/helpers/object-filled-keys-count.js\");\n\nvar is_valid_moment_object = __webpack_require__(/*! ../helpers/is-valid-moment-object */ \"./lib/helpers/is-valid-moment-object.js\");\n\nvar filterByCustomFilters = __webpack_require__(/*! ../filters/custom-filters */ \"./lib/filters/custom-filters.js\");\n\nmodule.exports = function (data, e) {\n  if (e) {\n    var _query = this.query;\n    this.setPage(1, true);\n    var name = this.getName(e.target.name);\n    var value = _typeof(e.target.value) === 'object' ? e.target.value : '' + e.target.value;\n\n    if (name) {\n      _query[name] = value;\n    } else {\n      _query = value;\n    }\n\n    this.vuex ? this.commit('SET_FILTER', _query) : this.query = _query;\n    this.updateState('query', _query);\n\n    if (name) {\n      this.dispatch('filter', {\n        name: name,\n        value: value\n      });\n      this.dispatch(\"filter::\".concat(name), value);\n    } else {\n      this.dispatch('filter', value);\n    }\n  }\n\n  var query = this.query;\n  var totalQueries = !query ? 0 : 1;\n  if (!this.opts) return data;\n\n  if (this.opts.filterByColumn) {\n    totalQueries = object_filled_keys_count(query);\n    var dict = this.customQueries;\n    Object.keys(this.customQueries).forEach(function (customQueryKey) {\n      var customQueryValue = dict[customQueryKey];\n\n      if (customQueryValue != \"\") {\n        totalQueries--;\n      }\n    });\n  }\n\n  var value;\n  var found;\n  var currentQuery;\n  var dateFormat;\n  var filterByDate;\n  var isListFilter;\n  var data = filterByCustomFilters(data, this.opts.customFilters, this.customQueries);\n  if (!totalQueries) return data;\n  return data.filter(function (row, index) {\n    found = 0;\n    this.filterableColumns.forEach(function (column) {\n      filterByDate = this.opts.dateColumns.indexOf(column) > -1 && this.opts.filterByColumn;\n      isListFilter = this.isListFilter(column) && this.opts.filterByColumn;\n      dateFormat = this.dateFormat(column);\n      value = this._getValue(row, column);\n\n      if (is_valid_moment_object(value) && !filterByDate) {\n        value = value.format(dateFormat);\n      }\n\n      currentQuery = this.opts.filterByColumn ? query[column] : query;\n      currentQuery = setCurrentQuery(currentQuery);\n      if (currentQuery && foundMatch(currentQuery, value, isListFilter)) found++;\n    }.bind(this));\n    return found >= totalQueries;\n  }.bind(this));\n};\n\nfunction setCurrentQuery(query) {\n  if (!query) return '';\n  if (typeof query == 'string') return query.toLowerCase(); // Date Range\n\n  return query;\n}\n\nfunction foundMatch(query, value, isListFilter) {\n  if (['string', 'number', 'boolean'].indexOf(_typeof(value)) > -1) {\n    value = String(value).toLowerCase();\n  } // List Filter\n\n\n  if (isListFilter) {\n    return value == query;\n  } //Text Filter\n\n\n  if (typeof value === 'string') {\n    return value.indexOf(query) > -1;\n  } // Date range\n\n\n  if (is_valid_moment_object(value)) {\n    var start = moment(query.start, 'YYYY-MM-DD HH:mm:ss');\n    var end = moment(query.end, 'YYYY-MM-DD HH:mm:ss');\n    return value >= start && value <= end;\n  }\n\n  if (_typeof(value) === 'object') {\n    for (var key in value) {\n      if (foundMatch(query, value[key])) return true;\n    }\n\n    return false;\n  }\n\n  return value >= start && value <= end;\n}\n\n//# sourceURL=webpack://VueTables/./lib/methods/client-search.js?");
 
 /***/ }),
 
@@ -447,9 +476,10 @@ eval("function _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbo
   !*** ./lib/methods/column-class.js ***!
   \*************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (column) {\n  var c = this.opts.columnsClasses;\n  return c.hasOwnProperty(column) ? c[column] : '';\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/column-class.js?");
+"use strict";
+eval("\n\nmodule.exports = function (column) {\n  var c = this.opts.columnsClasses;\n  return c.hasOwnProperty(column) ? c[column] : '';\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/column-class.js?");
 
 /***/ }),
 
@@ -458,9 +488,10 @@ eval("module.exports = function (column) {\n  var c = this.opts.columnsClasses;\
   !*** ./lib/methods/currently-sorted.js ***!
   \*****************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (column) {\n  var userMultiSort = Object.keys(this.userMultiSorting);\n  if (!userMultiSort.length || this.orderBy.column === column) return this.orderBy.column === column;\n  return !!this.userMultiSorting[userMultiSort[0]].filter(function (col) {\n    return col.column == column;\n  }).length;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/currently-sorted.js?");
+"use strict";
+eval("\n\nmodule.exports = function (column) {\n  var userMultiSort = Object.keys(this.userMultiSorting);\n  if (!userMultiSort.length || this.orderBy.column === column) return this.orderBy.column === column;\n  return !!this.userMultiSorting[userMultiSort[0]].filter(function (col) {\n    return col.column == column;\n  }).length;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/currently-sorted.js?");
 
 /***/ }),
 
@@ -469,9 +500,10 @@ eval("module.exports = function (column) {\n  var userMultiSort = Object.keys(th
   !*** ./lib/methods/date-format.js ***!
   \************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (column) {\n  if (this.opts.dateFormatPerColumn.hasOwnProperty(column)) {\n    return this.opts.dateFormatPerColumn[column];\n  }\n\n  return this.opts.dateFormat;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/date-format.js?");
+"use strict";
+eval("\n\nmodule.exports = function (column) {\n  if (this.opts.dateFormatPerColumn.hasOwnProperty(column)) {\n    return this.opts.dateFormatPerColumn[column];\n  }\n\n  return this.opts.dateFormat;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/date-format.js?");
 
 /***/ }),
 
@@ -480,9 +512,10 @@ eval("module.exports = function (column) {\n  if (this.opts.dateFormatPerColumn.
   !*** ./lib/methods/default-sort.js ***!
   \*************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (column, ascending) {\n  var multiIndex = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : -1;\n  var sort = this.defaultSort;\n  var multiSort = this.userMultiSorting[this.currentlySorting.column] ? this.userMultiSorting[this.currentlySorting.column] : this.opts.multiSorting[this.currentlySorting.column];\n  var asc = this.currentlySorting.ascending;\n  var self = this;\n  return function (a, b) {\n    var aVal = self._getValue(a, column) || '';\n    var bVal = self._getValue(b, column) || '';\n    var dir = ascending ? 1 : -1;\n    var secondaryAsc;\n    if (typeof aVal === 'string') aVal = aVal.toLowerCase();\n    if (typeof bVal === 'string') bVal = bVal.toLowerCase();\n\n    if (aVal === bVal && multiSort && multiSort[multiIndex + 1]) {\n      var sortData = multiSort[multiIndex + 1];\n\n      if (typeof sortData.ascending !== 'undefined') {\n        secondaryAsc = sortData.ascending;\n      } else {\n        secondaryAsc = sortData.matchDir ? asc : !asc;\n      }\n\n      return sort(sortData.column, secondaryAsc, multiIndex + 1)(a, b);\n    }\n\n    return aVal > bVal ? dir : -dir;\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/default-sort.js?");
+"use strict";
+eval("\n\nmodule.exports = function (column, ascending) {\n  var multiIndex = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : -1;\n  var sort = this.defaultSort;\n  var multiSort = this.userMultiSorting[this.currentlySorting.column] ? this.userMultiSorting[this.currentlySorting.column] : this.opts.multiSorting[this.currentlySorting.column];\n  var asc = this.currentlySorting.ascending;\n  var self = this;\n  return function (a, b) {\n    var aVal = self._getValue(a, column) || '';\n    var bVal = self._getValue(b, column) || '';\n    var dir = ascending ? 1 : -1;\n    var secondaryAsc;\n    if (typeof aVal === 'string') aVal = aVal.toLowerCase();\n    if (typeof bVal === 'string') bVal = bVal.toLowerCase();\n\n    if (aVal === bVal && multiSort && multiSort[multiIndex + 1]) {\n      var sortData = multiSort[multiIndex + 1];\n\n      if (typeof sortData.ascending !== 'undefined') {\n        secondaryAsc = sortData.ascending;\n      } else {\n        secondaryAsc = sortData.matchDir ? asc : !asc;\n      }\n\n      return sort(sortData.column, secondaryAsc, multiIndex + 1)(a, b);\n    }\n\n    return aVal > bVal ? dir : -dir;\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/default-sort.js?");
 
 /***/ }),
 
@@ -490,11 +523,11 @@ eval("module.exports = function (column, ascending) {\n  var multiIndex = argume
 /*!*********************************!*\
   !*** ./lib/methods/dispatch.js ***!
   \*********************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var _bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../bus */ \"./lib/bus.js\");\n\n\nmodule.exports = function (event, payload) {\n  if (this.vuex) {\n    if (event.split('::').length > 1) return;\n    this.commit(event.toUpperCase().replace('-', '_'), payload);\n  }\n\n  this.$emit(event, payload);\n  _bus__WEBPACK_IMPORTED_MODULE_0__[\"default\"].$emit(\"vue-tables.\".concat(event), payload);\n\n  if (this.name) {\n    _bus__WEBPACK_IMPORTED_MODULE_0__[\"default\"].$emit(\"vue-tables.\".concat(this.name, \".\").concat(event), payload);\n  }\n};\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/harmony-module.js */ \"./node_modules/webpack/buildin/harmony-module.js\")(module)))\n\n//# sourceURL=webpack://VueTables/./lib/methods/dispatch.js?");
+eval("\n\nvar _bus = _interopRequireDefault(__webpack_require__(/*! ../bus */ \"./lib/bus.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nmodule.exports = function (event, payload) {\n  if (this.vuex) {\n    if (event.split('::').length > 1) return;\n    this.commit(event.toUpperCase().replace('-', '_'), payload);\n  }\n\n  this.$emit(event, payload);\n\n  _bus[\"default\"].$emit(\"vue-tables.\".concat(event), payload);\n\n  if (this.name) {\n    _bus[\"default\"].$emit(\"vue-tables.\".concat(this.name, \".\").concat(event), payload);\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/dispatch.js?");
 
 /***/ }),
 
@@ -503,9 +536,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(f
   !*** ./lib/methods/display.js ***!
   \********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (text, replacements) {\n  if (!this.opts.texts) return '';\n  var text = this.opts.texts[text];\n  if (replacements) for (var key in replacements) {\n    // console.log(key)\n    text = text.replace('{' + key + '}', replacements[key]);\n  }\n  return text;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/display.js?");
+"use strict";
+eval("\n\nmodule.exports = function (text, replacements) {\n  if (!this.opts.texts) return '';\n  var text = this.opts.texts[text];\n  if (replacements) for (var key in replacements) {\n    // console.log(key)\n    text = text.replace('{' + key + '}', replacements[key]);\n  }\n  return text;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/display.js?");
 
 /***/ }),
 
@@ -514,9 +548,10 @@ eval("module.exports = function (text, replacements) {\n  if (!this.opts.texts) 
   !*** ./lib/methods/filterable.js ***!
   \***********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (column) {\n  if (!this.opts.filterable) return false;\n  return typeof this.opts.filterable == 'boolean' && this.opts.filterable || this.opts.filterable.indexOf(column) > -1;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/filterable.js?");
+"use strict";
+eval("\n\nmodule.exports = function (column) {\n  if (!this.opts.filterable) return false;\n  return typeof this.opts.filterable == 'boolean' && this.opts.filterable || this.opts.filterable.indexOf(column) > -1;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/filterable.js?");
 
 /***/ }),
 
@@ -525,9 +560,10 @@ eval("module.exports = function (column) {\n  if (!this.opts.filterable) return 
   !*** ./lib/methods/get-child-row-template.js ***!
   \***********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (h, row) {\n  // scoped slot\n  if (this.$scopedSlots.child_row) return this.$scopedSlots.child_row({\n    row: row\n  });\n  var childRow = this.opts.childRow; // function\n\n  if (typeof childRow === 'function') return childRow.apply(this, [h, row]); // component\n\n  return h(childRow, {\n    attrs: {\n      data: row\n    }\n  });\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/get-child-row-template.js?");
+"use strict";
+eval("\n\nmodule.exports = function (h, row) {\n  // scoped slot\n  if (this.$scopedSlots.child_row) return this.$scopedSlots.child_row({\n    row: row\n  });\n  var childRow = this.opts.childRow; // function\n\n  if (typeof childRow === 'function') return childRow.apply(this, [h, row]); // component\n\n  return h(childRow, {\n    attrs: {\n      data: row\n    }\n  });\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/get-child-row-template.js?");
 
 /***/ }),
 
@@ -536,9 +572,10 @@ eval("module.exports = function (h, row) {\n  // scoped slot\n  if (this.$scoped
   !*** ./lib/methods/get-column-name.js ***!
   \****************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (column) {\n  return 'vf__' + column.split('.').join('@@@');\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/get-column-name.js?");
+"use strict";
+eval("\n\nmodule.exports = function (column) {\n  return 'vf__' + column.split('.').join('@@@');\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/get-column-name.js?");
 
 /***/ }),
 
@@ -549,7 +586,8 @@ eval("module.exports = function (column) {\n  return 'vf__' + column.split('.').
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\nvar merge = __webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\");\n\nmodule.exports = function (promiseOnly) {\n  var _data;\n\n  var additionalData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};\n  var emitLoading = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;\n  var keys = this.opts.requestKeys;\n  var data = (_data = {}, _defineProperty(_data, keys.query, this.filteredQuery), _defineProperty(_data, keys.limit, this.limit), _defineProperty(_data, keys.ascending, this.orderBy.ascending ? 1 : 0), _defineProperty(_data, keys.page, this.page), _defineProperty(_data, keys.byColumn, this.opts.filterByColumn ? 1 : 0), _data);\n  if (this.orderBy.hasOwnProperty('column') && this.orderBy.column) data[keys.orderBy] = this.orderBy.column;\n  data = merge(data, this.opts.params, this.customQueries, additionalData);\n\n  if (this.hasMultiSort && this.orderBy.column && this.userMultiSorting[this.orderBy.column]) {\n    data.multiSort = this.userMultiSorting[this.orderBy.column];\n  }\n\n  data = this.opts.requestAdapter(data);\n\n  if (emitLoading) {\n    this.dispatch('loading', data);\n  }\n\n  var promise = this.sendRequest(data);\n  if (promiseOnly) return promise;\n  return promise.then(function (response) {\n    return this.setData(response);\n  }.bind(this));\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/get-data.js?");
+"use strict";
+eval("\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\nvar merge = __webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\");\n\nmodule.exports = function (promiseOnly) {\n  var _data;\n\n  var additionalData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};\n  var emitLoading = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;\n  var keys = this.opts.requestKeys;\n  var data = (_data = {}, _defineProperty(_data, keys.query, this.filteredQuery), _defineProperty(_data, keys.limit, this.limit), _defineProperty(_data, keys.ascending, this.orderBy.ascending ? 1 : 0), _defineProperty(_data, keys.page, this.page), _defineProperty(_data, keys.byColumn, this.opts.filterByColumn ? 1 : 0), _data);\n  if (this.orderBy.hasOwnProperty('column') && this.orderBy.column) data[keys.orderBy] = this.orderBy.column;\n  data = merge(data, this.opts.params, this.customQueries, additionalData);\n\n  if (this.hasMultiSort && this.orderBy.column && this.userMultiSorting[this.orderBy.column]) {\n    data.multiSort = this.userMultiSorting[this.orderBy.column];\n  }\n\n  data = this.opts.requestAdapter(data);\n\n  if (emitLoading) {\n    this.dispatch('loading', data);\n  }\n\n  var promise = this.sendRequest(data);\n  if (promiseOnly) return promise;\n  return promise.then(function (response) {\n    return this.setData(response);\n  }.bind(this));\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/get-data.js?");
 
 /***/ }),
 
@@ -558,9 +596,10 @@ eval("function _defineProperty(obj, key, value) { if (key in obj) { Object.defin
   !*** ./lib/methods/get-group-slot.js ***!
   \***************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (value) {\n  if (this.$scopedSlots && this.$scopedSlots['__group_meta']) {\n    var data = this.opts.groupMeta.find(function (val) {\n      return val.value === value;\n    });\n    if (!data) return '';\n    return this.$scopedSlots['__group_meta'](data);\n  }\n\n  return '';\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/get-group-slot.js?");
+"use strict";
+eval("\n\nmodule.exports = function (value) {\n  if (this.$scopedSlots && this.$scopedSlots['__group_meta']) {\n    var data = this.opts.groupMeta.find(function (val) {\n      return val.value === value;\n    });\n    if (!data) return '';\n    return this.$scopedSlots['__group_meta'](data);\n  }\n\n  return '';\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/get-group-slot.js?");
 
 /***/ }),
 
@@ -569,9 +608,10 @@ eval("module.exports = function (value) {\n  if (this.$scopedSlots && this.$scop
   !*** ./lib/methods/get-heading-tooltip.js ***!
   \********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (value, h) {\n  if (typeof value !== 'string') return '';\n  var derivedHeadingTooltip = '';\n  if (!this.opts.headingsTooltips.hasOwnProperty(value)) return derivedHeadingTooltip;\n\n  if (typeof this.opts.headingsTooltips[value] === 'function') {\n    if (h) return this.opts.headingsTooltips[value].call(this.$parent, h);\n    return derivedHeadingTooltip;\n  }\n\n  return this.opts.headingsTooltips[value];\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/get-heading-tooltip.js?");
+"use strict";
+eval("\n\nmodule.exports = function (value, h) {\n  if (typeof value !== 'string') return '';\n  var derivedHeadingTooltip = '';\n  if (!this.opts.headingsTooltips.hasOwnProperty(value)) return derivedHeadingTooltip;\n\n  if (typeof this.opts.headingsTooltips[value] === 'function') {\n    if (h) return this.opts.headingsTooltips[value].call(this.$parent, h);\n    return derivedHeadingTooltip;\n  }\n\n  return this.opts.headingsTooltips[value];\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/get-heading-tooltip.js?");
 
 /***/ }),
 
@@ -579,11 +619,11 @@ eval("module.exports = function (value, h) {\n  if (typeof value !== 'string') r
 /*!************************************!*\
   !*** ./lib/methods/get-heading.js ***!
   \************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var _helpers_ucfirst__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers/ucfirst */ \"./lib/helpers/ucfirst.js\");\n\n\nmodule.exports = function (value, h) {\n  if (typeof value !== 'string') return '';\n\n  if (typeof this.$slots[\"h__\".concat(value)] !== 'undefined') {\n    return this.$slots[\"h__\".concat(value)];\n  }\n\n  var derivedHeading = Object(_helpers_ucfirst__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(value.split(\"_\").join(\" \"));\n  if (!this.opts.headings.hasOwnProperty(value)) return derivedHeading;\n\n  if (typeof this.opts.headings[value] === 'function') {\n    if (h) return this.opts.headings[value].call(this.$parent, h);\n    return derivedHeading;\n  }\n\n  return this.opts.headings[value];\n};\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/harmony-module.js */ \"./node_modules/webpack/buildin/harmony-module.js\")(module)))\n\n//# sourceURL=webpack://VueTables/./lib/methods/get-heading.js?");
+eval("\n\nvar _ucfirst = _interopRequireDefault(__webpack_require__(/*! ../helpers/ucfirst */ \"./lib/helpers/ucfirst.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nmodule.exports = function (value, h) {\n  if (typeof value !== 'string') return '';\n\n  if (typeof this.$slots[\"h__\".concat(value)] !== 'undefined') {\n    return this.$slots[\"h__\".concat(value)];\n  }\n\n  var derivedHeading = (0, _ucfirst[\"default\"])(value.split(\"_\").join(\" \"));\n  if (!this.opts.headings.hasOwnProperty(value)) return derivedHeading;\n\n  if (typeof this.opts.headings[value] === 'function') {\n    if (h) return this.opts.headings[value].call(this.$parent, h);\n    return derivedHeading;\n  }\n\n  return this.opts.headings[value];\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/get-heading.js?");
 
 /***/ }),
 
@@ -592,9 +632,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(f
   !*** ./lib/methods/get-initial-date-range.js ***!
   \***********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (column) {\n  if (typeof this.opts.initFilters[column] !== 'undefined') {\n    return this.opts.initFilters[column];\n  }\n\n  if (typeof this.query[column] !== 'undefined' && this.query[column].start) {\n    return {\n      start: moment(this.query[column].start, 'YYYY-MM-DD HH:mm:ss'),\n      end: moment(this.query[column].end, 'YYYY-MM-DD HH:mm:ss')\n    };\n  }\n\n  return false;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/get-initial-date-range.js?");
+"use strict";
+eval("\n\nmodule.exports = function (column) {\n  if (typeof this.opts.initFilters[column] !== 'undefined') {\n    return this.opts.initFilters[column];\n  }\n\n  if (typeof this.query[column] !== 'undefined' && this.query[column].start) {\n    return {\n      start: moment(this.query[column].start, 'YYYY-MM-DD HH:mm:ss'),\n      end: moment(this.query[column].end, 'YYYY-MM-DD HH:mm:ss')\n    };\n  }\n\n  return false;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/get-initial-date-range.js?");
 
 /***/ }),
 
@@ -603,9 +644,10 @@ eval("module.exports = function (column) {\n  if (typeof this.opts.initFilters[c
   !*** ./lib/methods/get-name.js ***!
   \*********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (name) {\n  if (!name) return name;\n  name = name.split('__');\n  name.shift();\n  return name.join('__').split('@@@').join('.');\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/get-name.js?");
+"use strict";
+eval("\n\nmodule.exports = function (name) {\n  if (!name) return name;\n  name = name.split('__');\n  name.shift();\n  return name.join('__').split('@@@').join('.');\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/get-name.js?");
 
 /***/ }),
 
@@ -614,9 +656,10 @@ eval("module.exports = function (name) {\n  if (!name) return name;\n  name = na
   !*** ./lib/methods/get-open-child-rows.js ***!
   \********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  var _this = this;\n\n  var rows = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;\n\n  if (!this.opts.childRow || typeof this.opts.childRow === 'function') {\n    throw new Error('vue-tables-2: Child row undefined or not a component');\n  }\n\n  var Rows = rows ? this.openChildRows.filter(function (row) {\n    return rows.includes(row);\n  }) : this.openChildRows;\n  if (!Rows.length) return [];\n  var components = this.$children.filter(function (child) {\n    return child.$options.name === 'ChildRow' && Rows.includes(child.data[_this.opts.uniqueKey]);\n  });\n  return components;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/get-open-child-rows.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  var _this = this;\n\n  var rows = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;\n\n  if (!this.opts.childRow || typeof this.opts.childRow === 'function') {\n    throw new Error('vue-tables-2: Child row undefined or not a component');\n  }\n\n  var Rows = rows ? this.openChildRows.filter(function (row) {\n    return rows.includes(row);\n  }) : this.openChildRows;\n  if (!Rows.length) return [];\n  var components = this.$children.filter(function (child) {\n    return child.$options.name === 'ChildRow' && Rows.includes(child.data[_this.opts.uniqueKey]);\n  });\n  return components;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/get-open-child-rows.js?");
 
 /***/ }),
 
@@ -625,9 +668,10 @@ eval("module.exports = function () {\n  var _this = this;\n\n  var rows = argume
   !*** ./lib/methods/get-response-data.js ***!
   \******************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (response) {\n  if (typeof axios !== 'undefined') return response.data;\n  return response;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/get-response-data.js?");
+"use strict";
+eval("\n\nmodule.exports = function (response) {\n  if (typeof axios !== 'undefined') return response.data;\n  return response;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/get-response-data.js?");
 
 /***/ }),
 
@@ -636,9 +680,10 @@ eval("module.exports = function (response) {\n  if (typeof axios !== 'undefined'
   !*** ./lib/methods/get-sort-fn.js ***!
   \************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (column) {\n  var ascending = this.orderBy.ascending;\n  this.currentlySorting = {\n    column: column,\n    ascending: ascending\n  };\n  if (typeof this.opts.customSorting[column] == 'undefined') return this.defaultSort(column, ascending);\n  return this.opts.customSorting[column](ascending);\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/get-sort-fn.js?");
+"use strict";
+eval("\n\nmodule.exports = function (column) {\n  var ascending = this.orderBy.ascending;\n  this.currentlySorting = {\n    column: column,\n    ascending: ascending\n  };\n  if (typeof this.opts.customSorting[column] == 'undefined') return this.defaultSort(column, ascending);\n  return this.opts.customSorting[column](ascending);\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/get-sort-fn.js?");
 
 /***/ }),
 
@@ -647,9 +692,10 @@ eval("module.exports = function (column) {\n  var ascending = this.orderBy.ascen
   !*** ./lib/methods/get-value.js ***!
   \**********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (row, column) {\n  if (column.indexOf('.') === -1) return row[column];\n  var p = column.split('.');\n  var value = row[p[0]];\n  if (!value) return '';\n\n  for (var i = 1; i < p.length; i++) {\n    value = value[p[i]]; // If the nested structure doesn't exist return an empty string\n\n    if (typeof value === 'undefined') return '';\n  }\n\n  return value;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/get-value.js?");
+"use strict";
+eval("\n\nmodule.exports = function (row, column) {\n  if (column.indexOf('.') === -1) return row[column];\n  var p = column.split('.');\n  var value = row[p[0]];\n  if (!value) return '';\n\n  for (var i = 1; i < p.length; i++) {\n    value = value[p[i]]; // If the nested structure doesn't exist return an empty string\n\n    if (typeof value === 'undefined') return '';\n  }\n\n  return value;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/get-value.js?");
 
 /***/ }),
 
@@ -660,7 +706,8 @@ eval("module.exports = function (row, column) {\n  if (column.indexOf('.') === -
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("function _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nvar intersection = __webpack_require__(/*! array-intersect */ \"./node_modules/array-intersect/dist/array-intersect.module.js\")[\"default\"];\n\nmodule.exports = function () {\n  var opts = this.opts;\n  return opts.dateColumns.length && opts.filterByColumn && (typeof opts.filterable == 'boolean' && opts.filterable || _typeof(opts.filterable) == 'object' && intersection(opts.filterable, opts.dateColumns).length);\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/has-date-filters.js?");
+"use strict";
+eval("\n\nfunction _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nvar intersection = __webpack_require__(/*! array-intersect */ \"./node_modules/array-intersect/dist/array-intersect.module.js\")[\"default\"];\n\nmodule.exports = function () {\n  var opts = this.opts;\n  return opts.dateColumns.length && opts.filterByColumn && (typeof opts.filterable == 'boolean' && opts.filterable || _typeof(opts.filterable) == 'object' && intersection(opts.filterable, opts.dateColumns).length);\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/has-date-filters.js?");
 
 /***/ }),
 
@@ -669,9 +716,10 @@ eval("function _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbo
   !*** ./lib/methods/init-custom-filters.js ***!
   \********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  var customQueries = {};\n  var init = this.opts.initFilters;\n  var key;\n  this.opts.customFilters.forEach(function (filter) {\n    key = this.source == 'client' ? filter.name : filter;\n    customQueries[key] = init.hasOwnProperty(key) ? init[key] : '';\n  }.bind(this));\n  return customQueries;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/init-custom-filters.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  var customQueries = {};\n  var init = this.opts.initFilters;\n  var key;\n  this.opts.customFilters.forEach(function (filter) {\n    key = this.source == 'client' ? filter.name : filter;\n    customQueries[key] = init.hasOwnProperty(key) ? init[key] : '';\n  }.bind(this));\n  return customQueries;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/init-custom-filters.js?");
 
 /***/ }),
 
@@ -682,7 +730,8 @@ eval("module.exports = function () {\n  var customQueries = {};\n  var init = th
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var merge = __webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\");\n\nmodule.exports = function () {\n  if (typeof $ === 'undefined' || typeof $(this.$el).daterangepicker === 'undefined') {\n    console.error('Date filters require jquery and daterangepicker');\n    return;\n  }\n\n  var el;\n  var that = this;\n  var query = this.vuex ? JSON.parse(JSON.stringify(this.query)) : this.query;\n  var columnOptions;\n  var dpOptions;\n\n  var search = function search(query, e) {\n    return that.source == 'client' ? that.search(that.data, e) : that.serverSearch(query, e);\n  };\n\n  var datepickerOptions = merge.recursive(this.opts.datepickerOptions, {\n    autoUpdateInput: false,\n    singleDatePicker: false\n  });\n  that.datepickerColumns.forEach(function (column) {\n    var range = that._getInitialDateRange(column);\n\n    if (range) {\n      that._setDatepickerText(column, range.start, range.end);\n\n      range = {\n        startDate: range.start,\n        endDate: range.end\n      };\n    } else {\n      range = {};\n    }\n\n    el = $(that.$el).find(\"#VueTables__\" + $.escapeSelector(column) + \"-filter\");\n    columnOptions = typeof that.opts.datepickerPerColumnOptions[column] !== 'undefined' ? that.opts.datepickerPerColumnOptions[column] : {};\n    columnOptions = merge.recursive(columnOptions, {\n      locale: {\n        format: that.dateFormat(column)\n      }\n    });\n    dpOptions = merge(true, datepickerOptions);\n\n    if (columnOptions.ranges === false) {\n      dpOptions.ranges = {};\n    }\n\n    el.daterangepicker(merge.recursive(dpOptions, columnOptions, range));\n    el.on('apply.daterangepicker', function (ev, picker) {\n      query[column] = {\n        start: picker.startDate.format('YYYY-MM-DD HH:mm:ss'),\n        end: picker.endDate.format('YYYY-MM-DD HH:mm:ss')\n      };\n      if (!that.vuex) that.query = query;\n\n      that._setDatepickerText(column, picker.startDate, picker.endDate);\n\n      that.updateState('query', query);\n      search(query, {\n        target: {\n          name: that._getColumnName(column),\n          value: query[column]\n        }\n      });\n    });\n    el.on('cancel.daterangepicker', function (ev, picker) {\n      query[column] = '';\n      if (!that.vuex) that.query = query;\n      picker.setStartDate(moment());\n      picker.setEndDate(moment());\n      that.updateState('query', query);\n      $(this).html(\"<span class='VueTables__filter-placeholder'>\" + that.display('filterBy', {\n        column: that.getHeading(column)\n      }) + \"</span>\");\n      search(query, {\n        target: {\n          name: that._getColumnName(column),\n          value: query[column]\n        }\n      });\n    });\n  });\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/init-date-filters.js?");
+"use strict";
+eval("\n\nvar merge = __webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\");\n\nmodule.exports = function () {\n  if (typeof $ === 'undefined' || typeof $(this.$el).daterangepicker === 'undefined') {\n    console.error('Date filters require jquery and daterangepicker');\n    return;\n  }\n\n  var el;\n  var that = this;\n  var query = this.vuex ? JSON.parse(JSON.stringify(this.query)) : this.query;\n  var columnOptions;\n  var dpOptions;\n\n  var search = function search(query, e) {\n    return that.source == 'client' ? that.search(that.data, e) : that.serverSearch(query, e);\n  };\n\n  var datepickerOptions = merge.recursive(this.opts.datepickerOptions, {\n    autoUpdateInput: false,\n    singleDatePicker: false\n  });\n  that.datepickerColumns.forEach(function (column) {\n    var range = that._getInitialDateRange(column);\n\n    if (range) {\n      that._setDatepickerText(column, range.start, range.end);\n\n      range = {\n        startDate: range.start,\n        endDate: range.end\n      };\n    } else {\n      range = {};\n    }\n\n    el = $(that.$el).find(\"#VueTables__\" + $.escapeSelector(column) + \"-filter\");\n    columnOptions = typeof that.opts.datepickerPerColumnOptions[column] !== 'undefined' ? that.opts.datepickerPerColumnOptions[column] : {};\n    columnOptions = merge.recursive(columnOptions, {\n      locale: {\n        format: that.dateFormat(column)\n      }\n    });\n    dpOptions = merge(true, datepickerOptions);\n\n    if (columnOptions.ranges === false) {\n      dpOptions.ranges = {};\n    }\n\n    el.daterangepicker(merge.recursive(dpOptions, columnOptions, range));\n    el.on('apply.daterangepicker', function (ev, picker) {\n      query[column] = {\n        start: picker.startDate.format('YYYY-MM-DD HH:mm:ss'),\n        end: picker.endDate.format('YYYY-MM-DD HH:mm:ss')\n      };\n      if (!that.vuex) that.query = query;\n\n      that._setDatepickerText(column, picker.startDate, picker.endDate);\n\n      that.updateState('query', query);\n      search(query, {\n        target: {\n          name: that._getColumnName(column),\n          value: query[column]\n        }\n      });\n    });\n    el.on('cancel.daterangepicker', function (ev, picker) {\n      query[column] = '';\n      if (!that.vuex) that.query = query;\n      picker.setStartDate(moment());\n      picker.setEndDate(moment());\n      that.updateState('query', query);\n      $(this).html(\"<span class='VueTables__filter-placeholder'>\" + that.display('filterBy', {\n        column: that.getHeading(column)\n      }) + \"</span>\");\n      search(query, {\n        target: {\n          name: that._getColumnName(column),\n          value: query[column]\n        }\n      });\n    });\n  });\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/init-date-filters.js?");
 
 /***/ }),
 
@@ -693,7 +742,8 @@ eval("var merge = __webpack_require__(/*! merge */ \"./node_modules/merge/merge.
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var merge = __webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\");\n\nmodule.exports = function (defaults, globalOptions, localOptions) {\n  if (globalOptions) defaults = merge.recursive(defaults, globalOptions);\n  localOptions = merge.recursive(defaults, localOptions);\n  return localOptions;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/init-options.js?");
+"use strict";
+eval("\n\nvar merge = __webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\");\n\nmodule.exports = function (defaults, globalOptions, localOptions) {\n  if (globalOptions) defaults = merge.recursive(defaults, globalOptions);\n  localOptions = merge.recursive(defaults, localOptions);\n  return localOptions;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/init-options.js?");
 
 /***/ }),
 
@@ -702,9 +752,10 @@ eval("var merge = __webpack_require__(/*! merge */ \"./node_modules/merge/merge.
   !*** ./lib/methods/init-order-by.js ***!
   \**************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  if (!this.opts.orderBy) return;\n  this.orderBy.column = this.opts.orderBy.column;\n  this.orderBy.ascending = this.opts.orderBy.hasOwnProperty('ascending') ? this.opts.orderBy.ascending : true;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/init-order-by.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  if (!this.opts.orderBy) return;\n  this.orderBy.column = this.opts.orderBy.column;\n  this.orderBy.ascending = this.opts.orderBy.hasOwnProperty('ascending') ? this.opts.orderBy.ascending : true;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/init-order-by.js?");
 
 /***/ }),
 
@@ -713,9 +764,10 @@ eval("module.exports = function () {\n  if (!this.opts.orderBy) return;\n  this.
   !*** ./lib/methods/init-pagination.js ***!
   \****************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  this.page = 1;\n\n  if (!this.opts.pagination.dropdown) {\n    this.$refs.pagination.setPage(1);\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/init-pagination.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  this.page = 1;\n\n  if (!this.opts.pagination.dropdown) {\n    this.$refs.pagination.setPage(1);\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/init-pagination.js?");
 
 /***/ }),
 
@@ -724,9 +776,10 @@ eval("module.exports = function () {\n  this.page = 1;\n\n  if (!this.opts.pagin
   !*** ./lib/methods/init-query.js ***!
   \***********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("function _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nmodule.exports = function () {\n  var init = this.opts.initFilters;\n  if (!this.opts.filterByColumn) return init.hasOwnProperty('GENERIC') ? init.GENERIC : '';\n  var query = {};\n  var filterable = this.opts.filterable && _typeof(this.opts.filterable) == 'object' ? this.opts.filterable : this.columns;\n  filterable.forEach(function (column) {\n    query[column] = getInitialValue(init, column);\n  }.bind(this));\n  return query;\n};\n\nfunction getInitialValue(init, column) {\n  if (!init.hasOwnProperty(column)) return '';\n  if (typeof init[column].start == 'undefined') return init[column];\n  return {\n    start: init[column].start.format('YYYY-MM-DD HH:mm:ss'),\n    end: init[column].end.format('YYYY-MM-DD HH:mm:ss')\n  };\n}\n\n//# sourceURL=webpack://VueTables/./lib/methods/init-query.js?");
+"use strict";
+eval("\n\nfunction _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nmodule.exports = function () {\n  var init = this.opts.initFilters;\n  if (!this.opts.filterByColumn) return init.hasOwnProperty('GENERIC') ? init.GENERIC : '';\n  var query = {};\n  var filterable = this.opts.filterable && _typeof(this.opts.filterable) == 'object' ? this.opts.filterable : this.columns;\n  filterable.forEach(function (column) {\n    query[column] = getInitialValue(init, column);\n  }.bind(this));\n  return query;\n};\n\nfunction getInitialValue(init, column) {\n  if (!init.hasOwnProperty(column)) return '';\n  if (typeof init[column].start == 'undefined') return init[column];\n  return {\n    start: init[column].start.format('YYYY-MM-DD HH:mm:ss'),\n    end: init[column].end.format('YYYY-MM-DD HH:mm:ss')\n  };\n}\n\n//# sourceURL=webpack://VueTables/./lib/methods/init-query.js?");
 
 /***/ }),
 
@@ -735,9 +788,10 @@ eval("function _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbo
   !*** ./lib/methods/init-state.js ***!
   \***********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  var state = {\n    page: 1,\n    query: this.query,\n    orderBy: this.orderBy,\n    perPage: this.opts.perPage,\n    customQueries: this.customQueries\n  };\n  this.storage.setItem(this.stateKey, JSON.stringify(state));\n  return state;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/init-state.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  var state = {\n    page: 1,\n    query: this.query,\n    orderBy: this.orderBy,\n    perPage: this.opts.perPage,\n    customQueries: this.customQueries\n  };\n  this.storage.setItem(this.stateKey, JSON.stringify(state));\n  return state;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/init-state.js?");
 
 /***/ }),
 
@@ -746,9 +800,10 @@ eval("module.exports = function () {\n  var state = {\n    page: 1,\n    query: 
   !*** ./lib/methods/initial-order-ascending.js ***!
   \************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (column) {\n  return !this.opts.descOrderColumns.includes(column);\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/initial-order-ascending.js?");
+"use strict";
+eval("\n\nmodule.exports = function (column) {\n  return !this.opts.descOrderColumns.includes(column);\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/initial-order-ascending.js?");
 
 /***/ }),
 
@@ -757,9 +812,10 @@ eval("module.exports = function (column) {\n  return !this.opts.descOrderColumns
   !*** ./lib/methods/is-date-filter.js ***!
   \***************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (column) {\n  return this.query.hasOwnProperty(column) && this.opts.dateColumns.indexOf(column) > -1;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/is-date-filter.js?");
+"use strict";
+eval("\n\nmodule.exports = function (column) {\n  return this.query.hasOwnProperty(column) && this.opts.dateColumns.indexOf(column) > -1;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/is-date-filter.js?");
 
 /***/ }),
 
@@ -768,9 +824,10 @@ eval("module.exports = function (column) {\n  return this.query.hasOwnProperty(c
   !*** ./lib/methods/is-list-filter.js ***!
   \***************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (column) {\n  return this.query.hasOwnProperty(column) && this.opts.listColumns.hasOwnProperty(column);\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/is-list-filter.js?");
+"use strict";
+eval("\n\nmodule.exports = function (column) {\n  return this.query.hasOwnProperty(column) && this.opts.listColumns.hasOwnProperty(column);\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/is-list-filter.js?");
 
 /***/ }),
 
@@ -779,9 +836,10 @@ eval("module.exports = function (column) {\n  return this.query.hasOwnProperty(c
   !*** ./lib/methods/is-text-filter.js ***!
   \***************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (column) {\n  return this.query.hasOwnProperty(column) && this.opts.dateColumns.indexOf(column) == -1 && !this.opts.listColumns.hasOwnProperty(column);\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/is-text-filter.js?");
+"use strict";
+eval("\n\nmodule.exports = function (column) {\n  return this.query.hasOwnProperty(column) && this.opts.dateColumns.indexOf(column) == -1 && !this.opts.listColumns.hasOwnProperty(column);\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/is-text-filter.js?");
 
 /***/ }),
 
@@ -790,9 +848,10 @@ eval("module.exports = function (column) {\n  return this.query.hasOwnProperty(c
   !*** ./lib/methods/on-pagination.js ***!
   \**************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (page) {\n  if (this.vuex) return;\n  this.setPage(page);\n  this.dispatch('pagination', page);\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/on-pagination.js?");
+"use strict";
+eval("\n\nmodule.exports = function (page) {\n  if (this.vuex) return;\n  this.setPage(page);\n  this.dispatch('pagination', page);\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/on-pagination.js?");
 
 /***/ }),
 
@@ -801,9 +860,10 @@ eval("module.exports = function (page) {\n  if (this.vuex) return;\n  this.setPa
   !*** ./lib/methods/only-column.js ***!
   \************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (column) {\n  return this.userColumnsDisplay.length === 1 && this.userColumnsDisplay[0] === column;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/only-column.js?");
+"use strict";
+eval("\n\nmodule.exports = function (column) {\n  return this.userColumnsDisplay.length === 1 && this.userColumnsDisplay[0] === column;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/only-column.js?");
 
 /***/ }),
 
@@ -812,9 +872,10 @@ eval("module.exports = function (column) {\n  return this.userColumnsDisplay.len
   !*** ./lib/methods/order-by-column.js ***!
   \****************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (colName, ev) {\n  if (!this.sortable(colName)) return;\n\n  if (ev.shiftKey && this.orderBy.column && this.hasMultiSort) {\n    this.setUserMultiSort(colName);\n  } else {\n    this.userMultiSorting = {};\n    this.orderBy.ascending = colName == this.orderBy.column ? !this.orderBy.ascending : this._initialOrderAscending(colName);\n    this.orderBy.column = colName;\n    this.updateState('orderBy', this.orderBy);\n    this.dispatch('sorted', JSON.parse(JSON.stringify(this.orderBy)));\n  }\n\n  if (this.source == 'server') {\n    this.getData();\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/order-by-column.js?");
+"use strict";
+eval("\n\nmodule.exports = function (colName, ev) {\n  if (!this.sortable(colName)) return;\n\n  if (ev.shiftKey && this.orderBy.column && this.hasMultiSort) {\n    this.setUserMultiSort(colName);\n  } else {\n    this.userMultiSorting = {};\n    this.orderBy.ascending = colName == this.orderBy.column ? !this.orderBy.ascending : this._initialOrderAscending(colName);\n    this.orderBy.column = colName;\n    this.updateState('orderBy', this.orderBy);\n    this.dispatch('sorted', JSON.parse(JSON.stringify(this.orderBy)));\n  }\n\n  if (this.source == 'server') {\n    this.getData();\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/order-by-column.js?");
 
 /***/ }),
 
@@ -823,9 +884,10 @@ eval("module.exports = function (colName, ev) {\n  if (!this.sortable(colName)) 
   !*** ./lib/methods/refresh.js ***!
   \********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  this.serverSearch();\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/refresh.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  this.serverSearch();\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/refresh.js?");
 
 /***/ }),
 
@@ -833,11 +895,11 @@ eval("module.exports = function () {\n  this.serverSearch();\n};\n\n//# sourceUR
 /*!************************************************!*\
   !*** ./lib/methods/register-client-filters.js ***!
   \************************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var _bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../bus */ \"./lib/bus.js\");\n\n\nmodule.exports = function () {\n  var _this = this;\n\n  var event = 'vue-tables';\n  if (this.name) event += '.' + this.name;\n  this.opts.customFilters.forEach(function (filter) {\n    _bus__WEBPACK_IMPORTED_MODULE_0__[\"default\"].$off(\"\".concat(event, \".filter::\").concat(filter.name));\n    _bus__WEBPACK_IMPORTED_MODULE_0__[\"default\"].$on(\"\".concat(event, \".filter::\").concat(filter.name), function (value) {\n      _this.customQueries[filter.name] = value;\n\n      _this.updateState('customQueries', _this.customQueries);\n    });\n  });\n};\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/harmony-module.js */ \"./node_modules/webpack/buildin/harmony-module.js\")(module)))\n\n//# sourceURL=webpack://VueTables/./lib/methods/register-client-filters.js?");
+eval("\n\nvar _bus = _interopRequireDefault(__webpack_require__(/*! ../bus */ \"./lib/bus.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nmodule.exports = function () {\n  var _this = this;\n\n  var event = 'vue-tables';\n  if (this.name) event += '.' + this.name;\n  this.opts.customFilters.forEach(function (filter) {\n    _bus[\"default\"].$off(\"\".concat(event, \".filter::\").concat(filter.name));\n\n    _bus[\"default\"].$on(\"\".concat(event, \".filter::\").concat(filter.name), function (value) {\n      _this.customQueries[filter.name] = value;\n\n      _this.updateState('customQueries', _this.customQueries);\n    });\n  });\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/register-client-filters.js?");
 
 /***/ }),
 
@@ -845,11 +907,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(f
 /*!************************************************!*\
   !*** ./lib/methods/register-server-filters.js ***!
   \************************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var _bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../bus */ \"./lib/bus.js\");\n\n\nmodule.exports = function () {\n  var event = 'vue-tables';\n  if (this.name) event += '.' + this.name;\n  this.opts.customFilters.forEach(function (filter) {\n    _bus__WEBPACK_IMPORTED_MODULE_0__[\"default\"].$off(\"\".concat(event, \".filter::\").concat(filter));\n    _bus__WEBPACK_IMPORTED_MODULE_0__[\"default\"].$on(\"\".concat(event, \".filter::\").concat(filter), function (value) {\n      this.customQueries[filter] = value;\n      this.updateState('customQueries', this.customQueries);\n      this.refresh();\n    }.bind(this));\n  }.bind(this));\n};\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/harmony-module.js */ \"./node_modules/webpack/buildin/harmony-module.js\")(module)))\n\n//# sourceURL=webpack://VueTables/./lib/methods/register-server-filters.js?");
+eval("\n\nvar _bus = _interopRequireDefault(__webpack_require__(/*! ../bus */ \"./lib/bus.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nmodule.exports = function () {\n  var event = 'vue-tables';\n  if (this.name) event += '.' + this.name;\n  this.opts.customFilters.forEach(function (filter) {\n    _bus[\"default\"].$off(\"\".concat(event, \".filter::\").concat(filter));\n\n    _bus[\"default\"].$on(\"\".concat(event, \".filter::\").concat(filter), function (value) {\n      this.customQueries[filter] = value;\n      this.updateState('customQueries', this.customQueries);\n      this.refresh();\n    }.bind(this));\n  }.bind(this));\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/register-server-filters.js?");
 
 /***/ }),
 
@@ -858,9 +920,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(f
   !*** ./lib/methods/render.js ***!
   \*******************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (row, column, index, h) {\n  var value = this._getValue(row, column);\n\n  if (this.templatesKeys.indexOf(column) == -1) {\n    if (typeof value === 'undefined' || !this.opts.highlightMatches || this.filterableColumns.indexOf(column) === -1) {\n      return value;\n    }\n\n    return this.highlightMatch(value, column, h);\n  }\n\n  var template = this.opts.templates[column];\n  template = typeof template == 'function' ? template.apply(this.$root, [h, row, index, column]) : h(template, {\n    attrs: {\n      data: row,\n      column: column,\n      index: index\n    }\n  });\n  return template;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/render.js?");
+"use strict";
+eval("\n\nmodule.exports = function (row, column, index, h) {\n  var value = this._getValue(row, column);\n\n  if (this.templatesKeys.indexOf(column) == -1) {\n    if (typeof value === 'undefined' || !this.opts.highlightMatches || this.filterableColumns.indexOf(column) === -1) {\n      return value;\n    }\n\n    return this.highlightMatch(value, column, h);\n  }\n\n  var template = this.opts.templates[column];\n  template = typeof template == 'function' ? template.apply(this.$root, [h, row, index, column]) : h(template, {\n    attrs: {\n      data: row,\n      column: column,\n      index: index\n    }\n  });\n  return template;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/render.js?");
 
 /***/ }),
 
@@ -869,9 +932,10 @@ eval("module.exports = function (row, column, index, h) {\n  var value = this._g
   !*** ./lib/methods/reset-query.js ***!
   \************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  for (var key in this.query) {\n    this.query[key] = '';\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/reset-query.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  for (var key in this.query) {\n    this.query[key] = '';\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/reset-query.js?");
 
 /***/ }),
 
@@ -880,9 +944,10 @@ eval("module.exports = function () {\n  for (var key in this.query) {\n    this.
   !*** ./lib/methods/row-was-clicked.js ***!
   \****************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (row, event) {\n  var data;\n  var id = this.opts.uniqueKey;\n\n  if (this.source == 'client' && typeof row[id] !== 'undefined') {\n    data = this.tableData.filter(function (r) {\n      return row[id] === r[id];\n    })[0];\n  } else {\n    data = row;\n  }\n\n  this.dispatch('row-click', {\n    row: data,\n    event: event\n  });\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/row-was-clicked.js?");
+"use strict";
+eval("\n\nmodule.exports = function (row, event) {\n  var data;\n  var id = this.opts.uniqueKey;\n\n  if (this.source == 'client' && typeof row[id] !== 'undefined') {\n    data = this.tableData.filter(function (r) {\n      return row[id] === r[id];\n    })[0];\n  } else {\n    data = row;\n  }\n\n  this.dispatch('row-click', {\n    row: data,\n    event: event\n  });\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/row-was-clicked.js?");
 
 /***/ }),
 
@@ -891,9 +956,10 @@ eval("module.exports = function (row, event) {\n  var data;\n  var id = this.opt
   !*** ./lib/methods/send-request.js ***!
   \*************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (data) {\n  if (typeof this.opts.requestFunction === 'function') {\n    return this.opts.requestFunction.call(this, data);\n  }\n\n  if (typeof axios !== 'undefined') return axios.get(this.url, {\n    params: data\n  })[\"catch\"](function (e) {\n    this.dispatch('error', e);\n  }.bind(this));\n  if (typeof this.$http !== 'undefined') return this.$http.get(this.url, {\n    params: data\n  }).then(function (data) {\n    return data.json();\n  }.bind(this), function (e) {\n    this.dispatch('error', e);\n  }.bind(this));\n  if (typeof $ != 'undefined') return $.getJSON(this.url, data).fail(function (e) {\n    this.dispatch('error', e);\n  }.bind(this));\n  throw \"vue-tables: No supported ajax library was found. (jQuery, axios or vue-resource). To use a different library you can write your own request function (see the `requestFunction` option)\";\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/send-request.js?");
+"use strict";
+eval("\n\nmodule.exports = function (data) {\n  if (typeof this.opts.requestFunction === 'function') {\n    return this.opts.requestFunction.call(this, data);\n  }\n\n  if (typeof axios !== 'undefined') return axios.get(this.url, {\n    params: data\n  })[\"catch\"](function (e) {\n    this.dispatch('error', e);\n  }.bind(this));\n  if (typeof this.$http !== 'undefined') return this.$http.get(this.url, {\n    params: data\n  }).then(function (data) {\n    return data.json();\n  }.bind(this), function (e) {\n    this.dispatch('error', e);\n  }.bind(this));\n  if (typeof $ != 'undefined') return $.getJSON(this.url, data).fail(function (e) {\n    this.dispatch('error', e);\n  }.bind(this));\n  throw \"vue-tables: No supported ajax library was found. (jQuery, axios or vue-resource). To use a different library you can write your own request function (see the `requestFunction` option)\";\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/send-request.js?");
 
 /***/ }),
 
@@ -902,9 +968,10 @@ eval("module.exports = function (data) {\n  if (typeof this.opts.requestFunction
   !*** ./lib/methods/server-search.js ***!
   \**************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (e, dateEvent) {\n  // we need to handle the store this.query to make sure we're not mutating outside of it\n  var query = this.vuex ? JSON.parse(JSON.stringify(this.query)) : this.query; // in case we pass an object manually (mostly used for init-date-filters should refactor\n\n  if (Object.prototype.toString.call(e).slice(8, -1) == 'Object') {\n    query = this.vuex ? JSON.parse(JSON.stringify(e)) : e;\n    if (!this.vuex) this.query = query;\n    var name = dateEvent.target.name;\n    var value = dateEvent.target.value;\n\n    if (name) {\n      this.dispatch('filter', {\n        name: name,\n        value: value\n      });\n      this.dispatch(\"filter::\".concat(name), value);\n    } else {\n      this.dispatch('filter', value);\n    }\n\n    this.updateState('query', query);\n  } else if (e) {\n    var _name = this.getName(e.target.name);\n\n    var _value = e.target.value;\n\n    if (_name) {\n      query[_name] = _value;\n    } else {\n      query = _value;\n    }\n\n    if (!this.vuex) this.query = query;\n\n    if (_name) {\n      this.dispatch('filter', {\n        name: _name,\n        value: _value\n      });\n      this.dispatch(\"filter::\".concat(_name), _value);\n    } else {\n      this.dispatch('filter', _value);\n    }\n\n    this.updateState('query', query);\n  }\n\n  return search(this, query);\n};\n\nfunction search(that, query) {\n  if (that.vuex) {\n    that.commit('SET_FILTER', query);\n  } else {\n    that.initPagination();\n\n    if (that.opts.pagination.dropdown) {\n      that.getData();\n    }\n  }\n}\n\nfunction noDebounce(e, name, opts) {\n  return !e || name && (opts.dateColumns.indexOf(name) > -1 || Object.keys(opts.listColumns).indexOf(name) > -1);\n}\n\n//# sourceURL=webpack://VueTables/./lib/methods/server-search.js?");
+"use strict";
+eval("\n\nmodule.exports = function (e, dateEvent) {\n  // we need to handle the store this.query to make sure we're not mutating outside of it\n  var query = this.vuex ? JSON.parse(JSON.stringify(this.query)) : this.query; // in case we pass an object manually (mostly used for init-date-filters should refactor\n\n  if (Object.prototype.toString.call(e).slice(8, -1) == 'Object') {\n    query = this.vuex ? JSON.parse(JSON.stringify(e)) : e;\n    if (!this.vuex) this.query = query;\n    var name = dateEvent.target.name;\n    var value = dateEvent.target.value;\n\n    if (name) {\n      this.dispatch('filter', {\n        name: name,\n        value: value\n      });\n      this.dispatch(\"filter::\".concat(name), value);\n    } else {\n      this.dispatch('filter', value);\n    }\n\n    this.updateState('query', query);\n  } else if (e) {\n    var _name = this.getName(e.target.name);\n\n    var _value = e.target.value;\n\n    if (_name) {\n      query[_name] = _value;\n    } else {\n      query = _value;\n    }\n\n    if (!this.vuex) this.query = query;\n\n    if (_name) {\n      this.dispatch('filter', {\n        name: _name,\n        value: _value\n      });\n      this.dispatch(\"filter::\".concat(_name), _value);\n    } else {\n      this.dispatch('filter', _value);\n    }\n\n    this.updateState('query', query);\n  }\n\n  return search(this, query);\n};\n\nfunction search(that, query) {\n  if (that.vuex) {\n    that.commit('SET_FILTER', query);\n  } else {\n    that.initPagination();\n\n    if (that.opts.pagination.dropdown) {\n      that.getData();\n    }\n  }\n}\n\nfunction noDebounce(e, name, opts) {\n  return !e || name && (opts.dateColumns.indexOf(name) > -1 || Object.keys(opts.listColumns).indexOf(name) > -1);\n}\n\n//# sourceURL=webpack://VueTables/./lib/methods/server-search.js?");
 
 /***/ }),
 
@@ -913,9 +980,10 @@ eval("module.exports = function (e, dateEvent) {\n  // we need to handle the sto
   !*** ./lib/methods/set-columns-dropdown-close-listener.js ***!
   \************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  var _this = this;\n\n  if (this.opts.columnsDropdown) {\n    var stopProp = function stopProp(e) {\n      return e.stopPropagation();\n    };\n\n    var handler = function handler() {\n      if (_this.displayColumnsDropdown) {\n        _this.displayColumnsDropdown = false;\n      }\n    };\n\n    this.$refs.columnsdropdown.addEventListener('click', stopProp);\n    document.addEventListener('click', handler);\n    this.$once('hook:beforeDestroy', function () {\n      document.removeEventListener('click', handler);\n\n      _this.$refs.columnsdropdown.removeEventListener('click', stopProp);\n    });\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/set-columns-dropdown-close-listener.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  var _this = this;\n\n  if (this.opts.columnsDropdown) {\n    var stopProp = function stopProp(e) {\n      return e.stopPropagation();\n    };\n\n    var handler = function handler() {\n      if (_this.displayColumnsDropdown) {\n        _this.displayColumnsDropdown = false;\n      }\n    };\n\n    this.$refs.columnsdropdown.addEventListener('click', stopProp);\n    document.addEventListener('click', handler);\n    this.$once('hook:beforeDestroy', function () {\n      document.removeEventListener('click', handler);\n\n      _this.$refs.columnsdropdown.removeEventListener('click', stopProp);\n    });\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/set-columns-dropdown-close-listener.js?");
 
 /***/ }),
 
@@ -924,9 +992,10 @@ eval("module.exports = function () {\n  var _this = this;\n\n  if (this.opts.col
   !*** ./lib/methods/set-data.js ***!
   \*********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("function _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nmodule.exports = function (response) {\n  var data = this.opts.responseAdapter.call(this, response);\n  this.data = this.applyFilters(data.data);\n\n  if (isNaN(data.count)) {\n    console.error(\"vue-tables-2: invalid 'count' property. Expected number, got \".concat(_typeof(data.count)));\n    console.error('count equals', data.count);\n    throw new Error();\n  }\n\n  this.count = parseInt(data.count);\n  setTimeout(function () {\n    this.dispatch('loaded', response);\n  }.bind(this), 0);\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/set-data.js?");
+"use strict";
+eval("\n\nfunction _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nmodule.exports = function (response) {\n  var data = this.opts.responseAdapter.call(this, response);\n  this.data = this.applyFilters(data.data);\n\n  if (isNaN(data.count)) {\n    console.error(\"vue-tables-2: invalid 'count' property. Expected number, got \".concat(_typeof(data.count)));\n    console.error('count equals', data.count);\n    throw new Error();\n  }\n\n  this.count = parseInt(data.count);\n  setTimeout(function () {\n    this.dispatch('loaded', response);\n  }.bind(this), 0);\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/set-data.js?");
 
 /***/ }),
 
@@ -935,9 +1004,10 @@ eval("function _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbo
   !*** ./lib/methods/set-datepicker-text.js ***!
   \********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (column, start, end) {\n  var dateFormat = this.dateFormat(column);\n  var el = typeof column === 'string' ? $(this.$el).find(\"#VueTables__\" + $.escapeSelector(column) + \"-filter\") : column;\n  el.text(start.format(dateFormat) + \" - \" + end.format(dateFormat));\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/set-datepicker-text.js?");
+"use strict";
+eval("\n\nmodule.exports = function (column, start, end) {\n  var dateFormat = this.dateFormat(column);\n  var el = typeof column === 'string' ? $(this.$el).find(\"#VueTables__\" + $.escapeSelector(column) + \"-filter\") : column;\n  el.text(start.format(dateFormat) + \" - \" + end.format(dateFormat));\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/set-datepicker-text.js?");
 
 /***/ }),
 
@@ -948,7 +1018,8 @@ eval("module.exports = function (column, start, end) {\n  var dateFormat = this.
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var merge = __webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\");\n\nmodule.exports = function (filter) {\n  if (!this.opts.filterable) {\n    console.warn(\"vue-tables-2: Unable to set filter. Filtering is disabled (filterable: false)\");\n    return;\n  }\n\n  ;\n\n  if (this.opts.filterByColumn && typeof filter === 'string') {\n    console.warn(\"vue-tables-2: Unable to set filter. Filter value must be an object (`filterByColumn` is set to `true`)\");\n    return;\n  }\n\n  ;\n\n  if (!this.opts.filterByColumn && typeof filter !== 'string') {\n    console.warn(\"vue-tables-2: Unable to set filter. Filter value must be a string (`filterByColumn` is set to `false`)\");\n    return;\n  }\n\n  ;\n  var mergedFilter = this.opts.filterByColumn ? merge(this.query, filter) : filter;\n\n  if (this.vuex) {\n    this.commit('SET_FILTER', mergedFilter);\n  } else {\n    this.query = mergedFilter;\n    this.setPage(1, true);\n  }\n\n  this.updateState('query', mergedFilter);\n\n  this._setFiltersDOM(filter);\n\n  if (this.source == 'server') {\n    this.getData();\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/set-filter.js?");
+"use strict";
+eval("\n\nvar merge = __webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\");\n\nmodule.exports = function (filter) {\n  if (!this.opts.filterable) {\n    console.warn(\"vue-tables-2: Unable to set filter. Filtering is disabled (filterable: false)\");\n    return;\n  }\n\n  ;\n\n  if (this.opts.filterByColumn && typeof filter === 'string') {\n    console.warn(\"vue-tables-2: Unable to set filter. Filter value must be an object (`filterByColumn` is set to `true`)\");\n    return;\n  }\n\n  ;\n\n  if (!this.opts.filterByColumn && typeof filter !== 'string') {\n    console.warn(\"vue-tables-2: Unable to set filter. Filter value must be a string (`filterByColumn` is set to `false`)\");\n    return;\n  }\n\n  ;\n  var mergedFilter = this.opts.filterByColumn ? merge(this.query, filter) : filter;\n\n  if (this.vuex) {\n    this.commit('SET_FILTER', mergedFilter);\n  } else {\n    this.query = mergedFilter;\n    this.setPage(1, true);\n  }\n\n  this.updateState('query', mergedFilter);\n\n  this._setFiltersDOM(filter);\n\n  if (this.source == 'server') {\n    this.getData();\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/set-filter.js?");
 
 /***/ }),
 
@@ -957,9 +1028,10 @@ eval("var merge = __webpack_require__(/*! merge */ \"./node_modules/merge/merge.
   !*** ./lib/methods/set-filters-dom.js ***!
   \****************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("function _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nmodule.exports = function (query) {\n  var el;\n\n  if (this.opts.filterByColumn) {\n    for (var column in query) {\n      var columnName = this._getColumnName(column);\n\n      if (this.isDateFilter(column)) {\n        if (query[column] && _typeof(query[column]) === 'object') {\n          var start = typeof query[column].start === 'string' ? moment(query[column].start, 'YYYY-MM-DD') : query[column].start;\n          var end = typeof query[column].end === 'string' ? moment(query[column].end, 'YYYY-MM-DD') : query[column].end;\n\n          this._setDatepickerText(column, start, end);\n        } else {\n          $(this.$el).find(\"#VueTables__\" + $.escapeSelector(column) + \"-filter\").html(\"<span class='VueTables__filter-placeholder'>\" + this.display('filterBy', {\n            column: this.getHeading(column)\n          }) + \"</span>\");\n        }\n\n        continue;\n      }\n\n      el = this.$el.querySelector(\"[name='\".concat(columnName, \"']\"));\n\n      if (el) {\n        el.value = query[column];\n      } else if (this.columns.indexOf(column) === -1) {\n        console.error(\"vue-tables-2: Error in setting filter value. Column '\".concat(column, \"' does not exist.\"));\n      }\n    }\n  } else {\n    this.$el.querySelector('.VueTables__search input').value = query;\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/set-filters-dom.js?");
+"use strict";
+eval("\n\nfunction _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nmodule.exports = function (query) {\n  var el;\n\n  if (this.opts.filterByColumn) {\n    for (var column in query) {\n      var columnName = this._getColumnName(column);\n\n      if (this.isDateFilter(column)) {\n        if (query[column] && _typeof(query[column]) === 'object') {\n          var start = typeof query[column].start === 'string' ? moment(query[column].start, 'YYYY-MM-DD') : query[column].start;\n          var end = typeof query[column].end === 'string' ? moment(query[column].end, 'YYYY-MM-DD') : query[column].end;\n\n          this._setDatepickerText(column, start, end);\n        } else {\n          $(this.$el).find(\"#VueTables__\" + $.escapeSelector(column) + \"-filter\").html(\"<span class='VueTables__filter-placeholder'>\" + this.display('filterBy', {\n            column: this.getHeading(column)\n          }) + \"</span>\");\n        }\n\n        continue;\n      }\n\n      el = this.$el.querySelector(\"[name='\".concat(columnName, \"']\"));\n\n      if (el) {\n        el.value = query[column];\n      } else if (this.columns.indexOf(column) === -1) {\n        console.error(\"vue-tables-2: Error in setting filter value. Column '\".concat(column, \"' does not exist.\"));\n      }\n    }\n  } else {\n    this.$el.querySelector('.VueTables__search input').value = query;\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/set-filters-dom.js?");
 
 /***/ }),
 
@@ -968,9 +1040,10 @@ eval("function _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbo
   !*** ./lib/methods/set-limit.js ***!
   \**********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("function _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nmodule.exports = function (e) {\n  this.limit = _typeof(e) === 'object' ? e.target.value : e;\n  this.updateState('perPage', this.limit);\n  this.dispatch('limit', parseInt(this.limit));\n  this.setPage(1);\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/set-limit.js?");
+"use strict";
+eval("\n\nfunction _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nmodule.exports = function (e) {\n  this.limit = _typeof(e) === 'object' ? e.target.value : e;\n  this.updateState('perPage', this.limit);\n  this.dispatch('limit', parseInt(this.limit));\n  this.setPage(1);\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/set-limit.js?");
 
 /***/ }),
 
@@ -979,9 +1052,10 @@ eval("function _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbo
   !*** ./lib/methods/set-order.js ***!
   \**********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (column, ascending) {\n  this.orderBy.column = column;\n  this.orderBy.ascending = ascending;\n  this.updateState('orderBy', {\n    column: column,\n    ascending: ascending\n  });\n\n  if (this.source == 'server') {\n    this.getData();\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/set-order.js?");
+"use strict";
+eval("\n\nmodule.exports = function (column, ascending) {\n  this.orderBy.column = column;\n  this.orderBy.ascending = ascending;\n  this.updateState('orderBy', {\n    column: column,\n    ascending: ascending\n  });\n\n  if (this.source == 'server') {\n    this.getData();\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/set-order.js?");
 
 /***/ }),
 
@@ -990,9 +1064,10 @@ eval("module.exports = function (column, ascending) {\n  this.orderBy.column = c
   !*** ./lib/methods/set-page.js ***!
   \*********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (page, preventRequest) {\n  page = page ? page : this.$refs.page.value;\n  if (!this.opts.pagination.dropdown) this.$refs.pagination.Page = page;\n  this.page = page;\n  this.updateState('page', page);\n  if (this.source == 'server' && !preventRequest) this.getData();\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/set-page.js?");
+"use strict";
+eval("\n\nmodule.exports = function (page, preventRequest) {\n  page = page ? page : this.$refs.page.value;\n  if (!this.opts.pagination.dropdown) this.$refs.pagination.Page = page;\n  this.page = page;\n  this.updateState('page', page);\n  if (this.source == 'server' && !preventRequest) this.getData();\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/set-page.js?");
 
 /***/ }),
 
@@ -1001,9 +1076,10 @@ eval("module.exports = function (page, preventRequest) {\n  page = page ? page :
   !*** ./lib/methods/set-user-multi-sort.js ***!
   \********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (secondaryCol) {\n  var primaryCol = this.orderBy.column;\n  var primaryAsc = this.orderBy.ascending;\n  if (!this.userMultiSorting[primaryCol]) this.userMultiSorting[primaryCol] = [];\n  var multi = this.userMultiSorting[primaryCol];\n\n  if (primaryCol === secondaryCol) {\n    if (!multi.length || primaryAsc) {\n      // primary is the only sorted column or is ascending\n      this.orderBy.ascending = !this.orderBy.ascending;\n    } else {\n      // remove primary column and make secondary primary\n      this.orderBy = multi.shift();\n      this.userMultiSorting = {};\n      this.userMultiSorting[this.orderBy.column] = multi;\n    }\n  } else {\n    var secondary = multi.filter(function (col) {\n      return col.column == secondaryCol;\n    })[0];\n\n    if (secondary) {\n      if (!secondary.ascending) {\n        // remove sort\n        this.userMultiSorting[primaryCol] = multi.filter(function (col) {\n          return col.column != secondaryCol;\n        });\n        if (!this.userMultiSorting[primaryCol].length) this.userMultiSorting = {};\n      } else {\n        // change direction\n        secondary.ascending = !secondary.ascending;\n      }\n    } else {\n      // add sort\n      multi.push({\n        column: secondaryCol,\n        ascending: true\n      });\n    }\n  } // force re-compilation of the filteredData computed property\n\n\n  this.time = Date.now();\n  this.dispatch('sorted', getMultiSortData(this.orderBy, this.userMultiSorting));\n};\n\nfunction getMultiSortData(main, secondary) {\n  var cols = [JSON.parse(JSON.stringify(main))];\n  cols = cols.concat(secondary[main.column]);\n  return cols;\n}\n\n;\n\n//# sourceURL=webpack://VueTables/./lib/methods/set-user-multi-sort.js?");
+"use strict";
+eval("\n\nmodule.exports = function (secondaryCol) {\n  var primaryCol = this.orderBy.column;\n  var primaryAsc = this.orderBy.ascending;\n  if (!this.userMultiSorting[primaryCol]) this.userMultiSorting[primaryCol] = [];\n  var multi = this.userMultiSorting[primaryCol];\n\n  if (primaryCol === secondaryCol) {\n    if (!multi.length || primaryAsc) {\n      // primary is the only sorted column or is ascending\n      this.orderBy.ascending = !this.orderBy.ascending;\n    } else {\n      // remove primary column and make secondary primary\n      this.orderBy = multi.shift();\n      this.userMultiSorting = {};\n      this.userMultiSorting[this.orderBy.column] = multi;\n    }\n  } else {\n    var secondary = multi.filter(function (col) {\n      return col.column == secondaryCol;\n    })[0];\n\n    if (secondary) {\n      if (!secondary.ascending) {\n        // remove sort\n        this.userMultiSorting[primaryCol] = multi.filter(function (col) {\n          return col.column != secondaryCol;\n        });\n        if (!this.userMultiSorting[primaryCol].length) this.userMultiSorting = {};\n      } else {\n        // change direction\n        secondary.ascending = !secondary.ascending;\n      }\n    } else {\n      // add sort\n      multi.push({\n        column: secondaryCol,\n        ascending: true\n      });\n    }\n  } // force re-compilation of the filteredData computed property\n\n\n  this.time = Date.now();\n  this.dispatch('sorted', getMultiSortData(this.orderBy, this.userMultiSorting));\n};\n\nfunction getMultiSortData(main, secondary) {\n  var cols = [JSON.parse(JSON.stringify(main))];\n  cols = cols.concat(secondary[main.column]);\n  return cols;\n}\n\n;\n\n//# sourceURL=webpack://VueTables/./lib/methods/set-user-multi-sort.js?");
 
 /***/ }),
 
@@ -1012,9 +1088,10 @@ eval("module.exports = function (secondaryCol) {\n  var primaryCol = this.orderB
   !*** ./lib/methods/sortable-chevron-class.js ***!
   \***********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (column) {\n  var cls = this.opts.sortIcon.base + ' ';\n  if (!this.sortable(column)) return;\n\n  if (this.opts.sortIcon.is && !this._currentlySorted(column)) {\n    cls += this.opts.sortIcon.is + ' ';\n  }\n\n  if (this.hasMultiSort && this.orderBy.column && this.userMultiSorting[this.orderBy.column]) {\n    var col = this.userMultiSorting[this.orderBy.column].filter(function (c) {\n      return c.column === column;\n    })[0];\n    if (col) cls += col.ascending ? this.opts.sortIcon.up : this.opts.sortIcon.down;\n  }\n\n  if (column == this.orderBy.column) {\n    cls += this.orderBy.ascending == 1 ? this.opts.sortIcon.up : this.opts.sortIcon.down;\n  }\n\n  return cls;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/sortable-chevron-class.js?");
+"use strict";
+eval("\n\nmodule.exports = function (column) {\n  var cls = this.opts.sortIcon.base + ' ';\n  if (!this.sortable(column)) return;\n\n  if (this.opts.sortIcon.is && !this._currentlySorted(column)) {\n    cls += this.opts.sortIcon.is + ' ';\n  }\n\n  if (this.hasMultiSort && this.orderBy.column && this.userMultiSorting[this.orderBy.column]) {\n    var col = this.userMultiSorting[this.orderBy.column].filter(function (c) {\n      return c.column === column;\n    })[0];\n    if (col) cls += col.ascending ? this.opts.sortIcon.up : this.opts.sortIcon.down;\n  }\n\n  if (column == this.orderBy.column) {\n    cls += this.orderBy.ascending == 1 ? this.opts.sortIcon.up : this.opts.sortIcon.down;\n  }\n\n  return cls;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/sortable-chevron-class.js?");
 
 /***/ }),
 
@@ -1023,9 +1100,10 @@ eval("module.exports = function (column) {\n  var cls = this.opts.sortIcon.base 
   !*** ./lib/methods/sortable-class.js ***!
   \***************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (column) {\n  var c = this.sortable(column) ? 'VueTables__sortable ' : '';\n  c += this.columnClass(column);\n  return c;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/sortable-class.js?");
+"use strict";
+eval("\n\nmodule.exports = function (column) {\n  var c = this.sortable(column) ? 'VueTables__sortable ' : '';\n  c += this.columnClass(column);\n  return c;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/sortable-class.js?");
 
 /***/ }),
 
@@ -1034,9 +1112,10 @@ eval("module.exports = function (column) {\n  var c = this.sortable(column) ? 'V
   !*** ./lib/methods/sortable.js ***!
   \*********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (column) {\n  var sortAll = typeof this.opts.sortable == 'boolean' && this.opts.sortable;\n  if (sortAll) return true;\n  return this.opts.sortable.indexOf(column) > -1;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/sortable.js?");
+"use strict";
+eval("\n\nmodule.exports = function (column) {\n  var sortAll = typeof this.opts.sortable == 'boolean' && this.opts.sortable;\n  if (sortAll) return true;\n  return this.opts.sortable.indexOf(column) > -1;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/sortable.js?");
 
 /***/ }),
 
@@ -1045,9 +1124,10 @@ eval("module.exports = function (column) {\n  var sortAll = typeof this.opts.sor
   !*** ./lib/methods/toggle-child-row.js ***!
   \*****************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (rowId, e) {\n  if (e) e.stopPropagation();\n\n  if (this.openChildRows.includes(rowId)) {\n    var index = this.openChildRows.indexOf(rowId);\n    this.openChildRows.splice(index, 1);\n  } else {\n    this.openChildRows.push(rowId);\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/toggle-child-row.js?");
+"use strict";
+eval("\n\nmodule.exports = function (rowId, e) {\n  if (e) e.stopPropagation();\n\n  if (this.openChildRows.includes(rowId)) {\n    var index = this.openChildRows.indexOf(rowId);\n    this.openChildRows.splice(index, 1);\n  } else {\n    this.openChildRows.push(rowId);\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/toggle-child-row.js?");
 
 /***/ }),
 
@@ -1056,9 +1136,10 @@ eval("module.exports = function (rowId, e) {\n  if (e) e.stopPropagation();\n\n 
   !*** ./lib/methods/toggle-column.js ***!
   \**************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (column) {\n  var _this = this;\n\n  if (!this.userControlsColumns) {\n    this.userColumnsDisplay = JSON.parse(JSON.stringify(this.allColumns));\n    this.userControlsColumns = true;\n  }\n\n  if (this.userColumnsDisplay.includes(column)) {\n    // can't have no columns\n    if (this.userColumnsDisplay.length === 1) return;\n    var index = this.userColumnsDisplay.indexOf(column);\n    this.userColumnsDisplay.splice(index, 1);\n  } else {\n    this.userColumnsDisplay.push(column);\n  }\n\n  this.updateState('userControlsColumns', true);\n  this.updateState('userColumnsDisplay', this.userColumnsDisplay);\n  this.$nextTick(function () {\n    _this._setFiltersDOM(_this.query);\n  });\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/toggle-column.js?");
+"use strict";
+eval("\n\nmodule.exports = function (column) {\n  var _this = this;\n\n  if (!this.userControlsColumns) {\n    this.userColumnsDisplay = JSON.parse(JSON.stringify(this.allColumns));\n    this.userControlsColumns = true;\n  }\n\n  if (this.userColumnsDisplay.includes(column)) {\n    // can't have no columns\n    if (this.userColumnsDisplay.length === 1) return;\n    var index = this.userColumnsDisplay.indexOf(column);\n    this.userColumnsDisplay.splice(index, 1);\n  } else {\n    this.userColumnsDisplay.push(column);\n  }\n\n  this.updateState('userControlsColumns', true);\n  this.updateState('userColumnsDisplay', this.userColumnsDisplay);\n  this.$nextTick(function () {\n    _this._setFiltersDOM(_this.query);\n  });\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/toggle-column.js?");
 
 /***/ }),
 
@@ -1067,9 +1148,10 @@ eval("module.exports = function (column) {\n  var _this = this;\n\n  if (!this.u
   !*** ./lib/methods/toggle-columns-dropdown.js ***!
   \************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  this.displayColumnsDropdown = !this.displayColumnsDropdown;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/toggle-columns-dropdown.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  this.displayColumnsDropdown = !this.displayColumnsDropdown;\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/toggle-columns-dropdown.js?");
 
 /***/ }),
 
@@ -1078,9 +1160,10 @@ eval("module.exports = function () {\n  this.displayColumnsDropdown = !this.disp
   !*** ./lib/methods/toggle-group-direction.js ***!
   \***********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  if (this.orderBy.column != this.opts.groupBy) {\n    this.setOrder(this.opts.groupBy, true);\n  } else {\n    this.setOrder(this.opts.groupBy, !this.orderBy.ascending);\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/toggle-group-direction.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  if (this.orderBy.column != this.opts.groupBy) {\n    this.setOrder(this.opts.groupBy, true);\n  } else {\n    this.setOrder(this.opts.groupBy, !this.orderBy.ascending);\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/toggle-group-direction.js?");
 
 /***/ }),
 
@@ -1089,9 +1172,10 @@ eval("module.exports = function () {\n  if (this.orderBy.column != this.opts.gro
   !*** ./lib/methods/transform-date-strings-to-moment.js ***!
   \*********************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  this.data.forEach(function (row, index) {\n    this.opts.dateColumns.forEach(function (column) {\n      row[column] = row[column] ? moment(row[column], this.opts.toMomentFormat) : '';\n    }.bind(this));\n  }.bind(this));\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/transform-date-strings-to-moment.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  this.data.forEach(function (row, index) {\n    this.opts.dateColumns.forEach(function (column) {\n      row[column] = row[column] ? moment(row[column], this.opts.toMomentFormat) : '';\n    }.bind(this));\n  }.bind(this));\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/transform-date-strings-to-moment.js?");
 
 /***/ }),
 
@@ -1100,9 +1184,10 @@ eval("module.exports = function () {\n  this.data.forEach(function (row, index) 
   !*** ./lib/methods/update-state.js ***!
   \*************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (key, value) {\n  if (!this.opts.saveState || !this.activeState) return;\n\n  try {\n    var currentState = JSON.parse(this.storage.getItem(this.stateKey));\n  } catch (e) {\n    var currentState = this.initState();\n  }\n\n  currentState[key] = value;\n  this.storage.setItem(this.stateKey, JSON.stringify(currentState));\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/update-state.js?");
+"use strict";
+eval("\n\nmodule.exports = function (key, value) {\n  if (!this.opts.saveState || !this.activeState) return;\n\n  try {\n    var currentState = JSON.parse(this.storage.getItem(this.stateKey));\n  } catch (e) {\n    var currentState = this.initState();\n  }\n\n  currentState[key] = value;\n  this.storage.setItem(this.stateKey, JSON.stringify(currentState));\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/update-state.js?");
 
 /***/ }),
 
@@ -1110,11 +1195,11 @@ eval("module.exports = function (key, value) {\n  if (!this.opts.saveState || !t
 /*!**************************************!*\
   !*** ./lib/mixins/before-destroy.js ***!
   \**************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var _bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../bus */ \"./lib/bus.js\");\n\n\nmodule.exports = function () {\n  var _this = this;\n\n  var el;\n\n  if (this.opts.destroyEventBus) {\n    _bus__WEBPACK_IMPORTED_MODULE_0__[\"default\"].$off();\n    _bus__WEBPACK_IMPORTED_MODULE_0__[\"default\"].$destroy();\n  }\n\n  if (this.vuex && !this.opts.preserveState) {\n    this.$store.unregisterModule(this.name);\n  }\n\n  if (this.opts.filterByColumn) {\n    this.datepickerColumns.forEach(function (column) {\n      el = $(_this.$el).find(\"#VueTables__\" + $.escapeSelector(column) + \"-filter\").data('daterangepicker');\n      if (el) el.remove();\n    });\n  }\n};\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/harmony-module.js */ \"./node_modules/webpack/buildin/harmony-module.js\")(module)))\n\n//# sourceURL=webpack://VueTables/./lib/mixins/before-destroy.js?");
+eval("\n\nvar _bus = _interopRequireDefault(__webpack_require__(/*! ../bus */ \"./lib/bus.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nmodule.exports = function () {\n  var _this = this;\n\n  var el;\n\n  if (this.opts.destroyEventBus) {\n    _bus[\"default\"].$off();\n\n    _bus[\"default\"].$destroy();\n  }\n\n  if (this.vuex && !this.opts.preserveState) {\n    this.$store.unregisterModule(this.name);\n  }\n\n  if (this.opts.filterByColumn) {\n    this.datepickerColumns.forEach(function (column) {\n      el = $(_this.$el).find(\"#VueTables__\" + $.escapeSelector(column) + \"-filter\").data('daterangepicker');\n      if (el) el.remove();\n    });\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/mixins/before-destroy.js?");
 
 /***/ }),
 
@@ -1125,7 +1210,8 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(f
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = {\n  listColumnsObject: __webpack_require__(/*! ../computed/list-columns-object */ \"./lib/computed/list-columns-object.js\"),\n  allColumns: __webpack_require__(/*! ../computed/all-columns */ \"./lib/computed/all-columns.js\"),\n  templatesKeys: __webpack_require__(/*! ../computed/templates-keys */ \"./lib/computed/templates-keys.js\"),\n  opts: __webpack_require__(/*! ../computed/opts */ \"./lib/computed/opts.js\"),\n  tableData: __webpack_require__(/*! ../computed/table-data */ \"./lib/computed/table-data.js\"),\n  storage: __webpack_require__(/*! ../computed/storage */ \"./lib/computed/storage.js\"),\n  filterableColumns: __webpack_require__(/*! ../computed/filterable-columns */ \"./lib/computed/filterable-columns.js\"),\n  datepickerColumns: __webpack_require__(/*! ../computed/datepicker-columns */ \"./lib/computed/datepicker-columns.js\"),\n  hasChildRow: __webpack_require__(/*! ../computed/has-child-row */ \"./lib/computed/has-child-row.js\"),\n  colspan: __webpack_require__(/*! ../computed/colspan */ \"./lib/computed/colspan.js\"),\n  hasGenericFilter: __webpack_require__(/*! ../computed/has-generic-filter */ \"./lib/computed/has-generic-filter.js\"),\n  stateKey: function stateKey() {\n    var key = this.name ? this.name : this.id;\n    return 'vuetables_' + key;\n  },\n  Page: function Page() {\n    return this.page;\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/mixins/computed.js?");
+"use strict";
+eval("\n\nmodule.exports = {\n  listColumnsObject: __webpack_require__(/*! ../computed/list-columns-object */ \"./lib/computed/list-columns-object.js\"),\n  allColumns: __webpack_require__(/*! ../computed/all-columns */ \"./lib/computed/all-columns.js\"),\n  templatesKeys: __webpack_require__(/*! ../computed/templates-keys */ \"./lib/computed/templates-keys.js\"),\n  opts: __webpack_require__(/*! ../computed/opts */ \"./lib/computed/opts.js\"),\n  tableData: __webpack_require__(/*! ../computed/table-data */ \"./lib/computed/table-data.js\"),\n  storage: __webpack_require__(/*! ../computed/storage */ \"./lib/computed/storage.js\"),\n  filterableColumns: __webpack_require__(/*! ../computed/filterable-columns */ \"./lib/computed/filterable-columns.js\"),\n  datepickerColumns: __webpack_require__(/*! ../computed/datepicker-columns */ \"./lib/computed/datepicker-columns.js\"),\n  hasChildRow: __webpack_require__(/*! ../computed/has-child-row */ \"./lib/computed/has-child-row.js\"),\n  colspan: __webpack_require__(/*! ../computed/colspan */ \"./lib/computed/colspan.js\"),\n  hasGenericFilter: __webpack_require__(/*! ../computed/has-generic-filter */ \"./lib/computed/has-generic-filter.js\"),\n  stateKey: function stateKey() {\n    var key = this.name ? this.name : this.id;\n    return 'vuetables_' + key;\n  },\n  Page: function Page() {\n    return this.page;\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/mixins/computed.js?");
 
 /***/ }),
 
@@ -1136,7 +1222,8 @@ eval("module.exports = {\n  listColumnsObject: __webpack_require__(/*! ../comput
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var is_empty = __webpack_require__(/*! ../helpers/is-empty */ \"./lib/helpers/is-empty.js\");\n\nvar registerVuexModule = __webpack_require__(/*! ../state/register-module */ \"./lib/state/register-module.js\");\n\nmodule.exports = function (self) {\n  if (self.vuex) {\n    registerVuexModule(self);\n  } else {\n    self.limit = self.opts.perPage;\n  }\n\n  if (is_empty(self.opts.columnsDisplay) || typeof window === 'undefined') return;\n  self.columnsDisplay = getColumnsDisplay(self.opts.columnsDisplay);\n  window.addEventListener('resize', function () {\n    self.windowWidth = window.innerWidth;\n  }.bind(self));\n};\n\nfunction getColumnsDisplay(columnsDisplay) {\n  var res = {};\n  var range;\n  var device;\n  var operator;\n\n  for (var column in columnsDisplay) {\n    operator = getOperator(columnsDisplay[column]);\n\n    try {\n      device = getDevice(columnsDisplay[column]);\n      range = getRange(device, operator);\n      res[column] = range.concat([operator]);\n    } catch (err) {\n      console.warn('Unknown device ' + device);\n    }\n  }\n\n  return res;\n}\n\nfunction getRange(device, operator) {\n  var devices = {\n    desktop: [1024, null],\n    tablet: [480, 1024],\n    mobile: [0, 480],\n    tabletL: [768, 1024],\n    tabletP: [480, 768],\n    mobileL: [320, 480],\n    mobileP: [0, 320]\n  };\n\n  switch (operator) {\n    case 'min':\n      return [devices[device][0], null];\n\n    case 'max':\n      return [0, devices[device][1]];\n\n    default:\n      return devices[device];\n  }\n}\n\nfunction getOperator(val) {\n  var pieces = val.split('_');\n  if (['not', 'min', 'max'].indexOf(pieces[0]) > -1) return pieces[0];\n  return false;\n}\n\nfunction getDevice(val) {\n  var pieces = val.split('_');\n  return pieces.length > 1 ? pieces[1] : pieces[0];\n}\n\n//# sourceURL=webpack://VueTables/./lib/mixins/created.js?");
+"use strict";
+eval("\n\nvar is_empty = __webpack_require__(/*! ../helpers/is-empty */ \"./lib/helpers/is-empty.js\");\n\nvar registerVuexModule = __webpack_require__(/*! ../state/register-module */ \"./lib/state/register-module.js\");\n\nmodule.exports = function (self) {\n  if (self.vuex) {\n    registerVuexModule(self);\n  } else {\n    self.limit = self.opts.perPage;\n  }\n\n  if (is_empty(self.opts.columnsDisplay) || typeof window === 'undefined') return;\n  self.columnsDisplay = getColumnsDisplay(self.opts.columnsDisplay);\n  window.addEventListener('resize', function () {\n    self.windowWidth = window.innerWidth;\n  }.bind(self));\n};\n\nfunction getColumnsDisplay(columnsDisplay) {\n  var res = {};\n  var range;\n  var device;\n  var operator;\n\n  for (var column in columnsDisplay) {\n    operator = getOperator(columnsDisplay[column]);\n\n    try {\n      device = getDevice(columnsDisplay[column]);\n      range = getRange(device, operator);\n      res[column] = range.concat([operator]);\n    } catch (err) {\n      console.warn('Unknown device ' + device);\n    }\n  }\n\n  return res;\n}\n\nfunction getRange(device, operator) {\n  var devices = {\n    desktop: [1024, null],\n    tablet: [480, 1024],\n    mobile: [0, 480],\n    tabletL: [768, 1024],\n    tabletP: [480, 768],\n    mobileL: [320, 480],\n    mobileP: [0, 320]\n  };\n\n  switch (operator) {\n    case 'min':\n      return [devices[device][0], null];\n\n    case 'max':\n      return [0, devices[device][1]];\n\n    default:\n      return devices[device];\n  }\n}\n\nfunction getOperator(val) {\n  var pieces = val.split('_');\n  if (['not', 'min', 'max'].indexOf(pieces[0]) > -1) return pieces[0];\n  return false;\n}\n\nfunction getDevice(val) {\n  var pieces = val.split('_');\n  return pieces.length > 1 ? pieces[1] : pieces[0];\n}\n\n//# sourceURL=webpack://VueTables/./lib/mixins/created.js?");
 
 /***/ }),
 
@@ -1145,9 +1232,10 @@ eval("var is_empty = __webpack_require__(/*! ../helpers/is-empty */ \"./lib/help
   !*** ./lib/mixins/data.js ***!
   \****************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  return {\n    id: makeId(),\n    allFilteredData: [],\n    openChildRows: [],\n    windowWidth: typeof window !== 'undefined' ? window.innerWidth : null,\n    userMultiSorting: {}\n  };\n};\n\nfunction makeId() {\n  var text = \"\";\n  var possible = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789\";\n\n  for (var i = 0; i < 5; i++) {\n    text += possible.charAt(Math.floor(Math.random() * possible.length));\n  }\n\n  return text;\n}\n\n//# sourceURL=webpack://VueTables/./lib/mixins/data.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  return {\n    id: makeId(),\n    allFilteredData: [],\n    openChildRows: [],\n    windowWidth: typeof window !== 'undefined' ? window.innerWidth : null,\n    userMultiSorting: {}\n  };\n};\n\nfunction makeId() {\n  var text = \"\";\n  var possible = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789\";\n\n  for (var i = 0; i < 5; i++) {\n    text += possible.charAt(Math.floor(Math.random() * possible.length));\n  }\n\n  return text;\n}\n\n//# sourceURL=webpack://VueTables/./lib/mixins/data.js?");
 
 /***/ }),
 
@@ -1158,7 +1246,8 @@ eval("module.exports = function () {\n  return {\n    id: makeId(),\n    allFilt
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = {\n  input: __webpack_require__(/*! ../directives/input */ \"./lib/directives/input.js\"),\n  select: __webpack_require__(/*! ../directives/select */ \"./lib/directives/select.js\")\n};\n\n//# sourceURL=webpack://VueTables/./lib/mixins/directives.js?");
+"use strict";
+eval("\n\nmodule.exports = {\n  input: __webpack_require__(/*! ../directives/input */ \"./lib/directives/input.js\"),\n  select: __webpack_require__(/*! ../directives/select */ \"./lib/directives/select.js\")\n};\n\n//# sourceURL=webpack://VueTables/./lib/mixins/directives.js?");
 
 /***/ }),
 
@@ -1169,7 +1258,8 @@ eval("module.exports = {\n  input: __webpack_require__(/*! ../directives/input *
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = {\n  initQuery: __webpack_require__(/*! ../methods/init-query */ \"./lib/methods/init-query.js\"),\n  resetQuery: __webpack_require__(/*! ../methods/reset-query */ \"./lib/methods/reset-query.js\"),\n  initCustomFilters: __webpack_require__(/*! ../methods/init-custom-filters */ \"./lib/methods/init-custom-filters.js\"),\n  initOptions: __webpack_require__(/*! ../methods/init-options */ \"./lib/methods/init-options.js\"),\n  sortableClass: __webpack_require__(/*! ../methods/sortable-class */ \"./lib/methods/sortable-class.js\"),\n  sortableChevronClass: __webpack_require__(/*! ../methods/sortable-chevron-class */ \"./lib/methods/sortable-chevron-class.js\"),\n  display: __webpack_require__(/*! ../methods/display */ \"./lib/methods/display.js\"),\n  orderByColumn: __webpack_require__(/*! ../methods/order-by-column */ \"./lib/methods/order-by-column.js\"),\n  getHeading: __webpack_require__(/*! ../methods/get-heading */ \"./lib/methods/get-heading.js\"),\n  getHeadingTooltip: __webpack_require__(/*! ../methods/get-heading-tooltip */ \"./lib/methods/get-heading-tooltip.js\"),\n  sortable: __webpack_require__(/*! ../methods/sortable */ \"./lib/methods/sortable.js\"),\n  serverSearch: __webpack_require__(/*! ../methods/server-search */ \"./lib/methods/server-search.js\"),\n  initOrderBy: __webpack_require__(/*! ../methods/init-order-by */ \"./lib/methods/init-order-by.js\"),\n  initDateFilters: __webpack_require__(/*! ../methods/init-date-filters */ \"./lib/methods/init-date-filters.js\"),\n  setFilter: __webpack_require__(/*! ../methods/set-filter */ \"./lib/methods/set-filter.js\"),\n  setPage: __webpack_require__(/*! ../methods/set-page */ \"./lib/methods/set-page.js\"),\n  setOrder: __webpack_require__(/*! ../methods/set-order */ \"./lib/methods/set-order.js\"),\n  initPagination: __webpack_require__(/*! ../methods/init-pagination */ \"./lib/methods/init-pagination.js\"),\n  filterable: __webpack_require__(/*! ../methods/filterable */ \"./lib/methods/filterable.js\"),\n  isTextFilter: __webpack_require__(/*! ../methods/is-text-filter */ \"./lib/methods/is-text-filter.js\"),\n  isDateFilter: __webpack_require__(/*! ../methods/is-date-filter */ \"./lib/methods/is-date-filter.js\"),\n  isListFilter: __webpack_require__(/*! ../methods/is-list-filter */ \"./lib/methods/is-list-filter.js\"),\n  highlightMatch: __webpack_require__(/*! ../filters/highlight-matches */ \"./lib/filters/highlight-matches.js\"),\n  formatDate: __webpack_require__(/*! ../filters/format-date */ \"./lib/filters/format-date.js\"),\n  hasDateFilters: __webpack_require__(/*! ../methods/has-date-filters */ \"./lib/methods/has-date-filters.js\"),\n  applyFilters: __webpack_require__(/*! ../methods/apply-filters */ \"./lib/methods/apply-filters.js\"),\n  optionText: __webpack_require__(/*! ../filters/option-text */ \"./lib/filters/option-text.js\"),\n  render: __webpack_require__(/*! ../methods/render */ \"./lib/methods/render.js\"),\n  rowWasClicked: __webpack_require__(/*! ../methods/row-was-clicked */ \"./lib/methods/row-was-clicked.js\"),\n  setLimit: __webpack_require__(/*! ../methods/set-limit */ \"./lib/methods/set-limit.js\"),\n  getOpenChildRows: __webpack_require__(/*! ../methods/get-open-child-rows */ \"./lib/methods/get-open-child-rows.js\"),\n  dispatch: __webpack_require__(/*! ../methods/dispatch */ \"./lib/methods/dispatch.js\"),\n  toggleChildRow: __webpack_require__(/*! ../methods/toggle-child-row */ \"./lib/methods/toggle-child-row.js\"),\n  childRowTogglerClass: __webpack_require__(/*! ../methods/child-row-toggler-class */ \"./lib/methods/child-row-toggler-class.js\"),\n  sendRequest: __webpack_require__(/*! ../methods/send-request */ \"./lib/methods/send-request.js\"),\n  getResponseData: __webpack_require__(/*! ../methods/get-response-data */ \"./lib/methods/get-response-data.js\"),\n  getSortFn: __webpack_require__(/*! ../methods/get-sort-fn */ \"./lib/methods/get-sort-fn.js\"),\n  initState: __webpack_require__(/*! ../methods/init-state */ \"./lib/methods/init-state.js\"),\n  updateState: __webpack_require__(/*! ../methods/update-state */ \"./lib/methods/update-state.js\"),\n  columnClass: __webpack_require__(/*! ../methods/column-class */ \"./lib/methods/column-class.js\"),\n  getName: __webpack_require__(/*! ../methods/get-name */ \"./lib/methods/get-name.js\"),\n  toggleColumn: __webpack_require__(/*! ../methods/toggle-column */ \"./lib/methods/toggle-column.js\"),\n  setUserMultiSort: __webpack_require__(/*! ../methods/set-user-multi-sort */ \"./lib/methods/set-user-multi-sort.js\"),\n  _setFiltersDOM: __webpack_require__(/*! ../methods/set-filters-dom */ \"./lib/methods/set-filters-dom.js\"),\n  _currentlySorted: __webpack_require__(/*! ../methods/currently-sorted */ \"./lib/methods/currently-sorted.js\"),\n  _getChildRowTemplate: __webpack_require__(/*! ../methods/get-child-row-template */ \"./lib/methods/get-child-row-template.js\"),\n  _toggleColumnsDropdown: __webpack_require__(/*! ../methods/toggle-columns-dropdown */ \"./lib/methods/toggle-columns-dropdown.js\"),\n  _onlyColumn: __webpack_require__(/*! ../methods/only-column */ \"./lib/methods/only-column.js\"),\n  _onPagination: __webpack_require__(/*! ../methods/on-pagination */ \"./lib/methods/on-pagination.js\"),\n  _toggleGroupDirection: __webpack_require__(/*! ../methods/toggle-group-direction */ \"./lib/methods/toggle-group-direction.js\"),\n  _getInitialDateRange: __webpack_require__(/*! ../methods/get-initial-date-range */ \"./lib/methods/get-initial-date-range.js\"),\n  _setDatepickerText: __webpack_require__(/*! ../methods/set-datepicker-text */ \"./lib/methods/set-datepicker-text.js\"),\n  _initialOrderAscending: __webpack_require__(/*! ../methods/initial-order-ascending */ \"./lib/methods/initial-order-ascending.js\"),\n  dateFormat: __webpack_require__(/*! ../methods/date-format */ \"./lib/methods/date-format.js\"),\n  _setColumnsDropdownCloseListener: __webpack_require__(/*! ../methods/set-columns-dropdown-close-listener */ \"./lib/methods/set-columns-dropdown-close-listener.js\"),\n  _getValue: __webpack_require__(/*! ../methods/get-value */ \"./lib/methods/get-value.js\"),\n  _getColumnName: __webpack_require__(/*! ../methods/get-column-name */ \"./lib/methods/get-column-name.js\")\n};\n\n//# sourceURL=webpack://VueTables/./lib/mixins/methods.js?");
+"use strict";
+eval("\n\nmodule.exports = {\n  initQuery: __webpack_require__(/*! ../methods/init-query */ \"./lib/methods/init-query.js\"),\n  resetQuery: __webpack_require__(/*! ../methods/reset-query */ \"./lib/methods/reset-query.js\"),\n  initCustomFilters: __webpack_require__(/*! ../methods/init-custom-filters */ \"./lib/methods/init-custom-filters.js\"),\n  initOptions: __webpack_require__(/*! ../methods/init-options */ \"./lib/methods/init-options.js\"),\n  sortableClass: __webpack_require__(/*! ../methods/sortable-class */ \"./lib/methods/sortable-class.js\"),\n  sortableChevronClass: __webpack_require__(/*! ../methods/sortable-chevron-class */ \"./lib/methods/sortable-chevron-class.js\"),\n  display: __webpack_require__(/*! ../methods/display */ \"./lib/methods/display.js\"),\n  orderByColumn: __webpack_require__(/*! ../methods/order-by-column */ \"./lib/methods/order-by-column.js\"),\n  getHeading: __webpack_require__(/*! ../methods/get-heading */ \"./lib/methods/get-heading.js\"),\n  getHeadingTooltip: __webpack_require__(/*! ../methods/get-heading-tooltip */ \"./lib/methods/get-heading-tooltip.js\"),\n  sortable: __webpack_require__(/*! ../methods/sortable */ \"./lib/methods/sortable.js\"),\n  serverSearch: __webpack_require__(/*! ../methods/server-search */ \"./lib/methods/server-search.js\"),\n  initOrderBy: __webpack_require__(/*! ../methods/init-order-by */ \"./lib/methods/init-order-by.js\"),\n  initDateFilters: __webpack_require__(/*! ../methods/init-date-filters */ \"./lib/methods/init-date-filters.js\"),\n  setFilter: __webpack_require__(/*! ../methods/set-filter */ \"./lib/methods/set-filter.js\"),\n  setPage: __webpack_require__(/*! ../methods/set-page */ \"./lib/methods/set-page.js\"),\n  setOrder: __webpack_require__(/*! ../methods/set-order */ \"./lib/methods/set-order.js\"),\n  initPagination: __webpack_require__(/*! ../methods/init-pagination */ \"./lib/methods/init-pagination.js\"),\n  filterable: __webpack_require__(/*! ../methods/filterable */ \"./lib/methods/filterable.js\"),\n  isTextFilter: __webpack_require__(/*! ../methods/is-text-filter */ \"./lib/methods/is-text-filter.js\"),\n  isDateFilter: __webpack_require__(/*! ../methods/is-date-filter */ \"./lib/methods/is-date-filter.js\"),\n  isListFilter: __webpack_require__(/*! ../methods/is-list-filter */ \"./lib/methods/is-list-filter.js\"),\n  highlightMatch: __webpack_require__(/*! ../filters/highlight-matches */ \"./lib/filters/highlight-matches.js\"),\n  formatDate: __webpack_require__(/*! ../filters/format-date */ \"./lib/filters/format-date.js\"),\n  hasDateFilters: __webpack_require__(/*! ../methods/has-date-filters */ \"./lib/methods/has-date-filters.js\"),\n  applyFilters: __webpack_require__(/*! ../methods/apply-filters */ \"./lib/methods/apply-filters.js\"),\n  optionText: __webpack_require__(/*! ../filters/option-text */ \"./lib/filters/option-text.js\"),\n  render: __webpack_require__(/*! ../methods/render */ \"./lib/methods/render.js\"),\n  rowWasClicked: __webpack_require__(/*! ../methods/row-was-clicked */ \"./lib/methods/row-was-clicked.js\"),\n  setLimit: __webpack_require__(/*! ../methods/set-limit */ \"./lib/methods/set-limit.js\"),\n  getOpenChildRows: __webpack_require__(/*! ../methods/get-open-child-rows */ \"./lib/methods/get-open-child-rows.js\"),\n  dispatch: __webpack_require__(/*! ../methods/dispatch */ \"./lib/methods/dispatch.js\"),\n  toggleChildRow: __webpack_require__(/*! ../methods/toggle-child-row */ \"./lib/methods/toggle-child-row.js\"),\n  childRowTogglerClass: __webpack_require__(/*! ../methods/child-row-toggler-class */ \"./lib/methods/child-row-toggler-class.js\"),\n  sendRequest: __webpack_require__(/*! ../methods/send-request */ \"./lib/methods/send-request.js\"),\n  getResponseData: __webpack_require__(/*! ../methods/get-response-data */ \"./lib/methods/get-response-data.js\"),\n  getSortFn: __webpack_require__(/*! ../methods/get-sort-fn */ \"./lib/methods/get-sort-fn.js\"),\n  initState: __webpack_require__(/*! ../methods/init-state */ \"./lib/methods/init-state.js\"),\n  updateState: __webpack_require__(/*! ../methods/update-state */ \"./lib/methods/update-state.js\"),\n  columnClass: __webpack_require__(/*! ../methods/column-class */ \"./lib/methods/column-class.js\"),\n  getName: __webpack_require__(/*! ../methods/get-name */ \"./lib/methods/get-name.js\"),\n  toggleColumn: __webpack_require__(/*! ../methods/toggle-column */ \"./lib/methods/toggle-column.js\"),\n  setUserMultiSort: __webpack_require__(/*! ../methods/set-user-multi-sort */ \"./lib/methods/set-user-multi-sort.js\"),\n  _setFiltersDOM: __webpack_require__(/*! ../methods/set-filters-dom */ \"./lib/methods/set-filters-dom.js\"),\n  _currentlySorted: __webpack_require__(/*! ../methods/currently-sorted */ \"./lib/methods/currently-sorted.js\"),\n  _getChildRowTemplate: __webpack_require__(/*! ../methods/get-child-row-template */ \"./lib/methods/get-child-row-template.js\"),\n  _toggleColumnsDropdown: __webpack_require__(/*! ../methods/toggle-columns-dropdown */ \"./lib/methods/toggle-columns-dropdown.js\"),\n  _onlyColumn: __webpack_require__(/*! ../methods/only-column */ \"./lib/methods/only-column.js\"),\n  _onPagination: __webpack_require__(/*! ../methods/on-pagination */ \"./lib/methods/on-pagination.js\"),\n  _toggleGroupDirection: __webpack_require__(/*! ../methods/toggle-group-direction */ \"./lib/methods/toggle-group-direction.js\"),\n  _getInitialDateRange: __webpack_require__(/*! ../methods/get-initial-date-range */ \"./lib/methods/get-initial-date-range.js\"),\n  _setDatepickerText: __webpack_require__(/*! ../methods/set-datepicker-text */ \"./lib/methods/set-datepicker-text.js\"),\n  _initialOrderAscending: __webpack_require__(/*! ../methods/initial-order-ascending */ \"./lib/methods/initial-order-ascending.js\"),\n  dateFormat: __webpack_require__(/*! ../methods/date-format */ \"./lib/methods/date-format.js\"),\n  _setColumnsDropdownCloseListener: __webpack_require__(/*! ../methods/set-columns-dropdown-close-listener */ \"./lib/methods/set-columns-dropdown-close-listener.js\"),\n  _getValue: __webpack_require__(/*! ../methods/get-value */ \"./lib/methods/get-value.js\"),\n  _getColumnName: __webpack_require__(/*! ../methods/get-column-name */ \"./lib/methods/get-column-name.js\")\n};\n\n//# sourceURL=webpack://VueTables/./lib/mixins/methods.js?");
 
 /***/ }),
 
@@ -1177,11 +1267,11 @@ eval("module.exports = {\n  initQuery: __webpack_require__(/*! ../methods/init-q
 /*!***************************************!*\
   !*** ./lib/modules/column-filters.js ***!
   \***************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\");\n/* harmony import */ var merge__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(merge__WEBPACK_IMPORTED_MODULE_0__);\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\n\n\nmodule.exports = function (h) {\n  var _this = this;\n\n  return function (classes) {\n    if (!_this.opts.filterByColumn || !_this.opts.filterable) return '';\n\n    var textFilter = __webpack_require__(/*! ./text-filter */ \"./lib/modules/text-filter.js\").call(_this, h, classes.input);\n\n    var dateFilter = __webpack_require__(/*! ./date-filter */ \"./lib/modules/date-filter.js\").call(_this, h);\n\n    var listFilter = __webpack_require__(/*! ./list-filter */ \"./lib/modules/list-filter.js\").call(_this, h, classes.select);\n\n    var filters = [];\n    var filter;\n    if (_this.hasChildRow && _this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) filters.push(h(\"th\"));\n\n    _this.allColumns.map(function (column) {\n      var filter = '';\n\n      if (_this.filterable(column)) {\n        switch (true) {\n          case _this.isTextFilter(column):\n            filter = textFilter(column);\n            break;\n\n          case _this.isDateFilter(column):\n            filter = dateFilter(column);\n            break;\n\n          case _this.isListFilter(column):\n            filter = listFilter(column);\n            break;\n        }\n      }\n\n      if (typeof _this.$slots[\"filter__\".concat(column)] !== 'undefined') {\n        filter = filter ? h(\"div\", [filter, _this.$slots[\"filter__\".concat(column)]]) : _this.$slots[\"filter__\".concat(column)];\n      }\n\n      filters.push(h(\"th\", {\n        \"class\": _this.columnClass(column)\n      }, [h(\"div\", _defineProperty({\n        \"class\": \"VueTables__column-filter\"\n      }, \"class\", 'VueTables__' + column + '-filter-wrapper'), [filter])]));\n    });\n\n    if (_this.hasChildRow && !_this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) filters.push(h(\"th\"));\n    return h(\"tr\", {\n      \"class\": \"VueTables__filters-row\"\n    }, [filters]);\n  };\n};\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/harmony-module.js */ \"./node_modules/webpack/buildin/harmony-module.js\")(module)))\n\n//# sourceURL=webpack://VueTables/./lib/modules/column-filters.js?");
+eval("\n\nvar _merge = _interopRequireDefault(__webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\nmodule.exports = function (h) {\n  var _this = this;\n\n  return function (classes) {\n    if (!_this.opts.filterByColumn || !_this.opts.filterable) return '';\n\n    var textFilter = __webpack_require__(/*! ./text-filter */ \"./lib/modules/text-filter.js\").call(_this, h, classes.input);\n\n    var dateFilter = __webpack_require__(/*! ./date-filter */ \"./lib/modules/date-filter.js\").call(_this, h);\n\n    var listFilter = __webpack_require__(/*! ./list-filter */ \"./lib/modules/list-filter.js\").call(_this, h, classes.select);\n\n    var filters = [];\n    var filter;\n    if (_this.hasChildRow && _this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) filters.push(h(\"th\"));\n\n    _this.allColumns.map(function (column) {\n      var filter = '';\n\n      if (_this.filterable(column)) {\n        switch (true) {\n          case _this.isTextFilter(column):\n            filter = textFilter(column);\n            break;\n\n          case _this.isDateFilter(column):\n            filter = dateFilter(column);\n            break;\n\n          case _this.isListFilter(column):\n            filter = listFilter(column);\n            break;\n        }\n      }\n\n      if (typeof _this.$slots[\"filter__\".concat(column)] !== 'undefined') {\n        filter = filter ? h(\"div\", [filter, _this.$slots[\"filter__\".concat(column)]]) : _this.$slots[\"filter__\".concat(column)];\n      }\n\n      filters.push(h(\"th\", {\n        \"class\": _this.columnClass(column)\n      }, [h(\"div\", _defineProperty({\n        \"class\": \"VueTables__column-filter\"\n      }, \"class\", 'VueTables__' + column + '-filter-wrapper'), [filter])]));\n    });\n\n    if (_this.hasChildRow && !_this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) filters.push(h(\"th\"));\n    return h(\"tr\", {\n      \"class\": \"VueTables__filters-row\"\n    }, [filters]);\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/column-filters.js?");
 
 /***/ }),
 
@@ -1192,7 +1282,8 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(f
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var dropdownWrapper = __webpack_require__(/*! ./dropdown-wrapper */ \"./lib/modules/dropdown-wrapper.js\");\n\nvar dropdownItemWrapper = __webpack_require__(/*! ./dropdown-item-wrapper */ \"./lib/modules/dropdown-item-wrapper.js\");\n\nmodule.exports = function (h) {\n  var _this = this;\n\n  return function (classes) {\n    var cols = _this.columns.map(function (column) {\n      return dropdownItemWrapper(h, classes, h(\"a\", {\n        \"class\": classes.dropdown.item,\n        attrs: {\n          href: \"#\"\n        },\n        on: {\n          \"click\": function click() {\n            return _this.toggleColumn(column);\n          }\n        }\n      }, [h(\"input\", {\n        attrs: {\n          type: \"checkbox\",\n          disabled: _this._onlyColumn(column)\n        },\n        domProps: {\n          \"value\": column,\n          \"checked\": _this.allColumns.includes(column)\n        }\n      }), _this.getHeading(column)]));\n    });\n\n    return h(\"div\", {\n      ref: \"columnsdropdown\",\n      \"class\": \"\".concat(classes.dropdown.container, \" \").concat(classes.right, \" VueTables__columns-dropdown\")\n    }, [h(\"button\", {\n      attrs: {\n        type: \"button\"\n      },\n      \"class\": \"\".concat(classes.button, \" \").concat(classes.dropdown.trigger),\n      on: {\n        \"click\": _this._toggleColumnsDropdown.bind(_this)\n      }\n    }, [_this.display('columns'), h(\"span\", {\n      \"class\": \"\".concat(classes.icon, \" \").concat(classes.small)\n    }, [h(\"i\", {\n      \"class\": classes.dropdown.caret\n    })])]), dropdownWrapper.call(_this, h, classes, cols)]);\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/columns-dropdown.js?");
+"use strict";
+eval("\n\nvar dropdownWrapper = __webpack_require__(/*! ./dropdown-wrapper */ \"./lib/modules/dropdown-wrapper.js\");\n\nvar dropdownItemWrapper = __webpack_require__(/*! ./dropdown-item-wrapper */ \"./lib/modules/dropdown-item-wrapper.js\");\n\nmodule.exports = function (h) {\n  var _this = this;\n\n  return function (classes) {\n    var cols = _this.columns.map(function (column) {\n      return dropdownItemWrapper(h, classes, h(\"a\", {\n        \"class\": classes.dropdown.item,\n        attrs: {\n          href: \"#\"\n        },\n        on: {\n          \"click\": function click() {\n            return _this.toggleColumn(column);\n          }\n        }\n      }, [h(\"input\", {\n        attrs: {\n          type: \"checkbox\",\n          disabled: _this._onlyColumn(column)\n        },\n        domProps: {\n          \"value\": column,\n          \"checked\": _this.allColumns.includes(column)\n        }\n      }), _this.getHeading(column)]));\n    });\n\n    return h(\"div\", {\n      ref: \"columnsdropdown\",\n      \"class\": \"\".concat(classes.dropdown.container, \" \").concat(classes.right, \" VueTables__columns-dropdown\")\n    }, [h(\"button\", {\n      attrs: {\n        type: \"button\"\n      },\n      \"class\": \"\".concat(classes.button, \" \").concat(classes.dropdown.trigger),\n      on: {\n        \"click\": _this._toggleColumnsDropdown.bind(_this)\n      }\n    }, [_this.display('columns'), h(\"span\", {\n      \"class\": \"\".concat(classes.icon, \" \").concat(classes.small)\n    }, [h(\"i\", {\n      \"class\": classes.dropdown.caret\n    })])]), dropdownWrapper.call(_this, h, classes, cols)]);\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/columns-dropdown.js?");
 
 /***/ }),
 
@@ -1201,9 +1292,10 @@ eval("var dropdownWrapper = __webpack_require__(/*! ./dropdown-wrapper */ \"./li
   !*** ./lib/modules/date-filter.js ***!
   \************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (h) {\n  var _this = this;\n\n  return function (column) {\n    return h(\"div\", {\n      \"class\": \"VueTables__date-filter\",\n      attrs: {\n        id: 'VueTables__' + column + '-filter'\n      }\n    }, [h(\"span\", {\n      \"class\": \"VueTables__filter-placeholder\"\n    }, [_this.display('filterBy', {\n      column: _this.getHeading(column)\n    })])]);\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/date-filter.js?");
+"use strict";
+eval("\n\nmodule.exports = function (h) {\n  var _this = this;\n\n  return function (column) {\n    return h(\"div\", {\n      \"class\": \"VueTables__date-filter\",\n      attrs: {\n        id: 'VueTables__' + column + '-filter'\n      }\n    }, [h(\"span\", {\n      \"class\": \"VueTables__filter-placeholder\"\n    }, [_this.display('filterBy', {\n      column: _this.getHeading(column)\n    })])]);\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/date-filter.js?");
 
 /***/ }),
 
@@ -1212,9 +1304,10 @@ eval("module.exports = function (h) {\n  var _this = this;\n\n  return function 
   !*** ./lib/modules/dropdown-item-wrapper.js ***!
   \**********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (h, classes, item) {\n  if (classes.framework === 'bulma') {\n    return item;\n  }\n\n  return h(\"li\", [item]);\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/dropdown-item-wrapper.js?");
+"use strict";
+eval("\n\nmodule.exports = function (h, classes, item) {\n  if (classes.framework === 'bulma') {\n    return item;\n  }\n\n  return h(\"li\", [item]);\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/dropdown-item-wrapper.js?");
 
 /***/ }),
 
@@ -1223,9 +1316,10 @@ eval("module.exports = function (h, classes, item) {\n  if (classes.framework ==
   !*** ./lib/modules/dropdown-pagination-count.js ***!
   \**************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (h) {\n  var _this = this;\n\n  return function () {\n    if (_this.count > 0 && _this.opts.pagination.dropdown) {\n      var perPage = parseInt(_this.limit);\n      var from = (_this.Page - 1) * perPage + 1;\n      var to = _this.Page == _this.totalPages ? _this.count : from + perPage - 1;\n\n      var parts = _this.opts.texts.count.split('|');\n\n      var i = Math.min(_this.count == 1 ? 2 : _this.totalPages == 1 ? 1 : 0, parts.length - 1);\n      var count = parts[i].replace('{count}', _this.count).replace('{from}', from).replace('{to}', to);\n      return h(\"div\", {\n        \"class\": \"VuePagination\"\n      }, [h(\"p\", {\n        \"class\": \"VuePagination__count\"\n      }, [count])]);\n    }\n\n    return '';\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/dropdown-pagination-count.js?");
+"use strict";
+eval("\n\nmodule.exports = function (h) {\n  var _this = this;\n\n  return function () {\n    if (_this.count > 0 && _this.opts.pagination.dropdown) {\n      var perPage = parseInt(_this.limit);\n      var from = (_this.Page - 1) * perPage + 1;\n      var to = _this.Page == _this.totalPages ? _this.count : from + perPage - 1;\n\n      var parts = _this.opts.texts.count.split('|');\n\n      var i = Math.min(_this.count == 1 ? 2 : _this.totalPages == 1 ? 1 : 0, parts.length - 1);\n      var count = parts[i].replace('{count}', _this.count).replace('{from}', from).replace('{to}', to);\n      return h(\"div\", {\n        \"class\": \"VuePagination\"\n      }, [h(\"p\", {\n        \"class\": \"VuePagination__count\"\n      }, [count])]);\n    }\n\n    return '';\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/dropdown-pagination-count.js?");
 
 /***/ }),
 
@@ -1236,7 +1330,8 @@ eval("module.exports = function (h) {\n  var _this = this;\n\n  return function 
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var debounce = __webpack_require__(/*! debounce */ \"./node_modules/debounce/index.js\");\n\nmodule.exports = function (h) {\n  var _this = this;\n\n  return function (selectClass, id) {\n    var pages = [];\n    var selected;\n\n    for (var pag = 1; pag <= _this.totalPages; pag++) {\n      var selected = _this.page == pag;\n      pages.push(h(\"option\", {\n        domProps: {\n          \"value\": pag,\n          \"selected\": selected\n        }\n      }, [pag]));\n    }\n\n    return h(\"select\", {\n      \"class\": \"\".concat(selectClass, \" dropdown-pagination\"),\n      directives: [{\n        name: \"show\",\n        value: _this.totalPages > 1\n      }],\n      attrs: {\n        name: \"page\",\n        id: id\n      },\n      ref: \"page\",\n      domProps: {\n        \"value\": _this.page\n      },\n      on: {\n        \"change\": _this.setPage.bind(_this, null, false)\n      }\n    }, [pages]);\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/dropdown-pagination.js?");
+"use strict";
+eval("\n\nvar debounce = __webpack_require__(/*! debounce */ \"./node_modules/debounce/index.js\");\n\nmodule.exports = function (h) {\n  var _this = this;\n\n  return function (selectClass, id) {\n    var pages = [];\n    var selected;\n\n    for (var pag = 1; pag <= _this.totalPages; pag++) {\n      var selected = _this.page == pag;\n      pages.push(h(\"option\", {\n        domProps: {\n          \"value\": pag,\n          \"selected\": selected\n        }\n      }, [pag]));\n    }\n\n    return h(\"select\", {\n      \"class\": \"\".concat(selectClass, \" dropdown-pagination\"),\n      directives: [{\n        name: \"show\",\n        value: _this.totalPages > 1\n      }],\n      attrs: {\n        name: \"page\",\n        id: id\n      },\n      ref: \"page\",\n      domProps: {\n        \"value\": _this.page\n      },\n      on: {\n        \"change\": _this.setPage.bind(_this, null, false)\n      }\n    }, [pages]);\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/dropdown-pagination.js?");
 
 /***/ }),
 
@@ -1245,9 +1340,10 @@ eval("var debounce = __webpack_require__(/*! debounce */ \"./node_modules/deboun
   !*** ./lib/modules/dropdown-wrapper.js ***!
   \*****************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (h, classes, columns) {\n  if (classes.framework === 'bulma') {\n    return h(\"div\", {\n      \"class\": classes.dropdown.menu,\n      style: this.displayColumnsDropdown ? 'display:block' : 'display:none'\n    }, [h(\"div\", {\n      \"class\": classes.dropdown.content\n    }, [columns])]);\n  }\n\n  if (classes.framework === 'bootstrap4') {\n    return h(\"div\", {\n      \"class\": classes.dropdown.menu,\n      style: this.displayColumnsDropdown ? 'display:block' : 'display:none'\n    }, [columns]);\n  }\n\n  return h(\"ul\", {\n    \"class\": classes.dropdown.menu,\n    style: this.displayColumnsDropdown ? 'display:block' : 'display:none'\n  }, [columns]);\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/dropdown-wrapper.js?");
+"use strict";
+eval("\n\nmodule.exports = function (h, classes, columns) {\n  if (classes.framework === 'bulma') {\n    return h(\"div\", {\n      \"class\": classes.dropdown.menu,\n      style: this.displayColumnsDropdown ? 'display:block' : 'display:none'\n    }, [h(\"div\", {\n      \"class\": classes.dropdown.content\n    }, [columns])]);\n  }\n\n  if (classes.framework === 'bootstrap4') {\n    return h(\"div\", {\n      \"class\": classes.dropdown.menu,\n      style: this.displayColumnsDropdown ? 'display:block' : 'display:none'\n    }, [columns]);\n  }\n\n  return h(\"ul\", {\n    \"class\": classes.dropdown.menu,\n    style: this.displayColumnsDropdown ? 'display:block' : 'display:none'\n  }, [columns]);\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/dropdown-wrapper.js?");
 
 /***/ }),
 
@@ -1258,7 +1354,8 @@ eval("module.exports = function (h, classes, columns) {\n  if (classes.framework
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (h) {\n  var _this = this;\n\n  return function (right) {\n    var sortControl = __webpack_require__(/*! ./sort-control */ \"./lib/modules/sort-control.js\")(h, right);\n\n    var headings = [];\n    if (_this.hasChildRow && _this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) headings.push(h(\"th\"));\n\n    _this.allColumns.map(function (column) {\n      headings.push(h(\"th\", {\n        on: {\n          \"click\": this.orderByColumn.bind(this, column)\n        },\n        \"class\": this.sortableClass(column)\n      }, [h(\"span\", {\n        \"class\": \"VueTables__heading\",\n        attrs: {\n          title: this.getHeadingTooltip(column, h)\n        }\n      }, [this.getHeading(column, h)]), sortControl.call(this, column)]));\n    }.bind(_this));\n\n    if (_this.hasChildRow && !_this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) headings.push(h(\"th\"));\n    return headings;\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/headings.js?");
+"use strict";
+eval("\n\nmodule.exports = function (h) {\n  var _this = this;\n\n  return function (right) {\n    var sortControl = __webpack_require__(/*! ./sort-control */ \"./lib/modules/sort-control.js\")(h, right);\n\n    var headings = [];\n    if (_this.hasChildRow && _this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) headings.push(h(\"th\"));\n\n    _this.allColumns.map(function (column) {\n      headings.push(h(\"th\", {\n        on: {\n          \"click\": this.orderByColumn.bind(this, column)\n        },\n        \"class\": this.sortableClass(column)\n      }, [h(\"span\", {\n        \"class\": \"VueTables__heading\",\n        attrs: {\n          title: this.getHeadingTooltip(column, h)\n        }\n      }, [this.getHeading(column, h)]), sortControl.call(this, column)]));\n    }.bind(_this));\n\n    if (_this.hasChildRow && !_this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) headings.push(h(\"th\"));\n    return headings;\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/headings.js?");
 
 /***/ }),
 
@@ -1267,9 +1364,10 @@ eval("module.exports = function (h) {\n  var _this = this;\n\n  return function 
   !*** ./lib/modules/list-filter.js ***!
   \************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (h, selectClass) {\n  var _this = this;\n\n  return function (column) {\n    var options = [];\n    var selected;\n    var search = _this.source == 'client' ? _this.search.bind(_this, _this.data) : _this.serverSearch.bind(_this);\n\n    var displayable = _this.opts.listColumns[column].filter(function (item) {\n      return !item.hide;\n    });\n\n    displayable.map(function (option) {\n      selected = option.id == _this.query[column] && _this.query[column] !== '';\n      options.push(h(\"option\", {\n        domProps: {\n          \"value\": option.id,\n          \"selected\": selected\n        }\n      }, [option.text]));\n    });\n    return h(\"div\", {\n      \"class\": \"VueTables__list-filter\",\n      attrs: {\n        id: 'VueTables__' + column + '-filter'\n      }\n    }, [h(\"select\", {\n      \"class\": selectClass,\n      on: {\n        \"change\": search\n      },\n      attrs: {\n        name: _this._getColumnName(column)\n      },\n      domProps: {\n        \"value\": _this.query[column]\n      }\n    }, [h(\"option\", {\n      attrs: {\n        value: \"\"\n      }\n    }, [_this.display('defaultOption', {\n      column: _this.opts.headings[column] ? _this.opts.headings[column] : column\n    })]), options])]);\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/list-filter.js?");
+"use strict";
+eval("\n\nmodule.exports = function (h, selectClass) {\n  var _this = this;\n\n  return function (column) {\n    var options = [];\n    var selected;\n    var search = _this.source == 'client' ? _this.search.bind(_this, _this.data) : _this.serverSearch.bind(_this);\n\n    var displayable = _this.opts.listColumns[column].filter(function (item) {\n      return !item.hide;\n    });\n\n    displayable.map(function (option) {\n      selected = option.id == _this.query[column] && _this.query[column] !== '';\n      options.push(h(\"option\", {\n        domProps: {\n          \"value\": option.id,\n          \"selected\": selected\n        }\n      }, [option.text]));\n    });\n    return h(\"div\", {\n      \"class\": \"VueTables__list-filter\",\n      attrs: {\n        id: 'VueTables__' + column + '-filter'\n      }\n    }, [h(\"select\", {\n      \"class\": selectClass,\n      on: {\n        \"change\": search\n      },\n      attrs: {\n        name: _this._getColumnName(column)\n      },\n      domProps: {\n        \"value\": _this.query[column]\n      }\n    }, [h(\"option\", {\n      attrs: {\n        value: \"\"\n      }\n    }, [_this.display('defaultOption', {\n      column: _this.opts.headings[column] ? _this.opts.headings[column] : column\n    })]), options])]);\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/list-filter.js?");
 
 /***/ }),
 
@@ -1280,7 +1378,8 @@ eval("module.exports = function (h, selectClass) {\n  var _this = this;\n\n  ret
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var debounce = __webpack_require__(/*! debounce */ \"./node_modules/debounce/index.js\");\n\nmodule.exports = function (h) {\n  var _this = this;\n\n  return function (classes, id) {\n    var search = _this.source == 'client' ? _this.search.bind(_this, _this.data) : _this.serverSearch.bind(_this);\n    return h(\"input\", {\n      \"class\": \"\".concat(classes.input, \" \").concat(classes.small),\n      attrs: {\n        type: \"text\",\n        placeholder: _this.display('filterPlaceholder'),\n        id: id\n      },\n      domProps: {\n        \"value\": _this.query\n      },\n      on: {\n        \"keyup\": _this.opts.debounce ? debounce(search, _this.opts.debounce) : search\n      }\n    });\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/normal-filter.js?");
+"use strict";
+eval("\n\nvar debounce = __webpack_require__(/*! debounce */ \"./node_modules/debounce/index.js\");\n\nmodule.exports = function (h) {\n  var _this = this;\n\n  return function (classes, id) {\n    var search = _this.source == 'client' ? _this.search.bind(_this, _this.data) : _this.serverSearch.bind(_this);\n    return h(\"input\", {\n      \"class\": \"\".concat(classes.input, \" \").concat(classes.small),\n      attrs: {\n        type: \"text\",\n        placeholder: _this.display('filterPlaceholder'),\n        id: id\n      },\n      domProps: {\n        \"value\": _this.query\n      },\n      on: {\n        \"keyup\": _this.opts.debounce ? debounce(search, _this.opts.debounce) : search\n      }\n    });\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/normal-filter.js?");
 
 /***/ }),
 
@@ -1289,9 +1388,10 @@ eval("var debounce = __webpack_require__(/*! debounce */ \"./node_modules/deboun
   !*** ./lib/modules/pagination.js ***!
   \***********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (h) {\n  var _this = this;\n\n  return function (theme) {\n    if (_this.opts.pagination && _this.opts.pagination.dropdown) return '';\n    var options = {\n      theme: theme,\n      chunk: _this.opts.pagination.chunk,\n      chunksNavigation: _this.opts.pagination.nav,\n      edgeNavigation: _this.opts.pagination.edge,\n      texts: {\n        count: _this.opts.texts.count,\n        first: _this.opts.texts.first,\n        last: _this.opts.texts.last\n      }\n    };\n    var name = _this.vuex ? _this.name : _this.id;\n    return h(\"pagination\", {\n      ref: \"pagination\",\n      attrs: {\n        options: options,\n        \"for\": name,\n        vuex: _this.vuex,\n        records: _this.count,\n        \"per-page\": parseInt(_this.limit)\n      },\n      on: {\n        \"paginate\": _this._onPagination.bind(_this)\n      }\n    });\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/pagination.js?");
+"use strict";
+eval("\n\nmodule.exports = function (h) {\n  var _this = this;\n\n  return function (theme) {\n    if (_this.opts.pagination && _this.opts.pagination.dropdown) return '';\n    var options = {\n      theme: theme,\n      chunk: _this.opts.pagination.chunk,\n      chunksNavigation: _this.opts.pagination.nav,\n      edgeNavigation: _this.opts.pagination.edge,\n      texts: {\n        count: _this.opts.texts.count,\n        first: _this.opts.texts.first,\n        last: _this.opts.texts.last\n      }\n    };\n    var name = _this.vuex ? _this.name : _this.id;\n    return h(\"pagination\", {\n      ref: \"pagination\",\n      attrs: {\n        options: options,\n        \"for\": name,\n        vuex: _this.vuex,\n        records: _this.count,\n        \"per-page\": parseInt(_this.limit)\n      },\n      on: {\n        \"paginate\": _this._onPagination.bind(_this)\n      }\n    });\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/pagination.js?");
 
 /***/ }),
 
@@ -1300,9 +1400,10 @@ eval("module.exports = function (h) {\n  var _this = this;\n\n  return function 
   !*** ./lib/modules/per-page-values.js ***!
   \****************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (h) {\n  var _this = this;\n\n  var perpageValues = [];\n  this.opts.perPageValues.every(function (value) {\n    var isLastEntry = value >= _this.count;\n    var selected = _this.limit == value || isLastEntry && _this.limit > value;\n    perpageValues.push(h(\"option\", {\n      domProps: {\n        \"value\": value,\n        \"selected\": selected\n      }\n    }, [value]));\n    return !isLastEntry;\n  });\n  return perpageValues;\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/per-page-values.js?");
+"use strict";
+eval("\n\nmodule.exports = function (h) {\n  var _this = this;\n\n  var perpageValues = [];\n  this.opts.perPageValues.every(function (value) {\n    var isLastEntry = value >= _this.count;\n    var selected = _this.limit == value || isLastEntry && _this.limit > value;\n    perpageValues.push(h(\"option\", {\n      domProps: {\n        \"value\": value,\n        \"selected\": selected\n      }\n    }, [value]));\n    return !isLastEntry;\n  });\n  return perpageValues;\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/per-page-values.js?");
 
 /***/ }),
 
@@ -1311,9 +1412,10 @@ eval("module.exports = function (h) {\n  var _this = this;\n\n  var perpageValue
   !*** ./lib/modules/per-page.js ***!
   \*********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (h) {\n  var _this = this;\n\n  return function (perpageValues, cls, id) {\n    return perpageValues.length > 1 ? h(\"select\", {\n      \"class\": cls,\n      attrs: {\n        name: \"limit\",\n        id: id\n      },\n      domProps: {\n        \"value\": _this.limit\n      },\n      on: {\n        \"change\": _this.setLimit.bind(_this)\n      }\n    }, [perpageValues]) : '';\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/per-page.js?");
+"use strict";
+eval("\n\nmodule.exports = function (h) {\n  var _this = this;\n\n  return function (perpageValues, cls, id) {\n    return perpageValues.length > 1 ? h(\"select\", {\n      \"class\": cls,\n      attrs: {\n        name: \"limit\",\n        id: id\n      },\n      domProps: {\n        \"value\": _this.limit\n      },\n      on: {\n        \"change\": _this.setLimit.bind(_this)\n      }\n    }, [perpageValues]) : '';\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/per-page.js?");
 
 /***/ }),
 
@@ -1321,11 +1423,11 @@ eval("module.exports = function (h) {\n  var _this = this;\n\n  return function 
 /*!*****************************!*\
   !*** ./lib/modules/rows.js ***!
   \*****************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! babel-helper-vue-jsx-merge-props */ \"./node_modules/babel-helper-vue-jsx-merge-props/index.js\");\n/* harmony import */ var babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0__);\n\n\nmodule.exports = function (h) {\n  var _this = this;\n\n  return function (classes) {\n    var data;\n\n    if (_this.source === 'client') {\n      data = _this.filteredData;\n\n      if (!data.length && _this.source === 'client' && _this.page !== 1) {\n        // data was dynamically removed go to last page\n        _this.setPage(_this.totalPages ? _this.totalPages : 1);\n      }\n    } else {\n      data = _this.tableData;\n    }\n\n    if (_this.count === 0) {\n      var colspan = _this.allColumns.length;\n      if (_this.hasChildRow && _this.opts.showChildRowToggler) colspan++;\n      return h(\"tr\", {\n        \"class\": \"VueTables__no-results\"\n      }, [h(\"td\", {\n        \"class\": \"text-center\",\n        attrs: {\n          colspan: _this.colspan\n        }\n      }, [_this.display(_this.loading ? 'loading' : 'noResults')])]);\n    }\n\n    var rows = [];\n    var columns;\n    var rowKey = _this.opts.uniqueKey;\n    var rowAttributes;\n    var rowClass;\n    var recordCount = (_this.Page - 1) * _this.limit;\n    var currentGroup;\n    var groupSlot;\n    var groupValue;\n    var groupByContent;\n    data.map(function (row, index) {\n      if (_this.opts.groupBy && _this.source === 'client' && row[_this.opts.groupBy] !== currentGroup) {\n        groupSlot = _this.getGroupSlot(row[_this.opts.groupBy]);\n        groupValue = row[_this.opts.groupBy];\n        groupByContent = _this.opts.toggleGroups ? h(\"button\", {\n          \"class\": classes.button,\n          on: {\n            \"click\": _this.toggleGroup.bind(_this, groupValue)\n          }\n        }, [groupValue, h(\"span\", {\n          \"class\": _this.groupToggleIcon(groupValue)\n        })]) : groupValue;\n        rows.push(h(\"tr\", {\n          \"class\": classes.groupTr,\n          on: {\n            \"click\": _this._toggleGroupDirection.bind(_this)\n          }\n        }, [h(\"td\", {\n          attrs: {\n            colspan: _this.colspan\n          }\n        }, [groupByContent, groupSlot])]));\n        currentGroup = row[_this.opts.groupBy];\n      }\n\n      if (_this.opts.toggleGroups && _this.collapsedGroups.includes(currentGroup)) {\n        return;\n      }\n\n      index = recordCount + index + 1;\n      columns = [];\n\n      if (_this.hasChildRow && _this.opts.showChildRowToggler) {\n        var childRowToggler = h(\"td\", [h(\"span\", {\n          on: {\n            \"click\": _this.toggleChildRow.bind(_this, row[rowKey])\n          },\n          \"class\": \"VueTables__child-row-toggler \" + _this.childRowTogglerClass(row[rowKey])\n        })]);\n        if (_this.opts.childRowTogglerFirst) columns.push(childRowToggler);\n      }\n\n      _this.allColumns.map(function (column) {\n        var rowTemplate = _this.$scopedSlots && _this.$scopedSlots[column];\n        columns.push(h(\"td\", {\n          \"class\": _this.columnClass(column)\n        }, [rowTemplate ? rowTemplate({\n          row: row,\n          column: column,\n          index: index\n        }) : _this.render(row, column, index, h)]));\n      });\n\n      if (_this.hasChildRow && !_this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) columns.push(childRowToggler);\n      rowClass = _this.opts.rowClassCallback ? _this.opts.rowClassCallback(row) : '';\n      rowAttributes = _this.opts.rowAttributesCallback ? _this.opts.rowAttributesCallback(row) : {};\n      rows.push(h(\"tr\", babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0___default()([{\n        attrs: rowAttributes\n      }, {\n        \"class\": rowClass,\n        on: {\n          \"click\": _this.rowWasClicked.bind(_this, row),\n          \"dblclick\": _this.rowWasClicked.bind(_this, row)\n        }\n      }]), [columns, \" \"]));\n      rows.push(_this.hasChildRow && _this.openChildRows.includes(row[rowKey]) ? h(\"tr\", {\n        \"class\": 'VueTables__child-row'\n      }, [h(\"td\", {\n        attrs: {\n          colspan: _this.colspan\n        }\n      }, [_this._getChildRowTemplate(h, row)])]) : h());\n    });\n    return rows;\n  };\n};\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/harmony-module.js */ \"./node_modules/webpack/buildin/harmony-module.js\")(module)))\n\n//# sourceURL=webpack://VueTables/./lib/modules/rows.js?");
+eval("\n\nvar _babelHelperVueJsxMergeProps = _interopRequireDefault(__webpack_require__(/*! babel-helper-vue-jsx-merge-props */ \"./node_modules/babel-helper-vue-jsx-merge-props/index.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nmodule.exports = function (h) {\n  var _this = this;\n\n  return function (classes) {\n    var data;\n\n    if (_this.source === 'client') {\n      data = _this.filteredData;\n\n      if (!data.length && _this.source === 'client' && _this.page !== 1) {\n        // data was dynamically removed go to last page\n        _this.setPage(_this.totalPages ? _this.totalPages : 1);\n      }\n    } else {\n      data = _this.tableData;\n    }\n\n    if (_this.count === 0) {\n      var colspan = _this.allColumns.length;\n      if (_this.hasChildRow && _this.opts.showChildRowToggler) colspan++;\n      return h(\"tr\", {\n        \"class\": \"VueTables__no-results\"\n      }, [h(\"td\", {\n        \"class\": \"text-center\",\n        attrs: {\n          colspan: _this.colspan\n        }\n      }, [_this.display(_this.loading ? 'loading' : 'noResults')])]);\n    }\n\n    var rows = [];\n    var columns;\n    var rowKey = _this.opts.uniqueKey;\n    var rowAttributes;\n    var rowClass;\n    var recordCount = (_this.Page - 1) * _this.limit;\n    var currentGroup;\n    var groupSlot;\n    var groupValue;\n    var groupByContent;\n    data.map(function (row, index) {\n      if (_this.opts.groupBy && _this.source === 'client' && row[_this.opts.groupBy] !== currentGroup) {\n        groupSlot = _this.getGroupSlot(row[_this.opts.groupBy]);\n        groupValue = row[_this.opts.groupBy];\n        groupByContent = _this.opts.toggleGroups ? h(\"button\", {\n          \"class\": classes.button,\n          on: {\n            \"click\": _this.toggleGroup.bind(_this, groupValue)\n          }\n        }, [groupValue, h(\"span\", {\n          \"class\": _this.groupToggleIcon(groupValue)\n        })]) : groupValue;\n        rows.push(h(\"tr\", {\n          \"class\": classes.groupTr,\n          on: {\n            \"click\": _this._toggleGroupDirection.bind(_this)\n          }\n        }, [h(\"td\", {\n          attrs: {\n            colspan: _this.colspan\n          }\n        }, [groupByContent, groupSlot])]));\n        currentGroup = row[_this.opts.groupBy];\n      }\n\n      if (_this.opts.toggleGroups && _this.collapsedGroups.includes(currentGroup)) {\n        return;\n      }\n\n      index = recordCount + index + 1;\n      columns = [];\n\n      if (_this.hasChildRow && _this.opts.showChildRowToggler) {\n        var childRowToggler = h(\"td\", [h(\"span\", {\n          on: {\n            \"click\": _this.toggleChildRow.bind(_this, row[rowKey])\n          },\n          \"class\": \"VueTables__child-row-toggler \" + _this.childRowTogglerClass(row[rowKey])\n        })]);\n        if (_this.opts.childRowTogglerFirst) columns.push(childRowToggler);\n      }\n\n      _this.allColumns.map(function (column) {\n        var rowTemplate = _this.$scopedSlots && _this.$scopedSlots[column];\n        columns.push(h(\"td\", {\n          \"class\": _this.columnClass(column)\n        }, [rowTemplate ? rowTemplate({\n          row: row,\n          column: column,\n          index: index\n        }) : _this.render(row, column, index, h)]));\n      });\n\n      if (_this.hasChildRow && !_this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) columns.push(childRowToggler);\n      rowClass = _this.opts.rowClassCallback ? _this.opts.rowClassCallback(row) : '';\n      rowAttributes = _this.opts.rowAttributesCallback ? _this.opts.rowAttributesCallback(row) : {};\n      rows.push(h(\"tr\", (0, _babelHelperVueJsxMergeProps[\"default\"])([{\n        attrs: rowAttributes\n      }, {\n        \"class\": rowClass,\n        on: {\n          \"click\": _this.rowWasClicked.bind(_this, row),\n          \"dblclick\": _this.rowWasClicked.bind(_this, row)\n        }\n      }]), [columns, \" \"]));\n      rows.push(_this.hasChildRow && _this.openChildRows.includes(row[rowKey]) ? h(\"tr\", {\n        \"class\": 'VueTables__child-row'\n      }, [h(\"td\", {\n        attrs: {\n          colspan: _this.colspan\n        }\n      }, [_this._getChildRowTemplate(h, row)])]) : h());\n    });\n    return rows;\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/rows.js?");
 
 /***/ }),
 
@@ -1334,9 +1436,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(f
   !*** ./lib/modules/sort-control.js ***!
   \*************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function (h, right) {\n  return function (column) {\n    if (!this.sortable(column)) return '';\n    return h(\"span\", {\n      \"class\": \"VueTables__sort-icon \".concat(right, \" \").concat(this.sortableChevronClass(column))\n    });\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/sort-control.js?");
+"use strict";
+eval("\n\nmodule.exports = function (h, right) {\n  return function (column) {\n    if (!this.sortable(column)) return '';\n    return h(\"span\", {\n      \"class\": \"VueTables__sort-icon \".concat(right, \" \").concat(this.sortableChevronClass(column))\n    });\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/sort-control.js?");
 
 /***/ }),
 
@@ -1347,7 +1450,8 @@ eval("module.exports = function (h, right) {\n  return function (column) {\n    
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var debounce = __webpack_require__(/*! debounce */ \"./node_modules/debounce/index.js\");\n\nmodule.exports = function (h, inputClass) {\n  var _this = this;\n\n  var search = this.source == 'client' ? this.search.bind(this, this.data) : this.serverSearch.bind(this);\n\n  if (this.opts.debounce) {\n    var debouncedSearch = debounce(search, this.opts.debounce);\n\n    var onKeyUp = function onKeyUp(e) {\n      if (e.keyCode === 13) {\n        debouncedSearch.clear();\n        search.apply(void 0, arguments);\n      } else {\n        debouncedSearch.apply(void 0, arguments);\n      }\n    };\n  }\n\n  return function (column) {\n    return h(\"input\", {\n      on: {\n        \"keyup\": _this.opts.debounce ? onKeyUp : search\n      },\n      \"class\": inputClass,\n      attrs: {\n        name: _this._getColumnName(column),\n        type: \"text\",\n        placeholder: _this.display('filterBy', {\n          column: _this.getHeading(column)\n        })\n      },\n      domProps: {\n        \"value\": _this.query[column]\n      }\n    });\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/text-filter.js?");
+"use strict";
+eval("\n\nvar debounce = __webpack_require__(/*! debounce */ \"./node_modules/debounce/index.js\");\n\nmodule.exports = function (h, inputClass) {\n  var _this = this;\n\n  var search = this.source == 'client' ? this.search.bind(this, this.data) : this.serverSearch.bind(this);\n\n  if (this.opts.debounce) {\n    var debouncedSearch = debounce(search, this.opts.debounce);\n\n    var onKeyUp = function onKeyUp(e) {\n      if (e.keyCode === 13) {\n        debouncedSearch.clear();\n        search.apply(void 0, arguments);\n      } else {\n        debouncedSearch.apply(void 0, arguments);\n      }\n    };\n  }\n\n  return function (column) {\n    return h(\"input\", {\n      on: {\n        \"keyup\": _this.opts.debounce ? onKeyUp : search\n      },\n      \"class\": inputClass,\n      attrs: {\n        name: _this._getColumnName(column),\n        type: \"text\",\n        placeholder: _this.display('filterBy', {\n          column: _this.getHeading(column)\n        })\n      },\n      domProps: {\n        \"value\": _this.query[column]\n      }\n    });\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/modules/text-filter.js?");
 
 /***/ }),
 
@@ -1356,9 +1460,10 @@ eval("var debounce = __webpack_require__(/*! debounce */ \"./node_modules/deboun
   !*** ./lib/slots.js ***!
   \**********************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  return {\n    beforeFilters: this.$slots.beforeFilters ? this.$slots.beforeFilters : '',\n    afterFilters: this.$slots.afterFilters ? this.$slots.afterFilters : '',\n    prependHead: this.$slots.prependHead ? this.$slots.prependHead : '',\n    beforeBody: this.$slots.beforeBody ? this.$slots.beforeBody : '',\n    prependBody: this.$slots.prependBody ? this.$slots.prependBody : '',\n    appendBody: this.$slots.appendBody ? this.$slots.appendBody : '',\n    afterBody: this.$slots.afterBody ? this.$slots.afterBody : '',\n    beforeFilter: this.$slots.beforeFilter ? this.$slots.beforeFilter : '',\n    afterFilter: this.$slots.afterFilter ? this.$slots.afterFilter : '',\n    beforeSearch: this.$slots.beforeSearch ? this.$slots.beforeSearch : '',\n    beforeLimit: this.$slots.beforeLimit ? this.$slots.beforeLimit : '',\n    afterLimit: this.$slots.afterLimit ? this.$slots.afterLimit : '',\n    beforeTable: this.$slots.beforeTable ? this.$slots.beforeTable : '',\n    afterTable: this.$slots.afterTable ? this.$slots.afterTable : ''\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/slots.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  return {\n    beforeFilters: this.$slots.beforeFilters ? this.$slots.beforeFilters : '',\n    afterFilters: this.$slots.afterFilters ? this.$slots.afterFilters : '',\n    prependHead: this.$slots.prependHead ? this.$slots.prependHead : '',\n    beforeBody: this.$slots.beforeBody ? this.$slots.beforeBody : '',\n    prependBody: this.$slots.prependBody ? this.$slots.prependBody : '',\n    appendBody: this.$slots.appendBody ? this.$slots.appendBody : '',\n    afterBody: this.$slots.afterBody ? this.$slots.afterBody : '',\n    beforeFilter: this.$slots.beforeFilter ? this.$slots.beforeFilter : '',\n    afterFilter: this.$slots.afterFilter ? this.$slots.afterFilter : '',\n    beforeSearch: this.$slots.beforeSearch ? this.$slots.beforeSearch : '',\n    beforeLimit: this.$slots.beforeLimit ? this.$slots.beforeLimit : '',\n    afterLimit: this.$slots.afterLimit ? this.$slots.afterLimit : '',\n    beforeTable: this.$slots.beforeTable ? this.$slots.beforeTable : '',\n    afterTable: this.$slots.afterTable ? this.$slots.afterTable : ''\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/slots.js?");
 
 /***/ }),
 
@@ -1366,11 +1471,11 @@ eval("module.exports = function () {\n  return {\n    beforeFilters: this.$slots
 /*!***************************!*\
   !*** ./lib/state/data.js ***!
   \***************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\");\n/* harmony import */ var merge__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(merge__WEBPACK_IMPORTED_MODULE_0__);\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (useVuex, source) {\n  var page = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;\n  var data = {\n    vuex: true,\n    activeState: false,\n    userColumnsDisplay: [],\n    userControlsColumns: false,\n    displayColumnsDropdown: false,\n    collapsedGroups: []\n  };\n  if (useVuex) return data;\n  data = merge__WEBPACK_IMPORTED_MODULE_0___default()(data, {\n    vuex: false,\n    count: 0,\n    customQueries: {},\n    query: null,\n    page: page,\n    limit: 10,\n    windowWidth: typeof window !== 'undefined' ? window.innerWidth : null,\n    orderBy: {\n      column: false,\n      ascending: true\n    }\n  });\n  if (source == 'server') data.data = [];\n  return data;\n});\n\n//# sourceURL=webpack://VueTables/./lib/state/data.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = _default;\n\nvar _merge = _interopRequireDefault(__webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nfunction _default(useVuex, source) {\n  var page = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;\n  var data = {\n    vuex: true,\n    activeState: false,\n    userColumnsDisplay: [],\n    userControlsColumns: false,\n    displayColumnsDropdown: false,\n    collapsedGroups: []\n  };\n  if (useVuex) return data;\n  data = (0, _merge[\"default\"])(data, {\n    vuex: false,\n    count: 0,\n    customQueries: {},\n    query: null,\n    page: page,\n    limit: 10,\n    windowWidth: typeof window !== 'undefined' ? window.innerWidth : null,\n    orderBy: {\n      column: false,\n      ascending: true\n    }\n  });\n  if (source == 'server') data.data = [];\n  return data;\n}\n\n//# sourceURL=webpack://VueTables/./lib/state/data.js?");
 
 /***/ }),
 
@@ -1378,11 +1483,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var merg
 /*!********************************!*\
   !*** ./lib/state/mutations.js ***!
   \********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\");\n/* harmony import */ var merge__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(merge__WEBPACK_IMPORTED_MODULE_0__);\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (self) {\n  var _ref, _merge$recursive;\n\n  var extra = self.source == 'server' ? (_ref = {}, _defineProperty(_ref, \"\".concat(self.name, \"/SET_DATA\"), function SET_DATA(state, response) {\n    var data = self.opts.responseAdapter.call(self, response);\n    state.data = data.data;\n    state.count = parseInt(data.count);\n  }), _defineProperty(_ref, \"\".concat(self.name, \"/LOADING\"), function LOADING(state, payload) {}), _defineProperty(_ref, \"\".concat(self.name, \"/LOADED\"), function LOADED(state, payload) {}), _defineProperty(_ref, \"\".concat(self.name, \"/ERROR\"), function ERROR(state, payload) {}), _ref) : _defineProperty({}, \"\".concat(self.name, \"/SET_COUNT\"), function SET_COUNT(state, count) {\n    state.count = count;\n  });\n  return merge__WEBPACK_IMPORTED_MODULE_0___default.a.recursive(true, (_merge$recursive = {}, _defineProperty(_merge$recursive, \"\".concat(self.name, \"/PAGINATE\"), function PAGINATE(state, page) {\n    state.page = page;\n    self.updateState('page', page);\n    if (self.source == 'server') self.getData();\n    self.commit('PAGINATION', page);\n  }), _defineProperty(_merge$recursive, \"\".concat(self.name, \"/SET_FILTER\"), function SET_FILTER(state, filter) {\n    state.page = 1;\n    self.updateState('page', 1);\n    state.query = filter;\n\n    if (self.source == 'server') {\n      self.getData();\n    }\n  }), _defineProperty(_merge$recursive, \"\".concat(self.name, \"/PAGINATION\"), function PAGINATION(state, page) {}), _defineProperty(_merge$recursive, \"\".concat(self.name, \"/SET_CUSTOM_FILTER\"), function SET_CUSTOM_FILTER(state, _ref3) {\n    var filter = _ref3.filter,\n        value = _ref3.value;\n    state.customQueries[filter] = value;\n    state.page = 1;\n    self.updateState('page', 1);\n    self.updateState('customQueries', state.customQueries);\n\n    if (self.source == 'server') {\n      self.getData();\n    }\n  }), _defineProperty(_merge$recursive, \"\".concat(self.name, \"/SET_STATE\"), function SET_STATE(state, _ref4) {\n    var page = _ref4.page,\n        query = _ref4.query,\n        customQueries = _ref4.customQueries,\n        limit = _ref4.limit,\n        orderBy = _ref4.orderBy;\n    state.customQueries = customQueries;\n    state.query = query;\n    state.page = page;\n    state.limit = limit;\n    state.ascending = orderBy.ascending;\n    state.sortBy = orderBy.column;\n  }), _defineProperty(_merge$recursive, \"\".concat(self.name, \"/SET_LIMIT\"), function SET_LIMIT(state, limit) {\n    state.page = 1;\n    self.updateState('page', 1);\n    state.limit = limit;\n    if (self.source == 'server') self.getData();\n  }), _defineProperty(_merge$recursive, \"\".concat(self.name, \"/SORT\"), function SORT(state, _ref5) {\n    var column = _ref5.column,\n        ascending = _ref5.ascending;\n    state.ascending = ascending;\n    state.sortBy = column;\n    if (self.source == 'server') self.getData();\n  }), _defineProperty(_merge$recursive, \"\".concat(self.name, \"/SORTED\"), function SORTED(state, data) {}), _defineProperty(_merge$recursive, \"\".concat(self.name, \"/ROW_CLICK\"), function ROW_CLICK(state, row) {}), _defineProperty(_merge$recursive, \"\".concat(self.name, \"/FILTER\"), function FILTER(state, row) {}), _defineProperty(_merge$recursive, \"\".concat(self.name, \"/LIMIT\"), function LIMIT(state, limit) {}), _merge$recursive), extra);\n});\n\n//# sourceURL=webpack://VueTables/./lib/state/mutations.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = _default;\n\nvar _merge = _interopRequireDefault(__webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\nfunction _default(self) {\n  var _ref, _merge$recursive;\n\n  var extra = self.source == 'server' ? (_ref = {}, _defineProperty(_ref, \"\".concat(self.name, \"/SET_DATA\"), function SET_DATA(state, response) {\n    var data = self.opts.responseAdapter.call(self, response);\n    state.data = data.data;\n    state.count = parseInt(data.count);\n  }), _defineProperty(_ref, \"\".concat(self.name, \"/LOADING\"), function LOADING(state, payload) {}), _defineProperty(_ref, \"\".concat(self.name, \"/LOADED\"), function LOADED(state, payload) {}), _defineProperty(_ref, \"\".concat(self.name, \"/ERROR\"), function ERROR(state, payload) {}), _ref) : _defineProperty({}, \"\".concat(self.name, \"/SET_COUNT\"), function SET_COUNT(state, count) {\n    state.count = count;\n  });\n  return _merge[\"default\"].recursive(true, (_merge$recursive = {}, _defineProperty(_merge$recursive, \"\".concat(self.name, \"/PAGINATE\"), function PAGINATE(state, page) {\n    state.page = page;\n    self.updateState('page', page);\n    if (self.source == 'server') self.getData();\n    self.commit('PAGINATION', page);\n  }), _defineProperty(_merge$recursive, \"\".concat(self.name, \"/SET_FILTER\"), function SET_FILTER(state, filter) {\n    state.page = 1;\n    self.updateState('page', 1);\n    state.query = filter;\n\n    if (self.source == 'server') {\n      self.getData();\n    }\n  }), _defineProperty(_merge$recursive, \"\".concat(self.name, \"/PAGINATION\"), function PAGINATION(state, page) {}), _defineProperty(_merge$recursive, \"\".concat(self.name, \"/SET_CUSTOM_FILTER\"), function SET_CUSTOM_FILTER(state, _ref3) {\n    var filter = _ref3.filter,\n        value = _ref3.value;\n    state.customQueries[filter] = value;\n    state.page = 1;\n    self.updateState('page', 1);\n    self.updateState('customQueries', state.customQueries);\n\n    if (self.source == 'server') {\n      self.getData();\n    }\n  }), _defineProperty(_merge$recursive, \"\".concat(self.name, \"/SET_STATE\"), function SET_STATE(state, _ref4) {\n    var page = _ref4.page,\n        query = _ref4.query,\n        customQueries = _ref4.customQueries,\n        limit = _ref4.limit,\n        orderBy = _ref4.orderBy;\n    state.customQueries = customQueries;\n    state.query = query;\n    state.page = page;\n    state.limit = limit;\n    state.ascending = orderBy.ascending;\n    state.sortBy = orderBy.column;\n  }), _defineProperty(_merge$recursive, \"\".concat(self.name, \"/SET_LIMIT\"), function SET_LIMIT(state, limit) {\n    state.page = 1;\n    self.updateState('page', 1);\n    state.limit = limit;\n    if (self.source == 'server') self.getData();\n  }), _defineProperty(_merge$recursive, \"\".concat(self.name, \"/SORT\"), function SORT(state, _ref5) {\n    var column = _ref5.column,\n        ascending = _ref5.ascending;\n    state.ascending = ascending;\n    state.sortBy = column;\n    if (self.source == 'server') self.getData();\n  }), _defineProperty(_merge$recursive, \"\".concat(self.name, \"/SORTED\"), function SORTED(state, data) {}), _defineProperty(_merge$recursive, \"\".concat(self.name, \"/ROW_CLICK\"), function ROW_CLICK(state, row) {}), _defineProperty(_merge$recursive, \"\".concat(self.name, \"/FILTER\"), function FILTER(state, row) {}), _defineProperty(_merge$recursive, \"\".concat(self.name, \"/LIMIT\"), function LIMIT(state, limit) {}), _merge$recursive), extra);\n}\n\n//# sourceURL=webpack://VueTables/./lib/state/mutations.js?");
 
 /***/ }),
 
@@ -1390,11 +1495,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var merg
 /*!*****************************!*\
   !*** ./lib/state/normal.js ***!
   \*****************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (function () {\n  return {\n    computed: {\n      Columns: function Columns() {\n        return this.columns;\n      }\n    }\n  };\n});\n\n//# sourceURL=webpack://VueTables/./lib/state/normal.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = _default;\n\nfunction _default() {\n  return {\n    computed: {\n      Columns: function Columns() {\n        return this.columns;\n      }\n    }\n  };\n}\n\n//# sourceURL=webpack://VueTables/./lib/state/normal.js?");
 
 /***/ }),
 
@@ -1402,11 +1507,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ 
 /*!**************************************!*\
   !*** ./lib/state/register-module.js ***!
   \**************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ \"./lib/state/state.js\");\n/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mutations */ \"./lib/state/mutations.js\");\n/* harmony import */ var merge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\");\n/* harmony import */ var merge__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(merge__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\nmodule.exports = function (self) {\n  var Module = {\n    state: Object(_state__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(self),\n    mutations: Object(_mutations__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(self)\n  };\n\n  if (self.$store && self.$store.state && self.$store.state[self.name]) {\n    Module.state = merge__WEBPACK_IMPORTED_MODULE_2___default.a.recursive(Module.state, self.$store.state[self.name]);\n    self.$store.unregisterModule(self.name);\n  }\n\n  self.$store.registerModule(self.name, Module);\n};\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/harmony-module.js */ \"./node_modules/webpack/buildin/harmony-module.js\")(module)))\n\n//# sourceURL=webpack://VueTables/./lib/state/register-module.js?");
+eval("\n\nvar _state = _interopRequireDefault(__webpack_require__(/*! ./state */ \"./lib/state/state.js\"));\n\nvar _mutations = _interopRequireDefault(__webpack_require__(/*! ./mutations */ \"./lib/state/mutations.js\"));\n\nvar _merge = _interopRequireDefault(__webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nmodule.exports = function (self) {\n  var Module = {\n    state: (0, _state[\"default\"])(self),\n    mutations: (0, _mutations[\"default\"])(self)\n  };\n\n  if (self.$store && self.$store.state && self.$store.state[self.name]) {\n    Module.state = _merge[\"default\"].recursive(Module.state, self.$store.state[self.name]);\n    self.$store.unregisterModule(self.name);\n  }\n\n  self.$store.registerModule(self.name, Module);\n};\n\n//# sourceURL=webpack://VueTables/./lib/state/register-module.js?");
 
 /***/ }),
 
@@ -1414,11 +1519,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(f
 /*!****************************!*\
   !*** ./lib/state/state.js ***!
   \****************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\");\n/* harmony import */ var merge__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(merge__WEBPACK_IMPORTED_MODULE_0__);\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (self) {\n  var state = {\n    page: self.opts.initialPage ? self.opts.initialPage : 1,\n    limit: self.opts.perPage,\n    count: self.source == 'server' ? 0 : self.data.length,\n    columns: self.columns,\n    data: self.source == 'client' ? self.data : [],\n    query: self.initQuery(),\n    customQueries: self.initCustomFilters(),\n    sortBy: self.opts.orderBy && self.opts.orderBy.column ? self.opts.orderBy.column : false,\n    ascending: self.opts.orderBy && self.opts.orderBy.hasOwnProperty('ascending') ? self.opts.orderBy.ascending : true\n  };\n\n  if (typeof self.$store.state[self.name] !== 'undefined') {\n    return merge__WEBPACK_IMPORTED_MODULE_0___default()(true, self.$store.state[self.name], state);\n  }\n\n  return state;\n});\n\n//# sourceURL=webpack://VueTables/./lib/state/state.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = _default;\n\nvar _merge = _interopRequireDefault(__webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nfunction _default(self) {\n  var state = {\n    page: self.opts.initialPage ? self.opts.initialPage : 1,\n    limit: self.opts.perPage,\n    count: self.source == 'server' ? 0 : self.data.length,\n    columns: self.columns,\n    data: self.source == 'client' ? self.data : [],\n    query: self.initQuery(),\n    customQueries: self.initCustomFilters(),\n    sortBy: self.opts.orderBy && self.opts.orderBy.column ? self.opts.orderBy.column : false,\n    ascending: self.opts.orderBy && self.opts.orderBy.hasOwnProperty('ascending') ? self.opts.orderBy.ascending : true\n  };\n\n  if (typeof self.$store.state[self.name] !== 'undefined') {\n    return (0, _merge[\"default\"])(true, self.$store.state[self.name], state);\n  }\n\n  return state;\n}\n\n//# sourceURL=webpack://VueTables/./lib/state/state.js?");
 
 /***/ }),
 
@@ -1426,11 +1531,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var merg
 /*!***************************!*\
   !*** ./lib/state/vuex.js ***!
   \***************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\");\n/* harmony import */ var merge__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(merge__WEBPACK_IMPORTED_MODULE_0__);\nfunction _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (source) {\n  var extra = source == 'server' ? serverExtra() : clientExtra();\n  return merge__WEBPACK_IMPORTED_MODULE_0___default.a.recursive(true, {\n    props: {\n      name: {\n        type: String,\n        required: true\n      }\n    },\n    computed: {\n      state: function state() {\n        return this.$store.state[this.name];\n      },\n      Page: function Page() {\n        return this.state.page;\n      },\n      count: function count() {\n        return this.state.count;\n      },\n      Columns: function Columns() {\n        return this.state.columns;\n      },\n      tableData: function tableData() {\n        return this.state.data;\n      },\n      page: function page() {\n        return this.state.page;\n      },\n      limit: function limit() {\n        return this.state.limit;\n      },\n      customQueries: function customQueries() {\n        return this.state.customQueries;\n      },\n      query: function query() {\n        return this.state.query;\n      },\n      orderBy: function orderBy() {\n        return {\n          column: this.state.sortBy,\n          ascending: this.state.ascending\n        };\n      }\n    },\n    methods: {\n      commit: function commit(action, payload) {\n        return this.$store.commit(\"\".concat(this.name, \"/\").concat(action), payload);\n      },\n      orderByColumn: function orderByColumn(column, ev) {\n        if (!this.sortable(column)) return;\n\n        if (ev.shiftKey && this.orderBy.column && this.hasMultiSort) {\n          this.setUserMultiSort(column);\n        } else {\n          var ascending = this.orderBy.column === column ? !this.orderBy.ascending : this._initialOrderAscending(column);\n          var orderBy = {\n            column: column,\n            ascending: ascending\n          };\n          this.updateState('orderBy', orderBy);\n          this.commit('SORT', orderBy);\n          this.dispatch('sorted', orderBy);\n        }\n      },\n      setLimit: function setLimit(e) {\n        var limit = _typeof(e) === 'object' ? parseInt(e.target.value) : e;\n        this.updateState('perPage', limit);\n        this.commit(\"SET_LIMIT\", limit);\n        this.dispatch(\"limit\", limit);\n      },\n      setOrder: function setOrder(column, ascending) {\n        this.updateState('orderBy', {\n          column: column,\n          ascending: ascending\n        });\n        this.commit('SORT', {\n          column: column,\n          ascending: ascending\n        });\n      },\n      setPage: function setPage(page) {\n        if (!page) {\n          page = this.$refs.page.value;\n        }\n\n        if (!this.opts.pagination.dropdown) this.$refs.pagination.Page = page;\n        this.commit(\"PAGINATE\", page);\n      }\n    }\n  }, extra);\n});\n\nfunction serverExtra() {\n  return {\n    methods: {\n      setData: function setData(data) {\n        this.commit('SET_DATA', data);\n        setTimeout(function () {\n          this.dispatch('loaded', data);\n        }.bind(this), 0);\n      }\n    }\n  };\n}\n\nfunction clientExtra() {\n  return {};\n}\n\n//# sourceURL=webpack://VueTables/./lib/state/vuex.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = _default;\n\nvar _merge = _interopRequireDefault(__webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nfunction _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nfunction _default(source) {\n  var extra = source == 'server' ? serverExtra() : clientExtra();\n  return _merge[\"default\"].recursive(true, {\n    props: {\n      name: {\n        type: String,\n        required: true\n      }\n    },\n    computed: {\n      state: function state() {\n        return this.$store.state[this.name];\n      },\n      Page: function Page() {\n        return this.state.page;\n      },\n      count: function count() {\n        return this.state.count;\n      },\n      Columns: function Columns() {\n        return this.state.columns;\n      },\n      tableData: function tableData() {\n        return this.state.data;\n      },\n      page: function page() {\n        return this.state.page;\n      },\n      limit: function limit() {\n        return this.state.limit;\n      },\n      customQueries: function customQueries() {\n        return this.state.customQueries;\n      },\n      query: function query() {\n        return this.state.query;\n      },\n      orderBy: function orderBy() {\n        return {\n          column: this.state.sortBy,\n          ascending: this.state.ascending\n        };\n      }\n    },\n    methods: {\n      commit: function commit(action, payload) {\n        return this.$store.commit(\"\".concat(this.name, \"/\").concat(action), payload);\n      },\n      orderByColumn: function orderByColumn(column, ev) {\n        if (!this.sortable(column)) return;\n\n        if (ev.shiftKey && this.orderBy.column && this.hasMultiSort) {\n          this.setUserMultiSort(column);\n        } else {\n          var ascending = this.orderBy.column === column ? !this.orderBy.ascending : this._initialOrderAscending(column);\n          var orderBy = {\n            column: column,\n            ascending: ascending\n          };\n          this.updateState('orderBy', orderBy);\n          this.commit('SORT', orderBy);\n          this.dispatch('sorted', orderBy);\n        }\n      },\n      setLimit: function setLimit(e) {\n        var limit = _typeof(e) === 'object' ? parseInt(e.target.value) : e;\n        this.updateState('perPage', limit);\n        this.commit(\"SET_LIMIT\", limit);\n        this.dispatch(\"limit\", limit);\n      },\n      setOrder: function setOrder(column, ascending) {\n        this.updateState('orderBy', {\n          column: column,\n          ascending: ascending\n        });\n        this.commit('SORT', {\n          column: column,\n          ascending: ascending\n        });\n      },\n      setPage: function setPage(page) {\n        if (!page) {\n          page = this.$refs.page.value;\n        }\n\n        if (!this.opts.pagination.dropdown) this.$refs.pagination.Page = page;\n        this.commit(\"PAGINATE\", page);\n      }\n    }\n  }, extra);\n}\n\nfunction serverExtra() {\n  return {\n    methods: {\n      setData: function setData(data) {\n        this.commit('SET_DATA', data);\n        setTimeout(function () {\n          this.dispatch('loaded', data);\n        }.bind(this), 0);\n      }\n    }\n  };\n}\n\nfunction clientExtra() {\n  return {};\n}\n\n//# sourceURL=webpack://VueTables/./lib/state/vuex.js?");
 
 /***/ }),
 
@@ -1438,11 +1543,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var merg
 /*!**********************!*\
   !*** ./lib/table.js ***!
   \**********************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nvar methods = __webpack_require__(/*! ./mixins/methods */ \"./lib/mixins/methods.js\");\n\nvar computed = __webpack_require__(/*! ./mixins/computed */ \"./lib/mixins/computed.js\");\n\nvar directives = __webpack_require__(/*! ./mixins/directives */ \"./lib/mixins/directives.js\");\n\nvar beforeDestroy = __webpack_require__(/*! ./mixins/before-destroy */ \"./lib/mixins/before-destroy.js\");\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function () {\n  return {\n    methods: methods,\n    computed: computed,\n    directives: directives,\n    beforeDestroy: beforeDestroy\n  };\n});\n\n//# sourceURL=webpack://VueTables/./lib/table.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = _default;\n\nvar methods = __webpack_require__(/*! ./mixins/methods */ \"./lib/mixins/methods.js\");\n\nvar computed = __webpack_require__(/*! ./mixins/computed */ \"./lib/mixins/computed.js\");\n\nvar directives = __webpack_require__(/*! ./mixins/directives */ \"./lib/mixins/directives.js\");\n\nvar beforeDestroy = __webpack_require__(/*! ./mixins/before-destroy */ \"./lib/mixins/before-destroy.js\");\n\nfunction _default() {\n  return {\n    methods: methods,\n    computed: computed,\n    directives: directives,\n    beforeDestroy: beforeDestroy\n  };\n}\n\n//# sourceURL=webpack://VueTables/./lib/table.js?");
 
 /***/ }),
 
@@ -1453,7 +1558,8 @@ eval("__webpack_require__.r(__webpack_exports__);\nvar methods = __webpack_requi
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("function _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nmodule.exports = function (template, theme) {\n  var themes = {\n    bootstrap3: __webpack_require__(/*! ./themes/bootstrap3 */ \"./lib/themes/bootstrap3.js\")(),\n    bootstrap4: __webpack_require__(/*! ./themes/bootstrap4 */ \"./lib/themes/bootstrap4.js\")(),\n    bulma: __webpack_require__(/*! ./themes/bulma */ \"./lib/themes/bulma.js\")()\n  };\n  var templates = {\n    \"default\": __webpack_require__(/*! ./templates/default */ \"./lib/templates/default.js\"),\n    footerPagination: __webpack_require__(/*! ./templates/footer-pagination */ \"./lib/templates/footer-pagination.js\")\n  };\n  return function (h) {\n    var modules = {\n      rows: __webpack_require__(/*! ./modules/rows */ \"./lib/modules/rows.js\").call(this, h),\n      normalFilter: __webpack_require__(/*! ./modules/normal-filter */ \"./lib/modules/normal-filter.js\").call(this, h),\n      dropdownPagination: __webpack_require__(/*! ./modules/dropdown-pagination */ \"./lib/modules/dropdown-pagination.js\").call(this, h),\n      dropdownPaginationCount: __webpack_require__(/*! ./modules/dropdown-pagination-count */ \"./lib/modules/dropdown-pagination-count.js\").call(this, h),\n      columnFilters: __webpack_require__(/*! ./modules/column-filters */ \"./lib/modules/column-filters.js\").call(this, h),\n      pagination: __webpack_require__(/*! ./modules/pagination */ \"./lib/modules/pagination.js\").call(this, h),\n      headings: __webpack_require__(/*! ./modules/headings */ \"./lib/modules/headings.js\").call(this, h),\n      perPage: __webpack_require__(/*! ./modules/per-page */ \"./lib/modules/per-page.js\").call(this, h),\n      columnsDropdown: __webpack_require__(/*! ./modules/columns-dropdown */ \"./lib/modules/columns-dropdown.js\").call(this, h)\n    };\n\n    if (typeof template === 'string' && (!templates[template] || typeof templates[template] !== 'function')) {\n      throw \"vue-tables-2: Template \\\"\".concat(template, \"\\\" does not exist\");\n    }\n\n    if (typeof theme === 'string' && (!themes[theme] || _typeof(themes[theme]) !== 'object')) {\n      throw \"vue-tables-2: Theme \\\"\".concat(theme, \"\\\" does not exist\");\n    }\n\n    var tpl = typeof template === 'string' ? templates[template] : template;\n    var thm = typeof theme === 'string' ? themes[theme] : theme();\n\n    var slots = __webpack_require__(/*! ./slots */ \"./lib/slots.js\").call(this);\n\n    return tpl.call(this, h, modules, thm, slots);\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/template-compiler.js?");
+"use strict";
+eval("\n\nfunction _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nmodule.exports = function (template, theme) {\n  var themes = {\n    bootstrap3: __webpack_require__(/*! ./themes/bootstrap3 */ \"./lib/themes/bootstrap3.js\")(),\n    bootstrap4: __webpack_require__(/*! ./themes/bootstrap4 */ \"./lib/themes/bootstrap4.js\")(),\n    bulma: __webpack_require__(/*! ./themes/bulma */ \"./lib/themes/bulma.js\")()\n  };\n  var templates = {\n    \"default\": __webpack_require__(/*! ./templates/default */ \"./lib/templates/default.js\"),\n    footerPagination: __webpack_require__(/*! ./templates/footer-pagination */ \"./lib/templates/footer-pagination.js\")\n  };\n  return function (h) {\n    var modules = {\n      rows: __webpack_require__(/*! ./modules/rows */ \"./lib/modules/rows.js\").call(this, h),\n      normalFilter: __webpack_require__(/*! ./modules/normal-filter */ \"./lib/modules/normal-filter.js\").call(this, h),\n      dropdownPagination: __webpack_require__(/*! ./modules/dropdown-pagination */ \"./lib/modules/dropdown-pagination.js\").call(this, h),\n      dropdownPaginationCount: __webpack_require__(/*! ./modules/dropdown-pagination-count */ \"./lib/modules/dropdown-pagination-count.js\").call(this, h),\n      columnFilters: __webpack_require__(/*! ./modules/column-filters */ \"./lib/modules/column-filters.js\").call(this, h),\n      pagination: __webpack_require__(/*! ./modules/pagination */ \"./lib/modules/pagination.js\").call(this, h),\n      headings: __webpack_require__(/*! ./modules/headings */ \"./lib/modules/headings.js\").call(this, h),\n      perPage: __webpack_require__(/*! ./modules/per-page */ \"./lib/modules/per-page.js\").call(this, h),\n      columnsDropdown: __webpack_require__(/*! ./modules/columns-dropdown */ \"./lib/modules/columns-dropdown.js\").call(this, h)\n    };\n\n    if (typeof template === 'string' && (!templates[template] || typeof templates[template] !== 'function')) {\n      throw \"vue-tables-2: Template \\\"\".concat(template, \"\\\" does not exist\");\n    }\n\n    if (typeof theme === 'string' && (!themes[theme] || _typeof(themes[theme]) !== 'object')) {\n      throw \"vue-tables-2: Theme \\\"\".concat(theme, \"\\\" does not exist\");\n    }\n\n    var tpl = typeof template === 'string' ? templates[template] : template;\n    var thm = typeof theme === 'string' ? themes[theme] : theme();\n\n    var slots = __webpack_require__(/*! ./slots */ \"./lib/slots.js\").call(this);\n\n    return tpl.call(this, h, modules, thm, slots);\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/template-compiler.js?");
 
 /***/ }),
 
@@ -1461,11 +1567,11 @@ eval("function _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbo
 /*!**********************************!*\
   !*** ./lib/templates/default.js ***!
   \**********************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\");\n/* harmony import */ var merge__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(merge__WEBPACK_IMPORTED_MODULE_0__);\n\n\nmodule.exports = function (h, modules, classes, slots) {\n  var filterId = \"VueTables__search_\" + this.id;\n  var ddpId = \"VueTables__dropdown-pagination_\" + this.id;\n  var perpageId = \"VueTables__limit_\" + this.id;\n\n  var perpageValues = __webpack_require__(/*! ../modules/per-page-values */ \"./lib/modules/per-page-values.js\").call(this, h);\n\n  var genericFilter = this.hasGenericFilter ? h(\"div\", {\n    \"class\": \"VueTables__search-field\"\n  }, [h(\"label\", {\n    attrs: {\n      \"for\": filterId\n    },\n    \"class\": classes.label\n  }, [this.display(\"filter\")]), modules.normalFilter(classes, filterId)]) : \"\";\n  var perpage = perpageValues.length > 1 ? h(\"div\", {\n    \"class\": \"VueTables__limit-field\"\n  }, [h(\"label\", {\n    \"class\": classes.label,\n    attrs: {\n      \"for\": perpageId\n    }\n  }, [this.display(\"limit\")]), modules.perPage(perpageValues, classes.select, perpageId)]) : \"\";\n  var dropdownPagination = this.opts.pagination && this.opts.pagination.dropdown ? h(\"div\", {\n    \"class\": \"VueTables__pagination-wrapper\"\n  }, [h(\"div\", {\n    \"class\": \"\".concat(classes.field, \" \").concat(classes.inline, \" \").concat(classes.right, \" VueTables__dropdown-pagination\"),\n    directives: [{\n      name: \"show\",\n      value: this.totalPages > 1\n    }]\n  }, [h(\"label\", {\n    attrs: {\n      \"for\": ddpId\n    }\n  }, [this.display(\"page\")]), modules.dropdownPagination(classes.select, ddpId)])]) : \"\";\n  var columnsDropdown = this.opts.columnsDropdown ? h(\"div\", {\n    \"class\": \"VueTables__columns-dropdown-wrapper\"\n  }, [modules.columnsDropdown(classes)]) : \"\";\n  var footerHeadings = this.opts.footerHeadings ? h(\"tfoot\", [h(\"tr\", [modules.headings(classes.right)])]) : \"\";\n  var shouldShowTop = genericFilter || perpage || dropdownPagination || columnsDropdown || slots.beforeFilter || slots.afterFilter || slots.beforeLimit || slots.afterLimit;\n  var tableTop = h(\"div\", {\n    \"class\": classes.row,\n    directives: [{\n      name: \"show\",\n      value: shouldShowTop\n    }]\n  }, [h(\"div\", {\n    \"class\": classes.column\n  }, [h(\"div\", {\n    \"class\": \"\".concat(classes.field, \" \").concat(classes.inline, \" \").concat(classes.left, \" VueTables__search\")\n  }, [slots.beforeFilter, genericFilter, slots.afterFilter]), h(\"div\", {\n    \"class\": \"\".concat(classes.field, \" \").concat(classes.inline, \" \").concat(classes.right, \" VueTables__limit\")\n  }, [slots.beforeLimit, perpage, slots.afterLimit]), dropdownPagination, columnsDropdown])]);\n  return h(\"div\", {\n    \"class\": \"VueTables VueTables--\" + this.source\n  }, [tableTop, slots.beforeTable, h(\"div\", {\n    \"class\": \"table-responsive\"\n  }, [h(\"table\", {\n    \"class\": \"VueTables__table \".concat(this.opts.skin ? this.opts.skin : classes.table)\n  }, [h(\"thead\", [slots.prependHead, h(\"tr\", [modules.headings(classes.right)]), slots.beforeFilters, modules.columnFilters(classes), slots.afterFilters]), footerHeadings, slots.beforeBody, h(\"tbody\", [slots.prependBody, modules.rows(classes), slots.appendBody]), slots.afterBody])]), slots.afterTable, modules.pagination(merge__WEBPACK_IMPORTED_MODULE_0___default()(classes.pagination, {\n    wrapper: \"\".concat(classes.row, \" \").concat(classes.column, \" \").concat(classes.contentCenter),\n    nav: classes.center,\n    count: \"\".concat(classes.center, \" \").concat(classes.column)\n  })), modules.dropdownPaginationCount()]);\n};\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/harmony-module.js */ \"./node_modules/webpack/buildin/harmony-module.js\")(module)))\n\n//# sourceURL=webpack://VueTables/./lib/templates/default.js?");
+eval("\n\nvar _merge = _interopRequireDefault(__webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nmodule.exports = function (h, modules, classes, slots) {\n  var filterId = \"VueTables__search_\" + this.id;\n  var ddpId = \"VueTables__dropdown-pagination_\" + this.id;\n  var perpageId = \"VueTables__limit_\" + this.id;\n\n  var perpageValues = __webpack_require__(/*! ../modules/per-page-values */ \"./lib/modules/per-page-values.js\").call(this, h);\n\n  var genericFilter = this.hasGenericFilter ? h(\"div\", {\n    \"class\": \"VueTables__search-field\"\n  }, [h(\"label\", {\n    attrs: {\n      \"for\": filterId\n    },\n    \"class\": classes.label\n  }, [this.display(\"filter\")]), modules.normalFilter(classes, filterId)]) : \"\";\n  var perpage = perpageValues.length > 1 ? h(\"div\", {\n    \"class\": \"VueTables__limit-field\"\n  }, [h(\"label\", {\n    \"class\": classes.label,\n    attrs: {\n      \"for\": perpageId\n    }\n  }, [this.display(\"limit\")]), modules.perPage(perpageValues, classes.select, perpageId)]) : \"\";\n  var dropdownPagination = this.opts.pagination && this.opts.pagination.dropdown ? h(\"div\", {\n    \"class\": \"VueTables__pagination-wrapper\"\n  }, [h(\"div\", {\n    \"class\": \"\".concat(classes.field, \" \").concat(classes.inline, \" \").concat(classes.right, \" VueTables__dropdown-pagination\"),\n    directives: [{\n      name: \"show\",\n      value: this.totalPages > 1\n    }]\n  }, [h(\"label\", {\n    attrs: {\n      \"for\": ddpId\n    }\n  }, [this.display(\"page\")]), modules.dropdownPagination(classes.select, ddpId)])]) : \"\";\n  var columnsDropdown = this.opts.columnsDropdown ? h(\"div\", {\n    \"class\": \"VueTables__columns-dropdown-wrapper\"\n  }, [modules.columnsDropdown(classes)]) : \"\";\n  var footerHeadings = this.opts.footerHeadings ? h(\"tfoot\", [h(\"tr\", [modules.headings(classes.right)])]) : \"\";\n  var shouldShowTop = genericFilter || perpage || dropdownPagination || columnsDropdown || slots.beforeFilter || slots.afterFilter || slots.beforeLimit || slots.afterLimit;\n  var tableTop = h(\"div\", {\n    \"class\": classes.row,\n    directives: [{\n      name: \"show\",\n      value: shouldShowTop\n    }]\n  }, [h(\"div\", {\n    \"class\": classes.column\n  }, [h(\"div\", {\n    \"class\": \"\".concat(classes.field, \" \").concat(classes.inline, \" \").concat(classes.left, \" VueTables__search\")\n  }, [slots.beforeFilter, genericFilter, slots.afterFilter]), h(\"div\", {\n    \"class\": \"\".concat(classes.field, \" \").concat(classes.inline, \" \").concat(classes.right, \" VueTables__limit\")\n  }, [slots.beforeLimit, perpage, slots.afterLimit]), dropdownPagination, columnsDropdown])]);\n  return h(\"div\", {\n    \"class\": \"VueTables VueTables--\" + this.source\n  }, [tableTop, slots.beforeTable, h(\"div\", {\n    \"class\": \"table-responsive\"\n  }, [h(\"table\", {\n    \"class\": \"VueTables__table \".concat(this.opts.skin ? this.opts.skin : classes.table)\n  }, [h(\"thead\", [slots.prependHead, h(\"tr\", [modules.headings(classes.right)]), slots.beforeFilters, modules.columnFilters(classes), slots.afterFilters]), footerHeadings, slots.beforeBody, h(\"tbody\", [slots.prependBody, modules.rows(classes), slots.appendBody]), slots.afterBody])]), slots.afterTable, modules.pagination((0, _merge[\"default\"])(classes.pagination, {\n    wrapper: \"\".concat(classes.row, \" \").concat(classes.column, \" \").concat(classes.contentCenter),\n    nav: classes.center,\n    count: \"\".concat(classes.center, \" \").concat(classes.column)\n  })), modules.dropdownPaginationCount()]);\n};\n\n//# sourceURL=webpack://VueTables/./lib/templates/default.js?");
 
 /***/ }),
 
@@ -1473,11 +1579,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(f
 /*!********************************************!*\
   !*** ./lib/templates/footer-pagination.js ***!
   \********************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\");\n/* harmony import */ var merge__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(merge__WEBPACK_IMPORTED_MODULE_0__);\n\n\nmodule.exports = function (h, modules, classes, slots) {\n  var filterId = 'VueTables__search_' + this.id;\n  var perpageId = 'VueTables__limit_' + this.id;\n\n  var perpageValues = __webpack_require__(/*! ../modules/per-page-values */ \"./lib/modules/per-page-values.js\").call(this, h);\n\n  var genericFilter = this.hasGenericFilter ? h(\"div\", {\n    \"class\": \"VueTables__search-field\"\n  }, [h(\"label\", {\n    attrs: {\n      \"for\": filterId\n    },\n    \"class\": classes.label\n  }, [this.display('filter')]), modules.normalFilter(classes, filterId)]) : '';\n  var perpage = perpageValues.length > 1 ? h(\"div\", {\n    \"class\": \"VueTables__limit-field\"\n  }, [h(\"label\", {\n    \"class\": classes.label,\n    attrs: {\n      \"for\": perpageId\n    }\n  }, [this.display('limit')]), modules.perPage(perpageValues, classes.select, perpageId)]) : '';\n  var columnsDropdown = this.opts.columnsDropdown ? h(\"div\", {\n    \"class\": \"VueTables__columns-dropdown-wrapper\"\n  }, [modules.columnsDropdown(classes)]) : '';\n  var shouldShowTop = genericFilter || perpage || columnsDropdown || slots.beforeFilter || slots.afterFilter || slots.beforeLimit || slots.afterLimit;\n  var tableTop = h(\"div\", {\n    \"class\": classes.row,\n    directives: [{\n      name: \"show\",\n      value: shouldShowTop\n    }]\n  }, [h(\"div\", {\n    \"class\": classes.column\n  }, [h(\"div\", {\n    \"class\": \"\".concat(classes.field, \" \").concat(classes.inline, \" \").concat(classes.left, \" VueTables__search\")\n  }, [slots.beforeFilter, genericFilter, slots.afterFilter]), h(\"div\", {\n    \"class\": \"\".concat(classes.field, \" \").concat(classes.inline, \" \").concat(classes.right, \" VueTables__limit\")\n  }, [slots.beforeLimit, perpage, slots.afterLimit]), columnsDropdown])]);\n  return h(\"div\", {\n    \"class\": \"VueTables VueTables--\" + this.source\n  }, [tableTop, slots.beforeTable, h(\"div\", {\n    \"class\": \"table-responsive\"\n  }, [h(\"table\", {\n    \"class\": \"VueTables__table \".concat(this.opts.skin ? this.opts.skin : classes.table)\n  }, [h(\"thead\", [slots.prependHead, h(\"tr\", [modules.headings(classes.right)]), slots.beforeFilters, modules.columnFilters(classes), slots.afterFilters]), h(\"tfoot\", [h(\"tr\", [h(\"td\", {\n    attrs: {\n      colspan: this.colspan\n    }\n  }, [modules.pagination(merge__WEBPACK_IMPORTED_MODULE_0___default()(classes.pagination, {\n    list: \"\".concat(classes.pagination.list, \" \").concat(classes.right, \" \").concat(classes.nomargin),\n    count: \"\".concat(classes.left)\n  }))])])]), slots.beforeBody, h(\"tbody\", [slots.prependBody, modules.rows(classes), slots.appendBody]), slots.afterBody])]), slots.afterTable]);\n};\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/harmony-module.js */ \"./node_modules/webpack/buildin/harmony-module.js\")(module)))\n\n//# sourceURL=webpack://VueTables/./lib/templates/footer-pagination.js?");
+eval("\n\nvar _merge = _interopRequireDefault(__webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nmodule.exports = function (h, modules, classes, slots) {\n  var filterId = 'VueTables__search_' + this.id;\n  var perpageId = 'VueTables__limit_' + this.id;\n\n  var perpageValues = __webpack_require__(/*! ../modules/per-page-values */ \"./lib/modules/per-page-values.js\").call(this, h);\n\n  var genericFilter = this.hasGenericFilter ? h(\"div\", {\n    \"class\": \"VueTables__search-field\"\n  }, [h(\"label\", {\n    attrs: {\n      \"for\": filterId\n    },\n    \"class\": classes.label\n  }, [this.display('filter')]), modules.normalFilter(classes, filterId)]) : '';\n  var perpage = perpageValues.length > 1 ? h(\"div\", {\n    \"class\": \"VueTables__limit-field\"\n  }, [h(\"label\", {\n    \"class\": classes.label,\n    attrs: {\n      \"for\": perpageId\n    }\n  }, [this.display('limit')]), modules.perPage(perpageValues, classes.select, perpageId)]) : '';\n  var columnsDropdown = this.opts.columnsDropdown ? h(\"div\", {\n    \"class\": \"VueTables__columns-dropdown-wrapper\"\n  }, [modules.columnsDropdown(classes)]) : '';\n  var shouldShowTop = genericFilter || perpage || columnsDropdown || slots.beforeFilter || slots.afterFilter || slots.beforeLimit || slots.afterLimit;\n  var tableTop = h(\"div\", {\n    \"class\": classes.row,\n    directives: [{\n      name: \"show\",\n      value: shouldShowTop\n    }]\n  }, [h(\"div\", {\n    \"class\": classes.column\n  }, [h(\"div\", {\n    \"class\": \"\".concat(classes.field, \" \").concat(classes.inline, \" \").concat(classes.left, \" VueTables__search\")\n  }, [slots.beforeFilter, genericFilter, slots.afterFilter]), h(\"div\", {\n    \"class\": \"\".concat(classes.field, \" \").concat(classes.inline, \" \").concat(classes.right, \" VueTables__limit\")\n  }, [slots.beforeLimit, perpage, slots.afterLimit]), columnsDropdown])]);\n  return h(\"div\", {\n    \"class\": \"VueTables VueTables--\" + this.source\n  }, [tableTop, slots.beforeTable, h(\"div\", {\n    \"class\": \"table-responsive\"\n  }, [h(\"table\", {\n    \"class\": \"VueTables__table \".concat(this.opts.skin ? this.opts.skin : classes.table)\n  }, [h(\"thead\", [slots.prependHead, h(\"tr\", [modules.headings(classes.right)]), slots.beforeFilters, modules.columnFilters(classes), slots.afterFilters]), h(\"tfoot\", [h(\"tr\", [h(\"td\", {\n    attrs: {\n      colspan: this.colspan\n    }\n  }, [modules.pagination((0, _merge[\"default\"])(classes.pagination, {\n    list: \"\".concat(classes.pagination.list, \" \").concat(classes.right, \" \").concat(classes.nomargin),\n    count: \"\".concat(classes.left)\n  }))])])]), slots.beforeBody, h(\"tbody\", [slots.prependBody, modules.rows(classes), slots.appendBody]), slots.afterBody])]), slots.afterTable]);\n};\n\n//# sourceURL=webpack://VueTables/./lib/templates/footer-pagination.js?");
 
 /***/ }),
 
@@ -1486,9 +1592,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(f
   !*** ./lib/themes/bootstrap3.js ***!
   \**********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  return {\n    framework: 'bootstrap3',\n    table: 'table table-striped table-bordered table-hover',\n    row: 'row',\n    column: 'col-md-12',\n    label: '',\n    input: 'form-control',\n    select: 'form-control',\n    field: 'form-group',\n    inline: 'form-inline',\n    right: 'pull-right',\n    left: 'pull-left',\n    center: 'text-center',\n    contentCenter: '',\n    small: '',\n    nomargin: '',\n    groupTr: 'info',\n    button: 'btn btn-secondary',\n    dropdown: {\n      container: 'dropdown',\n      trigger: 'dropdown-toggle',\n      menu: 'dropdown-menu',\n      content: '',\n      item: '',\n      caret: 'caret'\n    },\n    pagination: {\n      nav: '',\n      count: '',\n      wrapper: '',\n      list: 'pagination',\n      item: 'page-item',\n      link: 'page-link',\n      next: '',\n      prev: '',\n      active: 'active',\n      disabled: 'disabled'\n    }\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/themes/bootstrap3.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  return {\n    framework: 'bootstrap3',\n    table: 'table table-striped table-bordered table-hover',\n    row: 'row',\n    column: 'col-md-12',\n    label: '',\n    input: 'form-control',\n    select: 'form-control',\n    field: 'form-group',\n    inline: 'form-inline',\n    right: 'pull-right',\n    left: 'pull-left',\n    center: 'text-center',\n    contentCenter: '',\n    small: '',\n    nomargin: '',\n    groupTr: 'info',\n    button: 'btn btn-secondary',\n    dropdown: {\n      container: 'dropdown',\n      trigger: 'dropdown-toggle',\n      menu: 'dropdown-menu',\n      content: '',\n      item: '',\n      caret: 'caret'\n    },\n    pagination: {\n      nav: '',\n      count: '',\n      wrapper: '',\n      list: 'pagination',\n      item: 'page-item',\n      link: 'page-link',\n      next: '',\n      prev: '',\n      active: 'active',\n      disabled: 'disabled'\n    }\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/themes/bootstrap3.js?");
 
 /***/ }),
 
@@ -1497,9 +1604,10 @@ eval("module.exports = function () {\n  return {\n    framework: 'bootstrap3',\n
   !*** ./lib/themes/bootstrap4.js ***!
   \**********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  return {\n    framework: 'bootstrap4',\n    table: 'table table-striped table-bordered table-hover',\n    row: 'row',\n    column: 'col-md-12',\n    label: '',\n    input: 'form-control',\n    select: 'form-control',\n    field: 'form-group',\n    inline: 'form-inline',\n    right: 'float-right',\n    left: 'float-left',\n    center: 'text-center',\n    contentCenter: 'justify-content-center',\n    nomargin: 'm-0',\n    groupTr: 'table-info',\n    small: '',\n    button: 'btn btn-secondary',\n    dropdown: {\n      container: 'dropdown',\n      trigger: 'dropdown-toggle',\n      menu: 'dropdown-menu',\n      content: '',\n      item: 'dropdown-item',\n      caret: 'caret'\n    },\n    pagination: {\n      nav: '',\n      count: '',\n      wrapper: '',\n      list: 'pagination',\n      item: 'page-item',\n      link: 'page-link',\n      next: '',\n      prev: '',\n      active: 'active',\n      disabled: 'disabled'\n    }\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/themes/bootstrap4.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  return {\n    framework: 'bootstrap4',\n    table: 'table table-striped table-bordered table-hover',\n    row: 'row',\n    column: 'col-md-12',\n    label: '',\n    input: 'form-control',\n    select: 'form-control',\n    field: 'form-group',\n    inline: 'form-inline',\n    right: 'float-right',\n    left: 'float-left',\n    center: 'text-center',\n    contentCenter: 'justify-content-center',\n    nomargin: 'm-0',\n    groupTr: 'table-info',\n    small: '',\n    button: 'btn btn-secondary',\n    dropdown: {\n      container: 'dropdown',\n      trigger: 'dropdown-toggle',\n      menu: 'dropdown-menu',\n      content: '',\n      item: 'dropdown-item',\n      caret: 'caret'\n    },\n    pagination: {\n      nav: '',\n      count: '',\n      wrapper: '',\n      list: 'pagination',\n      item: 'page-item',\n      link: 'page-link',\n      next: '',\n      prev: '',\n      active: 'active',\n      disabled: 'disabled'\n    }\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/themes/bootstrap4.js?");
 
 /***/ }),
 
@@ -1508,9 +1616,10 @@ eval("module.exports = function () {\n  return {\n    framework: 'bootstrap4',\n
   !*** ./lib/themes/bulma.js ***!
   \*****************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  return {\n    framework: 'bulma',\n    table: 'table is-bordered is-striped is-hoverable is-fullwidth',\n    row: 'columns',\n    column: 'column is-12',\n    label: 'label',\n    input: 'input',\n    select: 'select',\n    field: 'field',\n    inline: 'is-horizontal',\n    right: 'is-pulled-right',\n    left: 'is-pulled-left',\n    center: 'has-text-centered',\n    contentCenter: 'is-centered',\n    icon: 'icon',\n    small: 'is-small',\n    nomargin: 'marginless',\n    button: 'button',\n    groupTr: 'is-selected',\n    dropdown: {\n      container: 'dropdown',\n      trigger: 'dropdown-trigger',\n      menu: 'dropdown-menu',\n      content: 'dropdown-content',\n      item: 'dropdown-item',\n      caret: 'fa fa-angle-down'\n    },\n    pagination: {\n      nav: '',\n      count: '',\n      wrapper: 'pagination',\n      list: 'pagination-list',\n      item: '',\n      link: 'pagination-link',\n      next: '',\n      prev: '',\n      active: 'is-current',\n      disabled: ''\n    }\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/themes/bulma.js?");
+"use strict";
+eval("\n\nmodule.exports = function () {\n  return {\n    framework: 'bulma',\n    table: 'table is-bordered is-striped is-hoverable is-fullwidth',\n    row: 'columns',\n    column: 'column is-12',\n    label: 'label',\n    input: 'input',\n    select: 'select',\n    field: 'field',\n    inline: 'is-horizontal',\n    right: 'is-pulled-right',\n    left: 'is-pulled-left',\n    center: 'has-text-centered',\n    contentCenter: 'is-centered',\n    icon: 'icon',\n    small: 'is-small',\n    nomargin: 'marginless',\n    button: 'button',\n    groupTr: 'is-selected',\n    dropdown: {\n      container: 'dropdown',\n      trigger: 'dropdown-trigger',\n      menu: 'dropdown-menu',\n      content: 'dropdown-content',\n      item: 'dropdown-item',\n      caret: 'fa fa-angle-down'\n    },\n    pagination: {\n      nav: '',\n      count: '',\n      wrapper: 'pagination',\n      list: 'pagination-list',\n      item: '',\n      link: 'pagination-link',\n      next: '',\n      prev: '',\n      active: 'is-current',\n      disabled: ''\n    }\n  };\n};\n\n//# sourceURL=webpack://VueTables/./lib/themes/bulma.js?");
 
 /***/ }),
 
@@ -1518,11 +1627,11 @@ eval("module.exports = function () {\n  return {\n    framework: 'bulma',\n    t
 /*!*******************************!*\
   !*** ./lib/v-client-table.js ***!
   \*******************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue_pagination_2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-pagination-2 */ \"./node_modules/vue-pagination-2/index.js\");\n/* harmony import */ var vue_pagination_2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_pagination_2__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _state_vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./state/vuex */ \"./lib/state/vuex.js\");\n/* harmony import */ var _state_normal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./state/normal */ \"./lib/state/normal.js\");\n/* harmony import */ var merge__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\");\n/* harmony import */ var merge__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(merge__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _table__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./table */ \"./lib/table.js\");\n/* harmony import */ var _state_data__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./state/data */ \"./lib/state/data.js\");\n\n\n\n\n\n\n\nvar _data = __webpack_require__(/*! ./mixins/data */ \"./lib/mixins/data.js\");\n\nvar _created = __webpack_require__(/*! ./mixins/created */ \"./lib/mixins/created.js\");\n\nvar templateCompiler = __webpack_require__(/*! ./template-compiler */ \"./lib/template-compiler.js\");\n\nexports.install = function (Vue, globalOptions, useVuex) {\n  var theme = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'bootstrap3';\n  var template = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 'default';\n  var client = merge__WEBPACK_IMPORTED_MODULE_3___default.a.recursive(true, Object(_table__WEBPACK_IMPORTED_MODULE_4__[\"default\"])(), {\n    name: 'client-table',\n    components: {\n      Pagination: vue_pagination_2__WEBPACK_IMPORTED_MODULE_0__[\"Pagination\"]\n    },\n    render: templateCompiler.call(this, template, theme),\n    props: {\n      columns: {\n        type: Array,\n        required: true\n      },\n      data: {\n        type: Array,\n        required: true\n      },\n      name: {\n        type: String,\n        required: false\n      },\n      options: {\n        type: Object,\n        required: false,\n        \"default\": function _default() {\n          return {};\n        }\n      }\n    },\n    created: function created() {\n      _created(this);\n\n      if (this.opts.toMomentFormat) this.transformDateStringsToMoment();\n\n      if (!this.vuex) {\n        this.initOrderBy();\n        this.query = this.initQuery();\n        this.customQueries = this.initCustomFilters();\n      }\n    },\n    mounted: function mounted() {\n      this._setColumnsDropdownCloseListener();\n\n      if (!this.vuex) {\n        this.registerClientFilters();\n        if (this.options.initialPage) this.setPage(this.options.initialPage);\n      }\n\n      if (this.opts.groupBy && !this.opts.orderBy) {\n        this.orderBy.column = this.opts.groupBy;\n      }\n\n      this.loadState();\n\n      if (this.hasDateFilters()) {\n        this.initDateFilters();\n      }\n    },\n    data: function data() {\n      return merge__WEBPACK_IMPORTED_MODULE_3___default.a.recursive(_data(), {\n        source: 'client',\n        globalOptions: globalOptions,\n        currentlySorting: {},\n        time: Date.now()\n      }, Object(_state_data__WEBPACK_IMPORTED_MODULE_5__[\"default\"])(useVuex, 'client', this.options.initialPage));\n    },\n    computed: {\n      q: __webpack_require__(/*! ./computed/q */ \"./lib/computed/q.js\"),\n      customQ: __webpack_require__(/*! ./computed/custom-q */ \"./lib/computed/custom-q.js\"),\n      totalPages: __webpack_require__(/*! ./computed/total-pages */ \"./lib/computed/total-pages.js\"),\n      filteredData: __webpack_require__(/*! ./computed/filtered-data */ \"./lib/computed/filtered-data.js\"),\n      hasMultiSort: function hasMultiSort() {\n        return this.opts.clientMultiSorting;\n      }\n    },\n    methods: {\n      transformDateStringsToMoment: __webpack_require__(/*! ./methods/transform-date-strings-to-moment */ \"./lib/methods/transform-date-strings-to-moment.js\"),\n      registerClientFilters: __webpack_require__(/*! ./methods/register-client-filters */ \"./lib/methods/register-client-filters.js\"),\n      search: __webpack_require__(/*! ./methods/client-search */ \"./lib/methods/client-search.js\"),\n      defaultSort: __webpack_require__(/*! ./methods/default-sort */ \"./lib/methods/default-sort.js\"),\n      getGroupSlot: __webpack_require__(/*! ./methods/get-group-slot */ \"./lib/methods/get-group-slot.js\"),\n      toggleGroup: function toggleGroup(group, e) {\n        e.stopPropagation();\n        var i = this.collapsedGroups.indexOf(group);\n\n        if (i >= 0) {\n          this.collapsedGroups.splice(i, 1);\n        } else {\n          this.collapsedGroups.push(group);\n        }\n      },\n      groupToggleIcon: function groupToggleIcon(group) {\n        var cls = this.opts.sortIcon.base + ' ';\n        cls += this.collapsedGroups.indexOf(group) > -1 ? this.opts.sortIcon.down : this.opts.sortIcon.up;\n        return cls;\n      },\n      loadState: function loadState() {\n        if (!this.opts.saveState) return;\n\n        if (!this.storage.getItem(this.stateKey)) {\n          this.initState();\n          this.activeState = true;\n          return;\n        }\n\n        var state = JSON.parse(this.storage.getItem(this.stateKey));\n        if (this.opts.filterable) this.setFilter(state.query);\n        this.setOrder(state.orderBy.column, state.orderBy.ascending);\n\n        if (this.vuex) {\n          this.commit('SET_LIMIT', state.perPage);\n        } else {\n          this.limit = state.perPage;\n        }\n\n        this.setPage(state.page);\n        this.activeState = true;\n\n        if (state.userControlsColumns) {\n          this.userColumnsDisplay = state.userColumnsDisplay;\n          this.userControlsColumns = state.userControlsColumns;\n        } // TODO: Custom Queries\n\n      }\n    }\n  });\n  var state = useVuex ? Object(_state_vuex__WEBPACK_IMPORTED_MODULE_1__[\"default\"])() : Object(_state_normal__WEBPACK_IMPORTED_MODULE_2__[\"default\"])();\n  client = merge__WEBPACK_IMPORTED_MODULE_3___default.a.recursive(client, state);\n  Vue.component('v-client-table', client);\n  return client;\n};\n\n//# sourceURL=webpack://VueTables/./lib/v-client-table.js?");
+eval("\n\nvar _vuePagination = __webpack_require__(/*! vue-pagination-2 */ \"./node_modules/vue-pagination-2/index.js\");\n\nvar _vuex = _interopRequireDefault(__webpack_require__(/*! ./state/vuex */ \"./lib/state/vuex.js\"));\n\nvar _normal = _interopRequireDefault(__webpack_require__(/*! ./state/normal */ \"./lib/state/normal.js\"));\n\nvar _merge = _interopRequireDefault(__webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\"));\n\nvar _table = _interopRequireDefault(__webpack_require__(/*! ./table */ \"./lib/table.js\"));\n\nvar _data2 = _interopRequireDefault(__webpack_require__(/*! ./state/data */ \"./lib/state/data.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nvar _data = __webpack_require__(/*! ./mixins/data */ \"./lib/mixins/data.js\");\n\nvar _created = __webpack_require__(/*! ./mixins/created */ \"./lib/mixins/created.js\");\n\nvar templateCompiler = __webpack_require__(/*! ./template-compiler */ \"./lib/template-compiler.js\");\n\nexports.install = function (Vue, globalOptions, useVuex) {\n  var theme = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'bootstrap3';\n  var template = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 'default';\n\n  var client = _merge[\"default\"].recursive(true, (0, _table[\"default\"])(), {\n    name: 'client-table',\n    components: {\n      Pagination: _vuePagination.Pagination\n    },\n    render: templateCompiler.call(this, template, theme),\n    props: {\n      columns: {\n        type: Array,\n        required: true\n      },\n      data: {\n        type: Array,\n        required: true\n      },\n      name: {\n        type: String,\n        required: false\n      },\n      options: {\n        type: Object,\n        required: false,\n        \"default\": function _default() {\n          return {};\n        }\n      }\n    },\n    created: function created() {\n      _created(this);\n\n      if (this.opts.toMomentFormat) this.transformDateStringsToMoment();\n\n      if (!this.vuex) {\n        this.initOrderBy();\n        this.query = this.initQuery();\n        this.customQueries = this.initCustomFilters();\n      }\n    },\n    mounted: function mounted() {\n      this._setColumnsDropdownCloseListener();\n\n      if (!this.vuex) {\n        this.registerClientFilters();\n        if (this.options.initialPage) this.setPage(this.options.initialPage);\n      }\n\n      if (this.opts.groupBy && !this.opts.orderBy) {\n        this.orderBy.column = this.opts.groupBy;\n      }\n\n      this.loadState();\n\n      if (this.hasDateFilters()) {\n        this.initDateFilters();\n      }\n    },\n    data: function data() {\n      return _merge[\"default\"].recursive(_data(), {\n        source: 'client',\n        globalOptions: globalOptions,\n        currentlySorting: {},\n        time: Date.now()\n      }, (0, _data2[\"default\"])(useVuex, 'client', this.options.initialPage));\n    },\n    computed: {\n      q: __webpack_require__(/*! ./computed/q */ \"./lib/computed/q.js\"),\n      customQ: __webpack_require__(/*! ./computed/custom-q */ \"./lib/computed/custom-q.js\"),\n      totalPages: __webpack_require__(/*! ./computed/total-pages */ \"./lib/computed/total-pages.js\"),\n      filteredData: __webpack_require__(/*! ./computed/filtered-data */ \"./lib/computed/filtered-data.js\"),\n      hasMultiSort: function hasMultiSort() {\n        return this.opts.clientMultiSorting;\n      }\n    },\n    methods: {\n      transformDateStringsToMoment: __webpack_require__(/*! ./methods/transform-date-strings-to-moment */ \"./lib/methods/transform-date-strings-to-moment.js\"),\n      registerClientFilters: __webpack_require__(/*! ./methods/register-client-filters */ \"./lib/methods/register-client-filters.js\"),\n      search: __webpack_require__(/*! ./methods/client-search */ \"./lib/methods/client-search.js\"),\n      defaultSort: __webpack_require__(/*! ./methods/default-sort */ \"./lib/methods/default-sort.js\"),\n      getGroupSlot: __webpack_require__(/*! ./methods/get-group-slot */ \"./lib/methods/get-group-slot.js\"),\n      toggleGroup: function toggleGroup(group, e) {\n        e.stopPropagation();\n        var i = this.collapsedGroups.indexOf(group);\n\n        if (i >= 0) {\n          this.collapsedGroups.splice(i, 1);\n        } else {\n          this.collapsedGroups.push(group);\n        }\n      },\n      groupToggleIcon: function groupToggleIcon(group) {\n        var cls = this.opts.sortIcon.base + ' ';\n        cls += this.collapsedGroups.indexOf(group) > -1 ? this.opts.sortIcon.down : this.opts.sortIcon.up;\n        return cls;\n      },\n      loadState: function loadState() {\n        if (!this.opts.saveState) return;\n\n        if (!this.storage.getItem(this.stateKey)) {\n          this.initState();\n          this.activeState = true;\n          return;\n        }\n\n        var state = JSON.parse(this.storage.getItem(this.stateKey));\n        if (this.opts.filterable) this.setFilter(state.query);\n        this.setOrder(state.orderBy.column, state.orderBy.ascending);\n\n        if (this.vuex) {\n          this.commit('SET_LIMIT', state.perPage);\n        } else {\n          this.limit = state.perPage;\n        }\n\n        this.setPage(state.page);\n        this.activeState = true;\n\n        if (state.userControlsColumns) {\n          this.userColumnsDisplay = state.userColumnsDisplay;\n          this.userControlsColumns = state.userControlsColumns;\n        } // TODO: Custom Queries\n\n      }\n    }\n  });\n\n  var state = useVuex ? (0, _vuex[\"default\"])() : (0, _normal[\"default\"])();\n  client = _merge[\"default\"].recursive(client, state);\n  Vue.component('v-client-table', client);\n  return client;\n};\n\n//# sourceURL=webpack://VueTables/./lib/v-client-table.js?");
 
 /***/ }),
 
@@ -1530,11 +1639,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue_
 /*!*******************************!*\
   !*** ./lib/v-server-table.js ***!
   \*******************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\");\n/* harmony import */ var merge__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(merge__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _state_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./state/data */ \"./lib/state/data.js\");\n/* harmony import */ var _state_vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./state/vuex */ \"./lib/state/vuex.js\");\n/* harmony import */ var _state_normal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./state/normal */ \"./lib/state/normal.js\");\n/* harmony import */ var _table__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./table */ \"./lib/table.js\");\n/* harmony import */ var vue_pagination_2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-pagination-2 */ \"./node_modules/vue-pagination-2/index.js\");\n/* harmony import */ var vue_pagination_2__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue_pagination_2__WEBPACK_IMPORTED_MODULE_5__);\n\n\n\n\n\n\n\nvar _data = __webpack_require__(/*! ./mixins/data */ \"./lib/mixins/data.js\");\n\nvar _created = __webpack_require__(/*! ./mixins/created */ \"./lib/mixins/created.js\");\n\nvar templateCompiler = __webpack_require__(/*! ./template-compiler */ \"./lib/template-compiler.js\");\n\nexports.install = function (Vue, globalOptions, useVuex) {\n  var theme = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : \"bootstrap3\";\n  var template = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : \"default\";\n  var state = useVuex ? Object(_state_vuex__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(\"server\") : Object(_state_normal__WEBPACK_IMPORTED_MODULE_3__[\"default\"])();\n  var server = merge__WEBPACK_IMPORTED_MODULE_0___default.a.recursive(true, Object(_table__WEBPACK_IMPORTED_MODULE_4__[\"default\"])(), {\n    name: \"server-table\",\n    components: {\n      Pagination: vue_pagination_2__WEBPACK_IMPORTED_MODULE_5__[\"Pagination\"]\n    },\n    render: templateCompiler.call(this, template, theme),\n    props: {\n      columns: {\n        type: Array,\n        required: true\n      },\n      url: {\n        type: String\n      },\n      name: {\n        type: String,\n        required: false\n      },\n      options: {\n        type: Object,\n        required: false,\n        \"default\": function _default() {\n          return {};\n        }\n      }\n    },\n    created: function created() {\n      if (!this.opts.requestFunction && !this.url) {\n        throw 'vue-tables-2: you must provide either a \"url\" prop or a custom request function. Aborting';\n      }\n\n      _created(this);\n\n      if (!this.vuex) {\n        this.query = this.initQuery();\n        this.initOrderBy();\n        this.customQueries = this.initCustomFilters();\n      }\n\n      if (this.opts.sendInitialRequest) {\n        this.loadState();\n        this.getData(true).then(function (response) {\n          this.setData(response);\n          this.loading = false;\n\n          if (this.hasDateFilters()) {\n            setTimeout(function () {\n              this.initDateFilters();\n            }.bind(this), 0);\n          }\n        }.bind(this));\n      }\n    },\n    mounted: function mounted() {\n      this._setColumnsDropdownCloseListener();\n\n      if (this.vuex) return;\n      this.registerServerFilters();\n      if (this.options.initialPage) this.setPage(this.options.initialPage, true);\n    },\n    data: function data() {\n      return merge__WEBPACK_IMPORTED_MODULE_0___default.a.recursive(_data(), {\n        source: \"server\",\n        loading: true,\n        lastKeyStrokeAt: false,\n        globalOptions: globalOptions\n      }, Object(_state_data__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(useVuex, \"server\", this.options.initialPage));\n    },\n    methods: {\n      refresh: __webpack_require__(/*! ./methods/refresh */ \"./lib/methods/refresh.js\"),\n      getData: __webpack_require__(/*! ./methods/get-data */ \"./lib/methods/get-data.js\"),\n      setData: __webpack_require__(/*! ./methods/set-data */ \"./lib/methods/set-data.js\"),\n      serverSearch: __webpack_require__(/*! ./methods/server-search */ \"./lib/methods/server-search.js\"),\n      registerServerFilters: __webpack_require__(/*! ./methods/register-server-filters */ \"./lib/methods/register-server-filters.js\"),\n      loadState: function loadState() {\n        var _this = this;\n\n        if (!this.opts.saveState) return;\n\n        if (!this.storage.getItem(this.stateKey)) {\n          this.initState();\n          this.activeState = true;\n          return;\n        }\n\n        var state = JSON.parse(this.storage.getItem(this.stateKey));\n\n        if (this.vuex) {\n          this.commit(\"SET_STATE\", {\n            query: state.query,\n            customQueries: state.customQueries,\n            page: state.page,\n            limit: state.perPage,\n            orderBy: state.orderBy\n          });\n        } else {\n          this.page = state.page;\n          this.query = state.query;\n          this.customQueries = state.customQueries;\n          this.limit = state.perPage;\n          this.orderBy = state.orderBy;\n        }\n\n        if (!this.opts.pagination.dropdown) {\n          setTimeout(function () {\n            _this.$refs.pagination.Page = state.page;\n          }, 0);\n        }\n\n        this.activeState = true;\n      }\n    },\n    watch: {\n      url: function url() {\n        this.refresh();\n      }\n    },\n    computed: {\n      totalPages: __webpack_require__(/*! ./computed/total-pages */ \"./lib/computed/total-pages.js\"),\n      filteredQuery: __webpack_require__(/*! ./computed/filtered-query */ \"./lib/computed/filtered-query.js\"),\n      hasMultiSort: function hasMultiSort() {\n        return this.opts.serverMultiSorting;\n      }\n    }\n  }, state);\n  Vue.component(\"v-server-table\", server);\n  return server;\n};\n\n//# sourceURL=webpack://VueTables/./lib/v-server-table.js?");
+eval("\n\nvar _merge = _interopRequireDefault(__webpack_require__(/*! merge */ \"./node_modules/merge/merge.js\"));\n\nvar _data2 = _interopRequireDefault(__webpack_require__(/*! ./state/data */ \"./lib/state/data.js\"));\n\nvar _vuex = _interopRequireDefault(__webpack_require__(/*! ./state/vuex */ \"./lib/state/vuex.js\"));\n\nvar _normal = _interopRequireDefault(__webpack_require__(/*! ./state/normal */ \"./lib/state/normal.js\"));\n\nvar _table = _interopRequireDefault(__webpack_require__(/*! ./table */ \"./lib/table.js\"));\n\nvar _vuePagination = __webpack_require__(/*! vue-pagination-2 */ \"./node_modules/vue-pagination-2/index.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nvar _data = __webpack_require__(/*! ./mixins/data */ \"./lib/mixins/data.js\");\n\nvar _created = __webpack_require__(/*! ./mixins/created */ \"./lib/mixins/created.js\");\n\nvar templateCompiler = __webpack_require__(/*! ./template-compiler */ \"./lib/template-compiler.js\");\n\nexports.install = function (Vue, globalOptions, useVuex) {\n  var theme = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : \"bootstrap3\";\n  var template = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : \"default\";\n  var state = useVuex ? (0, _vuex[\"default\"])(\"server\") : (0, _normal[\"default\"])();\n\n  var server = _merge[\"default\"].recursive(true, (0, _table[\"default\"])(), {\n    name: \"server-table\",\n    components: {\n      Pagination: _vuePagination.Pagination\n    },\n    render: templateCompiler.call(this, template, theme),\n    props: {\n      columns: {\n        type: Array,\n        required: true\n      },\n      url: {\n        type: String\n      },\n      name: {\n        type: String,\n        required: false\n      },\n      options: {\n        type: Object,\n        required: false,\n        \"default\": function _default() {\n          return {};\n        }\n      }\n    },\n    created: function created() {\n      if (!this.opts.requestFunction && !this.url) {\n        throw 'vue-tables-2: you must provide either a \"url\" prop or a custom request function. Aborting';\n      }\n\n      _created(this);\n\n      if (!this.vuex) {\n        this.query = this.initQuery();\n        this.initOrderBy();\n        this.customQueries = this.initCustomFilters();\n      }\n\n      if (this.opts.sendInitialRequest) {\n        this.loadState();\n        this.getData(true).then(function (response) {\n          this.setData(response);\n          this.loading = false;\n\n          if (this.hasDateFilters()) {\n            setTimeout(function () {\n              this.initDateFilters();\n            }.bind(this), 0);\n          }\n        }.bind(this));\n      }\n    },\n    mounted: function mounted() {\n      this._setColumnsDropdownCloseListener();\n\n      if (this.vuex) return;\n      this.registerServerFilters();\n      if (this.options.initialPage) this.setPage(this.options.initialPage, true);\n    },\n    data: function data() {\n      return _merge[\"default\"].recursive(_data(), {\n        source: \"server\",\n        loading: true,\n        lastKeyStrokeAt: false,\n        globalOptions: globalOptions\n      }, (0, _data2[\"default\"])(useVuex, \"server\", this.options.initialPage));\n    },\n    methods: {\n      refresh: __webpack_require__(/*! ./methods/refresh */ \"./lib/methods/refresh.js\"),\n      getData: __webpack_require__(/*! ./methods/get-data */ \"./lib/methods/get-data.js\"),\n      setData: __webpack_require__(/*! ./methods/set-data */ \"./lib/methods/set-data.js\"),\n      serverSearch: __webpack_require__(/*! ./methods/server-search */ \"./lib/methods/server-search.js\"),\n      registerServerFilters: __webpack_require__(/*! ./methods/register-server-filters */ \"./lib/methods/register-server-filters.js\"),\n      loadState: function loadState() {\n        var _this = this;\n\n        if (!this.opts.saveState) return;\n\n        if (!this.storage.getItem(this.stateKey)) {\n          this.initState();\n          this.activeState = true;\n          return;\n        }\n\n        var state = JSON.parse(this.storage.getItem(this.stateKey));\n\n        if (this.vuex) {\n          this.commit(\"SET_STATE\", {\n            query: state.query,\n            customQueries: state.customQueries,\n            page: state.page,\n            limit: state.perPage,\n            orderBy: state.orderBy\n          });\n        } else {\n          this.page = state.page;\n          this.query = state.query;\n          this.customQueries = state.customQueries;\n          this.limit = state.perPage;\n          this.orderBy = state.orderBy;\n        }\n\n        if (!this.opts.pagination.dropdown) {\n          setTimeout(function () {\n            _this.$refs.pagination.Page = state.page;\n          }, 0);\n        }\n\n        this.activeState = true;\n      }\n    },\n    watch: {\n      url: function url() {\n        this.refresh();\n      }\n    },\n    computed: {\n      totalPages: __webpack_require__(/*! ./computed/total-pages */ \"./lib/computed/total-pages.js\"),\n      filteredQuery: __webpack_require__(/*! ./computed/filtered-query */ \"./lib/computed/filtered-query.js\"),\n      hasMultiSort: function hasMultiSort() {\n        return this.opts.serverMultiSorting;\n      }\n    }\n  }, state);\n\n  Vue.component(\"v-server-table\", server);\n  return server;\n};\n\n//# sourceURL=webpack://VueTables/./lib/v-server-table.js?");
 
 /***/ }),
 
@@ -1743,17 +1852,6 @@ eval("var Pagination = __webpack_require__(/*! ./compiled/Pagination */ \"./node
 /***/ (function(module, exports) {
 
 eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn this;\n})();\n\ntry {\n\t// This works if eval is allowed (see CSP)\n\tg = g || new Function(\"return this\")();\n} catch (e) {\n\t// This works if the window reference is available\n\tif (typeof window === \"object\") g = window;\n}\n\n// g can still be undefined, but nothing to do about it...\n// We return undefined, instead of nothing here, so it's\n// easier to handle this case. if(!global) { ...}\n\nmodule.exports = g;\n\n\n//# sourceURL=webpack://VueTables/(webpack)/buildin/global.js?");
-
-/***/ }),
-
-/***/ "./node_modules/webpack/buildin/harmony-module.js":
-/*!*******************************************!*\
-  !*** (webpack)/buildin/harmony-module.js ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("module.exports = function(originalModule) {\n\tif (!originalModule.webpackPolyfill) {\n\t\tvar module = Object.create(originalModule);\n\t\t// module.parent = undefined by default\n\t\tif (!module.children) module.children = [];\n\t\tObject.defineProperty(module, \"loaded\", {\n\t\t\tenumerable: true,\n\t\t\tget: function() {\n\t\t\t\treturn module.l;\n\t\t\t}\n\t\t});\n\t\tObject.defineProperty(module, \"id\", {\n\t\t\tenumerable: true,\n\t\t\tget: function() {\n\t\t\t\treturn module.i;\n\t\t\t}\n\t\t});\n\t\tObject.defineProperty(module, \"exports\", {\n\t\t\tenumerable: true\n\t\t});\n\t\tmodule.webpackPolyfill = 1;\n\t}\n\treturn module;\n};\n\n\n//# sourceURL=webpack://VueTables/(webpack)/buildin/harmony-module.js?");
 
 /***/ }),
 
