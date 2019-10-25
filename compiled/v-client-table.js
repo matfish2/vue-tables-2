@@ -80,6 +80,9 @@ exports.install = function (Vue, globalOptions, useVuex) {
         this.initDateFilters();
       }
     },
+    model: {
+      prop: 'data'
+    },
     data: function data() {
       return _merge["default"].recursive(_data(), {
         source: 'client',

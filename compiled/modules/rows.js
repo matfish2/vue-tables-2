@@ -2,6 +2,8 @@
 
 var _babelHelperVueJsxMergeProps = _interopRequireDefault(require("babel-helper-vue-jsx-merge-props"));
 
+var _clone = _interopRequireDefault(require("clone"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 module.exports = function (h) {
@@ -75,6 +77,7 @@ module.exports = function (h) {
 
       index = recordCount + index + 1;
       columns = [];
+      var update;
 
       if (_this.hasChildRow && _this.opts.showChildRowToggler) {
         var childRowToggler = h("td", [h("span", {
@@ -88,12 +91,14 @@ module.exports = function (h) {
 
       _this.allColumns.map(function (column) {
         var rowTemplate = _this.$scopedSlots && _this.$scopedSlots[column];
+        update = updateValue(row, column).bind(_this);
         columns.push(h("td", {
           "class": _this.columnClass(column)
         }, [rowTemplate ? rowTemplate({
           row: row,
           column: column,
-          index: index
+          index: index,
+          update: update
         }) : _this.render(row, column, index, h)]));
       });
 
@@ -120,3 +125,17 @@ module.exports = function (h) {
     return rows;
   };
 };
+
+function updateValue(row, column) {
+  return function (e) {
+    row[column] = e.target.value;
+    var data = (0, _clone["default"])(this.data).map(function (r) {
+      if (r.id === row.id) {
+        return row;
+      }
+
+      return r;
+    });
+    this.$emit('input', data);
+  };
+}
