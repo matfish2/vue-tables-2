@@ -817,6 +817,7 @@ rowAttributesCallback | Function | Add dynamic attributes to table rows.<br><br>
 rowClassCallback | Function | Add dynamic classes to table rows.<br><br> E.g function(row) { return `row-${row.id}`} <br><br>This can be useful for manipulating the appearance of rows based on the data they contain | `false`
 saveState | Boolean | Constantly save table state and reload it each time the component mounts. When setting it to true, use the `name` prop to set an identifier for the table | `false`
 sendEmptyFilters (server-side) | Boolean | When filtering by column send all request keys, including empty ones | `false` 
+sendInitialRequest (server-side) | Boolean | Should a request to fetch the data be sent immediately when the table renders | `true`
 serverMultiSorting | Boolean | Enable multiple columns sorting using Shift + Click on the server component | `false`
 showChildRowToggler | Boolean | Enable render of `child row toggler` cell | `true`
 skin | String | Space separated table styling classes | `table-striped table-bordered table-hover`
