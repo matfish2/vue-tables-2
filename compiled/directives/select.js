@@ -9,12 +9,8 @@ module.exports = {
       binding.value.cb.call(this, binding.value.params);
     });
   },
-
-  update: function update(el, binding, vnode, oldVnode) {
-    // el.value = vnode.context[binding.value];
+  update: function update(el, binding, vnode, oldVnode) {// el.value = vnode.context[binding.value];
     // console.log(binding.value + " was updated");
     //  vnode.context[binding.value] = el.value;
-
   }
-
 };

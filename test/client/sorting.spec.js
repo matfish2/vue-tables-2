@@ -1,5 +1,5 @@
 describe(suite + ': Sorting', function() {
-	
+
 	it('sorts initially by orderBy option', (done)=>{
 		see('Zimb', 'tbody tr:first-child td:nth-child(2)');
 		exists('table thead tr:first-child th:nth-child(2) .glyphicon.glyphicon-sort');
@@ -19,10 +19,10 @@ describe(suite + ': Sorting', function() {
 	});
 
 	it('sorts in response to click on heading cell', (done)=>{
-		
+
 		see('Zimb', 'tbody tr:first-child td:nth-child(2)');
 		exists('table thead tr:first-child th:nth-child(2) .glyphicon.glyphicon-sort');
-		
+
 		click('table thead tr:first-child th:first-child'); // code - ASC
 
 		run(function() {
@@ -33,10 +33,10 @@ describe(suite + ': Sorting', function() {
 	});
 
 	it('sorts in response to a method call', (done)=>{
-		
+
 		see('Zimb', 'tbody tr:first-child td:nth-child(2)');
 		exists('table thead tr:first-child th:nth-child(2) .glyphicon.glyphicon-sort');
-		
+
 		vm().setOrder('code', true);
 
 		run(function() {
@@ -82,23 +82,23 @@ describe(suite + ': Sorting', function() {
 		click('table thead tr:first-child th:nth-child(2)'); // name - DESC
 
 		run(()=>{
-			expect(vm().filteredData[0].name).toEqual('Turkey');
-			see('Turkey', 'tbody tr:first-child td:nth-child(2)');
+			expect(vm().filteredData[0].name).toEqual('Uruguay');
+			see('Uruguay', 'tbody tr:first-child td:nth-child(2)');
 		},done);
 
 	});
 
 	it('can sort by nested values', ()=>{
-        createWrapper({debounce:0,             
+        createWrapper({debounce:0,
             orderBy:{
             column:'meta.population',
             ascending:false
-        }},['id','name','meta.population','meta.area','meta.fauna.lions']);    
-        
+        }},['id','name','meta.population','meta.area','meta.fauna.lions']);
+
             see('Yemen','table tbody tr:first-child td:nth-child(2)');
             see('Zimbabwe','table tbody tr:nth-child(2) td:nth-child(2)');
             see('Zambia','table tbody tr:nth-child(3) td:nth-child(2)');
-            
+
     });
 
 });

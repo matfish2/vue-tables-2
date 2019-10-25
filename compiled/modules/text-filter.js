@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var debounce = require('debounce');
 
@@ -13,26 +13,28 @@ module.exports = function (h, inputClass) {
     var onKeyUp = function onKeyUp(e) {
       if (e.keyCode === 13) {
         debouncedSearch.clear();
-        search.apply(undefined, arguments);
+        search.apply(void 0, arguments);
       } else {
-        debouncedSearch.apply(undefined, arguments);
+        debouncedSearch.apply(void 0, arguments);
       }
     };
   }
 
   return function (column) {
-    return h('input', {
+    return h("input", {
       on: {
-        'keyup': _this.opts.debounce ? onKeyUp : search
+        "keyup": _this.opts.debounce ? onKeyUp : search
       },
-
-      'class': inputClass,
-      attrs: { name: _this._getColumnName(column),
-        type: 'text',
-        placeholder: _this.display('filterBy', { column: _this.getHeading(column) })
+      "class": inputClass,
+      attrs: {
+        name: _this._getColumnName(column),
+        type: "text",
+        placeholder: _this.display('filterBy', {
+          column: _this.getHeading(column)
+        })
       },
       domProps: {
-        'value': _this.query[column]
+        "value": _this.query[column]
       }
     });
   };

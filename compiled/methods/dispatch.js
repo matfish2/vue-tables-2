@@ -1,13 +1,10 @@
-'use strict';
+"use strict";
 
-var _bus = require('../bus');
+var _bus = _interopRequireDefault(require("../bus"));
 
-var _bus2 = _interopRequireDefault(_bus);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 module.exports = function (event, payload) {
-
   if (this.vuex) {
     if (event.split('::').length > 1) return;
     this.commit(event.toUpperCase().replace('-', '_'), payload);
@@ -15,9 +12,9 @@ module.exports = function (event, payload) {
 
   this.$emit(event, payload);
 
-  _bus2.default.$emit('vue-tables.' + event, payload);
+  _bus["default"].$emit("vue-tables.".concat(event), payload);
 
   if (this.name) {
-    _bus2.default.$emit('vue-tables.' + this.name + '.' + event, payload);
+    _bus["default"].$emit("vue-tables.".concat(this.name, ".").concat(event), payload);
   }
 };

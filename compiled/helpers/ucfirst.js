@@ -1,9 +1,10 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
+exports["default"] = _default;
 
-exports.default = function (str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-};
+function _default(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}

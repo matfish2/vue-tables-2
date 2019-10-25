@@ -1,5 +1,5 @@
-'use strict';
+"use strict";
 
 module.exports = function (column) {
-    return 'vf__' + column.split('.').join('@@@');
+  return 'vf__' + column.split('.').join('@@@');
 };

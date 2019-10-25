@@ -1,11 +1,10 @@
-'use strict';
+"use strict";
 
 var is_empty = require('../helpers/is-empty');
 
 var registerVuexModule = require('../state/register-module');
 
 module.exports = function (self) {
-
   if (self.vuex) {
     registerVuexModule(self);
   } else {
@@ -13,9 +12,7 @@ module.exports = function (self) {
   }
 
   if (is_empty(self.opts.columnsDisplay) || typeof window === 'undefined') return;
-
   self.columnsDisplay = getColumnsDisplay(self.opts.columnsDisplay);
-
   window.addEventListener('resize', function () {
     self.windowWidth = window.innerWidth;
   }.bind(self));
@@ -29,6 +26,7 @@ function getColumnsDisplay(columnsDisplay) {
 
   for (var column in columnsDisplay) {
     operator = getOperator(columnsDisplay[column]);
+
     try {
       device = getDevice(columnsDisplay[column]);
       range = getRange(device, operator);
@@ -42,7 +40,6 @@ function getColumnsDisplay(columnsDisplay) {
 }
 
 function getRange(device, operator) {
-
   var devices = {
     desktop: [1024, null],
     tablet: [480, 1024],
@@ -56,19 +53,18 @@ function getRange(device, operator) {
   switch (operator) {
     case 'min':
       return [devices[device][0], null];
+
     case 'max':
       return [0, devices[device][1]];
+
     default:
       return devices[device];
   }
 }
 
 function getOperator(val) {
-
   var pieces = val.split('_');
-
   if (['not', 'min', 'max'].indexOf(pieces[0]) > -1) return pieces[0];
-
   return false;
 }
 

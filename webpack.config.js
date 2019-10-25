@@ -1,7 +1,9 @@
 var path = require('path')
 var webpack = require('webpack')
+process.traceDeprecation = true;
 
 module.exports = {
+  mode: 'production',
   entry: './compiled/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),

@@ -1,20 +1,19 @@
-'use strict';
+"use strict";
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 module.exports = function () {
+  if (_typeof(this.query) !== 'object' || this.opts.sendEmptyFilters) {
+    return this.query;
+  }
 
-    if (_typeof(this.query) !== 'object' || this.opts.sendEmptyFilters) {
-        return this.query;
+  var result = {};
+
+  for (var key in this.query) {
+    if (this.query[key] !== '') {
+      result[key] = this.query[key];
     }
+  }
 
-    var result = {};
-
-    for (var key in this.query) {
-        if (this.query[key] !== '') {
-            result[key] = this.query[key];
-        }
-    }
-
-    return result;
+  return result;
 };

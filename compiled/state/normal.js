@@ -3,8 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports["default"] = _default;
 
-exports.default = function () {
+function _default() {
   return {
     computed: {
       Columns: function Columns() {
@@ -12,4 +13,4 @@ exports.default = function () {
       }
     }
   };
-};
+}

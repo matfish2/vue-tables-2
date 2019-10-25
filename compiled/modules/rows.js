@@ -1,16 +1,13 @@
-'use strict';
+"use strict";
 
-var _babelHelperVueJsxMergeProps = require('babel-helper-vue-jsx-merge-props');
+var _babelHelperVueJsxMergeProps = _interopRequireDefault(require("babel-helper-vue-jsx-merge-props"));
 
-var _babelHelperVueJsxMergeProps2 = _interopRequireDefault(_babelHelperVueJsxMergeProps);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 module.exports = function (h) {
   var _this = this;
 
   return function (classes) {
-
     var data;
 
     if (_this.source === 'client') {
@@ -25,27 +22,21 @@ module.exports = function (h) {
     }
 
     if (_this.count === 0) {
-
       var colspan = _this.allColumns.length;
       if (_this.hasChildRow && _this.opts.showChildRowToggler) colspan++;
-
-      return h(
-        'tr',
-        { 'class': 'VueTables__no-results' },
-        [h(
-          'td',
-          { 'class': 'text-center',
-            attrs: { colspan: _this.colspan }
-          },
-          [_this.display(_this.loading ? 'loading' : 'noResults')]
-        )]
-      );
+      return h("tr", {
+        "class": "VueTables__no-results"
+      }, [h("td", {
+        "class": "text-center",
+        attrs: {
+          colspan: _this.colspan
+        }
+      }, [_this.display(_this.loading ? 'loading' : 'noResults')])]);
     }
 
     var rows = [];
     var columns;
     var rowKey = _this.opts.uniqueKey;
-
     var rowAttributes;
     var rowClass;
     var recordCount = (_this.Page - 1) * _this.limit;
@@ -53,36 +44,28 @@ module.exports = function (h) {
     var groupSlot;
     var groupValue;
     var groupByContent;
-
     data.map(function (row, index) {
-
       if (_this.opts.groupBy && _this.source === 'client' && row[_this.opts.groupBy] !== currentGroup) {
         groupSlot = _this.getGroupSlot(row[_this.opts.groupBy]);
         groupValue = row[_this.opts.groupBy];
-
-        groupByContent = _this.opts.toggleGroups ? h(
-          'button',
-          { 'class': classes.button, on: {
-              'click': _this.toggleGroup.bind(_this, groupValue)
-            }
-          },
-          [groupValue, h('span', { 'class': _this.groupToggleIcon(groupValue) })]
-        ) : groupValue;
-
-        rows.push(h(
-          'tr',
-          { 'class': classes.groupTr, on: {
-              'click': _this._toggleGroupDirection.bind(_this)
-            }
-          },
-          [h(
-            'td',
-            {
-              attrs: { colspan: _this.colspan }
-            },
-            [groupByContent, groupSlot]
-          )]
-        ));
+        groupByContent = _this.opts.toggleGroups ? h("button", {
+          "class": classes.button,
+          on: {
+            "click": _this.toggleGroup.bind(_this, groupValue)
+          }
+        }, [groupValue, h("span", {
+          "class": _this.groupToggleIcon(groupValue)
+        })]) : groupValue;
+        rows.push(h("tr", {
+          "class": classes.groupTr,
+          on: {
+            "click": _this._toggleGroupDirection.bind(_this)
+          }
+        }, [h("td", {
+          attrs: {
+            colspan: _this.colspan
+          }
+        }, [groupByContent, groupSlot])]));
         currentGroup = row[_this.opts.groupBy];
       }
 
@@ -91,56 +74,49 @@ module.exports = function (h) {
       }
 
       index = recordCount + index + 1;
-
       columns = [];
 
       if (_this.hasChildRow && _this.opts.showChildRowToggler) {
-        var childRowToggler = h('td', [h('span', {
+        var childRowToggler = h("td", [h("span", {
           on: {
-            'click': _this.toggleChildRow.bind(_this, row[rowKey])
+            "click": _this.toggleChildRow.bind(_this, row[rowKey])
           },
-          'class': 'VueTables__child-row-toggler ' + _this.childRowTogglerClass(row[rowKey]) })]);
+          "class": "VueTables__child-row-toggler " + _this.childRowTogglerClass(row[rowKey])
+        })]);
         if (_this.opts.childRowTogglerFirst) columns.push(childRowToggler);
       }
 
       _this.allColumns.map(function (column) {
         var rowTemplate = _this.$scopedSlots && _this.$scopedSlots[column];
-
-        columns.push(h(
-          'td',
-          { 'class': _this.columnClass(column) },
-          [rowTemplate ? rowTemplate({ row: row, column: column, index: index }) : _this.render(row, column, index, h)]
-        ));
+        columns.push(h("td", {
+          "class": _this.columnClass(column)
+        }, [rowTemplate ? rowTemplate({
+          row: row,
+          column: column,
+          index: index
+        }) : _this.render(row, column, index, h)]));
       });
 
       if (_this.hasChildRow && !_this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) columns.push(childRowToggler);
-
       rowClass = _this.opts.rowClassCallback ? _this.opts.rowClassCallback(row) : '';
       rowAttributes = _this.opts.rowAttributesCallback ? _this.opts.rowAttributesCallback(row) : {};
-
-      rows.push(h(
-        'tr',
-        (0, _babelHelperVueJsxMergeProps2.default)([{ attrs: rowAttributes }, { 'class': rowClass, on: {
-            'click': _this.rowWasClicked.bind(_this, row),
-            'dblclick': _this.rowWasClicked.bind(_this, row)
-          }
-        }]),
-        [columns, ' ']
-      ));
-
-      rows.push(_this.hasChildRow && _this.openChildRows.includes(row[rowKey]) ? h(
-        'tr',
-        { 'class': 'VueTables__child-row' },
-        [h(
-          'td',
-          {
-            attrs: { colspan: _this.colspan }
-          },
-          [_this._getChildRowTemplate(h, row)]
-        )]
-      ) : h());
+      rows.push(h("tr", (0, _babelHelperVueJsxMergeProps["default"])([{
+        attrs: rowAttributes
+      }, {
+        "class": rowClass,
+        on: {
+          "click": _this.rowWasClicked.bind(_this, row),
+          "dblclick": _this.rowWasClicked.bind(_this, row)
+        }
+      }]), [columns, " "]));
+      rows.push(_this.hasChildRow && _this.openChildRows.includes(row[rowKey]) ? h("tr", {
+        "class": 'VueTables__child-row'
+      }, [h("td", {
+        attrs: {
+          colspan: _this.colspan
+        }
+      }, [_this._getChildRowTemplate(h, row)])]) : h());
     });
-
     return rows;
   };
 };

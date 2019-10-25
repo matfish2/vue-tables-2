@@ -1,90 +1,60 @@
-'use strict';
+"use strict";
 
-var _merge = require('merge');
+var _merge = _interopRequireDefault(require("merge"));
 
-var _merge2 = _interopRequireDefault(_merge);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 module.exports = function (h, modules, classes, slots) {
-
   var filterId = 'VueTables__search_' + this.id;
   var perpageId = 'VueTables__limit_' + this.id;
+
   var perpageValues = require('../modules/per-page-values').call(this, h);
 
-  var genericFilter = this.hasGenericFilter ? h(
-    'div',
-    { 'class': 'VueTables__search-field' },
-    [h(
-      'label',
-      {
-        attrs: { 'for': filterId },
-        'class': classes.label },
-      [this.display('filter')]
-    ), modules.normalFilter(classes, filterId)]
-  ) : '';
-
-  var perpage = perpageValues.length > 1 ? h(
-    'div',
-    { 'class': 'VueTables__limit-field' },
-    [h(
-      'label',
-      { 'class': classes.label, attrs: { 'for': perpageId }
-      },
-      [this.display('limit')]
-    ), modules.perPage(perpageValues, classes.select, perpageId)]
-  ) : '';
-
-  var columnsDropdown = this.opts.columnsDropdown ? h(
-    'div',
-    { 'class': 'VueTables__columns-dropdown-wrapper' },
-    [modules.columnsDropdown(classes)]
-  ) : '';
-
-  var shouldShowTop = genericFilter || perpage || columnsDropdown || slots.beforeFilter || slots.afterFilter || slots.beforeLimit || slots.afterLimit;
-
-  var tableTop = h(
-    'div',
-    { 'class': classes.row, directives: [{
-        name: 'show',
-        value: shouldShowTop
-      }]
+  var genericFilter = this.hasGenericFilter ? h("div", {
+    "class": "VueTables__search-field"
+  }, [h("label", {
+    attrs: {
+      "for": filterId
     },
-    [h(
-      'div',
-      { 'class': classes.column },
-      [h(
-        'div',
-        { 'class': classes.field + ' ' + classes.inline + ' ' + classes.left + ' VueTables__search' },
-        [slots.beforeFilter, genericFilter, slots.afterFilter]
-      ), h(
-        'div',
-        { 'class': classes.field + ' ' + classes.inline + ' ' + classes.right + ' VueTables__limit' },
-        [slots.beforeLimit, perpage, slots.afterLimit]
-      ), columnsDropdown]
-    )]
-  );
-
-  return h(
-    'div',
-    { 'class': "VueTables VueTables--" + this.source },
-    [tableTop, slots.beforeTable, h(
-      'div',
-      { 'class': 'table-responsive' },
-      [h(
-        'table',
-        { 'class': 'VueTables__table ' + (this.opts.skin ? this.opts.skin : classes.table) },
-        [h('thead', [slots.prependHead, h('tr', [modules.headings(classes.right)]), slots.beforeFilters, modules.columnFilters(classes), slots.afterFilters]), h('tfoot', [h('tr', [h(
-          'td',
-          {
-            attrs: { colspan: this.colspan }
-          },
-          [modules.pagination((0, _merge2.default)(classes.pagination, {
-            list: classes.pagination.list + ' ' + classes.right + ' ' + classes.nomargin,
-            count: '' + classes.left
-          }))]
-        )])]), slots.beforeBody, h('tbody', [slots.prependBody, modules.rows(classes), slots.appendBody]), slots.afterBody]
-      )]
-    ), slots.afterTable]
-  );
+    "class": classes.label
+  }, [this.display('filter')]), modules.normalFilter(classes, filterId)]) : '';
+  var perpage = perpageValues.length > 1 ? h("div", {
+    "class": "VueTables__limit-field"
+  }, [h("label", {
+    "class": classes.label,
+    attrs: {
+      "for": perpageId
+    }
+  }, [this.display('limit')]), modules.perPage(perpageValues, classes.select, perpageId)]) : '';
+  var columnsDropdown = this.opts.columnsDropdown ? h("div", {
+    "class": "VueTables__columns-dropdown-wrapper"
+  }, [modules.columnsDropdown(classes)]) : '';
+  var shouldShowTop = genericFilter || perpage || columnsDropdown || slots.beforeFilter || slots.afterFilter || slots.beforeLimit || slots.afterLimit;
+  var tableTop = h("div", {
+    "class": classes.row,
+    directives: [{
+      name: "show",
+      value: shouldShowTop
+    }]
+  }, [h("div", {
+    "class": classes.column
+  }, [h("div", {
+    "class": "".concat(classes.field, " ").concat(classes.inline, " ").concat(classes.left, " VueTables__search")
+  }, [slots.beforeFilter, genericFilter, slots.afterFilter]), h("div", {
+    "class": "".concat(classes.field, " ").concat(classes.inline, " ").concat(classes.right, " VueTables__limit")
+  }, [slots.beforeLimit, perpage, slots.afterLimit]), columnsDropdown])]);
+  return h("div", {
+    "class": "VueTables VueTables--" + this.source
+  }, [tableTop, slots.beforeTable, h("div", {
+    "class": "table-responsive"
+  }, [h("table", {
+    "class": "VueTables__table ".concat(this.opts.skin ? this.opts.skin : classes.table)
+  }, [h("thead", [slots.prependHead, h("tr", [modules.headings(classes.right)]), slots.beforeFilters, modules.columnFilters(classes), slots.afterFilters]), h("tfoot", [h("tr", [h("td", {
+    attrs: {
+      colspan: this.colspan
+    }
+  }, [modules.pagination((0, _merge["default"])(classes.pagination, {
+    list: "".concat(classes.pagination.list, " ").concat(classes.right, " ").concat(classes.nomargin),
+    count: "".concat(classes.left)
+  }))])])]), slots.beforeBody, h("tbody", [slots.prependBody, modules.rows(classes), slots.appendBody]), slots.afterBody])]), slots.afterTable]);
 };

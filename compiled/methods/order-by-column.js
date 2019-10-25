@@ -1,7 +1,6 @@
-'use strict';
+"use strict";
 
 module.exports = function (colName, ev) {
-
   if (!this.sortable(colName)) return;
 
   if (ev.shiftKey && this.orderBy.column && this.hasMultiSort) {
@@ -10,7 +9,6 @@ module.exports = function (colName, ev) {
     this.userMultiSorting = {};
     this.orderBy.ascending = colName == this.orderBy.column ? !this.orderBy.ascending : this._initialOrderAscending(colName);
     this.orderBy.column = colName;
-
     this.updateState('orderBy', this.orderBy);
     this.dispatch('sorted', JSON.parse(JSON.stringify(this.orderBy)));
   }

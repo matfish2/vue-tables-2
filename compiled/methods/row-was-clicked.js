@@ -1,7 +1,6 @@
-'use strict';
+"use strict";
 
 module.exports = function (row, event) {
-
   var data;
   var id = this.opts.uniqueKey;
 
@@ -13,5 +12,8 @@ module.exports = function (row, event) {
     data = row;
   }
 
-  this.dispatch('row-click', { row: data, event: event });
+  this.dispatch('row-click', {
+    row: data,
+    event: event
+  });
 };

@@ -1,9 +1,7 @@
-'use strict';
+"use strict";
 
 module.exports = function (column) {
-
   var cls = this.opts.sortIcon.base + ' ';
-
   if (!this.sortable(column)) return;
 
   if (this.opts.sortIcon.is && !this._currentlySorted(column)) {

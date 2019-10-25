@@ -1,22 +1,21 @@
-'use strict';
+"use strict";
 
 module.exports = function (e, dateEvent) {
-
   // we need to handle the store this.query to make sure we're not mutating outside of it
-  var query = this.vuex ? JSON.parse(JSON.stringify(this.query)) : this.query;
+  var query = this.vuex ? JSON.parse(JSON.stringify(this.query)) : this.query; // in case we pass an object manually (mostly used for init-date-filters should refactor
 
-  // in case we pass an object manually (mostly used for init-date-filters should refactor
   if (Object.prototype.toString.call(e).slice(8, -1) == 'Object') {
     query = this.vuex ? JSON.parse(JSON.stringify(e)) : e;
-
     if (!this.vuex) this.query = query;
-
     var name = dateEvent.target.name;
     var value = dateEvent.target.value;
 
     if (name) {
-      this.dispatch('filter', { name: name, value: value });
-      this.dispatch('filter::' + name, value);
+      this.dispatch('filter', {
+        name: name,
+        value: value
+      });
+      this.dispatch("filter::".concat(name), value);
     } else {
       this.dispatch('filter', value);
     }
@@ -24,6 +23,7 @@ module.exports = function (e, dateEvent) {
     this.updateState('query', query);
   } else if (e) {
     var _name = this.getName(e.target.name);
+
     var _value = e.target.value;
 
     if (_name) {
@@ -35,8 +35,11 @@ module.exports = function (e, dateEvent) {
     if (!this.vuex) this.query = query;
 
     if (_name) {
-      this.dispatch('filter', { name: _name, value: _value });
-      this.dispatch('filter::' + _name, _value);
+      this.dispatch('filter', {
+        name: _name,
+        value: _value
+      });
+      this.dispatch("filter::".concat(_name), _value);
     } else {
       this.dispatch('filter', _value);
     }
@@ -48,7 +51,6 @@ module.exports = function (e, dateEvent) {
 };
 
 function search(that, query) {
-
   if (that.vuex) {
     that.commit('SET_FILTER', query);
   } else {

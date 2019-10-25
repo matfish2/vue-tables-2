@@ -1,19 +1,17 @@
-'use strict';
+"use strict";
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 var object_filled_keys_count = require('../helpers/object-filled-keys-count');
+
 var is_valid_moment_object = require('../helpers/is-valid-moment-object');
+
 var filterByCustomFilters = require('../filters/custom-filters');
 
 module.exports = function (data, e) {
-
   if (e) {
-
     var _query = this.query;
-
     this.setPage(1, true);
-
     var name = this.getName(e.target.name);
     var value = _typeof(e.target.value) === 'object' ? e.target.value : '' + e.target.value;
 
@@ -24,21 +22,21 @@ module.exports = function (data, e) {
     }
 
     this.vuex ? this.commit('SET_FILTER', _query) : this.query = _query;
-
     this.updateState('query', _query);
 
     if (name) {
-      this.dispatch('filter', { name: name, value: value });
-      this.dispatch('filter::' + name, value);
+      this.dispatch('filter', {
+        name: name,
+        value: value
+      });
+      this.dispatch("filter::".concat(name), value);
     } else {
       this.dispatch('filter', value);
     }
   }
 
   var query = this.query;
-
   var totalQueries = !query ? 0 : 1;
-
   if (!this.opts) return data;
 
   if (this.opts.filterByColumn) {
@@ -46,6 +44,7 @@ module.exports = function (data, e) {
     var dict = this.customQueries;
     Object.keys(this.customQueries).forEach(function (customQueryKey) {
       var customQueryValue = dict[customQueryKey];
+
       if (customQueryValue != "") {
         totalQueries--;
       }
@@ -58,21 +57,14 @@ module.exports = function (data, e) {
   var dateFormat;
   var filterByDate;
   var isListFilter;
-
   var data = filterByCustomFilters(data, this.opts.customFilters, this.customQueries);
-
   if (!totalQueries) return data;
-
   return data.filter(function (row, index) {
-
     found = 0;
-
     this.filterableColumns.forEach(function (column) {
-
       filterByDate = this.opts.dateColumns.indexOf(column) > -1 && this.opts.filterByColumn;
       isListFilter = this.isListFilter(column) && this.opts.filterByColumn;
       dateFormat = this.dateFormat(column);
-
       value = this._getValue(row, column);
 
       if (is_valid_moment_object(value) && !filterByDate) {
@@ -80,54 +72,43 @@ module.exports = function (data, e) {
       }
 
       currentQuery = this.opts.filterByColumn ? query[column] : query;
-
       currentQuery = setCurrentQuery(currentQuery);
-
       if (currentQuery && foundMatch(currentQuery, value, isListFilter)) found++;
     }.bind(this));
-
     return found >= totalQueries;
   }.bind(this));
 };
 
 function setCurrentQuery(query) {
-
   if (!query) return '';
-
-  if (typeof query == 'string') return query.toLowerCase();
-
-  // Date Range
+  if (typeof query == 'string') return query.toLowerCase(); // Date Range
 
   return query;
 }
 
 function foundMatch(query, value, isListFilter) {
-
-  if (['string', 'number', 'boolean'].indexOf(typeof value === 'undefined' ? 'undefined' : _typeof(value)) > -1) {
+  if (['string', 'number', 'boolean'].indexOf(_typeof(value)) > -1) {
     value = String(value).toLowerCase();
-  }
+  } // List Filter
 
-  // List Filter
+
   if (isListFilter) {
     return value == query;
-  }
+  } //Text Filter
 
-  //Text Filter
+
   if (typeof value === 'string') {
     return value.indexOf(query) > -1;
-  }
+  } // Date range
 
-  // Date range
 
   if (is_valid_moment_object(value)) {
     var start = moment(query.start, 'YYYY-MM-DD HH:mm:ss');
     var end = moment(query.end, 'YYYY-MM-DD HH:mm:ss');
-
     return value >= start && value <= end;
   }
 
-  if ((typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object') {
-
+  if (_typeof(value) === 'object') {
     for (var key in value) {
       if (foundMatch(query, value[key])) return true;
     }

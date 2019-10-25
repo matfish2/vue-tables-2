@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
 module.exports = function (h, classes, item) {
-    if (classes.framework === 'bulma') {
-        return item;
-    }
+  if (classes.framework === 'bulma') {
+    return item;
+  }
 
-    return h('li', [item]);
+  return h("li", [item]);
 };

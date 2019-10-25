@@ -1,7 +1,6 @@
 "use strict";
 
 module.exports = function (key, value) {
-
   if (!this.opts.saveState || !this.activeState) return;
 
   try {
@@ -11,6 +10,5 @@ module.exports = function (key, value) {
   }
 
   currentState[key] = value;
-
   this.storage.setItem(this.stateKey, JSON.stringify(currentState));
 };

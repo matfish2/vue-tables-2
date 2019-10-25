@@ -1,18 +1,14 @@
-'use strict';
+"use strict";
 
 module.exports = function (value, h) {
+  if (typeof value !== 'string') return '';
+  var derivedHeadingTooltip = '';
+  if (!this.opts.headingsTooltips.hasOwnProperty(value)) return derivedHeadingTooltip;
 
-	if (typeof value !== 'string') return '';
+  if (typeof this.opts.headingsTooltips[value] === 'function') {
+    if (h) return this.opts.headingsTooltips[value].call(this.$parent, h);
+    return derivedHeadingTooltip;
+  }
 
-	var derivedHeadingTooltip = '';
-
-	if (!this.opts.headingsTooltips.hasOwnProperty(value)) return derivedHeadingTooltip;
-
-	if (typeof this.opts.headingsTooltips[value] === 'function') {
-		if (h) return this.opts.headingsTooltips[value].call(this.$parent, h);
-
-		return derivedHeadingTooltip;
-	}
-
-	return this.opts.headingsTooltips[value];
+  return this.opts.headingsTooltips[value];
 };

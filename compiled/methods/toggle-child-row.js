@@ -1,7 +1,6 @@
 "use strict";
 
 module.exports = function (rowId, e) {
-
   if (e) e.stopPropagation();
 
   if (this.openChildRows.includes(rowId)) {

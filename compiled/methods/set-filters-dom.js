@@ -1,15 +1,12 @@
-'use strict';
+"use strict";
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 module.exports = function (query) {
-
   var el;
 
   if (this.opts.filterByColumn) {
-
     for (var column in query) {
-
       var columnName = this._getColumnName(column);
 
       if (this.isDateFilter(column)) {
@@ -19,16 +16,20 @@ module.exports = function (query) {
 
           this._setDatepickerText(column, start, end);
         } else {
-          $(this.$el).find("#VueTables__" + $.escapeSelector(column) + "-filter").html("<span class='VueTables__filter-placeholder'>" + this.display('filterBy', { column: this.getHeading(column) }) + "</span>");
+          $(this.$el).find("#VueTables__" + $.escapeSelector(column) + "-filter").html("<span class='VueTables__filter-placeholder'>" + this.display('filterBy', {
+            column: this.getHeading(column)
+          }) + "</span>");
         }
+
         continue;
       }
-      el = this.$el.querySelector('[name=\'' + columnName + '\']');
+
+      el = this.$el.querySelector("[name='".concat(columnName, "']"));
 
       if (el) {
         el.value = query[column];
       } else if (this.columns.indexOf(column) === -1) {
-        console.error('vue-tables-2: Error in setting filter value. Column \'' + column + '\' does not exist.');
+        console.error("vue-tables-2: Error in setting filter value. Column '".concat(column, "' does not exist."));
       }
     }
   } else {

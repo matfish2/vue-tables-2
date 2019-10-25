@@ -1,5 +1,5 @@
 "use strict";
 
 module.exports = function (column) {
-    return !this.opts.descOrderColumns.includes(column);
+  return !this.opts.descOrderColumns.includes(column);
 };

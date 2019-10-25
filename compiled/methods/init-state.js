@@ -8,8 +8,6 @@ module.exports = function () {
     perPage: this.opts.perPage,
     customQueries: this.customQueries
   };
-
   this.storage.setItem(this.stateKey, JSON.stringify(state));
-
   return state;
 };

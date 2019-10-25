@@ -3,6 +3,7 @@ var webpack = require('webpack')
 var env = process.env.NODE_ENV;
 console.log(env);
 module.exports = {
+  mode: env==='production' ? env : 'development',
   entry: './lib/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -10,6 +11,9 @@ module.exports = {
     filename: env==='production'?'vue-tables-2.min.js':'vue-tables.js',
     libraryTarget:'var',
     library:'VueTables'
+  },
+  optimization: {
+    minimize: env==='production'
   },
   externals: {
     'vue': 'Vue'
@@ -40,18 +44,9 @@ if (env==='production') {
         NODE_ENV: '"production"'
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap:false,
-      output:{
-        comments:false
-      },
-      compress: {
-        warnings: false
-      }
-    }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
     })
   ])
-  
+
 }
