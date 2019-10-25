@@ -10,6 +10,7 @@ module.exports = function (h, modules, classes, slots) {
 
   var perpageValues = require('../modules/per-page-values').call(this, h);
 
+  var caption = this.opts.caption ? h("caption", [this.opts.caption]) : '';
   var genericFilter = this.hasGenericFilter ? h("div", {
     "class": "VueTables__search-field"
   }, [h("label", {
@@ -48,8 +49,11 @@ module.exports = function (h, modules, classes, slots) {
   }, [tableTop, slots.beforeTable, h("div", {
     "class": "table-responsive"
   }, [h("table", {
-    "class": "VueTables__table ".concat(this.opts.skin ? this.opts.skin : classes.table)
-  }, [h("thead", [slots.prependHead, h("tr", [modules.headings(classes.right)]), slots.beforeFilters, modules.columnFilters(classes), slots.afterFilters]), h("tfoot", [h("tr", [h("td", {
+    "class": "VueTables__table ".concat(this.opts.skin ? this.opts.skin : classes.table),
+    attrs: {
+      summary: this.opts.summary
+    }
+  }, [caption, h("thead", [slots.prependHead, h("tr", [modules.headings(classes.right)]), slots.beforeFilters, modules.columnFilters(classes), slots.afterFilters]), h("tfoot", [h("tr", [h("td", {
     attrs: {
       colspan: this.colspan
     }

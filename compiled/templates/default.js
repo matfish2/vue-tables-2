@@ -11,6 +11,7 @@ module.exports = function (h, modules, classes, slots) {
 
   var perpageValues = require("../modules/per-page-values").call(this, h);
 
+  var caption = this.opts.caption ? h("caption", [this.opts.caption]) : '';
   var genericFilter = this.hasGenericFilter ? h("div", {
     "class": "VueTables__search-field"
   }, [h("label", {
@@ -63,8 +64,11 @@ module.exports = function (h, modules, classes, slots) {
   }, [tableTop, slots.beforeTable, h("div", {
     "class": "table-responsive"
   }, [h("table", {
-    "class": "VueTables__table ".concat(this.opts.skin ? this.opts.skin : classes.table)
-  }, [h("thead", [slots.prependHead, h("tr", [modules.headings(classes.right)]), slots.beforeFilters, modules.columnFilters(classes), slots.afterFilters]), footerHeadings, slots.beforeBody, h("tbody", [slots.prependBody, modules.rows(classes), slots.appendBody]), slots.afterBody])]), slots.afterTable, modules.pagination((0, _merge["default"])(classes.pagination, {
+    "class": "VueTables__table ".concat(this.opts.skin ? this.opts.skin : classes.table),
+    attrs: {
+      summary: this.opts.summary
+    }
+  }, [caption, h("thead", [slots.prependHead, h("tr", [modules.headings(classes.right)]), slots.beforeFilters, modules.columnFilters(classes), slots.afterFilters]), footerHeadings, slots.beforeBody, h("tbody", [slots.prependBody, modules.rows(classes), slots.appendBody]), slots.afterBody])]), slots.afterTable, modules.pagination((0, _merge["default"])(classes.pagination, {
     wrapper: "".concat(classes.row, " ").concat(classes.column, " ").concat(classes.contentCenter),
     nav: classes.center,
     count: "".concat(classes.center, " ").concat(classes.column)

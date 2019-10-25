@@ -14,5 +14,4 @@ describe(suite + ': Templates',()=>{
 			exists('a.country-link');
 		},done);
 	});
-
 });

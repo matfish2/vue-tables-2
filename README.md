@@ -770,6 +770,7 @@ Options are set in three layers, where the more particular overrides the more ge
 
 Option | Type | Description | Default
 -------|------|-------------|--------
+caption | String | table `caption` element | `false`
 childRow | Function| [See documentation](#child-rows) | `false`
 childRowTogglerFirst | Boolean | Should the child row be positioned at the first column or the last one | `true`
 clientMultiSorting | Boolean | Enable multiple columns sorting using Shift + Click on the client component | `true`
@@ -822,6 +823,7 @@ skin | String | Space separated table styling classes | `table-striped table-bor
 sortIcon | String | Sort icon classes | `{ base:'glyphicon', up:'glyphicon-chevron-up', down:'glyphicon-chevron-down', is:'glyphicon-sort' }`
 sortable | Array |  Sortable columns | All columns
 sortingAlgorithm | Function | define your own sorting algorithm  | `function (data, column) { return data.sort(this.getSortFn(column));}`
+summary | String | Table's `summary` attribute for accessibility reasons | `false` 
 storage | String | Which persistance mechanism should be used when saveState is set to true: `local` - localStorage. `session` - sessionStorage | `local`
 templates | Object | See [documentation](#templates) | {}
 texts | Object | see the `texts` object in [defaults.js](https://github.com/matfish2/vue-tables-2/blob/master/lib/config/defaults.js)</code>
