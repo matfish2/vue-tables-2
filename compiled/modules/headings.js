@@ -9,11 +9,7 @@ module.exports = function (h) {
     var sortControl = require('./sort-control')(h, right);
 
     var headings = [];
-    if (_this.hasChildRow && _this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) headings.push(h("th", {
-      attrs: {
-        tabindex: "0"
-      }
-    }));
+    if (_this.hasChildRow && _this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) headings.push(h("th"));
 
     _this.allColumns.map(function (column) {
       headings.push(h("th", {
@@ -37,11 +33,7 @@ module.exports = function (h) {
       }, [this.getHeading(column, h)]), sortControl.call(this, column)]));
     }.bind(_this));
 
-    if (_this.hasChildRow && !_this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) headings.push(h("th", {
-      attrs: {
-        tabindex: "0"
-      }
-    }));
+    if (_this.hasChildRow && !_this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) headings.push(h("th"));
     return headings;
   };
 };

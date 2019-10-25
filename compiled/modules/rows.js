@@ -78,10 +78,19 @@ module.exports = function (h) {
       columns = [];
 
       if (_this.hasChildRow && _this.opts.showChildRowToggler) {
-        var childRowToggler = h("td", [h("span", {
-          on: {
-            "click": _this.toggleChildRow.bind(_this, row[rowKey])
+        var childRowToggler = h("td", {
+          attrs: {
+            tabindex: "0"
           },
+          on: {
+            "keypress": function keypress(e) {
+              if (e.key === 'Enter') {
+                _this.toggleChildRow.bind(_this, row[rowKey])();
+              }
+            },
+            "click": _this.toggleChildRow.bind(_this, row[rowKey])
+          }
+        }, [h("span", {
           "class": "VueTables__child-row-toggler " + _this.childRowTogglerClass(row[rowKey])
         })]);
         if (_this.opts.childRowTogglerFirst) columns.push(childRowToggler);
