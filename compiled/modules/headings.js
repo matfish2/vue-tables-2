@@ -7,14 +7,21 @@ module.exports = function (h) {
     var sortControl = require('./sort-control')(h, right);
 
     var headings = [];
-    if (_this.hasChildRow && _this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) headings.push(h("th"));
+    if (_this.hasChildRow && _this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) headings.push(h("th", {
+      attrs: {
+        tabindex: "0"
+      }
+    }));
 
     _this.allColumns.map(function (column) {
       headings.push(h("th", {
         on: {
           "click": this.orderByColumn.bind(this, column)
         },
-        "class": this.sortableClass(column)
+        "class": this.sortableClass(column),
+        attrs: {
+          tabindex: "0"
+        }
       }, [h("span", {
         "class": "VueTables__heading",
         attrs: {
@@ -23,7 +30,11 @@ module.exports = function (h) {
       }, [this.getHeading(column, h)]), sortControl.call(this, column)]));
     }.bind(_this));
 
-    if (_this.hasChildRow && !_this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) headings.push(h("th"));
+    if (_this.hasChildRow && !_this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) headings.push(h("th", {
+      attrs: {
+        tabindex: "0"
+      }
+    }));
     return headings;
   };
 };

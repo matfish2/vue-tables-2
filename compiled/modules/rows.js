@@ -29,6 +29,7 @@ module.exports = function (h) {
       }, [h("td", {
         "class": "text-center",
         attrs: {
+          tabindex: "0",
           colspan: _this.colspan
         }
       }, [_this.display(_this.loading ? 'loading' : 'noResults')])]);
@@ -89,7 +90,10 @@ module.exports = function (h) {
       _this.allColumns.map(function (column) {
         var rowTemplate = _this.$scopedSlots && _this.$scopedSlots[column];
         columns.push(h("td", {
-          "class": _this.columnClass(column)
+          "class": _this.columnClass(column),
+          attrs: {
+            tabindex: "0"
+          }
         }, [rowTemplate ? rowTemplate({
           row: row,
           column: column,
@@ -113,7 +117,8 @@ module.exports = function (h) {
         "class": 'VueTables__child-row'
       }, [h("td", {
         attrs: {
-          colspan: _this.colspan
+          colspan: _this.colspan,
+          tabindex: "0"
         }
       }, [_this._getChildRowTemplate(h, row)])]) : h());
     });
