@@ -99,7 +99,7 @@ module.exports = function (h) {
       _this.allColumns.map(function (column) {
         var rowTemplate = _this.$scopedSlots && _this.$scopedSlots[column];
         columns.push(h("td", {
-          "class": _this.columnClass(column),
+          "class": "".concat(_this.columnClass(column), " ").concat(_this._cellClasses(column, row)).trim(),
           attrs: {
             tabindex: "0"
           }

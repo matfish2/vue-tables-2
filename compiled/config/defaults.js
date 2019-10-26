@@ -102,6 +102,7 @@ module.exports = function () {
     storage: "local",
     columnsClasses: {},
     summary: false,
-    caption: false
+    caption: false,
+    cellClasses: {}
   };
 };
