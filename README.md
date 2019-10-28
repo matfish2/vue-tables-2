@@ -401,15 +401,16 @@ As always examples work best to illustrate the syntax:
     // update a checkbox
     <input type="checkbox" slot="checkbox" slot-scope="{row, update}" v-model="row.checkbox" @input="update">
     
-    // update text on submit + toggle editable state
-    <div slot="text2" slot-scope="{row, update, setEditing, isEditing}">
+    // update text on submit + toggle editable state + revert to original value on cancel
+    <div slot="text2" slot-scope="{row, update, setEditing, isEditing, revertValue}">
      <span @click="setEditing(true)" v-if="!isEditing()">
          {{row.text2}}
      </span>
         <span v-else>
      <input type="text" v-model="row.text2">
         <button type="button" @click="update(row.text2); setEditing(false)">Submit</button>
-        </span>
+   <button type="button" @click="revertValue(); setEditing(false)">Cancel</button>        
+</span>
     </div>           
 </v-client-table>
 ```
