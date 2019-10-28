@@ -840,6 +840,7 @@ destroyEventBus | Boolean | Should the plugin destroy the event bus before the t
 filterable | Array / Boolean | Filterable columns `true` - All columns. | Set to `false` or `[]` to hide the filter(s). Single filter mode (`filterByColumn:false`) is also affected
 footerHeadings | Boolean | Display headings at the bottom of the table too | `false`
 headings | Object | Table headings. | Can be either a string or a function, if you wish to inject vue-compiled HTML.<br>E.g: `function(h) { return <h2>Title</h2>}`<br>Note that this example uses jsx, and not HTML.<br>The `this` context inside the function refers to the direct parent of the table instance.<br> Another option is to use a slot, named "h__{column}"<br>If no heading is provided the default rule is to extract it from the first row properties, where underscores become spaces and the first letter is capitalized
+hiddenColumns | Array / Boolean | An array of columns to hide initially (can then be added by user using `columnsDropdown` option). Mutually exclusive with `visibleColumns` | `false`
 groupBy (client-side) | String | Group rows by a common property. E.g, for a list of countries, group by the `continent` property | `false`
 groupMeta (client-side) | Array | Meta data associated with each group value. To be used in conjunction with `groupBy`. See documentation for a full example | `[]`
 headingsTooltips | Object | Table headings tooltips. | Can be either a string or a function, if you wish to inject vue-compiled HTML. Renders as `title` attribute of `<th>`. <br>E.g: `function(h) { return 'Expanded Title'}`<br>The `this` context inside the function refers to the direct parent of the table instance.
@@ -879,6 +880,7 @@ templates | Object | See [documentation](#templates) | {}
 texts | Object | see the `texts` object in [defaults.js](https://github.com/matfish2/vue-tables-2/blob/master/lib/config/defaults.js)</code>
 toMomentFormat (client-side) | String | transform date columns string values to momentjs objects using this format. If this option is not used the consumer is expected to pass momentjs objects himself | `false`
 uniqueKey | String | The key of a unique identifier in your dataset, used to track the child rows, and return the original row in row click event | `id`
+visibleColumns | Array / Boolean | An array of columns to show initially (can then be altered by user using `columnsDropdown` option). Mutually exclusive with `hiddenColumns` | `false`
 
 # VueJS 1
 

@@ -103,6 +103,8 @@ module.exports = function () {
     columnsClasses: {},
     summary: false,
     caption: false,
-    cellClasses: {}
+    cellClasses: {},
+    visibleColumns: false,
+    hiddenColumns: false
   };
 };

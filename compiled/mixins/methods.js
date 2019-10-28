@@ -58,5 +58,6 @@ module.exports = {
   dateFormat: require('../methods/date-format'),
   _setColumnsDropdownCloseListener: require('../methods/set-columns-dropdown-close-listener'),
   _getValue: require('../methods/get-value'),
-  _getColumnName: require('../methods/get-column-name')
+  _getColumnName: require('../methods/get-column-name'),
+  _shouldShowColumnOnInit: require('../methods/should-show-column-on-init')
 };

@@ -1,7 +1,7 @@
 describe(suite + ': Columns Display', () => {
 
     var dropdown = '.VueTables__columns-dropdown';
-    
+
     beforeEach(()=>{
         setOptions({
             columnsDropdown: true
@@ -30,7 +30,7 @@ describe(suite + ': Columns Display', () => {
         click('.dropdown-toggle');
 
         expect(vm().displayColumnsDropdown).toBe(true);
-        
+
     });
 
 
@@ -48,7 +48,7 @@ describe(suite + ': Columns Display', () => {
 
         see('Code','table thead tr:first-child th:first-child');
         count('table thead tr:first-child th',3);
-        
+
         toggleColumn(1);
 
         var first = els.shift();
@@ -67,7 +67,7 @@ describe(suite + ': Columns Display', () => {
 
         see('Code','table thead tr:first-child th:first-child');
         count('table thead tr:first-child th',3);
-        
+
     });
 
     it('When a column is hidden it does NOT pass the filter value to the next column (Regression test for #529)', (done)=>{
@@ -78,15 +78,15 @@ describe(suite + ': Columns Display', () => {
         });
 
         enterQuery('code','[name=vf__code]', 'ZW','UI');
-        see('Code','table thead tr:first-child th:first-child');        
+        see('Code','table thead tr:first-child th:first-child');
         expect(wrapper.find('table thead tr:nth-child(2) th:first-child input').element.value).toEqual('ZW');
         toggleColumn(1);
         vm().$nextTick(()=>{
-            expect(wrapper.find('table thead tr:nth-child(2) th:first-child input').element.name).toEqual('vf__name');      
+            expect(wrapper.find('table thead tr:nth-child(2) th:first-child input').element.name).toEqual('vf__name');
             expect(wrapper.find('table thead tr:nth-child(2) th:first-child input').element.value).not.toEqual('ZW');
             done();
         });
-             
+
     })
 
     it('disables the checked checkbox when only one column remains', () => {
@@ -96,15 +96,37 @@ describe(suite + ': Columns Display', () => {
         var els = getCheckboxes();
 
         expect(els[2].element.disabled).toBe(true);
-        
+
         els[2].element.disabled = false;
 
         toggleColumn(3);
 
         count('table thead tr:first-child th',1);
-    
+
     });
 
+    it('can hide some columns on init: whitelist', (done)=>{
+        setOptions({
+            visibleColumns:['code','name']
+        });
+
+        run(function() {
+            count('table tbody tr:first-child td', 2);
+        }, done);
+
+    });
+
+
+    it('can hide some columns on init: blacklist', (done)=>{
+        setOptions({
+            hiddenColumns:['code','name']
+        });
+
+        run(function() {
+            count('table tbody tr:first-child td', 1);
+        }, done);
+
+    });
 
 });
 
@@ -113,5 +135,5 @@ function getCheckboxes() {
 }
 
 function toggleColumn(num) {
-    click(`ul.dropdown-menu li:nth-child(${num}) a`);    
+    click(`ul.dropdown-menu li:nth-child(${num}) a`);
 }
