@@ -81,6 +81,7 @@ module.exports = function (h) {
       var update;
       var isEditing;
       var setEditing;
+      var revertValue;
 
       if (_this.hasChildRow && _this.opts.showChildRowToggler) {
         var childRowToggler = h("td", {
@@ -106,6 +107,7 @@ module.exports = function (h) {
         update = updateValue(row, column).bind(_this);
         isEditing = editing(row, column).bind(_this);
         setEditing = setEdit(row, column).bind(_this);
+        revertValue = revertVal(row, column).bind(_this);
         columns.push(h("td", {
           "class": "".concat(_this.columnClass(column), " ").concat(_this._cellClasses(column, row)).trim(),
           attrs: {
@@ -117,7 +119,8 @@ module.exports = function (h) {
           index: index,
           update: update,
           isEditing: isEditing,
-          setEditing: setEditing
+          setEditing: setEditing,
+          revertValue: revertValue
         }) : _this.render(row, column, index, h)]));
       });
 
@@ -153,7 +156,8 @@ function setEdit(row, column) {
     if (editing) {
       this.editing.push({
         id: row[this.opts.uniqueKey],
-        column: column
+        column: column,
+        originalValue: row[column]
       });
     } else {
       this.editing = this.editing.filter(function (e) {
@@ -173,12 +177,25 @@ function editing(row, column) {
   };
 }
 
+function revertVal(row, column) {
+  return function () {
+    var _this4 = this;
+
+    var origVal = this.editing.find(function (e) {
+      return e.id === row[_this4.opts.uniqueKey];
+    }).originalValue;
+    row[column] = origVal;
+  };
+}
+
 function updateValue(row, column) {
   return function (e) {
+    var _this5 = this;
+
     var oldVal = row[column];
     row[column] = getValue(e);
     var data = (0, _clone["default"])(this.data).map(function (r) {
-      if (r.id === row.id) {
+      if (r[_this5.opts.uniqueKey] === row[_this5.opts.uniqueKey]) {
         return row;
       }
 
