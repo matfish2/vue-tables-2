@@ -6,7 +6,8 @@ module.exports = function () {
     allFilteredData: [],
     openChildRows: [],
     windowWidth: typeof window !== 'undefined' ? window.innerWidth : null,
-    userMultiSorting: {}
+    userMultiSorting: {},
+    editing: []
   };
 };
 

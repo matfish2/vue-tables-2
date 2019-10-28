@@ -22,9 +22,9 @@ describe(suite + ': Custom Filters', ()=>{
         }
 
         sinon.assert.callCount(spy, 0);
-        
+
        run(()=>{
             sinon.assert.callCount(spy, 50);
-       }, done);        
+       }, done);
     });
 });

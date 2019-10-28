@@ -31,6 +31,7 @@ module.exports = function (h) {
       }, [h("td", {
         "class": "text-center",
         attrs: {
+          tabindex: "0",
           colspan: _this.colspan
         }
       }, [_this.display(_this.loading ? 'loading' : 'noResults')])]);
@@ -78,12 +79,23 @@ module.exports = function (h) {
       index = recordCount + index + 1;
       columns = [];
       var update;
+      var isEditing;
+      var setEditing;
 
       if (_this.hasChildRow && _this.opts.showChildRowToggler) {
-        var childRowToggler = h("td", [h("span", {
-          on: {
-            "click": _this.toggleChildRow.bind(_this, row[rowKey])
+        var childRowToggler = h("td", {
+          attrs: {
+            tabindex: "0"
           },
+          on: {
+            "keypress": function keypress(e) {
+              if (e.key === 'Enter') {
+                _this.toggleChildRow.bind(_this, row[rowKey])();
+              }
+            },
+            "click": _this.toggleChildRow.bind(_this, row[rowKey])
+          }
+        }, [h("span", {
           "class": "VueTables__child-row-toggler " + _this.childRowTogglerClass(row[rowKey])
         })]);
         if (_this.opts.childRowTogglerFirst) columns.push(childRowToggler);
@@ -92,13 +104,20 @@ module.exports = function (h) {
       _this.allColumns.map(function (column) {
         var rowTemplate = _this.$scopedSlots && _this.$scopedSlots[column];
         update = updateValue(row, column).bind(_this);
+        isEditing = editing(row, column).bind(_this);
+        setEditing = setEdit(row, column).bind(_this);
         columns.push(h("td", {
-          "class": _this.columnClass(column)
+          "class": "".concat(_this.columnClass(column), " ").concat(_this._cellClasses(column, row)).trim(),
+          attrs: {
+            tabindex: "0"
+          }
         }, [rowTemplate ? rowTemplate({
           row: row,
           column: column,
           index: index,
-          update: update
+          update: update,
+          isEditing: isEditing,
+          setEditing: setEditing
         }) : _this.render(row, column, index, h)]));
       });
 
@@ -118,7 +137,8 @@ module.exports = function (h) {
         "class": 'VueTables__child-row'
       }, [h("td", {
         attrs: {
-          colspan: _this.colspan
+          colspan: _this.colspan,
+          tabindex: "0"
         }
       }, [_this._getChildRowTemplate(h, row)])]) : h());
     });
@@ -126,9 +146,37 @@ module.exports = function (h) {
   };
 };
 
+function setEdit(row, column) {
+  return function (editing) {
+    var _this2 = this;
+
+    if (editing) {
+      this.editing.push({
+        id: row[this.opts.uniqueKey],
+        column: column
+      });
+    } else {
+      this.editing = this.editing.filter(function (e) {
+        return e.id !== row[_this2.opts.uniqueKey];
+      });
+    }
+  };
+}
+
+function editing(row, column) {
+  return function () {
+    var _this3 = this;
+
+    return this.editing.find(function (e) {
+      return e.id === row[_this3.opts.uniqueKey] && e.column === column;
+    });
+  };
+}
+
 function updateValue(row, column) {
   return function (e) {
-    row[column] = e.target.value;
+    var oldVal = row[column];
+    row[column] = getValue(e);
     var data = (0, _clone["default"])(this.data).map(function (r) {
       if (r.id === row.id) {
         return row;
@@ -137,5 +185,19 @@ function updateValue(row, column) {
       return r;
     });
     this.$emit('input', data);
+    this.$emit('update', {
+      row: row,
+      column: column,
+      oldVal: oldVal,
+      newVal: row[column]
+    });
   };
+}
+
+function getValue(val) {
+  if (val.target) {
+    return val.target.type === 'checkbox' ? val.target.checked : val.target.value;
+  }
+
+  return val;
 }

@@ -13,7 +13,7 @@ describe(suite  + ': Filters (Common)', function() {
 	it('can display list filters', ()=>{
 
 		createWrapper({
-			filterByColumn:true, 
+			filterByColumn:true,
 			listColumns:{
 				id:[
 				{
@@ -27,7 +27,7 @@ describe(suite  + ': Filters (Common)', function() {
 				]
 			}}, ['id','name','code','uri']);
 
-		
+
 			exists('.VueTables__filters-row select[name="vf__id"]');
 			see('Select id', '.VueTables__filters-row select[name="vf__id"] option:first-child');
 			see('Zimbabwe', '.VueTables__filters-row select[name="vf__id"] option:nth-child(2)');
@@ -37,7 +37,7 @@ describe(suite  + ': Filters (Common)', function() {
 
 	it('can hide some options in list filters', ()=>{
 		createWrapper({
-			filterByColumn:true, 
+			filterByColumn:true,
 			listColumns:{
 				id:[
 				{
@@ -56,7 +56,7 @@ describe(suite  + ': Filters (Common)', function() {
 				]
 			}}, ['id','name','code','uri']);
 
-		
+
 			see('Select id', '.VueTables__filters-row select[name="vf__id"] option:first-child');
 			see('Zimbabwe', '.VueTables__filters-row select[name="vf__id"] option:nth-child(2)');
 			not_see('Zambia', '.VueTables__filters-row select[name="vf__id"]');
@@ -64,16 +64,16 @@ describe(suite  + ': Filters (Common)', function() {
 
 	});
 
-	it('can display date filters', ()=>{
-
-		createWrapper({
-			filterByColumn:true,
-			dateColumns:['created_at']
-		}, ['code','name','uri','created_at']);
-
-		exists('#VueTables__created_at-filter.VueTables__date-filter');
-
-	});
+	// it('can display date filters', ()=>{
+	//
+	// 	createWrapper({
+	// 		filterByColumn:true,
+	// 		dateColumns:['created_at']
+	// 	}, ['code','name','uri','created_at']);
+	//
+	// 	exists('#VueTables__created_at-filter.VueTables__date-filter');
+	//
+	// });
 
 	it('can hide the generic filter (regression test for #377)', () =>{
 		exists('.VueTables__search-field');
@@ -84,5 +84,5 @@ describe(suite  + ': Filters (Common)', function() {
 
 		not_exists('.VueTables__search-field');
 	});
-	
+
 });

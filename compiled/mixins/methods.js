@@ -44,6 +44,7 @@ module.exports = {
   getName: require('../methods/get-name'),
   toggleColumn: require('../methods/toggle-column'),
   setUserMultiSort: require('../methods/set-user-multi-sort'),
+  _cellClasses: require('../methods/cell-classes'),
   _setFiltersDOM: require('../methods/set-filters-dom'),
   _currentlySorted: require('../methods/currently-sorted'),
   _getChildRowTemplate: require('../methods/get-child-row-template'),

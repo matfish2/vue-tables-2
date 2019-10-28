@@ -12,7 +12,7 @@ global.suite = 'Client';
 global.source = 'client';
 
 if (withVuex()) {
-	suite+=" - Vuex";	
+	suite+=" - Vuex";
 	Vue.use(Vuex);
 }
 
@@ -27,22 +27,29 @@ beforeEach(function() {
 	createWrapper();
 });
 
-global.createWrapper = function(options = {debounce:0}, columns = null, slots = {}, dataOverride = null) {
-	
+afterEach(function() {
+	wrapper.destroy();
+	global.wrapper = null;
+})
+
+global.createWrapper = function(options = {debounce:0}, columns = null, slots = {}, dataOverride = null, scopedSlots = {}) {
+
 	var d = clone(data);
 
 	let params = {
 		propsData:{
 			name:'client',
 			columns:columns?columns:['code','name','uri'],
-			data:dataOverride?dataOverride:d,
+			data: dataOverride?dataOverride:d,
 			options
 		},
-		slots
+
+		slots,
+		scopedSlots
 	};
 
 	if (withVuex()) {
-		params.store =  new Vuex.Store();	
+		params.store =  new Vuex.Store();
 	}
 
 	global.wrapper = mount(ClientTable.install(Vue,{},withVuex()), params);

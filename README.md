@@ -17,6 +17,7 @@ or [here](https://jsfiddle.net/matfish2/js4bmdbL/) for a rudimentary server comp
   - [Scoped Slots](#scoped-slots)
   - [Virtual DOM Functions](#virtual-dom-functions)
   - [Vue Components](#vue-components)
+- [Editable Cells](#editable-cells)
 - [Child Rows](#child-rows)
 - [Methods](#methods)
 - [Properties](#properties)
@@ -27,6 +28,7 @@ or [here](https://jsfiddle.net/matfish2/js4bmdbL/) for a rudimentary server comp
 - [Server Side Filters](#server-side-filters)
 - [List Filters](#list-filters)
 - [Columns Visibility](#columns-visibility)
+- [Cells Conditional Styling](#cells-conditional-styling)
 - [Custom Sorting](#custom-sorting)
 - [Client Side Sorting](#client-side-sorting)
 - [Server Side Sorting](#server-side-sorting)
@@ -386,6 +388,35 @@ app.vue
 
 > Note: Don't include HTML directly in your dataset, as it will be parsed as plain text.
 
+# Editable Cells 
+
+Editable cells are currently supported only for the client table.
+To ensure editable data is reflected on your original dataset you must use `v-model` instead of the `data` prop.
+
+As always examples work best to illustrate the syntax:
+```vue
+ <v-client-table :columns="client.columns" :options="client.options" v-model="client.data">
+    // update text on the fly
+    <input type="text" slot="text" slot-scope="{row, update}" v-model="row.text" @change="update">
+    // update a checkbox
+    <input type="checkbox" slot="checkbox" slot-scope="{row, update}" v-model="row.checkbox" @input="update">
+    
+    // update text on submit + toggle editable state
+    <div slot="text2" slot-scope="{row, update, setEditing, isEditing}">
+     <span @click="setEditing(true)" v-if="!isEditing()">
+         {{row.text2}}
+     </span>
+        <span v-else>
+     <input type="text" v-model="row.text2">
+        <button type="button" @click="update(row.text2); setEditing(false)">Submit</button>
+        </span>
+    </div>           
+</v-client-table>
+```
+
+In addition to the `input` event which is responsible - in conjunction with `v-model` - for updating the dataset, an additional `update` event is triggered with the following payload:
+```{row, column, oldVal, newVal}```
+
 # Child Rows
 
 Child rows allow for a custom designed output area, namely a hidden child row underneath each row, whose content you are free to set yourself.
@@ -657,6 +688,22 @@ This will add a dropdown button to the left of the per-page control. The drop do
 
 The `columnsDropdown` option can work in conjunction with `columnsDisplay`. The rule is that as long as the user hasn't toggled a column himself, the rules you have declared in `columnsDisplay` takes precedence. Once the user toggled a column, he is in charge of columns' visibility, and the settings of `columnsDisplay` are disregarded. 
 
+# Cells Conditional Styling
+
+The `cellClasses` option allows you to conditionally add class(es) to the `td` element based on predefined conditions.
+For example, say you want to add a `low-balance` class to cells in a `balance` column that has a value of less than 100:
+
+```js
+cellClasses:{
+  balance: [
+    {
+        class:'low-balance',
+        condition: row => row.balance < 100
+    }
+  ]
+}
+```
+
 # Custom Sorting
 
 ## Client Side Sorting
@@ -775,6 +822,7 @@ childRow | Function| [See documentation](#child-rows) | `false`
 childRowTogglerFirst | Boolean | Should the child row be positioned at the first column or the last one | `true`
 clientMultiSorting | Boolean | Enable multiple columns sorting using Shift + Click on the client component | `true`
 toggleGroups (client-side) | Boolean | When using the `groupBy` option, settings this to `true` will make group's visibility togglable, by turning the group name into a button | `false`
+cellClasses | Object | See [documentation](#cells-conditional-styling) | `{}`
 columnsClasses | Object | Add class(es) to the specified columns.<br> Takes key-value pairs, where the key is the column name and the value is a string of space-separated classes | `{}`
 columnsDisplay | Object | Responsive display for the specified columns.<br><br> Columns will only be shown when the window width is within the defined limits. <br><br>Accepts key-value pairs of column name and device.<br><br> Possible values are `mobile` (x < 480), `mobileP` (x < 320), `mobileL` (320 <= x < 480), `tablet` (480 <= x < 1024), `tabletP` (480 <= x < 768), `tabletL` (768 <= x < 1024), `desktop` (x >= 1024).<br><br> All options can be preceded by the logical operators min,max, and not followed by an underscore.<br><br>For example, a column which is set to `not_mobile` will be shown when the width of the window is greater than or equal to 480px, while a column set to `max_tabletP` will only be shown when the width is under 768px | `{}`
 columnsDropdown | Boolean | See [documentation](#columns-visibility) | `false`
