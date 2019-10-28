@@ -392,6 +392,7 @@ app.vue
 
 Editable cells are currently supported only for the client table.
 To ensure editable data is reflected on your original dataset you must use `v-model` instead of the `data` prop.
+Each row in dataset must have a unique identifier. By default its key is set to `id`. Use the `uniqueKey` option if your dataset has a different identifier.
 
 As always examples work best to illustrate the syntax:
 ```vue
@@ -423,9 +424,9 @@ In addition to the `input` event which is responsible - in conjunction with `v-m
 Child rows allow for a custom designed output area, namely a hidden child row underneath each row, whose content you are free to set yourself.
 
 When using the `childRow` option you must pass a unqiue `id` property for each row, which is used to track the current state.
-If your identifer key is not `id`, use the `uniqueKey` option to set it.
+If your identifier key is not `id`, use the `uniqueKey` option to set it.
 
-The syntax is identincal to that of templates:
+The syntax is identical to that of templates:
 
 Using Scoped Slots:
 
