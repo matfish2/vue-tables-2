@@ -23,6 +23,7 @@ or [here](https://jsfiddle.net/matfish2/js4bmdbL/) for a rudimentary server comp
 - [Properties](#properties)
 - [Events](#events)
 - [Date Columns](#date-columns)
+- [Filters Algorithm](#filters-algorithm)
 - [Custom Filters](#custom-filters)
 - [Client Side Filters](#client-side-filters)
 - [Server Side Filters](#server-side-filters)
@@ -607,6 +608,21 @@ On the server component the filter will be sent along with the request in the fo
 
 date presentation on the server component is completely up to you. If you are unable to control the server response, you can use the `templates` option to "massage" the date you get from the server into the desired format.
 
+# Filters Algorithm
+
+You can modify the default filtering algortihm per column using the `filterAlgorithm` option. 
+For "fake" template columns which are not backed up by a real corresponding property this is a necessity, if you wish the column to be included in the search (either in generic mode or by column).
+
+E.g, Say you have template column called `full_name` which combines first and last names; you can define the search algorithm like so:
+
+```js
+filterAlgorithm: {
+  full_name(row, query) {
+    return (row.first_name + ' ' + row.last_name).includes(query);
+  }
+}
+```
+
 # Custom Filters
 
 Custom filters allow you to integrate your own filters into the plugin using Vue's events system.
@@ -839,6 +855,7 @@ debounce | Number | Number of idle milliseconds (no key stroke) to wait before s
 descOrderColumns | Array | By default the initial sort direction is ascending. To override this for specific columns pass them into this option | `[]`
 destroyEventBus | Boolean | Should the plugin destroy the event bus before the table component is destroyed? Since the bus is shared by all instances, only set this to `true` if you have a single instance in your page | `false`
 filterable | Array / Boolean | Filterable columns `true` - All columns. | Set to `false` or `[]` to hide the filter(s). Single filter mode (`filterByColumn:false`) is also affected
+filterAlgorithm | Object | Define custom filtering logic per column. See [documentation](#filters-algorithm) | `{}`
 footerHeadings | Boolean | Display headings at the bottom of the table too | `false`
 headings | Object | Table headings. | Can be either a string or a function, if you wish to inject vue-compiled HTML.<br>E.g: `function(h) { return <h2>Title</h2>}`<br>Note that this example uses jsx, and not HTML.<br>The `this` context inside the function refers to the direct parent of the table instance.<br> Another option is to use a slot, named "h__{column}"<br>If no heading is provided the default rule is to extract it from the first row properties, where underscores become spaces and the first letter is capitalized
 hiddenColumns | Array / Boolean | An array of columns to hide initially (can then be added by user using `columnsDropdown` option). Mutually exclusive with `visibleColumns` | `false`

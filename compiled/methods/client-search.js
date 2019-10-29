@@ -73,7 +73,14 @@ module.exports = function (data, e) {
 
       currentQuery = this.opts.filterByColumn ? query[column] : query;
       currentQuery = setCurrentQuery(currentQuery);
-      if (currentQuery && foundMatch(currentQuery, value, isListFilter)) found++;
+
+      if (currentQuery) {
+        if (this.opts.filterAlgorithm[column]) {
+          if (this.opts.filterAlgorithm[column](row, this.opts.filterByColumn ? query[column] : query)) found++;
+        } else {
+          if (foundMatch(currentQuery, value, isListFilter)) found++;
+        }
+      }
     }.bind(this));
     return found >= totalQueries;
   }.bind(this));

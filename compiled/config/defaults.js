@@ -55,6 +55,7 @@ module.exports = function () {
     sortingAlgorithm: function sortingAlgorithm(data, column) {
       return data.sort(this.getSortFn(column));
     },
+    filterAlgorithm: {},
     customSorting: {},
     multiSorting: {},
     clientMultiSorting: true,
