@@ -6,7 +6,7 @@ module.exports = function (h) {
   return function (right) {
     var that = _this;
 
-    var sortControl = require('./sort-control')(h, right);
+    var sortControl = require("./sort-control")(h, right);
 
     var headings = [];
     if (_this.hasChildRow && _this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) headings.push(h("th"));
@@ -15,11 +15,15 @@ module.exports = function (h) {
       headings.push(h("th", {
         on: {
           "keypress": function keypress(e) {
-            if (e.key === 'Enter') {
-              that.orderByColumn.bind(that, column)();
+            if (e.key === "Enter") {
+              that.orderByColumn.bind(that, column, e)();
             }
           },
-          "click": this.orderByColumn.bind(this, column)
+          "click": function click(e) {
+            if (e.target.className !== "resize-handle") {
+              that.orderByColumn.bind(that, column, e)();
+            }
+          }
         },
         "class": this.sortableClass(column),
         attrs: {

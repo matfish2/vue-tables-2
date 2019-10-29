@@ -12,20 +12,22 @@ var _table = _interopRequireDefault(require("./table"));
 
 var _data2 = _interopRequireDefault(require("./state/data"));
 
+var _resizeableColumns = _interopRequireDefault(require("./helpers/resizeable-columns"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var _data = require('./mixins/data');
+var _data = require("./mixins/data");
 
-var _created = require('./mixins/created');
+var _created = require("./mixins/created");
 
-var templateCompiler = require('./template-compiler');
+var templateCompiler = require("./template-compiler");
 
 exports.install = function (Vue, globalOptions, useVuex) {
-  var theme = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'bootstrap3';
-  var template = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 'default';
+  var theme = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "bootstrap3";
+  var template = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : "default";
 
   var client = _merge["default"].recursive(true, (0, _table["default"])(), {
-    name: 'client-table',
+    name: "client-table",
     components: {
       Pagination: _vuePagination.Pagination
     },
@@ -63,6 +65,10 @@ exports.install = function (Vue, globalOptions, useVuex) {
       }
     },
     mounted: function mounted() {
+      if (this.opts.resizableColumns) {
+        (0, _resizeableColumns["default"])(this.$el.querySelector("table"), this.hasChildRow, this.opts.childRowTogglerFirst);
+      }
+
       this._setColumnsDropdownCloseListener();
 
       if (!this.vuex) {
@@ -81,31 +87,31 @@ exports.install = function (Vue, globalOptions, useVuex) {
       }
     },
     model: {
-      prop: 'data'
+      prop: "data"
     },
     data: function data() {
       return _merge["default"].recursive(_data(), {
-        source: 'client',
+        source: "client",
         globalOptions: globalOptions,
         currentlySorting: {},
         time: Date.now()
-      }, (0, _data2["default"])(useVuex, 'client', this.options.initialPage));
+      }, (0, _data2["default"])(useVuex, "client", this.options.initialPage));
     },
     computed: {
-      q: require('./computed/q'),
-      customQ: require('./computed/custom-q'),
-      totalPages: require('./computed/total-pages'),
-      filteredData: require('./computed/filtered-data'),
+      q: require("./computed/q"),
+      customQ: require("./computed/custom-q"),
+      totalPages: require("./computed/total-pages"),
+      filteredData: require("./computed/filtered-data"),
       hasMultiSort: function hasMultiSort() {
         return this.opts.clientMultiSorting;
       }
     },
     methods: {
-      transformDateStringsToMoment: require('./methods/transform-date-strings-to-moment'),
-      registerClientFilters: require('./methods/register-client-filters'),
-      search: require('./methods/client-search'),
-      defaultSort: require('./methods/default-sort'),
-      getGroupSlot: require('./methods/get-group-slot'),
+      transformDateStringsToMoment: require("./methods/transform-date-strings-to-moment"),
+      registerClientFilters: require("./methods/register-client-filters"),
+      search: require("./methods/client-search"),
+      defaultSort: require("./methods/default-sort"),
+      getGroupSlot: require("./methods/get-group-slot"),
       toggleGroup: function toggleGroup(group, e) {
         e.stopPropagation();
         var i = this.collapsedGroups.indexOf(group);
@@ -117,7 +123,7 @@ exports.install = function (Vue, globalOptions, useVuex) {
         }
       },
       groupToggleIcon: function groupToggleIcon(group) {
-        var cls = this.opts.sortIcon.base + ' ';
+        var cls = this.opts.sortIcon.base + " ";
         cls += this.collapsedGroups.indexOf(group) > -1 ? this.opts.sortIcon.down : this.opts.sortIcon.up;
         return cls;
       },
@@ -135,7 +141,7 @@ exports.install = function (Vue, globalOptions, useVuex) {
         this.setOrder(state.orderBy.column, state.orderBy.ascending);
 
         if (this.vuex) {
-          this.commit('SET_LIMIT', state.perPage);
+          this.commit("SET_LIMIT", state.perPage);
         } else {
           this.limit = state.perPage;
         }
@@ -154,6 +160,6 @@ exports.install = function (Vue, globalOptions, useVuex) {
 
   var state = useVuex ? (0, _vuex["default"])() : (0, _normal["default"])();
   client = _merge["default"].recursive(client, state);
-  Vue.component('v-client-table', client);
+  Vue.component("v-client-table", client);
   return client;
 };

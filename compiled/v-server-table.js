@@ -12,6 +12,8 @@ var _table = _interopRequireDefault(require("./table"));
 
 var _vuePagination = require("vue-pagination-2");
 
+var _resizeableColumns = _interopRequireDefault(require("./helpers/resizeable-columns"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _data = require("./mixins/data");
@@ -79,6 +81,10 @@ exports.install = function (Vue, globalOptions, useVuex) {
       }
     },
     mounted: function mounted() {
+      if (this.opts.resizableColumns) {
+        (0, _resizeableColumns["default"])(this.$el.querySelector("table"), this.hasChildRow, this.opts.childRowTogglerFirst);
+      }
+
       this._setColumnsDropdownCloseListener();
 
       if (this.vuex) return;

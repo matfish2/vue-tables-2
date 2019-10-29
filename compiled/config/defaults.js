@@ -106,6 +106,7 @@ module.exports = function () {
     caption: false,
     cellClasses: {},
     visibleColumns: false,
-    hiddenColumns: false
+    hiddenColumns: false,
+    resizableColumns: true
   };
 };
