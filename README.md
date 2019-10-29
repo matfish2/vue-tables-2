@@ -610,7 +610,7 @@ date presentation on the server component is completely up to you. If you are un
 
 # Filters Algorithm
 
-You can modify the default filtering algortihm per column using the `filterAlgorithm` option. 
+You can modify the default filtering algorithm per column using the `filterAlgorithm` option. 
 For "fake" template columns which are not backed up by a real corresponding property this is a necessity, if you wish the column to be included in the search (either in generic mode or by column).
 
 E.g, Say you have template column called `full_name` which combines first and last names; you can define the search algorithm like so:
