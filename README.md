@@ -6,7 +6,7 @@
 or [here](https://jsfiddle.net/matfish2/js4bmdbL/) for a rudimentary server component demo
 
 
-**Recently Added: Resizable Columns, Editable Cells, Hidden Columns, and more. Please stay tuned for more and consider supporting the cause by clicking the Sponsor button above :)**
+**Recently Added: Resizable Columns, Editable Cells, Hidden Columns, Improved Accessibility, and more. Please stay tuned for more and consider supporting the cause by clicking the Sponsor button above :)**
 
 
 - [Usage](#usage)
