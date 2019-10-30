@@ -5,7 +5,9 @@
 [Click here](https://jsfiddle.net/matfish2/jfa5t4sm/) to see the client component in action and fiddle with the various [options](#options)
 or [here](https://jsfiddle.net/matfish2/js4bmdbL/) for a rudimentary server component demo
 
-+ Recently Added: Resizable Columns, Editable Cells and Hidden Columns, and more. Please stay tuned for more and consider supporting the cause by clicking the Sponsor button above :)
+
+**Recently Added: Resizable Columns, Editable Cells, Hidden Columns, and more. Please stay tuned for more and consider supporting the cause by clicking the Sponsor button above :)**
+
 
 - [Usage](#usage)
 - [Dependencies](#dependencies)
