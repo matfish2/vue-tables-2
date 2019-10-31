@@ -25,13 +25,14 @@ beforeEach(()=>{
 			count:data.length
 		}
 	});
-	
+
 	createWrapper();
 
 });
 
 afterEach(()=>{
 	moxios.uninstall(axios);
+	wrapper.destroy();
 });
 
 global.run = function(cb, done, timeout = 0) {
@@ -43,7 +44,7 @@ global.run = function(cb, done, timeout = 0) {
 
 global.requestHas = function(key, value) {
 	var request = moxios.requests.mostRecent();
-	expect(request.config.params[key]).toEqual(value);	
+	expect(request.config.params[key]).toEqual(value);
 }
 
 

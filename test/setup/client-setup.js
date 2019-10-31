@@ -32,7 +32,7 @@ afterEach(function() {
 	global.wrapper = null;
 })
 
-global.createWrapper = function(options = {debounce:0}, columns = null, slots = {}, dataOverride = null, scopedSlots = {}) {
+global.createWrapper = function(options = {debounce:0}, columns = null, slots = {}, dataOverride = null, scopedSlots = {}, events = {}) {
 
 	var d = clone(data);
 
@@ -41,7 +41,8 @@ global.createWrapper = function(options = {debounce:0}, columns = null, slots = 
 			name:'client',
 			columns:columns?columns:['code','name','uri'],
 			data: dataOverride?dataOverride:d,
-			options
+			options,
+			listeners:events
 		},
 
 		slots,

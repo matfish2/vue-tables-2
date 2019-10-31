@@ -132,8 +132,8 @@ module.exports = function (h) {
       }, {
         "class": rowClass,
         on: {
-          "click": _this.rowWasClicked.bind(_this, row),
-          "dblclick": _this.rowWasClicked.bind(_this, row)
+          "click": _this.rowWasClicked.bind(_this, row, index),
+          "dblclick": _this.rowWasClicked.bind(_this, row, index)
         }
       }]), [columns, " "]));
       rows.push(_this.hasChildRow && _this.openChildRows.includes(row[rowKey]) ? h("tr", {
