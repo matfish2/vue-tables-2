@@ -335,7 +335,7 @@ app.vue
 ```
 
 ## Vue Components
-Another option to for creating templates is to encapsulate the template within a component and pass the name. The component must have a `data` property, which will receive the row object. You can also add an optional `index` prop, to get the non-zero-based index of the current row relative to the entire dataset, and an optional `column` prop to get the current column. E.g:
+Another option for creating templates is to encapsulate the template within a component and pass the name. The component must have a `data` property, which will receive the row object. You can also add an optional `index` prop, to get the non-zero-based index of the current row relative to the entire dataset, and an optional `column` prop to get the current column. E.g:
 
 ```js
 Vue.component('delete', {
@@ -388,10 +388,8 @@ app.vue
 ```
 
 **Important**:
-* To use components in your templates they must be declared **globally** using `Vue.component()`.
 * Templates must be declared in the `columns` prop
-
-> Note: Don't include HTML directly in your dataset, as it will be parsed as plain text.
+* Don't include HTML directly in your dataset, as it will be parsed as plain text.
 
 # Editable Cells 
 
