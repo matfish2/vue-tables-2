@@ -107,6 +107,7 @@ module.exports = function () {
     cellClasses: {},
     visibleColumns: false,
     hiddenColumns: false,
-    resizableColumns: true
+    resizableColumns: true,
+    editableColumns: []
   };
 };

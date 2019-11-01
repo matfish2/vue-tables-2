@@ -398,10 +398,21 @@ To ensure editable data is reflected on your original dataset you must use `v-mo
 Each row in dataset must have a unique identifier. By default its key is set to `id`. Use the `uniqueKey` option if your dataset has a different identifier.
 
 As always examples work best to illustrate the syntax:
+
+Start by declaring the column(s) you wish to be editable using the `editableColumns` option:
+
+```js
+{
+   editableColumns:['text','text2','checkbox']
+}
+````
+
+Then use scoped slots to build the logic:
+
 ```vue
  <v-client-table :columns="client.columns" :options="client.options" v-model="client.data">
     // update text on the fly
-    <input type="text" slot="text" slot-scope="{row, update}" v-model="row.text" @change="update">
+    <input type="text" slot="text" slot-scope="{row, update}" v-model="row.text" @input="update">
     // update a checkbox
     <input type="checkbox" slot="checkbox" slot-scope="{row, update}" v-model="row.checkbox" @input="update">
     
@@ -856,6 +867,7 @@ datepickerPerColumnOptions | Object | additional options for specific columns, t
 debounce | Number | Number of idle milliseconds (no key stroke) to wait before sending a request. Used to detect when the user finished his query in order to avoid redundant requests (server) or rendering (client) | `500`
 descOrderColumns | Array | By default the initial sort direction is ascending. To override this for specific columns pass them into this option | `[]`
 destroyEventBus | Boolean | Should the plugin destroy the event bus before the table component is destroyed? Since the bus is shared by all instances, only set this to `true` if you have a single instance in your page | `false`
+editableColumns | Array | Columns that should be editable. See [documentation](#editable-cells) | `[]`
 filterable | Array / Boolean | Filterable columns `true` - All columns. | Set to `false` or `[]` to hide the filter(s). Single filter mode (`filterByColumn:false`) is also affected
 filterAlgorithm | Object | Define custom filtering logic per column. See [documentation](#filters-algorithm) | `{}`
 footerHeadings | Boolean | Display headings at the bottom of the table too | `false`

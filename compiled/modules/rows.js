@@ -104,24 +104,28 @@ module.exports = function (h) {
 
       _this.allColumns.map(function (column) {
         var rowTemplate = _this.$scopedSlots && _this.$scopedSlots[column];
-        update = updateValue(row, column).bind(_this);
-        isEditing = editing(row, column).bind(_this);
-        setEditing = setEdit(row, column).bind(_this);
-        revertValue = revertVal(row, column).bind(_this);
+
+        if (rowTemplate) {
+          var rowTemplateData = {
+            row: row,
+            column: column,
+            index: index
+          };
+        }
+
+        if (_this.opts.editableColumns.includes(column)) {
+          rowTemplateData.update = updateValue(row, column).bind(_this);
+          rowTemplateData.isEditing = editing(row, column).bind(_this);
+          rowTemplateData.setEditing = setEdit(row, column).bind(_this);
+          rowTemplateData.revertValue = revertVal(row, column).bind(_this);
+        }
+
         columns.push(h("td", {
           "class": "".concat(_this.columnClass(column), " ").concat(_this._cellClasses(column, row)).trim(),
           attrs: {
             tabindex: "0"
           }
-        }, [rowTemplate ? rowTemplate({
-          row: row,
-          column: column,
-          index: index,
-          update: update,
-          isEditing: isEditing,
-          setEditing: setEditing,
-          revertValue: revertValue
-        }) : _this.render(row, column, index, h)]));
+        }, [rowTemplate ? rowTemplate(rowTemplateData) : _this.render(row, column, index, h)]));
       });
 
       if (_this.hasChildRow && !_this.opts.childRowTogglerFirst && _this.opts.showChildRowToggler) columns.push(childRowToggler);
