@@ -33,6 +33,6 @@ module.exports = function (query) {
       }
     }
   } else {
-    this.$el.querySelector('.VueTables__search input').value = query;
+    this.$el.querySelector('.VueTables__search__input').value = query;
   }
 };
