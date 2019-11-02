@@ -1,7 +1,6 @@
 "use strict";
 
 module.exports = function (colName, ev) {
-  console.log("ORDERING!!!!");
   if (!this.sortable(colName)) return;
 
   if (ev && ev.shiftKey && this.orderBy.column && this.hasMultiSort) {

@@ -15,7 +15,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var _default2 = {
   name: 'TableRow',
-  props: ['row'],
+  props: ['row', 'index'],
   components: {
     RLTableRow: _RLTableRow["default"],
     TableCell: _TableCell["default"]
@@ -24,15 +24,21 @@ var _default2 = {
     var h = arguments[0];
     return h("r-l-table-row", {
       attrs: {
-        row: this.row
+        row: this.row,
+        index: this.index
       },
       scopedSlots: {
         "default": function _default(props) {
+          var childRowToggler = h("td", ["+"]);
           return h("tr", (0, _babelHelperVueJsxMergeProps["default"])([{
-            "class": props.rowAttrs["class"]
+            "class": "VueTables__row " + props.rowAttrs["class"]
           }, {
             attrs: props.rowAttrs.attrs
-          }]), [props.columns.map(function (column) {
+          }, {
+            on: {
+              "click": props.rowEvents.click
+            }
+          }]), [childRowToggler, props.columns.map(function (column) {
             return h("table-cell", {
               attrs: {
                 column: column

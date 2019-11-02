@@ -10,7 +10,7 @@ module.exports = function (event, payload) {
     this.commit(event.toUpperCase().replace('-', '_'), payload);
   }
 
-  this.$emit(event, payload);
+  this.$parent.$emit(event, payload);
 
   _bus["default"].$emit("vue-tables.".concat(event), payload);
 

@@ -59,5 +59,8 @@ module.exports = {
   _setColumnsDropdownCloseListener: require('../methods/set-columns-dropdown-close-listener'),
   _getValue: require('../methods/get-value'),
   _getColumnName: require('../methods/get-column-name'),
-  _shouldShowColumnOnInit: require('../methods/should-show-column-on-init')
+  _shouldShowColumnOnInit: require('../methods/should-show-column-on-init'),
+  _setEditingCell: require('../methods/set-editing-cell'),
+  _revertValue: require('../methods/revert-value'),
+  _updateValue: require('../methods/update-value')
 };

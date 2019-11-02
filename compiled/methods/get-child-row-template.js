@@ -1,8 +1,8 @@
 "use strict";
 
-module.exports = function (h, row) {
+module.exports = function (h, row, scopedSlot) {
   // scoped slot
-  if (this.$scopedSlots.child_row) return this.$scopedSlots.child_row({
+  if (scopedSlot) return scopedSlot({
     row: row
   });
   var childRow = this.opts.childRow; // function

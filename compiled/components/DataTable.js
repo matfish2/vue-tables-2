@@ -38,6 +38,21 @@ var _default2 = {
       }
     }
   },
+  provide: function provide() {
+    var _this = this;
+
+    return {
+      scopedSlots: function scopedSlots() {
+        return _this.$scopedSlots;
+      },
+      slots: function slots() {
+        return _this.$slots;
+      }
+    };
+  },
+  model: {
+    prop: "data"
+  },
   render: function render(h) {
     return h("r-l-data-table", {
       attrs: {

@@ -28,6 +28,15 @@ export default {
             }
         }
     },
+    provide() {
+        return {
+          scopedSlots: () =>this.$scopedSlots,
+          slots: () => this.$slots
+      }
+    },
+    model: {
+      prop: "data"
+    },
     render(h) {
         return <r-l-data-table data={this.data} columns={this.columns} name={this.name} options={this.options} scopedSlots={
             {

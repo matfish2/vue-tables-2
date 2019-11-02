@@ -11,6 +11,8 @@ var _NoResultsRow = _interopRequireDefault(require("./NoResultsRow"));
 
 var _TableRow = _interopRequireDefault(require("./TableRow"));
 
+var _ChildRow = _interopRequireDefault(require("./ChildRow"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _default2 = {
@@ -18,7 +20,8 @@ var _default2 = {
   components: {
     RLTableBody: _RLTableBody["default"],
     NoResultsRow: _NoResultsRow["default"],
-    TableRow: _TableRow["default"]
+    TableRow: _TableRow["default"],
+    ChildRow: _ChildRow["default"]
   },
   render: function render() {
     var h = arguments[0];
@@ -29,13 +32,25 @@ var _default2 = {
             return h("no-results-row");
           }
 
-          return h("tbody", [props.data.map(function (row) {
-            return h("table-row", {
+          var rows = [];
+          props.data.forEach(function (row, index) {
+            rows.push(h("table-row", {
               attrs: {
-                row: row
+                row: row,
+                index: index
               }
-            });
-          })]);
+            }));
+
+            if (props.hasChildRow && props.openChildRows.includes(row[props.uniqueRowId])) {
+              rows.push(h("child-row", {
+                attrs: {
+                  row: row,
+                  index: index
+                }
+              }));
+            }
+          });
+          return h("tbody", [rows]);
         }
       }
     });

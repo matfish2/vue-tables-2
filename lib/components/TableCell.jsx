@@ -7,9 +7,9 @@ export default {
     render() {
         return <r-l-table-cell column={this.column} scopedSlots={
             {
-                default: function (props) {
+                default: (props) => {
                     return <td>
-                        {props.row[props.column]}
+                        {props.content}
                     </td>
                 }
             }

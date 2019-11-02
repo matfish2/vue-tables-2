@@ -67,6 +67,8 @@ exports.install = function (Vue, globalOptions, useVuex) {
       var _this = this;
 
       return {
+        rowWasClicked: this.rowWasClicked,
+        render: this.render,
         opts: this.opts,
         limit: this.limit,
         setLimit: this.setLimit,
@@ -74,7 +76,6 @@ exports.install = function (Vue, globalOptions, useVuex) {
         id: this.id,
         theme: this.theme,
         display: this.display,
-        hasChildRow: this.hasChildRow,
         allColumns: this.allColumns,
         sortableClass: this.sortableClass,
         getHeadingTooltip: this.getHeadingTooltip,
@@ -85,9 +86,24 @@ exports.install = function (Vue, globalOptions, useVuex) {
         filteredData: function filteredData() {
           return _this.filteredData;
         },
-        tableData: this.tableData,
+        tableData: function tableData() {
+          return _this.tableData;
+        },
         source: this.source,
-        colspan: this.colspan
+        colspan: this.colspan,
+        setEditingCell: this._setEditingCell,
+        revertValue: this._revertValue,
+        updateValue: this._updateValue,
+        editing: function editing() {
+          return _this.editing;
+        },
+        hasChildRow: function hasChildRow() {
+          return _this.hasChildRow;
+        },
+        getChildRowTemplate: this._getChildRowTemplate,
+        openChildRows: function openChildRows() {
+          return _this.openChildRows;
+        }
       };
     },
     created: function created() {

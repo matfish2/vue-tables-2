@@ -6,20 +6,28 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _default = {
   name: 'RLTableRow',
-  props: ['row'],
-  inject: ['allColumns', 'opts'],
+  props: ['row', 'index'],
+  inject: ['allColumns', 'opts', 'rowWasClicked'],
   provide: function provide() {
+    var _this = this;
+
     return {
-      row: this.row
+      row: function row() {
+        return _this.row;
+      },
+      index: this.index
     };
   },
   render: function render() {
     return this.$scopedSlots["default"]({
       columns: this.allColumns,
-      row: this.row,
       rowAttrs: {
         "class": this.opts.rowClassCallback ? this.opts.rowClassCallback(this.row) : '',
         attrs: this.opts.rowAttributesCallback ? this.opts.rowAttributesCallback(this.row) : {}
+      },
+      rowEvents: {
+        click: this.rowWasClicked.bind(this, this.row, this.index),
+        dblclick: this.rowWasClicked.bind(this, this.row, this.index)
       }
     });
   }

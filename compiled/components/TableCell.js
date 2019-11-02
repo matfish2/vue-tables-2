@@ -23,7 +23,7 @@ var _default2 = {
       },
       scopedSlots: {
         "default": function _default(props) {
-          return h("td", [props.row[props.column]]);
+          return h("td", [props.content]);
         }
       }
     });
