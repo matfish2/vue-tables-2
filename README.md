@@ -805,6 +805,7 @@ Slots allow you to insert you own custom HTML in predefined positions within the
 * `afterTable`: Before the table wrapper. 
 * `beforeFilter`: Before the global filter (`filterByColumn: false`)
 * `afterFilter`: After the global filter
+* `afterFilterWrapper`: After the global filter wrapper
 * `beforeSearch`: Before the search control
 * `beforeLimit`: Before the per page control
 * `afterLimit`: After the per page control

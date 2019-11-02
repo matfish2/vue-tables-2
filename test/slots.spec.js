@@ -104,6 +104,14 @@ describe(suite + ": Slots", () => {
     exists(".material-icons", ".VueTables__search");
   });
 
+    it("can insert custom content after the global filter wrapper", () => {
+    createWrapper({}, null, {
+      afterFilterWrapper: '<div class="custom-toolbar"><i class="material-icons input-group-addon">search</i></div>'
+    });
+
+    exists(".material-icons", ".VueTables > .row > .col-md-12 > .custom-toolbar");
+  });
+
   it("can insert custom content before the per page control", done => {
     createWrapper({}, null, {
       beforeLimit: '<i class="material-icons input-group-addon">list</i>'
