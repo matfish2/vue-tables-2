@@ -18,6 +18,7 @@ module.exports = function (data) {
       return row;
     });
   } catch (e) {
+    console.log(e);
     console.error("vue-tables-2: non-iterable data property. Expected array, got ".concat(_typeof(data), ". Make sure that your response conforms to the expected format, or use the 'responseAdapter' option to match the currently returned format"));
     console.error('Data equals', data);
     throw new Error();

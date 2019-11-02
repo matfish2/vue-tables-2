@@ -2,6 +2,10 @@
 
 var _vuePagination = require("vue-pagination-2");
 
+var _PerPageSelector = _interopRequireDefault(require("./components/PerPageSelector"));
+
+var _DataTable = _interopRequireDefault(require("./components/DataTable"));
+
 var _vuex = _interopRequireDefault(require("./state/vuex"));
 
 var _normal = _interopRequireDefault(require("./state/normal"));
@@ -22,16 +26,22 @@ var _created = require("./mixins/created");
 
 var templateCompiler = require("./template-compiler");
 
+var themes = {
+  bootstrap3: require('./themes/bootstrap3')(),
+  bootstrap4: require('./themes/bootstrap4')(),
+  bulma: require('./themes/bulma')()
+};
+
 exports.install = function (Vue, globalOptions, useVuex) {
   var theme = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "bootstrap3";
-  var template = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : "default";
 
   var client = _merge["default"].recursive(true, (0, _table["default"])(), {
-    name: "client-table",
+    name: "r-l-client-table",
     components: {
-      Pagination: _vuePagination.Pagination
+      Pagination: _vuePagination.Pagination,
+      PerPageSelector: _PerPageSelector["default"]
     },
-    render: templateCompiler.call(this, template, theme),
+    render: require('./components/renderless/RLDataTable'),
     props: {
       columns: {
         type: Array,
@@ -53,6 +63,33 @@ exports.install = function (Vue, globalOptions, useVuex) {
         }
       }
     },
+    provide: function provide() {
+      var _this = this;
+
+      return {
+        opts: this.opts,
+        limit: this.limit,
+        setLimit: this.setLimit,
+        perPageValues: this.perPageValues,
+        id: this.id,
+        theme: this.theme,
+        display: this.display,
+        hasChildRow: this.hasChildRow,
+        allColumns: this.allColumns,
+        sortableClass: this.sortableClass,
+        getHeadingTooltip: this.getHeadingTooltip,
+        getHeading: this.getHeading,
+        sortable: this.sortable,
+        sortableChevronClass: this.sortableChevronClass,
+        orderByColumn: this.orderByColumn,
+        filteredData: function filteredData() {
+          return _this.filteredData;
+        },
+        tableData: this.tableData,
+        source: this.source,
+        colspan: this.colspan
+      };
+    },
     created: function created() {
       _created(this);
 
@@ -65,9 +102,13 @@ exports.install = function (Vue, globalOptions, useVuex) {
       }
     },
     mounted: function mounted() {
-      if (this.opts.resizableColumns) {
-        (0, _resizeableColumns["default"])(this.$el.querySelector("table"), this.hasChildRow, this.opts.childRowTogglerFirst);
-      }
+      return; // if (this.opts.resizableColumns) {
+      //   resizableColumns(
+      //     this.$el.querySelector("table"),
+      //     this.hasChildRow,
+      //     this.opts.childRowTogglerFirst
+      //   );
+      // }
 
       this._setColumnsDropdownCloseListener();
 
@@ -92,6 +133,7 @@ exports.install = function (Vue, globalOptions, useVuex) {
     data: function data() {
       return _merge["default"].recursive(_data(), {
         source: "client",
+        theme: themes[theme],
         globalOptions: globalOptions,
         currentlySorting: {},
         time: Date.now()
@@ -160,6 +202,7 @@ exports.install = function (Vue, globalOptions, useVuex) {
 
   var state = useVuex ? (0, _vuex["default"])() : (0, _normal["default"])();
   client = _merge["default"].recursive(client, state);
-  Vue.component("v-client-table", client);
+  Vue.component("r-l-data-table", client);
+  Vue.component("v-client-table", _DataTable["default"]);
   return client;
 };
