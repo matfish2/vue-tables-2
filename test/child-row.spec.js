@@ -11,6 +11,17 @@ describe(suite + ': Child row', () => {
 
 	});
 
+	it('calculates the child row span', (done) => {
+		click(firstRowToggler);
+
+		run(function() {
+			var colspan = wrapper.find('table tbody tr:nth-child(2) td').attributes().colspan;
+			// 3 columns (code, name, uri) + toggler = 4
+			expect(colspan).toEqual("4");
+		},done);
+
+	});
+
 	it('generates a child row when toggler is clicked and row is closed', (done) =>{
 
 		click(firstRowToggler);
