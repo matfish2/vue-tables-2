@@ -134,9 +134,15 @@ exports.install = function (Vue, globalOptions, useVuex) {
           this.orderBy = state.orderBy;
         }
 
-        if (!this.opts.pagination.dropdown) {
+        if (!this.opts.pagination.dropdown && this.$refs.pagination) {
           setTimeout(function () {
             _this.$refs.pagination.Page = state.page;
+          }, 0);
+        }
+
+        if (this.opts.filterable) {
+          setTimeout(function () {
+            _this._setFiltersDOM(state.query);
           }, 0);
         }
 
