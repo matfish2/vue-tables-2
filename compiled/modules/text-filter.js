@@ -35,9 +35,6 @@ module.exports = function (h, inputClass) {
           column: _this.getHeading(column)
         }),
         autocomplete: "off"
-      },
-      domProps: {
-        "value": _this.query[column]
       }
     });
   };
