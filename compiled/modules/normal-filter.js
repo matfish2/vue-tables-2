@@ -12,7 +12,8 @@ module.exports = function (h) {
       attrs: {
         type: "text",
         placeholder: _this.display('filterPlaceholder'),
-        id: id
+        id: id,
+        autocomplete: "off"
       },
       domProps: {
         "value": _this.query

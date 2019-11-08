@@ -31,7 +31,8 @@ module.exports = function (h, inputClass) {
         type: "text",
         placeholder: _this.display('filterBy', {
           column: _this.getHeading(column)
-        })
+        }),
+        autocomplete: "off"
       },
       domProps: {
         "value": _this.query[column]
