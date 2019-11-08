@@ -134,14 +134,14 @@ module.exports = function (h) {
       rows.push(h("tr", (0, _babelHelperVueJsxMergeProps["default"])([{
         attrs: rowAttributes
       }, {
-        "class": rowClass,
+        "class": "VueTables__row ".concat(rowClass),
         on: {
           "click": _this.rowWasClicked.bind(_this, row, index),
           "dblclick": _this.rowWasClicked.bind(_this, row, index)
         }
       }]), [columns, " "]));
       rows.push(_this.hasChildRow && _this.openChildRows.includes(row[rowKey]) ? h("tr", {
-        "class": 'VueTables__child-row'
+        "class": "VueTables__child-row ".concat(rowClass)
       }, [h("td", {
         attrs: {
           colspan: _this.colspan,

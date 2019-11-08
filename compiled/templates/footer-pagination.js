@@ -41,7 +41,7 @@ module.exports = function (h, modules, classes, slots) {
     "class": classes.column
   }, [h("div", {
     "class": "".concat(classes.field, " ").concat(classes.inline, " ").concat(classes.left, " VueTables__search")
-  }, [slots.beforeFilter, genericFilter, slots.afterFilter]), h("div", {
+  }, [slots.beforeFilter, genericFilter, slots.afterFilter]), slots.afterFilterWrapper, h("div", {
     "class": "".concat(classes.field, " ").concat(classes.inline, " ").concat(classes.right, " VueTables__limit")
   }, [slots.beforeLimit, perpage, slots.afterLimit]), columnsDropdown])]);
   return h("div", {
