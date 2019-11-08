@@ -147,7 +147,7 @@ module.exports = function (h) {
           colspan: _this.colspan,
           tabindex: "0"
         }
-      }, [_this._getChildRowTemplate(h, row)])]) : h());
+      }, [_this._getChildRowTemplate(h, row, index)])]) : h());
     });
     return rows;
   };
