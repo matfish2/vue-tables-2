@@ -12,10 +12,15 @@ module.exports = function (h) {
       attrs: {
         type: "text",
         placeholder: _this.display('filterPlaceholder'),
+<<<<<<< HEAD
         id: "VueTables__search_".concat(props.id)
       },
       domProps: {
         "value": _this.query
+=======
+        id: id,
+        autocomplete: "off"
+>>>>>>> master
       },
       on: {
         "keyup": _this.opts.debounce ? debounce(search, _this.opts.debounce) : search

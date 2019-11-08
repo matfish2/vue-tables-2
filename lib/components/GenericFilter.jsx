@@ -20,10 +20,10 @@ export default {
 
                             <input class={`VueTables__search__input ${props.theme.input} ${props.theme.small}`}
                                    type="text"
-                                   value={props.query}
                                    placeholder={props.display('filterPlaceholder')}
                                    on-keyup={props.search(props.debounce)}
                                    id={`VueTables__search_${props.id}`}
+                                   autocomplete="off"
                             />
                         </div>
                     </div>

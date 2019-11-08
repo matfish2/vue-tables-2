@@ -14,7 +14,7 @@ export default {
                         name={props.getColumnName(this.column)}
                         type="text"
                         placeholder={props.display('filterBy', {column: props.getHeading(this.column)})}
-                        value={props.query[this.column]}
+                        autocomplete="off"
                     />
                 }
             }

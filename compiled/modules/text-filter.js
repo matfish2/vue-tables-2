@@ -11,6 +11,8 @@ module.exports = function (h, inputClass) {
     var debouncedSearch = debounce(search, this.opts.debounce);
 
     var onKeyUp = function onKeyUp(e) {
+      if (e.keyCode === 9) return;
+
       if (e.keyCode === 13) {
         debouncedSearch.clear();
         search.apply(void 0, arguments);
@@ -31,10 +33,8 @@ module.exports = function (h, inputClass) {
         type: "text",
         placeholder: _this.display('filterBy', {
           column: _this.getHeading(column)
-        })
-      },
-      domProps: {
-        "value": _this.query[column]
+        }),
+        autocomplete: "off"
       }
     });
   };
