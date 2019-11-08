@@ -15,9 +15,6 @@ module.exports = function (h) {
         id: id,
         autocomplete: "off"
       },
-      domProps: {
-        "value": _this.query
-      },
       on: {
         "keyup": _this.opts.debounce ? debounce(search, _this.opts.debounce) : search
       }
