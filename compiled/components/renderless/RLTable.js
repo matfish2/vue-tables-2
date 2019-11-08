@@ -9,12 +9,12 @@ var _default = {
   inject: ['opts', 'theme'],
   render: function render() {
     return this.$scopedSlots["default"]({
-      // opts: this.opts,
+      // opts: this.opts(),
       tableAttrs: {
-        summary: this.opts.summary,
-        "class": "VueTables__table ".concat(this.opts.skin ? this.opts.skin : this.theme.table)
+        summary: this.opts().summary,
+        "class": "VueTables__table ".concat(this.opts().skin ? this.opts().skin : this.theme.table)
       },
-      caption: this.opts.caption
+      caption: this.opts().caption
     });
   }
 };

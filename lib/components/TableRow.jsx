@@ -9,11 +9,11 @@ export default {
         return <r-l-table-row row={this.row} index={this.index} scopedSlots={
             {
                 default: function (props) {
-
-                    var childRowToggler = <td>+</td>;
+                    var childRowToggler = props.hasChildRow && props.opts.showChildRowToggler ? <th></th> : '';
                     return <tr class={`VueTables__row ` + props.rowAttrs.class} {...{attrs: props.rowAttrs.attrs}} on-click={props.rowEvents.click}>
-                        {childRowToggler}
+                        {props.opts.childRowTogglerFirst ? childRowToggler : ''}
                         {props.columns.map( column => <table-cell column={column}/>)}
+                        {!props.opts.childRowTogglerFirst ? childRowToggler : ''}
                     </tr>
                 }
             }

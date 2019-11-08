@@ -29,7 +29,7 @@ var _default2 = {
       },
       scopedSlots: {
         "default": function _default(props) {
-          var childRowToggler = h("td", ["+"]);
+          var childRowToggler = props.hasChildRow && props.opts.showChildRowToggler ? h("th") : '';
           return h("tr", (0, _babelHelperVueJsxMergeProps["default"])([{
             "class": "VueTables__row " + props.rowAttrs["class"]
           }, {
@@ -38,13 +38,13 @@ var _default2 = {
             on: {
               "click": props.rowEvents.click
             }
-          }]), [childRowToggler, props.columns.map(function (column) {
+          }]), [props.opts.childRowTogglerFirst ? childRowToggler : '', props.columns.map(function (column) {
             return h("table-cell", {
               attrs: {
                 column: column
               }
             });
-          })]);
+          }), !props.opts.childRowTogglerFirst ? childRowToggler : '']);
         }
       }
     });

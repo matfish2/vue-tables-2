@@ -62,5 +62,7 @@ module.exports = {
   _shouldShowColumnOnInit: require('../methods/should-show-column-on-init'),
   _setEditingCell: require('../methods/set-editing-cell'),
   _revertValue: require('../methods/revert-value'),
-  _updateValue: require('../methods/update-value')
+  _updateValue: require('../methods/update-value'),
+  _filterType: require('../methods/filter-type'),
+  _search: require('../methods/search')
 };

@@ -7,7 +7,7 @@ exports["default"] = void 0;
 var _default = {
   name: 'RLTableRow',
   props: ['row', 'index'],
-  inject: ['allColumns', 'opts', 'rowWasClicked'],
+  inject: ['allColumns', 'opts', 'rowWasClicked', 'hasChildRow'],
   provide: function provide() {
     var _this = this;
 
@@ -20,10 +20,12 @@ var _default = {
   },
   render: function render() {
     return this.$scopedSlots["default"]({
-      columns: this.allColumns,
+      columns: this.allColumns(),
+      hasChildRow: this.hasChildRow(),
+      opts: this.opts(),
       rowAttrs: {
-        "class": this.opts.rowClassCallback ? this.opts.rowClassCallback(this.row) : '',
-        attrs: this.opts.rowAttributesCallback ? this.opts.rowAttributesCallback(this.row) : {}
+        "class": this.opts().rowClassCallback ? this.opts().rowClassCallback(this.row) : '',
+        attrs: this.opts().rowAttributesCallback ? this.opts().rowAttributesCallback(this.row) : {}
       },
       rowEvents: {
         click: this.rowWasClicked.bind(this, this.row, this.index),

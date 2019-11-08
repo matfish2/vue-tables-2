@@ -26,7 +26,7 @@ var _default = {
   },
   methods: {
     content: function content(h) {
-      if (this.opts.templates[this.column]) {
+      if (this.opts().templates[this.column]) {
         return this.render(this.Row, this.column, this.index, h);
       }
 
@@ -37,7 +37,7 @@ var _default = {
           index: this.index
         };
 
-        if (this.opts.editableColumns.includes(this.column)) {
+        if (this.opts().editableColumns.includes(this.column)) {
           data = (0, _merge["default"])(data, this.getEditFunctions());
         }
 
@@ -51,7 +51,7 @@ var _default = {
         var _this = this;
 
         return this.editing().find(function (e) {
-          return e.id === _this.Row[_this.opts.uniqueKey] && e.column === _this.column;
+          return e.id === _this.Row[_this.opts().uniqueKey] && e.column === _this.column;
         });
       }.bind(this);
     },

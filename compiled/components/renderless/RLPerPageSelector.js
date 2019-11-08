@@ -11,8 +11,9 @@ var _default = {
     var _this = this;
 
     return this.$scopedSlots["default"]({
-      perPageValues: this.perPageValues,
-      limit: this.limit,
+      perPageValues: this.perPageValues(),
+      theme: this.theme,
+      limit: this.limit(),
       setLimit: this.setLimit,
       id: this.id,
       selectClass: this.theme.select,
@@ -20,7 +21,7 @@ var _default = {
       selectAttrs: {
         id: "VueTables__limit_".concat(this.id),
         "class": this.theme.select,
-        value: this.limit
+        value: this.limit()
       },
       selectEvents: {
         change: function change(e) {

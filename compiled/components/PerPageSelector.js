@@ -20,6 +20,8 @@ var _default2 = {
       scopedSlots: {
         "default": function _default(props) {
           return props.perPageValues.length > 1 ? h("div", {
+            "class": "".concat(props.theme.field, " ").concat(props.theme.inline, " ").concat(props.theme.right, " VueTables__limit")
+          }, [h("div", {
             "class": "VueTables__limit-field"
           }, [h("label", {
             "class": props.labelClass,
@@ -43,7 +45,7 @@ var _default2 = {
                 "value": val
               }
             }, [val]);
-          })])]) : '';
+          })])])]) : '';
         }
       }
     });

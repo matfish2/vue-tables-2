@@ -12,7 +12,7 @@ module.exports = function (h) {
       attrs: {
         type: "text",
         placeholder: _this.display('filterPlaceholder'),
-        id: id
+        id: "VueTables__search_".concat(props.id)
       },
       domProps: {
         "value": _this.query

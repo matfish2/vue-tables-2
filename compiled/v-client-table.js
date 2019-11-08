@@ -1,6 +1,6 @@
 "use strict";
 
-var _vuePagination = require("vue-pagination-2");
+var _Pagination = _interopRequireDefault(require("./components/Pagination"));
 
 var _PerPageSelector = _interopRequireDefault(require("./components/PerPageSelector"));
 
@@ -38,7 +38,7 @@ exports.install = function (Vue, globalOptions, useVuex) {
   var client = _merge["default"].recursive(true, (0, _table["default"])(), {
     name: "r-l-client-table",
     components: {
-      Pagination: _vuePagination.Pagination,
+      Pagination: _Pagination["default"],
       PerPageSelector: _PerPageSelector["default"]
     },
     render: require('./components/renderless/RLDataTable'),
@@ -67,16 +67,31 @@ exports.install = function (Vue, globalOptions, useVuex) {
       var _this = this;
 
       return {
+        count: function count() {
+          return _this.count;
+        },
         rowWasClicked: this.rowWasClicked,
         render: this.render,
-        opts: this.opts,
-        limit: this.limit,
+        opts: function opts() {
+          return _this.opts;
+        },
+        limit: function limit() {
+          return _this.limit;
+        },
         setLimit: this.setLimit,
-        perPageValues: this.perPageValues,
+        perPageValues: function perPageValues() {
+          return _this.perPageValues;
+        },
+        page: function page() {
+          return _this.page;
+        },
         id: this.id,
         theme: this.theme,
         display: this.display,
-        allColumns: this.allColumns,
+        origColumns: this.columns,
+        allColumns: function allColumns() {
+          return _this.allColumns;
+        },
         sortableClass: this.sortableClass,
         getHeadingTooltip: this.getHeadingTooltip,
         getHeading: this.getHeading,
@@ -103,6 +118,27 @@ exports.install = function (Vue, globalOptions, useVuex) {
         getChildRowTemplate: this._getChildRowTemplate,
         openChildRows: function openChildRows() {
           return _this.openChildRows;
+        },
+        vuex: this.vuex,
+        name: this.name,
+        // onPagination: this._onPagination,
+        setPage: this.setPage,
+        totalPages: function totalPages() {
+          return _this.totalPages;
+        },
+        query: function query() {
+          return _this.query;
+        },
+        filterable: this.filterable,
+        filterType: this._filterType,
+        columnClass: this.columnClass,
+        search: this._search,
+        getColumnName: this._getColumnName,
+        onlyColumn: this._onlyColumn,
+        toggleColumn: this.toggleColumn,
+        toggleColumnsDropdown: this._toggleColumnsDropdown,
+        displayColumnsDropdown: function displayColumnsDropdown() {
+          return _this.displayColumnsDropdown;
         }
       };
     },
@@ -118,15 +154,10 @@ exports.install = function (Vue, globalOptions, useVuex) {
       }
     },
     mounted: function mounted() {
-      return; // if (this.opts.resizableColumns) {
-      //   resizableColumns(
-      //     this.$el.querySelector("table"),
-      //     this.hasChildRow,
-      //     this.opts.childRowTogglerFirst
-      //   );
-      // }
+      if (this.opts.resizableColumns) {
+        (0, _resizeableColumns["default"])(this.$el.querySelector("table"), this.hasChildRow, this.opts.childRowTogglerFirst);
+      } // this._setColumnsDropdownCloseListener();
 
-      this._setColumnsDropdownCloseListener();
 
       if (!this.vuex) {
         this.registerClientFilters();
@@ -220,5 +251,5 @@ exports.install = function (Vue, globalOptions, useVuex) {
   client = _merge["default"].recursive(client, state);
   Vue.component("r-l-data-table", client);
   Vue.component("v-client-table", _DataTable["default"]);
-  return client;
+  return _DataTable["default"];
 };
