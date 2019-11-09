@@ -1,7 +1,7 @@
 {
   "name": "vue-tables-2",
   "description": "Vue.js 2 grid components",
-  "version": "1.5.40",
+  "version": "1.5.42",
   "keywords": [
     "vue2",
     "vuex",
@@ -24,7 +24,7 @@
     "debounce": "^1.1",
     "merge": "^1.2.0",
     "vue": "^2.6.10",
-    "vue-pagination-2": "^1.6"
+    "vue-pagination-2": "^1.6.3"
   },
   "scripts": {
     "build": "babel lib -d compiled",

@@ -8043,10 +8043,10 @@ vue-loader@^15.7.1:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
-vue-pagination-2@^1.6:
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/vue-pagination-2/-/vue-pagination-2-1.6.2.tgz#9555a7c1d330cb0d290c9a06dc77d2883ac3e83d"
-  integrity sha512-t0UlPJYIgPHJ6ovh32HkQZkvKROMBssfyOQxueFYWbjYwZmhug0HrGEHezrCkRIzNggvjxLXAhLyoRqOlCdajw==
+vue-pagination-2@^1.6.3:
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/vue-pagination-2/-/vue-pagination-2-1.6.3.tgz#f03225afc17654d485932c97346c4279944d593c"
+  integrity sha512-I1F5DBB72wBBqUjgzBh6lryrehQM4CX9J+mswbajmqSvlDCAX02Elr1qqyFRoGfLYMGYeF/nuviKxbwmlUUeHw==
   dependencies:
     merge "^1.2.0"
     vue ">=2.0.0"
