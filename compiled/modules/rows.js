@@ -23,7 +23,7 @@ module.exports = function (h) {
       data = _this.tableData;
     }
 
-    if (_this.count === 0) {
+    if (data.length === 0) {
       var colspan = _this.allColumns.length;
       if (_this.hasChildRow && _this.opts.showChildRowToggler) colspan++;
       return h("tr", {
