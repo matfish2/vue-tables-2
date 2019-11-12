@@ -20,7 +20,7 @@ module.exports = function (h, modules, classes, slots) {
     },
     "class": classes.label
   }, [this.display("filter")]), modules.normalFilter(classes, filterId)]) : "";
-  var perpage = perpageValues.length > 1 ? h("div", {
+  var perpage = !this.opts.hidePerPageSelect && (perpageValues.length > 1 || this.opts.alwaysShowPerPageSelect) ? h("div", {
     "class": "VueTables__limit-field"
   }, [h("label", {
     "class": classes.label,
