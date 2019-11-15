@@ -65,6 +65,8 @@ exports.install = function (Vue, globalOptions, useVuex) {
       }
     },
     mounted: function mounted() {
+      this._setFiltersDOM(this.query);
+
       if (this.opts.resizableColumns) {
         (0, _resizeableColumns["default"])(this.$el.querySelector("table"), this.hasChildRow, this.opts.childRowTogglerFirst);
       }
