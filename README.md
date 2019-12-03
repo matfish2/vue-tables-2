@@ -4,7 +4,7 @@
 
 Important Note: As of version 1.6.0 the license for the package has changed from MIT to GPLv3. 
 Users of previous versions can of course keep using the package under MIT license.
-If you require an MIT license for commercial use you can purchase it [here](https://cp.xscode.com/repositories/13)
+If you require an MIT license for commercial use you can purchase it [here](https://cp.xscode.com/repositories/13).
 In addition to the permissive license, subscribed users will receive ongoing priority support for any issue that might arise.
 
 [Click here](https://jsfiddle.net/matfish2/jfa5t4sm/) to see the client component in action and fiddle with the various [options](#options)
