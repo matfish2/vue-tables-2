@@ -1,7 +1,7 @@
 {
   "name": "vue-tables-2",
   "description": "Vue.js 2 grid components",
-  "version": "1.6.01",
+  "version": "1.6.11",
   "keywords": [
     "vue2",
     "vuex",
@@ -38,7 +38,7 @@
     "build-dist": "cross-env NODE_ENV=production webpack --config webpack.config.dist.js",
     "build-dist-dev": "cross-env NODE_ENV=dev webpack --config webpack.config.dist.js"
   },
-  "license": "MIT",
+  "license": "GPLv3",
   "main": "compiled/index.js",
   "devDependencies": {
     "@babel/cli": "^7.6.4",
