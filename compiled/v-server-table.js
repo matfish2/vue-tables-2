@@ -69,6 +69,11 @@ exports.install = function (Vue, globalOptions, useVuex) {
       if (this.opts.sendInitialRequest) {
         this.loadState();
         this.getData(true).then(function (response) {
+          if (typeof response !== 'undefined') {
+            this.setData(response);
+            this.loading = false;
+          }
+
           this.setData(response);
           this.loading = false;
 
@@ -81,8 +86,10 @@ exports.install = function (Vue, globalOptions, useVuex) {
       }
     },
     mounted: function mounted() {
+      this._setFiltersDOM(this.query);
+
       if (this.opts.resizableColumns) {
-        (0, _resizeableColumns["default"])(this.$el.querySelector("table"), this.hasChildRow, this.opts.childRowTogglerFirst);
+        (0, _resizeableColumns["default"])(this.$el.querySelector("table"), this.hasChildRow, this.opts.childRowTogglerFirst, this.opts.resizableColumns);
       }
 
       this._setColumnsDropdownCloseListener();

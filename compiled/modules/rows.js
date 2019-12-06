@@ -23,7 +23,7 @@ module.exports = function (h) {
       data = _this.tableData;
     }
 
-    if (_this.count === 0) {
+    if (data.length === 0) {
       var colspan = _this.allColumns.length;
       if (_this.hasChildRow && _this.opts.showChildRowToggler) colspan++;
       return h("tr", {
@@ -136,8 +136,7 @@ module.exports = function (h) {
       }, {
         "class": "VueTables__row ".concat(rowClass),
         on: {
-          "click": _this.rowWasClicked.bind(_this, row, index),
-          "dblclick": _this.rowWasClicked.bind(_this, row, index)
+          "click": _this.rowWasClicked.bind(_this, row, index)
         }
       }]), [columns, " "]));
       rows.push(_this.hasChildRow && _this.openChildRows.includes(row[rowKey]) ? h("tr", {

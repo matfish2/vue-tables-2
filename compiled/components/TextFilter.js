@@ -35,10 +35,8 @@ var _default2 = {
               type: "text",
               placeholder: props.display('filterBy', {
                 column: props.getHeading(_this.column)
-              })
-            },
-            domProps: {
-              "value": props.query[_this.column]
+              }),
+              autocomplete: "off"
             }
           });
         }

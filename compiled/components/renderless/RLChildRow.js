@@ -10,7 +10,7 @@ var _default = {
   inject: ['colspan', 'scopedSlots', 'getChildRowTemplate', 'opts'],
   render: function render(h) {
     return this.$scopedSlots["default"]({
-      childRow: this.getChildRowTemplate(h, this.row, this.scopedSlots()['child_row']),
+      childRow: this.getChildRowTemplate(h, this.row, this.index, this.scopedSlots()['child_row']),
       colspan: this.colspan,
       "class": this.opts().rowClassCallback ? this.opts().rowClassCallback(this.row) : ''
     });

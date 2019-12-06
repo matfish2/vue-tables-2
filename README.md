@@ -1,12 +1,17 @@
 # Vue Tables 2
 
-[![npm version](https://badge.fury.io/js/vue-tables-2.svg)](https://badge.fury.io/js/vue-tables-2) [![GitHub stars](https://img.shields.io/github/stars/matfish2/vue-tables-2.svg)](https://github.com/matfish2/vue-tables-2/stargazers) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/matfish2/vue-tables-2/master/LICENSE) [![npm](https://img.shields.io/npm/dt/vue-tables-2.svg)](https://www.npmjs.com/package/vue-tables-2) [![Build Status](https://travis-ci.org/matfish2/vue-tables-2.svg?branch=master)](https://travis-ci.org/matfish2/vue-tables-2) [![](https://data.jsdelivr.com/v1/package/npm/vue-tables-2/badge)](https://www.jsdelivr.com/package/npm/vue-tables-2) [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/vue-tables-2/Lobby)
+[![npm version](https://badge.fury.io/js/vue-tables-2.svg)](https://badge.fury.io/js/vue-tables-2) [![GitHub stars](https://img.shields.io/github/stars/matfish2/vue-tables-2.svg)](https://github.com/matfish2/vue-tables-2/stargazers) [![GitHub license](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://raw.githubusercontent.com/matfish2/vue-tables-2/master/LICENSE) [![npm](https://img.shields.io/npm/dt/vue-tables-2.svg)](https://www.npmjs.com/package/vue-tables-2) [![Build Status](https://travis-ci.org/matfish2/vue-tables-2.svg?branch=master)](https://travis-ci.org/matfish2/vue-tables-2) [![](https://data.jsdelivr.com/v1/package/npm/vue-tables-2/badge)](https://www.jsdelivr.com/package/npm/vue-tables-2) [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/vue-tables-2/Lobby)
+
+Important Note: As of version 1.6.0 the license for the package has changed from MIT to GPLv3. 
+Users of previous versions can of course keep using the package under MIT license.
+If you require an MIT license for commercial use you can purchase it [here](https://cp.xscode.com/repositories/13).
+In addition to the permissive license, subscribed users will receive ongoing priority support for any issue that might arise.
 
 [Click here](https://jsfiddle.net/matfish2/jfa5t4sm/) to see the client component in action and fiddle with the various [options](#options)
 or [here](https://jsfiddle.net/matfish2/js4bmdbL/) for a rudimentary server component demo
 
 
-**Recently Added: Resizable Columns, Editable Cells, Hidden Columns, Improved Accessibility, and more. Please stay tuned for more and consider supporting the cause by clicking the Sponsor button above :)**
+**Recently Added: Resizable Columns, Editable Cells, Hidden Columns, Improved Accessibility, and more**
 
 
 - [Usage](#usage)
@@ -895,7 +900,7 @@ preserveState | Boolean | Preserve dynamically created vuex module when the tabl
 requestAdapter (server-side) | Function | Set a custom request format | `function(data) { return data; }`
 requestFunction (server-side) | Function | Set a custom request function | See documentation
 requestKeys (server-side) | Object | Set your own request keys | `{ query:'query', limit:'limit', orderBy:'orderBy', ascending:'ascending', page:'page', byColumn:'byColumn' }`
-resizableColumns | Boolean | Should columns be resizable? | `true`
+resizableColumns | Boolean / Array | 3 options: a. `false` - no resizable columns b. `true` - all columns resizable c. array of resizable columns | `true`
 responseAdapter (server-side) | Function | Transform the server response to match the format expected by the client. This is especially useful when calling a foreign API, where you cannot control the response on the server-side | `function(resp) { var data = this.getResponseData(resp); return { data: data.data, count: data.count } }`
 rowAttributesCallback | Function | Add dynamic attributes to table rows.<br><br> E.g function(row) { return {id: row.id}} <br><br>This can be useful for manipulating the attributes of rows based on the data they contain | `{}`
 rowClassCallback | Function | Add dynamic classes to table rows.<br><br> E.g function(row) { return `row-${row.id}`} <br><br>This can be useful for manipulating the appearance of rows based on the data they contain | `false`

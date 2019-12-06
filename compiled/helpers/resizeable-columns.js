@@ -1,9 +1,18 @@
 "use strict";
 
-module.exports = function (table, hasChildRow, isChildRowTogglerFirst) {
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+module.exports = function (table, hasChildRow, isChildRowTogglerFirst, resizeableColumns) {
   var row = table.getElementsByTagName("tr")[0],
-      cols = row ? row.children : undefined;
+      cols = row ? Array.from(row.children) : undefined;
   if (!cols) return;
+
+  if (_typeof(resizeableColumns) === 'object') {
+    cols = cols.filter(function (col) {
+      return resizeableColumns.includes(col.id.split('--')[1]);
+    });
+  }
+
   table.style.overflow = "hidden";
   var tableHeight = table.offsetHeight;
   var i = hasChildRow && isChildRowTogglerFirst ? 1 : 0;
@@ -43,6 +52,7 @@ module.exports = function (table, hasChildRow, isChildRowTogglerFirst) {
       }
     });
     document.addEventListener("mouseup", function (e) {
+      if (e.target.nodeName === 'INPUT') return;
       e.preventDefault();
       e.stopPropagation();
       curCol = undefined;

@@ -2,6 +2,8 @@
 
 module.exports = function () {
   return {
+    alwaysShowPerPageSelect: false,
+    hidePerPageSelect: false,
     dateColumns: [],
     listColumns: {},
     datepickerOptions: {

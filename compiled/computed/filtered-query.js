@@ -10,7 +10,7 @@ module.exports = function () {
   var result = {};
 
   for (var key in this.query) {
-    if (this.query[key] !== '') {
+    if (this.query[key] !== '' && this.filterable(key)) {
       result[key] = this.query[key];
     }
   }

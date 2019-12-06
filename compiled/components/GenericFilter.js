@@ -33,10 +33,8 @@ var _default2 = {
             attrs: {
               type: "text",
               placeholder: props.display('filterPlaceholder'),
-              id: "VueTables__search_".concat(props.id)
-            },
-            domProps: {
-              "value": props.query
+              id: "VueTables__search_".concat(props.id),
+              autocomplete: "off"
             },
             on: {
               "keyup": props.search(props.debounce)

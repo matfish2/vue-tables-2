@@ -25,10 +25,11 @@ module.exports = function (h) {
             }
           }
         },
-        "class": this.sortableClass(column),
         attrs: {
+          id: "VueTables_th--".concat(column),
           tabindex: "0"
-        }
+        },
+        "class": this.sortableClass(column)
       }, [h("span", {
         "class": "VueTables__heading",
         attrs: {

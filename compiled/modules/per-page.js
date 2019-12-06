@@ -4,7 +4,7 @@ module.exports = function (h) {
   var _this = this;
 
   return function (perpageValues, cls, id) {
-    return perpageValues.length > 1 ? h("select", {
+    return h("select", {
       "class": cls,
       attrs: {
         name: "limit",
@@ -16,6 +16,6 @@ module.exports = function (h) {
       on: {
         "change": _this.setLimit.bind(_this)
       }
-    }, [perpageValues]) : '';
+    }, [perpageValues]);
   };
 };
