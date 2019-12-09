@@ -69,11 +69,7 @@ exports.install = function (Vue, globalOptions, useVuex) {
       if (this.opts.sendInitialRequest) {
         this.loadState();
         this.getData(true).then(function (response) {
-          if (typeof response !== 'undefined') {
-            this.setData(response);
-            this.loading = false;
-          }
-
+          if (typeof response === 'undefined') return;
           this.setData(response);
           this.loading = false;
 
