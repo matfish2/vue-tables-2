@@ -24,8 +24,6 @@ var _data = require("./mixins/data");
 
 var _created = require("./mixins/created");
 
-var templateCompiler = require("./template-compiler");
-
 var themes = {
   bootstrap3: require('./themes/bootstrap3')(),
   bootstrap4: require('./themes/bootstrap4')(),
