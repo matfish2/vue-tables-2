@@ -24,6 +24,10 @@ or [here](https://jsfiddle.net/matfish2/js4bmdbL/) for a rudimentary server comp
 
 ----
 
+# Documentation
+
+Please click [here](https://matanya.gitbook.io/vue-tables-2/) for GitBook documentation
+
 # VueJS 1
 
 Users of VueJS 1 should use [this package](https://github.com/matfish2/vue-tables) .
