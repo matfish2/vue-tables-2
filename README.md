@@ -16,7 +16,7 @@ In addition to the permissive license, subscribed users will receive **ongoing p
 
 ----
 
-[Click here](https://jsfiddle.net/matfish2/jfa5t4sm/) to see the client component in action and fiddle with the various [options](#options)
+[Click here](https://jsfiddle.net/matfish2/jfa5t4sm/) to see the client component in action and fiddle with the various [options](https://matanya.gitbook.io/vue-tables-2/options-api)
 or [here](https://jsfiddle.net/matfish2/js4bmdbL/) for a rudimentary server component demo
 
 ----
