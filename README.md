@@ -6,7 +6,7 @@
 
 
 ----
-![https://github.com/xscode-resources/promotion-materials/blob/master/assets/Dual-license-badge.gif](https://xscodehelp.zendesk.com/hc/en-us/articles/360003926117-Dual-licensing-guide)
+![(https://github.com/xscode-resources/promotion-materials/blob/master/assets/Dual-license-badge.gif)](https://xscodehelp.zendesk.com/hc/en-us/articles/360003926117-Dual-licensing-guide)
 
 As of version 1.6.0, this project is licensed under the **GPLv3** license.
 
