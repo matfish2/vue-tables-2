@@ -10,7 +10,6 @@ export default {
         return <r-l-table-body scopedSlots={
             {
                 default: function (props) {
-
                     if (props.data.length === 0) {
                         return <no-results-row/>
                     }

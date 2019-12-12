@@ -3,7 +3,7 @@ import HeadingsRow from "./HeadingsRow"
 import FiltersRow from "./FiltersRow";
 
 export default {
-    name: 'TableBody',
+    name: 'TableHead',
     components: {RLTableHead, HeadingsRow, FiltersRow},
     render() {
         return <r-l-table-head scopedSlots={

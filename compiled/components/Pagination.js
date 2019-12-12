@@ -19,30 +19,17 @@ var _default2 = {
     RLPagination: _RLPagination["default"],
     Pagination: _vuePagination["default"]
   },
-  render: function render() {
-    var h = arguments[0];
+  render: function render(h) {
     return h("r-l-pagination", {
       scopedSlots: {
         "default": function _default(props) {
-          var options = {
-            theme: (0, _merge["default"])(props.theme.pagination, {
-              wrapper: "".concat(props.theme.row, " ").concat(props.theme.column, " ").concat(props.theme.contentCenter),
-              nav: props.theme.center,
-              count: "".concat(props.theme.center, " ").concat(props.theme.column)
-            }),
-            chunk: props.options.chunk,
-            chunksNavigation: props.options.nav,
-            edgeNavigation: props.options.edge,
-            texts: {
-              count: props.texts.count,
-              first: props.texts.first,
-              last: props.texts.last
-            }
-          };
-          return h("pagination", {
-            ref: "pagination",
+          return props.override ? h(props.override, {
             attrs: {
-              options: options,
+              props: props
+            }
+          }) : h("pagination", {
+            attrs: {
+              options: props.optionsObj,
               "for": props.name,
               vuex: props.vuex,
               records: props.records,

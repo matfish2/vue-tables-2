@@ -19,7 +19,11 @@ var _default2 = {
     return h("r-l-sort-control", {
       scopedSlots: {
         "default": function _default(props) {
-          return props.sortable ? h("span", {
+          return props.sortable ? props.override ? h(props.override, {
+            attrs: {
+              props: props
+            }
+          }) : h("span", {
             "class": props["class"]
           }) : '';
         }

@@ -5,10 +5,16 @@ export default {
     name: 'ColumnsDropdown',
     components: {RLColumnsDropdown},
     render(h) {
-        var that = this;
         return <r-l-columns-dropdown scopedSlots={
             {
                 default: function (props) {
+
+                    if (props.override) {
+                        return h(props.override, {
+                            attrs:{props}
+                        })
+                    }
+
                     var content;
                     var cols = props.origColumns.map(column => {
                         content = <a class={props.theme.dropdown.item}
@@ -20,7 +26,7 @@ export default {
                             {props.getHeading(column)}
                         </a>;
 
-                        return props.theme.framework === 'bulma' ? conttent : <li>
+                        return props.theme.framework === 'bulma' ? content : <li>
                             {content}
                         </li>
                     });

@@ -8,7 +8,11 @@ export default {
             {
                 default: function (props) {
 
-                    return <div
+                    return props.override ? h(props.override, {
+                        attrs: {
+                            props
+                        }
+                    }) : <div
                         class={`${props.theme.field} ${props.theme.inline} ${
                             props.theme.left
                         } VueTables__search`}
@@ -29,8 +33,8 @@ export default {
                     </div>
                 }
             }
-        }
-        >
-        </r-l-generic-filter>
     }
-}
+    >
+    </r-l-generic-filter>
+    }
+    }

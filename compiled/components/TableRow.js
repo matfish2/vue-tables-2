@@ -11,6 +11,8 @@ var _RLTableRow = _interopRequireDefault(require("./renderless/RLTableRow"));
 
 var _TableCell = _interopRequireDefault(require("./TableCell"));
 
+var _ChildRowToggler = _interopRequireDefault(require("./ChildRowToggler"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _default2 = {
@@ -18,7 +20,8 @@ var _default2 = {
   props: ['row', 'index'],
   components: {
     RLTableRow: _RLTableRow["default"],
-    TableCell: _TableCell["default"]
+    TableCell: _TableCell["default"],
+    ChildRowToggler: _ChildRowToggler["default"]
   },
   render: function render() {
     var h = arguments[0];
@@ -29,7 +32,11 @@ var _default2 = {
       },
       scopedSlots: {
         "default": function _default(props) {
-          var childRowToggler = props.hasChildRow && props.opts.showChildRowToggler ? h("th") : '';
+          var childRowToggler = props.hasChildRow && props.opts.showChildRowToggler ? h("child-row-toggler", {
+            attrs: {
+              "row-id": props.rowId
+            }
+          }) : '';
           return h("tr", (0, _babelHelperVueJsxMergeProps["default"])([{
             "class": "VueTables__row " + props.rowAttrs["class"]
           }, {

@@ -19,7 +19,11 @@ var _default2 = {
     return h("r-l-generic-filter", {
       scopedSlots: {
         "default": function _default(props) {
-          return h("div", {
+          return props.override ? h(props.override, {
+            attrs: {
+              props: props
+            }
+          }) : h("div", {
             "class": "".concat(props.theme.field, " ").concat(props.theme.inline, " ").concat(props.theme.left, " VueTables__search")
           }, [h("div", {
             "class": "VueTables__search-field"

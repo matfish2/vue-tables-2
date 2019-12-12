@@ -7,7 +7,11 @@ export default {
         return <r-l-sort-control scopedSlots={
             {
                 default: function (props) {
-                    return props.sortable ? <span class={props.class}></span> : ''
+                    return props.sortable ? (props.override ? h(props.override,{
+                        attrs:{
+                            props
+                        }
+                    }) : <span class={props.class}></span>) : ''
                 }
             }
         }

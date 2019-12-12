@@ -32,6 +32,7 @@ var themes = {
 
 exports.install = function (Vue, globalOptions, useVuex) {
   var theme = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "bootstrap3";
+  var componentsOverride = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
 
   var client = _merge["default"].recursive(true, (0, _table["default"])(), {
     name: "r-l-client-table",
@@ -137,7 +138,10 @@ exports.install = function (Vue, globalOptions, useVuex) {
         toggleColumnsDropdown: this._toggleColumnsDropdown,
         displayColumnsDropdown: function displayColumnsDropdown() {
           return _this.displayColumnsDropdown;
-        }
+        },
+        childRowTogglerClass: this.childRowTogglerClass,
+        toggleChildRow: this.toggleChildRow,
+        componentsOverride: this.componentsOverride
       };
     },
     created: function created() {
@@ -152,6 +156,8 @@ exports.install = function (Vue, globalOptions, useVuex) {
       }
     },
     mounted: function mounted() {
+      this._setFiltersDOM(this.query);
+
       if (this.opts.resizableColumns) {
         (0, _resizeableColumns["default"])(this.$el.querySelector("table"), this.hasChildRow, this.opts.childRowTogglerFirst);
       } // this._setColumnsDropdownCloseListener();
@@ -180,6 +186,7 @@ exports.install = function (Vue, globalOptions, useVuex) {
         source: "client",
         theme: themes[theme],
         globalOptions: globalOptions,
+        componentsOverride: componentsOverride,
         currentlySorting: {},
         time: Date.now()
       }, (0, _data2["default"])(useVuex, "client", this.options.initialPage));

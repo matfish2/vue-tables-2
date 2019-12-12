@@ -14,7 +14,7 @@ var _FiltersRow = _interopRequireDefault(require("./FiltersRow"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _default2 = {
-  name: 'TableBody',
+  name: 'TableHead',
   components: {
     RLTableHead: _RLTableHead["default"],
     HeadingsRow: _HeadingsRow["default"],
