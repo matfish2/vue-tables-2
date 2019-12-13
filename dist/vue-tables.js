@@ -935,7 +935,7 @@ eval("\n\nmodule.exports = function (row, column, index, h) {\n  var value = thi
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nmodule.exports = function () {\n  for (var key in this.query) {\n    this.query[key] = '';\n  }\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/reset-query.js?");
+eval("\n\nmodule.exports = function () {\n  if (this.opts.filterByColumn) {\n    var query = {};\n\n    for (var key in this.query) {\n      query[key] = '';\n    }\n  } else {\n    var query = '';\n  }\n\n  this.setFilter(query);\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/reset-query.js?");
 
 /***/ }),
 
