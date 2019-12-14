@@ -1,13 +1,13 @@
 import RLNoResultsRow from "./renderless/RLNoResultsRow";
 
 export default {
-    name: 'NoResultsRow',
+    name: 'VtNoResultsRow',
     components: {RLNoResultsRow},
     render() {
         return <r-l-no-results-row scopedSlots={
             {
                 default: function (props) {
-                    return <tr class="VueTables__no-results">
+                    return props.override ? h(props.override, {attrs:{props}}) : <tr class="VueTables__no-results">
                         <td class="text-center" tabindex="0"
                             colspan={props.colspan}>
                             {props.display(props.loading ? 'loading' : 'noResults')}
@@ -15,9 +15,7 @@ export default {
                     </tr>
                 }
             }
-        }
-        >
-
+        }>
         </r-l-no-results-row>
     }
 }

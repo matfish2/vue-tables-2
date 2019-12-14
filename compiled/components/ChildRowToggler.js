@@ -15,30 +15,31 @@ var _default2 = {
   components: {
     RLChildRowToggler: _RLChildRowToggler["default"]
   },
-  render: function render() {
-    var h = arguments[0];
+  render: function render(h) {
     return h("r-l-child-row-toggler", {
       attrs: {
         "row-id": this.rowId
       },
       scopedSlots: {
         "default": function _default(props) {
-          var _this = this;
-
-          return h("td", {
+          return props.override ? h(props.override, {
+            attrs: {
+              props: props
+            }
+          }) : h("td", {
             attrs: {
               tabindex: "0"
             },
             on: {
               "keypress": function keypress(e) {
                 if (e.key === 'Enter') {
-                  props.toggleChildRow.bind(_this, props.rowId)();
+                  props.toggle();
                 }
               },
-              "click": props.toggleChildRow.bind(this, props.rowId)
+              "click": props.toggle
             }
           }, [h("span", {
-            "class": "VueTables__child-row-toggler " + props.childRowTogglerClass(props.rowId)
+            "class": "VueTables__child-row-toggler " + props["class"]()
           })]);
         }
       }

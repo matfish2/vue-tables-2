@@ -1,11 +1,11 @@
 import RLFiltersRow from "./renderless/RLFiltersRow";
-import TextFilter from "./TextFilter";
-import ListFilter from "./ListFilter";
-import DateFilter from "./DateFilter";
+import VtTextFilter from "./VtTextFilter";
+import VtListFilter from "./VtListFilter";
+import VtDateFilter from "./VtDateFilter";
 
 export default {
-    name: 'FiltersRow',
-    components: {RLFiltersRow, TextFilter, ListFilter, DateFilter},
+    name: 'VtFiltersRow',
+    components: {RLFiltersRow, VtTextFilter, VtListFilter, VtDateFilter},
     render() {
         return <r-l-filters-row scopedSlots={
             {
@@ -26,21 +26,10 @@ export default {
                                     column
                                 }
                             })
-                            // switch (true) {
-                            //     case props.isTextFilter(column):
-                            //         filter = <text-filter column={column}/>;
-                            //         break;
-                            //     case props.isDateFilter(column):
-                            //         filter = <date-filter column={column}/>;
-                            //         break;
-                            //     case props.isListFilter(column):
-                            //         filter = <list-filter column={column}/>
-                            //         break;
-                            // }
                         }
 
                         if (typeof props.slots[`filter__${column}`] !== 'undefined') {
-                            filter = filter ? <div>{filter}{props.$slots[`filter__${column}`]}</div> : props.slots[`filter__${column}`];
+                            filter = filter ? <div>{filter}{props.slots[`filter__${column}`]}</div> : props.slots[`filter__${column}`];
                         }
 
                         filters.push(<th class={props.columnClass(column)}>
@@ -54,7 +43,9 @@ export default {
                     if (props.hasChildRow && !props.opts.childRowTogglerFirst && props.opts.showChildRowToggler)
                         filters.push(<th></th>);
 
-                    return <tr class="VueTables__filters-row">
+                    return props.override ? h(props.override, {
+                            attrs: { props }
+                        }) : <tr class="VueTables__filters-row">
                         {filters}
                     </tr>
 

@@ -9,8 +9,6 @@ var is_valid_moment_object = require('../helpers/is-valid-moment-object');
 var filterByCustomFilters = require('../filters/custom-filters');
 
 module.exports = function (data, e) {
-  console.log("SEARCHING");
-
   if (e) {
     var _query = this.query;
     this.setPage(1, true);

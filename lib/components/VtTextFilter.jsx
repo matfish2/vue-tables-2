@@ -1,14 +1,16 @@
 import RLTextFilter from "./renderless/RLTextFilter";
 
 export default {
-    name: 'TextFilter',
+    name: 'VtTextFilter',
     props: ['column'],
     components: {RLTextFilter},
     render() {
         return <r-l-text-filter column={this.column} scopedSlots={
             {
                 default: (props) => {
-                    return <input
+                    return props.override ? h(props.override, {
+                        attrs: {props}
+                    }) : <input
                         on-keyup={props.search(props.debounce)}
                         class={props.theme.input}
                         name={props.getColumnName(this.column)}

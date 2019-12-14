@@ -12,7 +12,7 @@ var _default = {
       column: this.column
     };
   },
-  inject: ['opts', 'theme', 'sortableClass', 'getHeadingTooltip', 'getHeading', 'orderByColumn'],
+  inject: ['opts', 'theme', 'sortableClass', 'getHeadingTooltip', 'getHeading', 'orderByColumn', 'componentsOverride'],
   render: function render() {
     var _this = this;
 
@@ -36,7 +36,8 @@ var _default = {
       spanAttrs: {
         title: this.getHeadingTooltip(this.column)
       },
-      heading: this.getHeading(this.column)
+      heading: this.getHeading(this.column),
+      override: this.componentsOverride.tableHeading
     });
   }
 };

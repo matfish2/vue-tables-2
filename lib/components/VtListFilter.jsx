@@ -1,7 +1,7 @@
 import RLListFilter from "./renderless/RLListFilter";
 
 export default {
-    name: 'ListFilter',
+    name: 'VtListFilter',
     props: ['column'],
     components: {RLListFilter},
     render() {
@@ -17,13 +17,13 @@ export default {
                         options.push(<option value={option.id} selected={selected}>{option.text}</option>)
                     })
 
-                    return <div class="VueTables__list-filter"
+                    return props.override ? h(props.override, {attrs:{props}}) : <div class="VueTables__list-filter"
                                 id={'VueTables__' + this.column + '-filter'}>
                         <select class={props.theme.select}
                                 on-change={props.search(false)}
-                                name={props.getColumnName(this.column)}
-                                value={props.query[this.column]}>
-                            <option value="">{props.display('defaultOption', {column: props.headings[this.column] ? props.headings[this.column] : this.column})}</option>
+                                name={props.name}
+                                value={props.value}>
+                            <option value="">{props.defaultOption}</option>
                             {options}
                         </select>
                     </div>

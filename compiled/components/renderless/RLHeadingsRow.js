@@ -11,7 +11,8 @@ var _default = {
     return this.$scopedSlots["default"]({
       columns: this.allColumns(),
       hasChildRow: this.hasChildRow,
-      childRowTogglerFirst: this.hasChildRow && this.opts().childRowTogglerFirst && this.opts().showChildRowToggler
+      childRowTogglerFirst: this.hasChildRow && this.opts().childRowTogglerFirst && this.opts().showChildRowToggler,
+      childRowTogglerLast: this.hasChildRow && !this.opts().childRowTogglerFirst && this.opts().showChildRowToggler
     });
   }
 };

@@ -6,10 +6,12 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _default = {
   name: 'RLTableHead',
-  inject: ['opts'],
+  inject: ['opts', 'slots', 'componentsOverride'],
   render: function render() {
     return this.$scopedSlots["default"]({
-      opts: this.opts()
+      opts: this.opts(),
+      slots: this.slots(),
+      override: this.componentsOverride.tableHead
     });
   }
 };

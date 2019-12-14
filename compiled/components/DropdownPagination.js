@@ -5,20 +5,18 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _RLPagination = _interopRequireDefault(require("./renderless/RLPagination"));
-
-var _merge = _interopRequireDefault(require("merge"));
+var _RLDropdownPagination = _interopRequireDefault(require("./renderless/RLDropdownPagination"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _default2 = {
   name: 'VTPagination',
   components: {
-    RLPagination: _RLPagination["default"]
+    RLDropdownPagination: _RLDropdownPagination["default"]
   },
   render: function render() {
     var h = arguments[0];
-    return h("r-l-pagination", {
+    return h("r-l-dropdown-pagination", {
       scopedSlots: {
         "default": function _default(props) {
           var id = "VueTables__dropdown-pagination_" + props.name;
@@ -32,7 +30,19 @@ var _default2 = {
             }, [pag]));
           }
 
-          return h("select", {
+          return props.override ? h(props.override, {
+            attrs: {
+              props: props
+            }
+          }) : h("div", {
+            "class": "VueTables__pagination-wrapper"
+          }, [h("div", {
+            "class": "".concat(classes.field, " ").concat(classes.inline, " ").concat(classes.right, " VueTables__dropdown-pagination"),
+            directives: [{
+              name: "show",
+              value: this.totalPages > 1
+            }]
+          }, [h("select", {
             "class": "".concat(props.theme.select, " dropdown-pagination"),
             directives: [{
               name: "show",
@@ -51,7 +61,7 @@ var _default2 = {
                 return props.setPage(e.target.value);
               }
             }
-          }, [pages]);
+          }, [pages])])]);
         }
       }
     });

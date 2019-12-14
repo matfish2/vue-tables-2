@@ -7,12 +7,12 @@ exports["default"] = void 0;
 var _default = {
   name: 'RLChildRowToggler',
   props: ['rowId'],
-  inject: ['toggleChildRow', 'childRowTogglerClass'],
+  inject: ['toggleChildRow', 'childRowTogglerClass', 'componentsOverride'],
   render: function render(h) {
     return this.$scopedSlots["default"]({
-      toggleChildRow: this.toggleChildRow,
-      childRowTogglerClass: this.childRowTogglerClass,
-      rowId: this.rowId
+      "class": this.childRowTogglerClass.bind(this, this.rowId),
+      toggle: this.toggleChildRow.bind(this, this.rowId),
+      override: this.componentsOverride.childRowToggler
     });
   }
 };

@@ -1,15 +1,15 @@
 import RLTableHeading from "./renderless/RLTableHeading";
-import SortControl from "./SortControl";
+import VtSortControl from "./VtSortControl";
 
 export default {
-    name: 'TableHeading',
-    props:['column'],
-    components: {RLTableHeading, SortControl},
+    name: 'VtTableHeading',
+    props: ['column'],
+    components: {RLTableHeading, VtSortControl},
     render() {
         return <r-l-table-heading column={this.column} scopedSlots={
             {
                 default: function (props) {
-                    return <th
+                    return props.override ? h(props.override, {attrs: {props}}) : <th
                         on-keypress={props.thEvents.keypress}
                         on-click={props.thEvents.click}
                         class={props.thAttrs.class}
@@ -21,8 +21,8 @@ export default {
             >
               {props.heading}
             </span>
-                        <sort-control/>
-                    </th>
+                <vt-sort-control/>
+            </th>
                 }
             }
         }

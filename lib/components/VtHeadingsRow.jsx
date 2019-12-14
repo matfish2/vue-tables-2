@@ -1,9 +1,9 @@
 import RLHeadingsRow from "./renderless/RLHeadingsRow";
-import TableHeading from "./TableHeading";
+import VtTableHeading from "./VtTableHeading";
 
 export default {
-    name: 'HeadingsRow',
-    components: {RLHeadingsRow, TableHeading},
+    name: 'VtHeadingsRow',
+    components: {RLHeadingsRow, VtTableHeading},
     render() {
         return <r-l-headings-row scopedSlots={
             {
@@ -17,9 +17,13 @@ export default {
 
                     props.columns.map(function (column) {
                         headings.push(
-                            <table-heading column={column}/>
+                            <vt-table-heading column={column}/>
                         );
                     });
+
+                    if (props.childRowTogglerLast) {
+                        headings.push(<th/>);
+                    }
 
                     return <tr>
                         {headings}

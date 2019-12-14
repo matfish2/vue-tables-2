@@ -1,9 +1,8 @@
 import RLPagination from "./renderless/RLPagination";
 import Pagination from "vue-pagination-2";
-import merge from 'merge';
 
 export default {
-    name: 'VTPagination',
+    name: 'VtPagination',
     components: {RLPagination, Pagination},
     render(h) {
         return <r-l-pagination scopedSlots={

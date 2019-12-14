@@ -17,10 +17,17 @@ var _default2 = {
     RLColumnsDropdown: _RLColumnsDropdown["default"]
   },
   render: function render(h) {
-    var that = this;
     return h("r-l-columns-dropdown", {
       scopedSlots: {
         "default": function _default(props) {
+          if (props.override) {
+            return h(props.override, {
+              attrs: {
+                props: props
+              }
+            });
+          }
+
           var content;
           var cols = props.origColumns.map(function (column) {
             content = h("a", {
@@ -40,10 +47,10 @@ var _default2 = {
               },
               domProps: {
                 "value": column,
-                "checked": props.origColumns.includes(column)
+                "checked": props.columns.includes(column)
               }
             }), props.getHeading(column)]);
-            return props.theme.framework === 'bulma' ? conttent : h("li", [content]);
+            return props.theme.framework === 'bulma' ? content : h("li", [content]);
           });
           return h("div", {
             "class": "VueTables__columns-dropdown-wrapper"

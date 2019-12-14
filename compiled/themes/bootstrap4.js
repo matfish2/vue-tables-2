@@ -37,7 +37,8 @@ module.exports = function () {
       next: '',
       prev: '',
       active: 'active',
-      disabled: 'disabled'
+      disabled: 'disabled',
+      icon: ''
     }
   };
 };

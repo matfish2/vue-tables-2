@@ -1,7 +1,7 @@
 import RLSortControl from './renderless/RLSortControl'
 
 export default {
-    name: 'SortControl',
+    name: 'VtSortControl',
     components: {RLSortControl},
     render() {
         return <r-l-sort-control scopedSlots={

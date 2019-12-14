@@ -1,18 +1,13 @@
 import RLPerPageSelector from "./renderless/RLPerPageSelector";
 
 export default {
-    name: 'PerPageSelector',
+    name: 'VtPerPageSelector',
     components: {RLPerPageSelector},
     render() {
         return <r-l-per-page-selector scopedSlots={
             {
                 default: function (props) {
-                    return props.perPageValues.length > 1 ? <div
-                        class={`${props.theme.field} ${props.theme.inline} ${
-                            props.theme.right
-                        } VueTables__limit`}
-                    >
-                        <div class="VueTables__limit-field">
+                    return <div class="VueTables__limit-field">
                             <label class={props.labelClass} for={`VueTables__limit_${props.id}`}>
                                 {props.display('limit')}
                             </label>
@@ -21,8 +16,8 @@ export default {
                                 {props.perPageValues.map(val => {
                                     return <option value={val}>{val}</option>
                                 })}
-                            </select></div>
-                    </div> : ''
+                            </select>
+                    </div>
                 }
             }
         }

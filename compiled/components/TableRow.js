@@ -11,7 +11,7 @@ var _RLTableRow = _interopRequireDefault(require("./renderless/RLTableRow"));
 
 var _TableCell = _interopRequireDefault(require("./TableCell"));
 
-var _ChildRowToggler = _interopRequireDefault(require("./ChildRowToggler"));
+var _VtChildRowToggler = _interopRequireDefault(require("./VtChildRowToggler"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -21,7 +21,7 @@ var _default2 = {
   components: {
     RLTableRow: _RLTableRow["default"],
     TableCell: _TableCell["default"],
-    ChildRowToggler: _ChildRowToggler["default"]
+    ChildRowToggler: _VtChildRowToggler["default"]
   },
   render: function render() {
     var h = arguments[0];

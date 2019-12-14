@@ -1,7 +1,7 @@
 import RLGenericFilter from "./renderless/RLGenericFilter";
 
 export default {
-    name: 'GenericFilter',
+    name: 'VtGenericFilter',
     components: {RLGenericFilter},
     render() {
         return <r-l-generic-filter scopedSlots={
@@ -12,11 +12,7 @@ export default {
                         attrs: {
                             props
                         }
-                    }) : <div
-                        class={`${props.theme.field} ${props.theme.inline} ${
-                            props.theme.left
-                        } VueTables__search`}
-                    >
+                    }) :
                         <div class="VueTables__search-field">
                             <label for={`VueTables__search_${props.id}`} class={props.theme.label}>
                                 {props.display("filter")}
@@ -30,7 +26,6 @@ export default {
                                    autocomplete="off"
                             />
                         </div>
-                    </div>
                 }
             }
     }

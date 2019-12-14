@@ -10,7 +10,7 @@ var _merge = _interopRequireDefault(require("merge"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _default = {
-  name: "RLPerPageSelector",
+  name: "RLPagination",
   inject: ['opts', 'count', 'limit', 'vuex', 'name', 'id', 'theme', 'page', 'setPage', 'totalPages', 'componentsOverride'],
   render: function render() {
     return this.$scopedSlots["default"]({

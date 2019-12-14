@@ -7,7 +7,7 @@ exports["default"] = void 0;
 var _default = {
   name: 'RLTableRow',
   props: ['row', 'index'],
-  inject: ['allColumns', 'opts', 'rowWasClicked', 'hasChildRow'],
+  inject: ['allColumns', 'opts', 'rowWasClicked', 'hasChildRow', 'componentsOverride'],
   provide: function provide() {
     var _this = this;
 
@@ -31,7 +31,10 @@ var _default = {
       rowEvents: {
         click: this.rowWasClicked.bind(this, this.row, this.index),
         dblclick: this.rowWasClicked.bind(this, this.row, this.index)
-      }
+      },
+      childRowTogglerFirst: this.hasChildRow && this.opts().showChildRowToggler && this.opts().childRowTogglerFirst,
+      childRowTogglerLast: this.hasChildRow && this.opts().showChildRowToggler && !this.opts().childRowTogglerFirst,
+      override: this.componentsOverride.tableRow
     });
   }
 };

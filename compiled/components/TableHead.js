@@ -9,7 +9,7 @@ var _RLTableHead = _interopRequireDefault(require("./renderless/RLTableHead"));
 
 var _HeadingsRow = _interopRequireDefault(require("./HeadingsRow"));
 
-var _FiltersRow = _interopRequireDefault(require("./FiltersRow"));
+var _VtFiltersRow = _interopRequireDefault(require("./VtFiltersRow"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -18,7 +18,7 @@ var _default2 = {
   components: {
     RLTableHead: _RLTableHead["default"],
     HeadingsRow: _HeadingsRow["default"],
-    FiltersRow: _FiltersRow["default"]
+    FiltersRow: _VtFiltersRow["default"]
   },
   render: function render() {
     var h = arguments[0];

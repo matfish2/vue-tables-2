@@ -1,15 +1,17 @@
 import RLDateFilter from "./renderless/RLDateFilter";
 
 export default {
-    name: 'DateFilter',
+    name: 'VtDateFilter',
     props: ['column'],
     components: {RLDateFilter},
-    render() {
+    render(h) {
         return <r-l-date-filter column={this.column} scopedSlots={
             {
                 default: (props) => {
-                    return <div class="VueTables__date-filter" id={'VueTables__' + this.column + '-filter'}>
-                        <span class="VueTables__filter-placeholder">{props.display('filterBy', {column: props.getHeading(this.column)})}</span>
+                    return props.overide ? h(props.override, {
+                        attrs: {props}
+                    }) : <div class="VueTables__date-filter" id={'VueTables__' + this.column + '-filter'}>
+                        <span class="VueTables__filter-placeholder">{props.placeholder}</span>
                     </div>
                 }
             }

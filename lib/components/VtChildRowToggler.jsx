@@ -1,19 +1,21 @@
 import RLChildRowToggler from "./renderless/RLChildRowToggler";
 
 export default {
-    name: 'ChildRowToggler',
+    name: 'VtChildRowToggler',
     props:['rowId'],
     components: {RLChildRowToggler},
-    render() {
+    render(h) {
         return <r-l-child-row-toggler row-id={this.rowId}  scopedSlots={
             {
                 default: function (props) {
-                    return <td tabindex="0" on-keypress={(e) => {
+                    return props.override ? h(props.override, {
+                        attrs: { props }
+                    }) : <td tabindex="0" on-keypress={(e) => {
                         if (e.key === 'Enter') {
-                            props.toggleChildRow.bind(this, props.rowId)();
+                            props.toggle();
                         }
-                    }} on-click={props.toggleChildRow.bind(this, props.rowId)}>
-                        <span class={`VueTables__child-row-toggler ` + props.childRowTogglerClass(props.rowId)}></span>
+                    }} on-click={props.toggle}>
+                        <span class={`VueTables__child-row-toggler ` + props.class()}></span>
                     </td>
                 }
             }

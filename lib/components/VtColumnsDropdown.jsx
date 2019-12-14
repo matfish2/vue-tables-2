@@ -2,7 +2,7 @@ import RLColumnsDropdown from "./renderless/RLColumnsDropdown";
 import dropdownWrapper from "../modules/dropdown-wrapper"
 
 export default {
-    name: 'ColumnsDropdown',
+    name: 'VtColumnsDropdown',
     components: {RLColumnsDropdown},
     render(h) {
         return <r-l-columns-dropdown scopedSlots={
@@ -22,7 +22,7 @@ export default {
                                      onClick={() => props.toggleColumn(column)}>
                             <input type="checkbox" value={column}
                                    disabled={props.onlyColumn(column)}
-                                   checked={props.origColumns.includes(column)}/>
+                                   checked={props.columns.includes(column)}/>
                             {props.getHeading(column)}
                         </a>;
 
@@ -31,9 +31,7 @@ export default {
                         </li>
                     });
 
-                    return <div class="VueTables__columns-dropdown-wrapper">
-
-                        <div class={`${props.theme.dropdown.container} ${props.theme.right} VueTables__columns-dropdown`}>
+                    return <div class="VueTables__columns-dropdown">
                             <button type="button" class={`${props.theme.button} ${props.theme.dropdown.trigger}`}
                                     on-click={props.toggleColumnsDropdown}>
                                 {props.display('columns')}
@@ -45,7 +43,7 @@ export default {
                             {dropdownWrapper(h, props.theme.dropdown, cols, props.displayColumnsDropdown)}
 
                         </div>
-                    </div>
+
                 }
             }
         }

@@ -6,11 +6,12 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _default = {
   name: 'RLNoResultsRow',
-  inject: ['colspan', 'display'],
+  inject: ['colspan', 'display', 'componentsOverride'],
   render: function render() {
     return this.$scopedSlots["default"]({
-      colspan: this.colspan,
-      display: this.display
+      colspan: this.colspan(),
+      display: this.display,
+      override: this.componentsOverride.noResultsRow
     });
   }
 };

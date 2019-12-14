@@ -24,7 +24,11 @@ var _default2 = {
       },
       scopedSlots: {
         "default": function _default(props) {
-          return h("tr", {
+          return props.override ? h(props.override, {
+            attrs: {
+              props: props
+            }
+          }) : h("tr", {
             "class": 'VueTables__child-row ' + props["class"]
           }, [h("td", {
             attrs: {

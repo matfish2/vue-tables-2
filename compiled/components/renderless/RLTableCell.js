@@ -11,12 +11,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var _default = {
   name: 'RLTableCell',
-  inject: ['row', 'scopedSlots', 'opts', 'render', 'index', 'setEditingCell', 'updateValue', 'revertValue', 'editing'],
+  inject: ['row', 'scopedSlots', 'opts', 'render', 'index', 'setEditingCell', 'updateValue', 'revertValue', 'editing', 'componentsOverride'],
   props: ['column'],
   render: function render(h) {
     return this.$scopedSlots["default"]({
       row: this.Row,
-      content: this.content(h)
+      content: this.content(h),
+      override: this.componentsOverride.tableCell
     });
   },
   computed: {

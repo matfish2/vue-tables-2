@@ -1,10 +1,10 @@
 "use strict";
 
-var _Pagination = _interopRequireDefault(require("./components/Pagination"));
+var _VtPagination = _interopRequireDefault(require("./components/VtPagination"));
 
-var _PerPageSelector = _interopRequireDefault(require("./components/PerPageSelector"));
+var _VtPerPageSelector = _interopRequireDefault(require("./components/VtPerPageSelector"));
 
-var _DataTable = _interopRequireDefault(require("./components/DataTable"));
+var _VtDataTable = _interopRequireDefault(require("./components/VtDataTable"));
 
 var _vuex = _interopRequireDefault(require("./state/vuex"));
 
@@ -37,8 +37,8 @@ exports.install = function (Vue, globalOptions, useVuex) {
   var client = _merge["default"].recursive(true, (0, _table["default"])(), {
     name: "r-l-client-table",
     components: {
-      Pagination: _Pagination["default"],
-      PerPageSelector: _PerPageSelector["default"]
+      Pagination: _VtPagination["default"],
+      PerPageSelector: _VtPerPageSelector["default"]
     },
     render: require('./components/renderless/RLDataTable'),
     props: {
@@ -104,7 +104,9 @@ exports.install = function (Vue, globalOptions, useVuex) {
           return _this.tableData;
         },
         source: this.source,
-        colspan: this.colspan,
+        colspan: function colspan() {
+          return _this.colspan;
+        },
         setEditingCell: this._setEditingCell,
         revertValue: this._revertValue,
         updateValue: this._updateValue,
@@ -255,6 +257,6 @@ exports.install = function (Vue, globalOptions, useVuex) {
   var state = useVuex ? (0, _vuex["default"])() : (0, _normal["default"])();
   client = _merge["default"].recursive(client, state);
   Vue.component("r-l-data-table", client);
-  Vue.component("v-client-table", _DataTable["default"]);
-  return _DataTable["default"];
+  Vue.component("v-client-table", _VtDataTable["default"]);
+  return _VtDataTable["default"];
 };

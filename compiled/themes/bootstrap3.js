@@ -19,6 +19,7 @@ module.exports = function () {
     nomargin: '',
     groupTr: 'info',
     button: 'btn btn-secondary',
+    icon: '',
     dropdown: {
       container: 'dropdown',
       trigger: 'dropdown-toggle',

@@ -5,29 +5,29 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _PerPageSelector = _interopRequireDefault(require("./PerPageSelector"));
+var _VtPerPageSelector = _interopRequireDefault(require("./VtPerPageSelector"));
 
-var _Table = _interopRequireDefault(require("./Table"));
+var _VtTable = _interopRequireDefault(require("./VtTable"));
 
-var _Pagination = _interopRequireDefault(require("./Pagination"));
+var _VtPagination = _interopRequireDefault(require("./VtPagination"));
 
-var _DropdownPagination = _interopRequireDefault(require("./DropdownPagination"));
+var _VtDropdownPagination = _interopRequireDefault(require("./VtDropdownPagination"));
 
-var _GenericFilter = _interopRequireDefault(require("./GenericFilter"));
+var _VtGenericFilter = _interopRequireDefault(require("./VtGenericFilter"));
 
-var _ColumnsDropdown = _interopRequireDefault(require("./ColumnsDropdown"));
+var _VtColumnsDropdown = _interopRequireDefault(require("./VtColumnsDropdown"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _default2 = {
   name: 'DataTableComponent',
   components: {
-    PerPageSelector: _PerPageSelector["default"],
-    TableComponent: _Table["default"],
-    Pagination: _Pagination["default"],
-    DropdownPagination: _DropdownPagination["default"],
-    ColumnsDropdown: _ColumnsDropdown["default"],
-    GenericFilter: _GenericFilter["default"]
+    VtPerPageSelector: _VtPerPageSelector["default"],
+    VtTable: _VtTable["default"],
+    VtPagination: _VtPagination["default"],
+    VtDropdownPagination: _VtDropdownPagination["default"],
+    VtColumnsDropdown: _VtColumnsDropdown["default"],
+    VtGenericFilter: _VtGenericFilter["default"]
   },
   props: {
     columns: {
@@ -92,15 +92,31 @@ var _default2 = {
       ref: "table",
       scopedSlots: {
         "default": function _default(props) {
-          return h("div", {
+          return props.override ? h(props.override, {
+            attrs: {
+              props: props
+            }
+          }) : h("div", {
             "class": "VueTables VueTables--" + props.source
           }, [h("div", {
             "class": props.theme.row
-          }, [h("div", {
+          }, [props.opts.filterByColumn ? h("div", {
             "class": props.theme.column
-          }, [props.opts.filterByColumn ? '' : h("generic-filter"), h("per-page-selector"), props.opts.columnsDropdown ? h("columns-dropdown") : '', props.opts.dropdownPagination ? h("dropdown-pagination") : ''])]), h("div", {
+          }, [h("div", {
+            "class": "".concat(props.theme.field, " ").concat(props.theme.inline, " ").concat(props.theme.left, " VueTables__search")
+          }, [h("vt-generic-filter")])]) : '', props.perPageValues.length ? h("div", {
+            "class": "".concat(props.theme.field, " ").concat(props.theme.inline, " ").concat(props.theme.right, " VueTables__limit")
+          }, [h("vt-per-page-selector")]) : '', props.opts.columnsDropdown ? h("vt-columns-dropdown") : '', props.opts.dropdownPagination ? h("div", {
+            "class": "VueTables__pagination-wrapper"
+          }, [h("div", {
+            "class": "".concat(props.theme.field, " ").concat(props.theme.inline, " ").concat(props.theme.right, " VueTables__dropdown-pagination"),
+            directives: [{
+              name: "show",
+              value: props.totalPages > 1
+            }]
+          }, [h("vt-dropdown-pagination")])]) : '']), h("div", {
             "class": "table-responsive"
-          }, [h("table-component")]), h("pagination")]);
+          }, [h("vt-table")]), h("pagination")]);
         }
       }
     });
