@@ -25,11 +25,11 @@ describe(suite + ': Columns Display', () => {
 
     it('Toggles the dropdown', ()=>{
 
-        expect(vm().displayColumnsDropdown).toBe(false);
+        expect(vm().$refs.table.displayColumnsDropdown).toBe(false);
 
         click('.dropdown-toggle');
 
-        expect(vm().displayColumnsDropdown).toBe(true);
+        expect(vm().$refs.table.displayColumnsDropdown).toBe(true);
 
     });
 

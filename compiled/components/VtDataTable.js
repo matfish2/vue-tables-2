@@ -59,6 +59,9 @@ var _default2 = {
     },
     toggleChildRow: function toggleChildRow(rowId) {
       this.$refs.table.toggleChildRow(rowId);
+    },
+    getOpenChildRows: function getOpenChildRows() {
+      return this.$refs.table.getOpenChildRows();
     }
   },
   computed: {

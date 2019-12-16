@@ -45,6 +45,9 @@ export default {
         },
         toggleChildRow(rowId) {
             this.$refs.table.toggleChildRow(rowId);
+        },
+        getOpenChildRows() {
+            return this.$refs.table.getOpenChildRows();
         }
     },
     computed: {
@@ -53,7 +56,7 @@ export default {
         },
         allFilteredData() {
             return this.$refs.table.allFilteredData
-        },
+        }
     },
     provide() {
         return {

@@ -32,7 +32,7 @@ afterEach(function() {
 	global.wrapper = null;
 })
 
-global.createWrapper = function(options = {debounce:0}, columns = null, slots = {}, dataOverride = null, scopedSlots = {}, events = {}) {
+global.createWrapper = function(options = {debounce:0, resizableColumns:false}, columns = null, slots = {}, dataOverride = null, scopedSlots = {}, events = {}) {
 
 	var d = clone(data);
 

@@ -15,7 +15,7 @@ var _default = {
       opts: this.opts(),
       slots: this.slots(),
       columnClass: this.columnClass,
-      hasChildRow: this.hasChildRow,
+      hasChildRow: this.hasChildRow(),
       override: this.componentsOverride.filtersRow
     });
   }

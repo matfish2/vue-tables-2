@@ -16,7 +16,6 @@ describe(suite + ': Child row', () => {
 
 		run(function() {
 			var colspan = wrapper.find('table tbody tr:nth-child(2) td').attributes().colspan;
-			console.log(wrapper.find('table tbody tr:nth-child(1)').html());
 			// 3 columns (code, name, uri) + toggler = 4
 			expect(colspan).toEqual("4");
 		},done);

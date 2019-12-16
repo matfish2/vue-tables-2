@@ -32,8 +32,8 @@ var _default = {
         click: this.rowWasClicked.bind(this, this.row, this.index),
         dblclick: this.rowWasClicked.bind(this, this.row, this.index)
       },
-      childRowTogglerFirst: this.hasChildRow && this.opts().showChildRowToggler && this.opts().childRowTogglerFirst,
-      childRowTogglerLast: this.hasChildRow && this.opts().showChildRowToggler && !this.opts().childRowTogglerFirst,
+      childRowTogglerFirst: this.hasChildRow() && this.opts().showChildRowToggler && this.opts().childRowTogglerFirst,
+      childRowTogglerLast: this.hasChildRow() && this.opts().showChildRowToggler && !this.opts().childRowTogglerFirst,
       override: this.componentsOverride.tableRow
     });
   }
