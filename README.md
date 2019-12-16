@@ -6,7 +6,7 @@
 
 
 ----
-[![dual license](https://github.com/xscode-resources/promotion-materials/blob/master/assets/Dual-license-badge.gif?raw=true)](https://xscodehelp.zendesk.com/hc/en-us/articles/360003926117-Dual-licensing-guide)
+[![dual license](https://github.com/xscode-resources/promotion-materials/blob/master/assets/Dual-license-badge.gif?raw=true)](https://matfish2.github.io/vue-tables-2-site/)
 
 As of version 1.6.0, this project is licensed under the **GPLv3** license.
 
