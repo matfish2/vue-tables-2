@@ -22,7 +22,7 @@ function _default(source) {
     },
     computed: {
       state: function state() {
-        return this.$store.state[this.name];
+        return this.$store.state[this.name] ? this.$store.state[this.name] : {};
       },
       Page: function Page() {
         return this.state.page;
@@ -31,10 +31,10 @@ function _default(source) {
         return this.state.count;
       },
       Columns: function Columns() {
-        return this.state.columns;
+        return this.state.columns ? this.state.columns : [];
       },
       tableData: function tableData() {
-        return this.state.data;
+        return this.state.data ? this.state.data : [];
       },
       page: function page() {
         return this.state.page;
@@ -92,11 +92,6 @@ function _default(source) {
         });
       },
       setPage: function setPage(page) {
-        if (!page) {
-          page = this.$refs.page.value;
-        }
-
-        if (!this.opts.pagination.dropdown) this.$refs.pagination.Page = page;
         this.commit("PAGINATE", page);
       }
     }

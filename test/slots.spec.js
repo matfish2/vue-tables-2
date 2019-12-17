@@ -28,7 +28,6 @@ describe(suite + ": Slots", () => {
     createWrapper({}, null, {
       prependBody: "<tr><td>I am prepended to the body</td></tr>"
     });
-
     count("tbody", 1);
     see("I am prepended to the body", "table tbody tr:first-child td");
   });
@@ -44,11 +43,11 @@ describe(suite + ": Slots", () => {
 
   it("can insert custom content after the <tbody> tag", () => {
     createWrapper({}, null, {
-      afterBody: "<tfoot><tr><td>I am the before body slot</td></tr></tfoot>"
+      afterBody: "<tfoot><tr><td>I am the after body slot</td></tr></tfoot>"
     });
 
     count("tbody", 1);
-    see("I am the before body slot", "table tfoot tr td");
+    see("I am the after body slot", "table tfoot tr td");
   });
 
   it("can insert custom content after the <thead> tag", () => {
@@ -57,15 +56,6 @@ describe(suite + ": Slots", () => {
     });
 
     see("I am a custom header row", "table thead tr td");
-  });
-
-  it("can insert custom content after the <tbody> tag", () => {
-    createWrapper({}, null, {
-      afterBody: "<tfoot><tr><td>I am the before body slot</td></tr></tfoot>"
-    });
-
-    count("tbody", 1);
-    see("I am the before body slot", "table tfoot tr td");
   });
 
   it("can insert custom content before the global filter", () => {

@@ -54,14 +54,8 @@ function search(that, query) {
   if (that.vuex) {
     that.commit('SET_FILTER', query);
   } else {
-    that.initPagination();
-
-    if (that.opts.pagination.dropdown) {
-      that.getData();
-    }
+    that.page = 1;
+    that.updateState('page', 1);
+    that.getData();
   }
-}
-
-function noDebounce(e, name, opts) {
-  return !e || name && (opts.dateColumns.indexOf(name) > -1 || Object.keys(opts.listColumns).indexOf(name) > -1);
 }

@@ -1,15 +1,15 @@
 describe(suite + ': Request', () => {
 
-	var initialParams = { 
-		query: '', 
-		limit: 10, 
-		ascending: 1, 
-		page: 1, 
-		byColumn: 0 
+	var initialParams = {
+		query: '',
+		limit: 10,
+		ascending: 1,
+		page: 1,
+		byColumn: 0
 	};
 
 	it('sends a request when initialized to the URL defined by the consumer with the right parameters', ()=>{
-		
+
 		var request = moxios.requests.mostRecent();
 
 		expect(request.config.url).toEqual(vm().url);
@@ -21,7 +21,7 @@ describe(suite + ': Request', () => {
 	});
 
 	it('Allows for modifying the request keys', (done) => {
-		
+
 		setOptions({
 			requestKeys:{
 				query:'filter',
@@ -29,20 +29,20 @@ describe(suite + ': Request', () => {
 			}
 		});
 
-		vm().getData(true).then(()=>{
+		vm().$refs.table.getData(true).then(()=>{
 
 			done();
 
-			var request = moxios.requests.mostRecent();	
+			var request = moxios.requests.mostRecent();
 
 			expect(request.config.params).toEqual(
-			{ 
-				filter: '', 
-				perPage: 10, 
-				ascending: 1, 
-				page: 1, 
-				byColumn: 0 
-			}); 
+			{
+				filter: '',
+				perPage: 10,
+				ascending: 1,
+				page: 1,
+				byColumn: 0
+			});
 		});
 
 
@@ -66,7 +66,7 @@ describe(suite + ': Request', () => {
 		});
 
 
-		vm().getData(true).then((res)=>{
+		vm().$refs.table.getData(true).then((res)=>{
 			expect(res).toEqual(response);
 		});
 
@@ -81,13 +81,13 @@ describe(suite + ': Request', () => {
 			}
 		});
 
-		vm().getData(true).then(()=>{
+		vm().$refs.table.getData(true).then(()=>{
 
 			done();
 
-			var request = moxios.requests.mostRecent();	
+			var request = moxios.requests.mostRecent();
 
-			expect(request.config.params).toEqual({data:initialParams}); 
+			expect(request.config.params).toEqual({data:initialParams});
 
 		});
 
@@ -107,7 +107,7 @@ describe(suite + ': Request', () => {
 			expect(request.config.url).toEqual('/new-url');
 			done();
 		},100);
-		
+
 
 	});
 

@@ -13,7 +13,7 @@ var _default = {
     };
   },
   inject: ['opts', 'theme', 'sortableClass', 'getHeadingTooltip', 'getHeading', 'orderByColumn', 'componentsOverride'],
-  render: function render() {
+  render: function render(h) {
     var _this = this;
 
     return this.$scopedSlots["default"]({
@@ -36,7 +36,7 @@ var _default = {
       spanAttrs: {
         title: this.getHeadingTooltip(this.column)
       },
-      heading: this.getHeading(this.column),
+      heading: this.getHeading(this.column, h),
       override: this.componentsOverride.tableHeading
     });
   }

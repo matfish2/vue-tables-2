@@ -20,7 +20,7 @@ export default {
                             {caption}
                             <vt-table-head/>
                             {props.slots.beforeBody}
-                            <vt-table-body/>
+                            <vt-table-body ref="vt_table_body"/>
                             {props.slots.afterBody}
                         </table>
                 }

@@ -11,6 +11,8 @@ var _VtNoResultsRow = _interopRequireDefault(require("./VtNoResultsRow"));
 
 var _VtTableRow = _interopRequireDefault(require("./VtTableRow"));
 
+var _VtGroupRow = _interopRequireDefault(require("./VtGroupRow"));
+
 var _VtChildRow = _interopRequireDefault(require("./VtChildRow"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -21,23 +23,34 @@ var _default2 = {
     RLTableBody: _RLTableBody["default"],
     VtNoResultsRow: _VtNoResultsRow["default"],
     VtTableRow: _VtTableRow["default"],
-    VtChildRow: _VtChildRow["default"]
+    VtChildRow: _VtChildRow["default"],
+    VtGroupRow: _VtGroupRow["default"]
   },
   render: function render() {
     var h = arguments[0];
     return h("r-l-table-body", {
       scopedSlots: {
         "default": function _default(props) {
-          if (props.data.length === 0) {
-            return h("vt-no-results-row");
-          }
-
           var rows = [];
+          var currentGroup;
           props.data.forEach(function (row, index) {
+            if (props.groupBy && props.source === 'client' && row[props.groupBy] !== currentGroup) {
+              rows.push(h("vt-group-row", {
+                attrs: {
+                  row: row
+                }
+              }));
+              currentGroup = row[props.groupBy];
+            }
+
+            if (props.canToggleGroups && props.collapsedGroups.includes(currentGroup)) {
+              return;
+            }
+
             rows.push(h("vt-table-row", {
               attrs: {
                 row: row,
-                index: index
+                index: props.initialIndex + index + 1
               }
             }));
 
@@ -45,7 +58,7 @@ var _default2 = {
               rows.push(h("vt-child-row", {
                 attrs: {
                   row: row,
-                  index: index
+                  index: props.initialIndex + index + 1
                 }
               }));
             }
@@ -54,7 +67,7 @@ var _default2 = {
             attrs: {
               props: props
             }
-          }) : h("tbody", [props.slots.prependBody, rows, props.slots.appendBody]);
+          }) : h("tbody", [props.slots.prependBody, props.data.length === 0 ? h("vt-no-results-row") : '', rows, props.slots.appendBody]);
         }
       }
     });

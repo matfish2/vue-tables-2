@@ -6,7 +6,7 @@ import VtGenericFilter from "./VtGenericFilter";
 import VtColumnsDropdown from "./VtColumnsDropdown";
 
 export default {
-    name: 'VtDataTable',
+    name: 'VtClientTable',
     components: {
         VtPerPageSelector,
         VtTable,
@@ -43,11 +43,14 @@ export default {
         setPage(val) {
             this.$refs.table.setPage(val);
         },
+        setOrder(column, asc) {
+            this.$refs.table.setOrder(column, asc);
+        },
         toggleChildRow(rowId) {
             this.$refs.table.toggleChildRow(rowId);
         },
-        getOpenChildRows() {
-            return this.$refs.table.getOpenChildRows();
+        getOpenChildRows(rows = null) {
+            return this.$refs.table.getOpenChildRows(rows);
         }
     },
     computed: {
@@ -68,7 +71,7 @@ export default {
         prop: "data"
     },
     render(h) {
-        return <r-l-data-table data={this.data} columns={this.columns} name={this.name} options={this.options} ref="table" scopedSlots={
+        return <r-l-client-table data={this.data} columns={this.columns} name={this.name} options={this.options} ref="table" scopedSlots={
             {
                 default: function (props) {
                     return props.override ? h(props.override, {
@@ -77,7 +80,7 @@ export default {
 
                         <div class={props.theme.row}>
                             <div class={props.theme.column}>
-                                {!props.opts.filterByColumn ?
+                                {!props.opts.filterByColumn && props.opts.filterable ?
                                     <div class={`${props.theme.field} ${props.theme.inline} ${props.theme.left} VueTables__search`}>
                                         {props.slots.beforeFilter}
                                         <vt-generic-filter/>
@@ -85,13 +88,13 @@ export default {
                                     </div> : ''}
                                 {props.slots.afterFilterWrapper}
 
-                                {props.perPageValues.length ? <div class={`${props.theme.field} ${props.theme.inline} ${props.theme.right} VueTables__limit`}>
+                                {props.perPageValues.length > 1 ? <div class={`${props.theme.field} ${props.theme.inline} ${props.theme.right} VueTables__limit`}>
                                     {props.slots.beforeLimit}
                                     <vt-per-page-selector/>
                                     {props.slots.afterLimit}
                                 </div> : ''}
 
-                                {props.opts.dropdownPagination && props.totalPages > 1 ?
+                                {props.opts.pagination.dropdown && props.totalPages > 1 ?
                                     <div class="VueTables__pagination-wrapper">
                                         <div class={`${props.theme.field} ${props.theme.inline} ${props.theme.right} VueTables__dropdown-pagination`}>
                                             <vt-dropdown-pagination/>
@@ -106,7 +109,7 @@ export default {
 
                         {props.slots.beforeTable}
                         <div class="table-responsive">
-                            <vt-table/>
+                            <vt-table ref="vt_table"/>
                         </div>
                         {props.slots.afterTable}
 
@@ -117,6 +120,6 @@ export default {
         }
         >
 
-        </r-l-data-table>
+        </r-l-client-table>
     }
 }

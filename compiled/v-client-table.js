@@ -1,11 +1,5 @@
 "use strict";
 
-var _VtPagination = _interopRequireDefault(require("./components/VtPagination"));
-
-var _VtPerPageSelector = _interopRequireDefault(require("./components/VtPerPageSelector"));
-
-var _VtDataTable = _interopRequireDefault(require("./components/VtDataTable"));
-
 var _vuex = _interopRequireDefault(require("./state/vuex"));
 
 var _normal = _interopRequireDefault(require("./state/normal"));
@@ -18,11 +12,15 @@ var _data2 = _interopRequireDefault(require("./state/data"));
 
 var _resizeableColumns = _interopRequireDefault(require("./helpers/resizeable-columns"));
 
+var _VtClientTable = _interopRequireDefault(require("./components/VtClientTable"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _data = require("./mixins/data");
 
 var _created = require("./mixins/created");
+
+var provide = require("./mixins/provide");
 
 var themes = {
   bootstrap3: require('./themes/bootstrap3')(),
@@ -36,11 +34,8 @@ exports.install = function (Vue, globalOptions, useVuex) {
 
   var client = _merge["default"].recursive(true, (0, _table["default"])(), {
     name: "r-l-client-table",
-    components: {
-      Pagination: _VtPagination["default"],
-      PerPageSelector: _VtPerPageSelector["default"]
-    },
     render: require('./components/renderless/RLDataTable'),
+    provide: provide,
     props: {
       columns: {
         type: Array,
@@ -62,90 +57,6 @@ exports.install = function (Vue, globalOptions, useVuex) {
         }
       }
     },
-    provide: function provide() {
-      var _this = this;
-
-      return {
-        count: function count() {
-          return _this.count;
-        },
-        rowWasClicked: this.rowWasClicked,
-        render: this.render,
-        opts: function opts() {
-          return _this.opts;
-        },
-        limit: function limit() {
-          return _this.limit;
-        },
-        setLimit: this.setLimit,
-        perPageValues: function perPageValues() {
-          return _this.perPageValues;
-        },
-        page: function page() {
-          return _this.page;
-        },
-        id: this.id,
-        theme: this.theme,
-        display: this.display,
-        origColumns: this.columns,
-        allColumns: function allColumns() {
-          return _this.allColumns;
-        },
-        sortableClass: this.sortableClass,
-        getHeadingTooltip: this.getHeadingTooltip,
-        getHeading: this.getHeading,
-        sortable: this.sortable,
-        sortableChevronClass: this.sortableChevronClass,
-        orderByColumn: this.orderByColumn,
-        filteredData: function filteredData() {
-          return _this.filteredData;
-        },
-        tableData: function tableData() {
-          return _this.tableData;
-        },
-        source: this.source,
-        colspan: function colspan() {
-          return _this.colspan;
-        },
-        setEditingCell: this._setEditingCell,
-        revertValue: this._revertValue,
-        updateValue: this._updateValue,
-        editing: function editing() {
-          return _this.editing;
-        },
-        hasChildRow: function hasChildRow() {
-          return _this.hasChildRow;
-        },
-        getChildRowTemplate: this._getChildRowTemplate,
-        openChildRows: function openChildRows() {
-          return _this.openChildRows;
-        },
-        vuex: this.vuex,
-        name: this.name,
-        // onPagination: this._onPagination,
-        setPage: this.setPage,
-        totalPages: function totalPages() {
-          return _this.totalPages;
-        },
-        query: function query() {
-          return _this.query;
-        },
-        filterable: this.filterable,
-        filterType: this._filterType,
-        columnClass: this.columnClass,
-        search: this._search,
-        getColumnName: this._getColumnName,
-        onlyColumn: this._onlyColumn,
-        toggleColumn: this.toggleColumn,
-        toggleColumnsDropdown: this._toggleColumnsDropdown,
-        displayColumnsDropdown: function displayColumnsDropdown() {
-          return _this.displayColumnsDropdown;
-        },
-        childRowTogglerClass: this.childRowTogglerClass,
-        toggleChildRow: this.toggleChildRow,
-        componentsOverride: this.componentsOverride
-      };
-    },
     created: function created() {
       _created(this);
 
@@ -158,6 +69,8 @@ exports.install = function (Vue, globalOptions, useVuex) {
       }
     },
     mounted: function mounted() {
+      var _this = this;
+
       this._setFiltersDOM(this.query);
 
       if (this.opts.resizableColumns) {
@@ -178,7 +91,15 @@ exports.install = function (Vue, globalOptions, useVuex) {
 
       if (this.hasDateFilters()) {
         this.initDateFilters();
-      }
+      } // listen for data being removed
+      // and nav to last page if current page is greater than total pages
+
+
+      this.$watch('data', function () {
+        if (_this.page > _this.totalPages) {
+          _this.setPage(_this.totalPages);
+        }
+      });
     },
     model: {
       prop: "data"
@@ -256,7 +177,7 @@ exports.install = function (Vue, globalOptions, useVuex) {
 
   var state = useVuex ? (0, _vuex["default"])() : (0, _normal["default"])();
   client = _merge["default"].recursive(client, state);
-  Vue.component("r-l-data-table", client);
-  Vue.component("v-client-table", _VtDataTable["default"]);
-  return _VtDataTable["default"];
+  Vue.component("r-l-client-table", client);
+  Vue.component("v-client-table", _VtClientTable["default"]);
+  return _VtClientTable["default"];
 };

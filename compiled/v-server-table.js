@@ -10,9 +10,9 @@ var _normal = _interopRequireDefault(require("./state/normal"));
 
 var _table = _interopRequireDefault(require("./table"));
 
-var _vuePagination = require("vue-pagination-2");
-
 var _resizeableColumns = _interopRequireDefault(require("./helpers/resizeable-columns"));
+
+var _VtServerTable = _interopRequireDefault(require("./components/VtServerTable"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -20,19 +20,22 @@ var _data = require("./mixins/data");
 
 var _created = require("./mixins/created");
 
-var templateCompiler = require("./template-compiler");
+var provide = require("./mixins/provide");
+
+var themes = {
+  bootstrap3: require('./themes/bootstrap3')(),
+  bootstrap4: require('./themes/bootstrap4')(),
+  bulma: require('./themes/bulma')()
+};
 
 exports.install = function (Vue, globalOptions, useVuex) {
   var theme = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "bootstrap3";
-  var template = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : "default";
+  var componentsOverride = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
   var state = useVuex ? (0, _vuex["default"])("server") : (0, _normal["default"])();
 
   var server = _merge["default"].recursive(true, (0, _table["default"])(), {
-    name: "server-table",
-    components: {
-      Pagination: _vuePagination.Pagination
-    },
-    render: templateCompiler.call(this, template, theme),
+    name: "r-l-server-table",
+    render: require('./components/renderless/RLDataTable'),
     props: {
       columns: {
         type: Array,
@@ -53,6 +56,7 @@ exports.install = function (Vue, globalOptions, useVuex) {
         }
       }
     },
+    provide: provide,
     created: function created() {
       if (!this.opts.requestFunction && !this.url) {
         throw 'vue-tables-2: you must provide either a "url" prop or a custom request function. Aborting';
@@ -86,9 +90,8 @@ exports.install = function (Vue, globalOptions, useVuex) {
 
       if (this.opts.resizableColumns) {
         (0, _resizeableColumns["default"])(this.$el.querySelector("table"), this.hasChildRow, this.opts.childRowTogglerFirst, this.opts.resizableColumns);
-      }
+      } // this._setColumnsDropdownCloseListener();
 
-      this._setColumnsDropdownCloseListener();
 
       if (this.vuex) return;
       this.registerServerFilters();
@@ -99,7 +102,9 @@ exports.install = function (Vue, globalOptions, useVuex) {
         source: "server",
         loading: true,
         lastKeyStrokeAt: false,
-        globalOptions: globalOptions
+        globalOptions: globalOptions,
+        componentsOverride: componentsOverride,
+        theme: themes[theme]
       }, (0, _data2["default"])(useVuex, "server", this.options.initialPage));
     },
     methods: {
@@ -166,6 +171,7 @@ exports.install = function (Vue, globalOptions, useVuex) {
     }
   }, state);
 
-  Vue.component("v-server-table", server);
-  return server;
+  Vue.component("r-l-server-table", server);
+  Vue.component("v-server-table", _VtServerTable["default"]);
+  return _VtServerTable["default"];
 };

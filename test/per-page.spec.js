@@ -2,7 +2,7 @@ describe(suite + ': Per page selection', ()=>{
 
 	it('emits an event when a per page limit is selected',done=>{
 
-		select("select[name=limit]", "25");
+		select(".VueTables__limit-field select", "25");
 
 		run(()=>{
 			eventEmitted('limit', 25);
@@ -11,7 +11,7 @@ describe(suite + ': Per page selection', ()=>{
 
 	it('hides the per page control when there is only one item to select (regression test for #377)', (done)=>{
 		exists('.VueTables__limit-field');
-		
+
 		setOptions({
 			perPageValues:[25]
 		});

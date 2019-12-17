@@ -20,6 +20,7 @@ var _default = {
       records: this.count(),
       perPage: parseInt(this.limit()),
       name: this.vuex ? this.name : this.id,
+      vuex: this.vuex,
       theme: this.theme,
       texts: this.opts().texts,
       totalPages: this.totalPages(),

@@ -35,7 +35,9 @@ var _default2 = {
             attrs: {
               summary: props.tableAttrs.summary
             }
-          }, [caption, h("vt-table-head"), props.slots.beforeBody, h("vt-table-body"), props.slots.afterBody]);
+          }, [caption, h("vt-table-head"), props.slots.beforeBody, h("vt-table-body", {
+            ref: "vt_table_body"
+          }), props.slots.afterBody]);
         }
       }
     });

@@ -1,5 +1,5 @@
 describe(suite +': Basic Display (default options)', () => {
-	
+
 	var records = 50;
 
 	it('Discerns the headings based on the columns prop', () => {
@@ -19,13 +19,13 @@ describe(suite +': Basic Display (default options)', () => {
 	});
 
 	it(`Displays by default 10 records per page`, ()=>{
-		expect(vm().limit).toEqual(10);
-		count('table tbody tr', 10);	
+		expect(vm().$refs.table.limit).toEqual(10);
+		count('table tbody tr', 10);
 	});
 
 	it('Displays the count', (done)=>{
 		run(function() {
-			see(`${records} records`);			
+			see(`${records} records`);
 		}, done);
 	});
 
@@ -40,7 +40,7 @@ describe(suite +': Basic Display (default options)', () => {
 	});
 
 	it('displays pagination links', ()=>{
-		count('ul.VuePagination__pagination li',9) // 50 records = prev-chunk + prev + 5 pages + next + next-chunk 
+		count('ul.VuePagination__pagination li',9) // 50 records = prev-chunk + prev + 5 pages + next + next-chunk
 	});
 
 

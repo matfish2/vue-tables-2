@@ -1,5 +1,3 @@
-var clone = require('clone');
-
 describe(suite + ': Pagination', ()=>{
 
 	it('Changes the page in response to a user click', (done)=>{
@@ -49,23 +47,13 @@ describe(suite + ': Pagination', ()=>{
 	});
 
 	it('navigates to the last page if the current page no longer has data due to dynamically removing rows (regression test for #442)', (done)=> {
-		var data = clone(vm().data);
 		vm().setPage(5);
 		vm().data.splice(-25);
 
 		run(()=>{
 			see('3','.VuePagination__pagination li.active');
 			count('tbody tr',5);
-		},done);
+		},done,1000);
 	});
-
-	it('does not try to navigate to last page if current page is 1 (regression test for #456)', (done)=>{
-		createWrapper({debounce:0},null,{}, []);
-
-		run(()=>{
-			count('tbody tr',1);
-		}, done);
-	});
-
 
 });

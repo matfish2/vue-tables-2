@@ -19,6 +19,8 @@ var _VtColumnsDropdown = _interopRequireDefault(require("./VtColumnsDropdown"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+var DataTableTemplate = require('./DataTableTemplate');
+
 var _default2 = {
   name: 'VtDataTable',
   components: {
@@ -57,11 +59,15 @@ var _default2 = {
     setPage: function setPage(val) {
       this.$refs.table.setPage(val);
     },
+    setOrder: function setOrder(column, asc) {
+      this.$refs.table.setOrder(column, asc);
+    },
     toggleChildRow: function toggleChildRow(rowId) {
       this.$refs.table.toggleChildRow(rowId);
     },
     getOpenChildRows: function getOpenChildRows() {
-      return this.$refs.table.getOpenChildRows();
+      var rows = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      return this.$refs.table.getOpenChildRows(rows);
     }
   },
   computed: {
@@ -89,12 +95,6 @@ var _default2 = {
   },
   render: function render(h) {
     return h("r-l-data-table", {
-      attrs: {
-        data: this.data,
-        columns: this.columns,
-        name: this.name,
-        options: this.options
-      },
       ref: "table",
       scopedSlots: {
         "default": function _default(props) {
@@ -108,11 +108,11 @@ var _default2 = {
             "class": props.theme.row
           }, [h("div", {
             "class": props.theme.column
-          }, [!props.opts.filterByColumn ? h("div", {
+          }, [!props.opts.filterByColumn && props.opts.filterable ? h("div", {
             "class": "".concat(props.theme.field, " ").concat(props.theme.inline, " ").concat(props.theme.left, " VueTables__search")
-          }, [props.slots.beforeFilter, h("vt-generic-filter"), props.slots.afterFilter]) : '', props.slots.afterFilterWrapper, props.perPageValues.length ? h("div", {
+          }, [props.slots.beforeFilter, h("vt-generic-filter"), props.slots.afterFilter]) : '', props.slots.afterFilterWrapper, props.perPageValues.length > 1 ? h("div", {
             "class": "".concat(props.theme.field, " ").concat(props.theme.inline, " ").concat(props.theme.right, " VueTables__limit")
-          }, [props.slots.beforeLimit, h("vt-per-page-selector"), props.slots.afterLimit]) : '', props.opts.dropdownPagination && props.totalPages > 1 ? h("div", {
+          }, [props.slots.beforeLimit, h("vt-per-page-selector"), props.slots.afterLimit]) : '', props.opts.pagination.dropdown && props.totalPages > 1 ? h("div", {
             "class": "VueTables__pagination-wrapper"
           }, [h("div", {
             "class": "".concat(props.theme.field, " ").concat(props.theme.inline, " ").concat(props.theme.right, " VueTables__dropdown-pagination")
@@ -120,7 +120,9 @@ var _default2 = {
             "class": "VueTables__columns-dropdown-wrapper ".concat(props.theme.right, " ").concat(props.theme.dropdown.container)
           }, [h("vt-columns-dropdown")]) : ''])]), props.slots.beforeTable, h("div", {
             "class": "table-responsive"
-          }, [h("vt-table")]), props.slots.afterTable, h("vt-pagination")]);
+          }, [h("vt-table", {
+            ref: "vt_table"
+          })]), props.slots.afterTable, h("vt-pagination")]);
         }
       }
     });
