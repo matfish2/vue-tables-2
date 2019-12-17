@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _default = {
   name: "RLPerPageSelector",
-  inject: ['opts', 'limit', 'setLimit', 'perPageValues', 'id', 'theme', 'display'],
+  inject: ['opts', 'limit', 'setLimit', 'perPageValues', 'id', 'theme', 'display', 'componentsOverride'],
   render: function render() {
     var _this = this;
 
@@ -27,7 +27,8 @@ var _default = {
         change: function change(e) {
           return _this.setLimit(e);
         }
-      }
+      },
+      override: this.componentsOverride.perPageSelector
     });
   }
 };

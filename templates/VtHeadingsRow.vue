@@ -1,7 +1,7 @@
 <template>
     <tr>
         <th v-if="props.childRowTogglerFirst"></th>
-        <table-heading v-for="(column, i) in props.columns" :key="i" :column="column"/>
+        <vt-table-heading v-for="(column, i) in props.columns" :key="i" :column="column"/>
         <th v-if="props.childRowTogglerLast"></th>
     </tr>
 </template>

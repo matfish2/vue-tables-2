@@ -19,7 +19,11 @@ var _default2 = {
     return h("r-l-per-page-selector", {
       scopedSlots: {
         "default": function _default(props) {
-          return h("div", {
+          return props.override ? h(props.override, {
+            attrs: {
+              props: props
+            }
+          }) : h("div", {
             "class": "VueTables__limit-field"
           }, [h("label", {
             "class": props.labelClass,

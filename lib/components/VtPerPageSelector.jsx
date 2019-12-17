@@ -7,7 +7,7 @@ export default {
         return <r-l-per-page-selector scopedSlots={
             {
                 default: function (props) {
-                    return <div class="VueTables__limit-field">
+                    return props.override ? h(props.override, {attrs:{props}}) : <div class="VueTables__limit-field">
                             <label class={props.labelClass} for={`VueTables__limit_${props.id}`}>
                                 {props.display('limit')}
                             </label>

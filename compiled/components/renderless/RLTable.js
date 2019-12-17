@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _default = {
   name: 'RLTable',
-  inject: ['opts', 'theme', 'slots', 'componentsOverride'],
+  inject: ['opts', 'theme', 'colspan', 'slots', 'componentsOverride'],
   render: function render() {
     return this.$scopedSlots["default"]({
       tableAttrs: {
@@ -14,6 +14,7 @@ var _default = {
         "class": "VueTables__table ".concat(this.opts().skin ? this.opts().skin : this.theme.table)
       },
       slots: this.slots(),
+      colspan: this.colspan(),
       caption: this.opts().caption,
       override: this.componentsOverride.table
     });

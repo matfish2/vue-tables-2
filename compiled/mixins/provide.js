@@ -89,6 +89,13 @@ module.exports = function () {
     toggleGroupDirection: this._toggleGroupDirection,
     collapsedGroups: function collapsedGroups() {
       return _this.collapsedGroups;
+    },
+    userMultiSorting: function userMultiSorting() {
+      return _this.userMultiSorting;
+    },
+    hasMultiSort: this.hasMultiSort,
+    orderBy: function orderBy() {
+      return _this.orderBy;
     }
   };
 };
