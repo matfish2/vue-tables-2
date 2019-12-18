@@ -11,7 +11,7 @@ var _default = {
     return this.$scopedSlots["default"]({
       sortable: this.sortable(this.column),
       "class": "VueTables__sort-icon ".concat(this.theme.right, " ").concat(this.sortableChevronClass(this.column)),
-      sortStatus: this.getSortStatus(),
+      sortStatus: this.sortStatus,
       override: this.componentsOverride.sortControl
     });
   },
@@ -21,10 +21,8 @@ var _default = {
     },
     UserMultiSorting: function UserMultiSorting() {
       return this.userMultiSorting();
-    }
-  },
-  methods: {
-    getSortStatus: function getSortStatus() {
+    },
+    sortStatus: function sortStatus() {
       var _this = this;
 
       if (this.hasMultiSort && this.OrderBy.column && this.UserMultiSorting[this.OrderBy.column]) {
@@ -33,7 +31,7 @@ var _default = {
         })[0];
         if (col) return {
           sorted: true,
-          asc: col.asc
+          asc: col.ascending
         };
       }
 
@@ -49,6 +47,7 @@ var _default = {
         asc: false
       };
     }
-  }
+  },
+  methods: {}
 };
 exports["default"] = _default;
