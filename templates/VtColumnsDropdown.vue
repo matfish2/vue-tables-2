@@ -28,7 +28,7 @@
 
 <script>
     export default {
-        name: "CustomColumnsDropdown",
+        name: "VtColumnsDropdown",
         props: ['props']
     }
 </script>
