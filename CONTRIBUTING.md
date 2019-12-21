@@ -6,7 +6,7 @@ I am using xs:code to offer paid access to a permissive licensed version of the 
 
 In order to accept your contribution to this GPL licensed version, and to be able to use the contribution on the MIT licensed version, I ask that you sign this CLA (Contributor license agreement) and send it to matfish2@gmail.com.
 
-Download the CLA here: https://github.com/matfish2/vue-tables-2/blob/master/CLA.docx?raw=true
+Download the CLA [here](https://github.com/matfish2/vue-tables-2/blob/master/CLA.docx?raw=true)
 
 Without signing the CLA, I will not be able to accept your contribution.
 
