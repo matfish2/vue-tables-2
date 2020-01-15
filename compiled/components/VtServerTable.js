@@ -51,6 +51,9 @@ var _default2 = {
     }
   },
   methods: {
+    refresh: function refresh() {
+      this.$refs.table.refresh();
+    },
     setFilter: function setFilter(val) {
       this.$refs.table.setFilter(val);
     },

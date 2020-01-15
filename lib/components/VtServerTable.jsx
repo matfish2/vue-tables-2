@@ -37,6 +37,9 @@ export default {
         }
     },
     methods: {
+        refresh() {
+          this.$refs.table.refresh();
+        },
         setFilter(val) {
             this.$refs.table.setFilter(val);
         },
