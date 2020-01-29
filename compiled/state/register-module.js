@@ -16,10 +16,7 @@ module.exports = function (self) {
 
   if (self.$store && self.$store.state && self.$store.state[self.name]) {
     Module.state = _merge["default"].recursive(Module.state, self.$store.state[self.name]);
-
-    if (self.vuex && !self.opts.preserveState) {
-      self.$store.unregisterModule(self.name);
-    }
+    self.$store.unregisterModule(self.name);
   }
 
   self.$store.registerModule(self.name, Module);
