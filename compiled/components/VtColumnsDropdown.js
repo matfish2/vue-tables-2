@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _RLColumnsDropdown = _interopRequireDefault(require("./renderless/RLColumnsDropdown"));
 
-var _dropdownWrapper = _interopRequireDefault(require("../modules/dropdown-wrapper"));
+var _dropdownWrapper = _interopRequireDefault(require("./dropdown-wrapper"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
