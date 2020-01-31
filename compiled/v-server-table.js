@@ -104,7 +104,7 @@ exports.install = function (Vue, globalOptions, useVuex) {
         lastKeyStrokeAt: false,
         globalOptions: globalOptions,
         componentsOverride: componentsOverride,
-        theme: themes[theme]
+        theme: typeof theme === 'string' ? themes[theme] : theme()
       }, (0, _data2["default"])(useVuex, "server", this.options.initialPage));
     },
     methods: {
