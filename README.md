@@ -76,6 +76,10 @@ In addition to the permissive license, subscribed users will receive **ongoing p
 |  **Free** |  **20$ per year**  | 
 |  Fully featured 100% open source license restrictions apply. No support |  Fully featured 100% open source commercial use. Priority support | 
 
+## Contributing
+All contributions are welcome. <br> Learn more about how you can contribute to this project
+[here](https://github.com/DekelKan/vue-tables-2/blob/master/CONTRIBUTING.md)
+
 ## Author
 2019 © Copyright. Vue Tables 2 All Rights Reserved.
 Creted by Matanya Fischeimer. <br>
