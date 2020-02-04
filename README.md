@@ -80,9 +80,12 @@ All contributions are welcome. <br> Learn more about how you can contribute to t
 [here](https://github.com/DekelKan/vue-tables-2/blob/master/CONTRIBUTING.md).
 
 ## Author
+I’ve been working on Vue Tables 2 for the past 2 years, and I’m here for your questions, suggestions
+and comments.<br> We are always happy to hear from you, so we can
+make Vue Tables 2 better for everyone. <br> Please feel free to contact me with your feedback - matfish2@gmail.com <br>
+
 2019 © Copyright. Vue Tables 2 All Rights Reserved.
-Creted by Matanya Fischeimer. <br>
-matfish2@gmail.com
+Creted by Matanya Fischeimer.
 
 ## VueJS 1
 Users of VueJS 1 should use [this package](https://github.com/matfish2/vue-tables).
