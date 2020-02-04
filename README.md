@@ -5,28 +5,15 @@
 [![Twitter Follow](https://img.shields.io/twitter/follow/matfish2?style=social)](https://twitter.com/matfish2)
 
 ----
-## Index
-<!--ts-->
-* [About Vue Tables 2](#about-vue-tables-2)
-* [Server and Client Data](#server-and-client-data)
-* [Templates](#templates)
-* [Feature-packed](#feature-packed)
-* [Demo](#demo)
-* [Using Vue Table 2](#using-vue-table-2)
-  * [Requirements](#requirements)
-  * [Installation](#installation)
-  * [Documentation](#documentation)
-* [New Release](#new-release)
-* [License](#license)
-* [Pricing](#pricing)
-* [Author](#author)
-* [VueJS 1](#vuejs-1)
-<!--te-->
-----
 ### About Vue Tables 2
 Vue Tables 2 was created to give developers a fully featured tool-set for creating beautiful and useful data tables with Vue.js. Used in hundreds of commercial software applications, Vue Tables 2 is constantly growing, improving and getting new features.
 
 [![dual license](https://github.com/xscode-resources/promotion-materials/blob/master/assets/Dual-license-badge.gif?raw=true)](https://matfish2.github.io/vue-tables-2-site/)
+
+## Pricing
+[![](https://github.com/matfish2/vue-tables-2/blob/master/img/vuetables2pricing.png?raw=true)](https://cp.xscode.com/matfish2/vue-tables-2)
+*Subscriptions are offered via xs:code, please sign-up and subscribe to vue-tables-2.
+A subscription gives you access to a repository with an MIT license.*
 
 ### Server and Client Data
 Fetch and display backend and frontend data with ease. <br>
@@ -68,15 +55,6 @@ It introduces an improved mechanism for building custom templates by allowing yo
 As of **version 1.6.0**, this project is licensed under the **GPLv3** license.
 An **MIT** licensed version is available as a subscription [here](https://cp.xscode.com/matfish2/vue-tables-2)
 In addition to the permissive license, subscribed users will receive **ongoing priority support** for any issue that might arise.
-
-## Pricing
-| GPLv3 LICENSED  | MIT LICENSED <br> (subscription) | 
-| ------------- | ------------- | 
-|  **Free** |  **20$ per year**  | 
-|  Fully featured 100% open source license restrictions apply. No support |  Fully featured 100% open source commercial use. Priority support | 
-
-*Subscriptions are offered via xs:code, please sign-up and subscribe to vue-tables-2.
-A subscription gives you access to a repository with an MIT license.*
 
 ## Contributing
 All contributions are welcome. <br> Learn more about how you can contribute to this project
