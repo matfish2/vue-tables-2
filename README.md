@@ -47,10 +47,10 @@ or [here](https://jsfiddle.net/matfish2/js4bmdbL/) for a rudimentary server comp
 #### Requirements
 Any of the following: <br>
 
-1. Vue.js (>=2.0) Server Side: axios. <br>
-2. vue-resource (>=0.9.0) <br>
-3. jQuery <br>
-4. A custom request function for the AJAX requests.
+* Vue.js (>=2.0) Server Side: axios. <br>
+* vue-resource (>=0.9.0) <br>
+* jQuery <br>
+* A custom request function for the AJAX requests.
 
 #### Installation
 Install with npm or git clone, [Read More](https://matanya.gitbook.io/vue-tables-2/installation).
@@ -75,7 +75,7 @@ In addition to the permissive license, subscribed users will receive **ongoing p
 |  **Free** |  **20$ per year**  | 
 |  Fully featured 100% open source license restrictions apply. No support |  Fully featured 100% open source commercial use. Priority support | 
 
-* *Subscriptions are offered via xs:code, please sign-up and subscribe to vue-tables-2.
+*Subscriptions are offered via xs:code, please sign-up and subscribe to vue-tables-2.
 A subscription gives you access to a repository with an MIT license.*
 
 ## Contributing
