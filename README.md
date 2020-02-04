@@ -1,33 +1,85 @@
 [![](https://github.com/matfish2/vue-tables-2/blob/master/img/Banner.jpg?raw=true)](https://matfish2.github.io/vue-tables-2-site/)
 
-
 [![xscode](https://img.shields.io/badge/Available%20on-xs%3Acode-blue?style=?style=plastic&logo=appveyor&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////////VXz1bAAAAAJ0Uk5T/wDltzBKAAAAlUlEQVR42uzXSwqAMAwE0Mn9L+3Ggtgkk35QwcnSJo9S+yGwM9DCooCbgn4YrJ4CIPUcQF7/XSBbx2TEz4sAZ2q1RAECBAiYBlCtvwN+KiYAlG7UDGj59MViT9hOwEqAhYCtAsUZvL6I6W8c2wcbd+LIWSCHSTeSAAECngN4xxIDSK9f4B9t377Wd7H5Nt7/Xz8eAgwAvesLRjYYPuUAAAAASUVORK5CYII=)](https://xscode.com)
 [![npm version](https://badge.fury.io/js/vue-tables-2.svg)](https://badge.fury.io/js/vue-tables-2) [![GitHub stars](https://img.shields.io/github/stars/matfish2/vue-tables-2.svg)](https://github.com/matfish2/vue-tables-2/stargazers) [![GitHub license](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://raw.githubusercontent.com/matfish2/vue-tables-2/master/LICENSE) [![npm](https://img.shields.io/npm/dt/vue-tables-2.svg)](https://www.npmjs.com/package/vue-tables-2) [![Build Status](https://travis-ci.org/matfish2/vue-tables-2.svg?branch=master)](https://travis-ci.org/matfish2/vue-tables-2) [![](https://data.jsdelivr.com/v1/package/npm/vue-tables-2/badge)](https://www.jsdelivr.com/package/npm/vue-tables-2) [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/vue-tables-2/Lobby)
-
+[![Twitter Follow](https://img.shields.io/twitter/follow/matfish2?style=social)](https://twitter.com/matfish2)
 
 ----
+## Index
+<!--ts-->
+* [About Vue Tables 2](#about-vue-tables-2)
+* [Server and Client Data](#server-and-client-data)
+* [Templates](#templates)
+* [Feature-packed](#feature-packed)
+* [Demo](#demo)
+* [Using Vue Table 2](#using-vue-table-2)
+  * [Requirements](#requirements)
+  * [Installation](#installation)
+  * [Documentation](#documentation)
+* [New Release](#new-release)
+* [License](#license)
+* [Pricing](#pricing)
+* [Author](#author)
+* [VueJS 1](#vuejs-1)
+<!--te-->
+----
+### About Vue Tables 2
+Vue Tables 2 was created to give developers a fully featured tool-set for creating beautiful and useful data tables with Vue.js. Used in hundreds of commercial software applications, Vue Tables 2 is constantly growing, improving and getting new features.
+
 [![dual license](https://github.com/xscode-resources/promotion-materials/blob/master/assets/Dual-license-badge.gif?raw=true)](https://matfish2.github.io/vue-tables-2-site/)
 
-As of version 1.6.0, this project is licensed under the **GPLv3** license.
+### Server and Client Data
+Fetch and display backend and frontend data with ease. <br>
+Support for most server-side implementations via a flexible API.
 
-An **MIT** licensed version is available as a subscription [here](https://matfish2.github.io/vue-tables-2-site/)
+### Templates
+wrap cells with vue-compiled HTML to generate complex and interactive content on-the-fly
+[Read More](https://matanya.gitbook.io/vue-tables-2/templates)
 
-In addition to the permissive license, subscribed users will receive **ongoing priority support** for any issue that might arise.
-
-### New Release
-Version 2.0 is now in beta under the `next` tag in npm!
-It introduces an improved mechanism for building custom templates by allowing you to swap every component with your own UI implementation. [Read all about it](https://matanya.gitbook.io/vue-tables-2/custom-template-version-2)
+### Feature-packed
+Use nested data structures, custom filter, child rows, custom sorting and other advanced features.
 
 ### Demo
 [Click here](https://jsfiddle.net/matfish2/jfa5t4sm/) to see the client component in action and fiddle with the various [options](https://matanya.gitbook.io/vue-tables-2/options-api)
 or [here](https://jsfiddle.net/matfish2/js4bmdbL/) for a rudimentary server component demo
 
+### Using Vue Table 2
+#### Requirements
+Any of the following: <br>
+
+1. Vue.js (>=2.0) Server Side: axios <br>
+2. vue-resource (>=0.9.0) <br>
+3. jQuery <br>
+4. A custom request function for the AJAX requests.
+
+#### Installation
+Install with npm or git clone. [Read More](https://matanya.gitbook.io/vue-tables-2/installation)
+
+#### Documentation
+Please click [here](https://matanya.gitbook.io/vue-tables-2/) for GitBook documentation.
+
 ----
 
-# Documentation
+## New Release
+Version 2.0 is now in beta under the `next` tag in npm!
+It introduces an improved mechanism for building custom templates by allowing you to swap every component with your own UI implementation. [Read all about it](https://matanya.gitbook.io/vue-tables-2/custom-template-version-2).
 
-Please click [here](https://matanya.gitbook.io/vue-tables-2/) for GitBook documentation
+## License 
+As of **version 1.6.0**, this project is licensed under the **GPLv3** license.
+An **MIT** licensed version is available as a subscription [here](https://cp.xscode.com/matfish2/vue-tables-2)
+In addition to the permissive license, subscribed users will receive **ongoing priority support** for any issue that might arise.
 
-# VueJS 1
+## Pricing
 
-Users of VueJS 1 should use [this package](https://github.com/matfish2/vue-tables) .
+| GPLv3 LICENSED  | MIT LICENSED <br> (subscription) | 
+| ------------- | ------------- | 
+|  **Free** |  **20$ per year**  | 
+|  Fully featured 100% open source license restrictions apply. No support |  Fully featured 100% open source commercial use. Priority support | 
+
+## Author
+2019 © Copyright. Vue Tables 2 All Rights Reserved.
+Creted by Matanya Fischeimer. <br>
+matfish2@gmail.com
+
+## VueJS 1
+Users of VueJS 1 should use [this package](https://github.com/matfish2/vue-tables).
