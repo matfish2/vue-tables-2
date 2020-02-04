@@ -33,7 +33,7 @@ Fetch and display backend and frontend data with ease. <br>
 Support for most server-side implementations via a flexible API.
 
 ### Templates
-wrap cells with vue-compiled HTML to generate complex and interactive content on-the-fly
+wrap cells with vue-compiled HTML to generate complex and interactive content on-the-fly.
 [Read More](https://matanya.gitbook.io/vue-tables-2/templates)
 
 ### Feature-packed
@@ -41,19 +41,19 @@ Use nested data structures, custom filter, child rows, custom sorting and other 
 
 ### Demo
 [Click here](https://jsfiddle.net/matfish2/jfa5t4sm/) to see the client component in action and fiddle with the various [options](https://matanya.gitbook.io/vue-tables-2/options-api)
-or [here](https://jsfiddle.net/matfish2/js4bmdbL/) for a rudimentary server component demo
+or [here](https://jsfiddle.net/matfish2/js4bmdbL/) for a rudimentary server component demo.
 
 ### Using Vue Table 2
 #### Requirements
 Any of the following: <br>
 
-1. Vue.js (>=2.0) Server Side: axios <br>
+1. Vue.js (>=2.0) Server Side: axios. <br>
 2. vue-resource (>=0.9.0) <br>
 3. jQuery <br>
 4. A custom request function for the AJAX requests.
 
 #### Installation
-Install with npm or git clone. [Read More](https://matanya.gitbook.io/vue-tables-2/installation)
+Install with npm or git clone, [Read More](https://matanya.gitbook.io/vue-tables-2/installation).
 
 #### Documentation
 Please click [here](https://matanya.gitbook.io/vue-tables-2/) for GitBook documentation.
@@ -77,7 +77,7 @@ In addition to the permissive license, subscribed users will receive **ongoing p
 
 ## Contributing
 All contributions are welcome. <br> Learn more about how you can contribute to this project
-[here](https://github.com/DekelKan/vue-tables-2/blob/master/CONTRIBUTING.md)
+[here](https://github.com/DekelKan/vue-tables-2/blob/master/CONTRIBUTING.md).
 
 ## Author
 2019 © Copyright. Vue Tables 2 All Rights Reserved.
