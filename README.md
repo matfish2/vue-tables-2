@@ -33,8 +33,8 @@ Fetch and display backend and frontend data with ease. <br>
 Support for most server-side implementations via a flexible API.
 
 ### Templates
-wrap cells with vue-compiled HTML to generate complex and interactive content on-the-fly.
-[Read More](https://matanya.gitbook.io/vue-tables-2/templates)
+wrap cells with vue-compiled HTML to generate complex and interactive content on-the-fly,
+[Read More](https://matanya.gitbook.io/vue-tables-2/templates).
 
 ### Feature-packed
 Use nested data structures, custom filter, child rows, custom sorting and other advanced features.
