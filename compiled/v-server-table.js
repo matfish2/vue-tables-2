@@ -85,7 +85,8 @@ exports.install = function (Vue, globalOptions, useVuex) {
       this._setFiltersDOM(this.query);
 
       if (this.opts.resizableColumns) {
-        (0, _resizeableColumns["default"])(this.$el.querySelector("table"), this.hasChildRow, this.opts.childRowTogglerFirst, this.opts.resizableColumns);
+        var removeResizableListeners = (0, _resizeableColumns["default"])(this.$el.querySelector("table"), this.hasChildRow, this.opts.childRowTogglerFirst, this.opts.resizableColumns);
+        this.$once('hook:beforeDestroy', removeResizableListeners);
       }
 
       this._setColumnsDropdownCloseListener();

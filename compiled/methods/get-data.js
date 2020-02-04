@@ -28,6 +28,7 @@ module.exports = function (promiseOnly) {
   if (promiseOnly) return promise;
   return promise.then(function (response) {
     if (typeof response !== 'undefined') {
+      this.loading = false;
       return this.setData(response);
     } else {
       return false;
