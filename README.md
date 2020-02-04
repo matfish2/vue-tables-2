@@ -70,7 +70,6 @@ An **MIT** licensed version is available as a subscription [here](https://cp.xsc
 In addition to the permissive license, subscribed users will receive **ongoing priority support** for any issue that might arise.
 
 ## Pricing
-
 | GPLv3 LICENSED  | MIT LICENSED <br> (subscription) | 
 | ------------- | ------------- | 
 |  **Free** |  **20$ per year**  | 
