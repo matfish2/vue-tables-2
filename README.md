@@ -11,7 +11,7 @@ Vue Tables 2 was created to give developers a fully featured tool-set for creati
 [![dual license](https://github.com/xscode-resources/promotion-materials/blob/master/assets/Dual-license-badge.gif?raw=true)](https://matfish2.github.io/vue-tables-2-site/)
 
 ## Pricing
-[![](https://github.com/DekelKan/vue-tables-2/tree/master/img/vuetables2pricing.png?raw=true)](https://cp.xscode.com/matfish2/vue-tables-2)
+[![](https://github.com/DekelKan/vue-tables-2/blob/master/img/vuetables2pricing.png)](https://cp.xscode.com/matfish2/vue-tables-2)
 *Subscriptions are offered via xs:code, please sign-up and subscribe to vue-tables-2. <br>
 A subscription gives you access to a repository with an MIT license.*
 
