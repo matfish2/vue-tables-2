@@ -16,6 +16,7 @@ Vue Tables 2 was created to give developers a fully featured tool-set for creati
  * Subscriptions are offered via xs:code, please sign-up and subscribe to vue-tables-2. <br>
  A subscription gives you access to a repository with an MIT license.
 </p>
+<br>
 
 ### Server and Client Data
 Fetch and display backend and frontend data with ease. <br>
