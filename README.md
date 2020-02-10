@@ -13,8 +13,8 @@ Vue Tables 2 was created to give developers a fully featured tool-set for creati
 ## Pricing
 [![](https://github.com/DekelKan/vue-tables-2/blob/master/img/VueTables2pricing1-01.svg)](https://cp.xscode.com/matfish2/vue-tables-2) <br>
 <p align="center">
- *Subscriptions are offered via xs:code, please sign-up and subscribe to vue-tables-2.* <br>
-*A subscription gives you access to a repository with an MIT license.*
+ * Subscriptions are offered via xs:code, please sign-up and subscribe to vue-tables-2. <br>
+ A subscription gives you access to a repository with an MIT license.
 </p>
 
 ### Server and Client Data
