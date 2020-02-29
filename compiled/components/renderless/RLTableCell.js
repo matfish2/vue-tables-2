@@ -11,7 +11,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var _default = {
   name: 'RLTableCell',
-  inject: ['row', 'scopedSlots', 'opts', 'render', 'index', 'setEditingCell', 'updateValue', 'revertValue', 'editing', 'getValue', 'columnClass', 'cellClasses', 'componentsOverride'],
+  inject: ['row', 'scopedSlots', 'opts', 'render', 'index', 'setEditingCell', 'updateValue', 'revertValue', 'editing', 'getValue', 'columnClass', 'cellClasses', 'componentsOverride', 'isListFilter', 'optionText', 'source', 'dateFormat', 'formatDate'],
   props: ['column'],
   render: function render(h) {
     return this.$scopedSlots["default"]({
@@ -46,7 +46,18 @@ var _default = {
         return this.scopedSlots()[this.column](data);
       }
 
-      return this.getValue(this.Row, this.column);
+      return this.formatCellContent(this.getValue(this.Row, this.column), this.column);
+    },
+    formatCellContent: function formatCellContent(value, column) {
+      if (this.source === 'client' && this.opts().dateColumns.includes(column)) {
+        return this.formatDate(value, this.dateFormat(column));
+      }
+
+      if (this.isListFilter(column)) {
+        return this.optionText(value, column);
+      }
+
+      return value;
     },
     isEditing: function isEditing() {
       return function () {

@@ -25,7 +25,6 @@ module.exports = {
   highlightMatch: require('../filters/highlight-matches'),
   formatDate: require('../filters/format-date'),
   hasDateFilters: require('../methods/has-date-filters'),
-  // applyFilters: require('../methods/apply-filters'),
   optionText: require('../filters/option-text'),
   render: require('../methods/render'),
   rowWasClicked: require('../methods/row-was-clicked'),

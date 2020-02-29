@@ -96,6 +96,10 @@ module.exports = function () {
     hasMultiSort: this.hasMultiSort,
     orderBy: function orderBy() {
       return _this.orderBy;
-    }
+    },
+    isListFilter: this.isListFilter,
+    optionText: this.optionText,
+    dateFormat: this.dateFormat,
+    formatDate: this.formatDate
   };
 };

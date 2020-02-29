@@ -1,7 +1,7 @@
 "use strict";
 
 module.exports = function (row, column) {
-  if (column.indexOf('.') === -1) return formatCellContent.call(this, row[column], column);
+  if (column.indexOf('.') === -1) return row[column];
   var p = column.split('.');
   var value = row[p[0]];
   if (!value) return '';
@@ -12,15 +12,5 @@ module.exports = function (row, column) {
     if (typeof value === 'undefined') return '';
   }
 
-  return formatCellContent.call(this, value, column);
+  return value;
 };
-
-function formatCellContent(value, column) {
-  if (this.source === 'client' && this.opts.dateColumns.includes(column)) {
-    return this.formatDate(value, this.dateFormat(column));
-  }
-
-  if (this.isListFilter(column)) {
-    return this.optionText(value, column);
-  }
-}
