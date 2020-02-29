@@ -4,7 +4,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 module.exports = function (response) {
   var data = this.opts.responseAdapter.call(this, response);
-  this.data = this.applyFilters(data.data);
+  this.data = data.data;
 
   if (isNaN(data.count)) {
     console.error("vue-tables-2: invalid 'count' property. Expected number, got ".concat(_typeof(data.count)));
