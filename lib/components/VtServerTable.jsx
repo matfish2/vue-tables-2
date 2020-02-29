@@ -36,6 +36,16 @@ export default {
             }
         }
     },
+    computed: {
+      customQueries: {
+        get() {
+          return this.$refs.table.customQueries;
+        },
+        set(val) {
+          this.$refs.table.customQueries = val;
+        }
+      }
+    },
     methods: {
         refresh() {
           this.$refs.table.refresh();

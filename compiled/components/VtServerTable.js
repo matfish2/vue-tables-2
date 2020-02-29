@@ -50,6 +50,16 @@ var _default2 = {
       }
     }
   },
+  computed: {
+    customQueries: {
+      get: function get() {
+        return this.$refs.table.customQueries;
+      },
+      set: function set(val) {
+        this.$refs.table.customQueries = val;
+      }
+    }
+  },
   methods: {
     refresh: function refresh() {
       this.$refs.table.refresh();
