@@ -1,12 +1,12 @@
 <template>
-    <td tabindex="0" :class="props.classes">
+    <td :tabindex="props.tabIndex" :class="props.classes">
         <vnodes :vnodes="props.content"/>
     </td>
 </template>
 
 <script>
     export default {
-        name: "VtTableCell",
+        name: "MyTableCell",
         props: ['props'],
         components: {
             vnodes: {

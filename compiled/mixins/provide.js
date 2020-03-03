@@ -100,6 +100,9 @@ module.exports = function () {
     isListFilter: this.isListFilter,
     optionText: this.optionText,
     dateFormat: this.dateFormat,
-    formatDate: this.formatDate
+    formatDate: this.formatDate,
+    tabIndex: function tabIndex() {
+      return _this.tabIndex;
+    }
   };
 };

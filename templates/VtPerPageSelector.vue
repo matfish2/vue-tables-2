@@ -14,7 +14,7 @@
 
 <script>
     export default {
-        name: "VtPerPageSelector",
+        name: "MyPerPageSelector",
         props: ['props']
     }
 </script>

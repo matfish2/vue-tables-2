@@ -11,7 +11,7 @@
 
 <script>
     export default {
-        name: "VtTextFilter",
+        name: "MyTextFilter",
         props: ['props']
     }
 </script>

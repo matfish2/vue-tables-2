@@ -14,7 +14,7 @@
     import VtTableBody from 'vue-tables-2/compiled/components/VtTableBody'
 
     export default {
-        name: "VtTable",
+        name: "MyTable",
         props: ['props'],
         components: {
             VtTableHead,

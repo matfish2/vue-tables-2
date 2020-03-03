@@ -28,7 +28,7 @@ var _default2 = {
           }, [h("td", {
             "class": "text-center",
             attrs: {
-              tabindex: "0",
+              tabindex: props.tabIndex,
               colspan: props.colspan
             }
           }, [props.display(props.loading ? 'loading' : 'noResults')])]);

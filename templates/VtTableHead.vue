@@ -13,7 +13,7 @@
     import VtFiltersRow from "vue-tables-2/compiled/components/VtFiltersRow";
 
     export default {
-        name: "VtTableHead",
+        name: "MyTableHead",
         props:['props'],
         components:{
             VtHeadingsRow,

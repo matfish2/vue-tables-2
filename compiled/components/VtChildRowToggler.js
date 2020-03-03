@@ -28,7 +28,7 @@ var _default2 = {
             }
           }) : h("td", {
             attrs: {
-              tabindex: "0"
+              tabindex: props.tabIndex
             },
             on: {
               "keypress": function keypress(e) {

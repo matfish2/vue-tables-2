@@ -16,7 +16,7 @@
 
 <script>
     export default {
-        name: "VtGenericFilter",
+        name: "MyGenericFilter",
         props: ['props']
     }
 </script>

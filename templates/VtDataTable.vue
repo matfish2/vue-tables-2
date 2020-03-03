@@ -53,7 +53,7 @@
     import VtTable from 'vue-tables-2/compiled/components/VtTable';
 
     export default {
-        name: "VtDataTable",
+        name: "MyDataTable",
         props: ['props'],
         components: {
             VtGenericFilter,

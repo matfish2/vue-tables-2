@@ -10,7 +10,7 @@
     import VtTableHeading from 'vue-tables-2/compiled/components/VtTableHeading'
 
     export default {
-        name: "VtHeadingsRow",
+        name: "MyHeadingsRow",
         props: ['props'],
         components: {
             VtTableHeading

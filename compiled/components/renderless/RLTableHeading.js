@@ -12,14 +12,14 @@ var _default = {
       column: this.column
     };
   },
-  inject: ['opts', 'theme', 'sortableClass', 'getHeadingTooltip', 'getHeading', 'orderByColumn', 'componentsOverride'],
+  inject: ['opts', 'theme', 'sortableClass', 'getHeadingTooltip', 'getHeading', 'orderByColumn', 'componentsOverride', 'tabIndex'],
   render: function render(h) {
     var _this = this;
 
     return this.$scopedSlots["default"]({
       thAttrs: {
         "class": this.sortableClass(this.column),
-        tabIndex: 0
+        tabIndex: this.tabIndex()
       },
       thEvents: {
         keypress: function keypress(e) {

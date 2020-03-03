@@ -14,7 +14,7 @@
 
 <script>
     export default {
-        name: "VtDropdownPagination",
+        name: "MyDropdownPagination",
         props: ['props']
     }
 </script>

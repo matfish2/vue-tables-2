@@ -13,7 +13,7 @@
     import VtChildRowToggler from "vue-tables-2/compiled/components/VtChildRowToggler";
 
     export default {
-        name: "VtTableRow",
+        name: "MyTableRow",
         props: ['props'],
         components: {VtTableCell, VtChildRowToggler}
     }

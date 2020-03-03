@@ -8,7 +8,7 @@
 
 <script>
     export default {
-        name: "CustomChildRow",
+        name: "MyChildRow",
         props:['props'],
         components:{
           vnodes: {

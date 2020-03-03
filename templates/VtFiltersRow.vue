@@ -15,7 +15,7 @@
     import VtTextFilter from 'vue-tables-2/compiled/components/VtTextFilter'
 
     export default {
-        name: "VtFiltersRow",
+        name: "MyFiltersRow",
         props: ['props'],
         components: {
             VtDateFilter,

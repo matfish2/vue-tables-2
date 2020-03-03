@@ -12,7 +12,7 @@
     import VtSortControl from "vue-tables-2/compiled/components/VtSortControl";
 
     export default {
-        name: "VtTableHeading",
+        name: "MyTableHeading",
         components:{ VtSortControl },
         props: ['props']
     }

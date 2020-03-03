@@ -1,6 +1,6 @@
 <template>
     <tr class="VueTables__no-results">
-        <td class="text-center" tabindex="0"
+        <td class="text-center" :tabindex="props.tabIndex"
             :colspan="props.colspan">
             {{props.display(props.loading ? 'loading' : 'noResults')}}
         </td>
@@ -9,7 +9,7 @@
 
 <script>
     export default {
-        name: "VtNoResultsRow",
+        name: "MyNoResultsRow",
         props: ['props']
     }
 </script>

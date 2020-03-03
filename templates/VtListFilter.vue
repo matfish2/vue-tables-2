@@ -17,7 +17,7 @@
 
 <script>
     export default {
-        name: "VtListFilter",
+        name: "MyListFilter",
         props: ['props']
     }
 </script>

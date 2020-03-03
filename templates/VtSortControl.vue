@@ -5,7 +5,7 @@
 
 <script>
     export default {
-        name: "VtSortControl",
+        name: "MySortControl",
         props: ['props']
     }
 </script>

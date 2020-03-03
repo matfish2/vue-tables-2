@@ -18,7 +18,7 @@
     import VtChildRow from 'vue-tables-2/compiled/components/VtChildRow'
 
     export default {
-        name: "VtTableBody",
+        name: "MyTableBody",
         props: ['props'],
         components: {
             VtNoResultsRow,

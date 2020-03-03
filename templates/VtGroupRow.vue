@@ -17,7 +17,7 @@
 
 <script>
     export default {
-        name: "VtGroupRow",
+        name: "MyGroupRow",
         props: ['props'],
         components:{
              vnodes: {

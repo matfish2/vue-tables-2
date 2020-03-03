@@ -8,7 +8,7 @@ export default {
         return <r-l-table-cell column={this.column} scopedSlots={
             {
                 default: (props) => {
-                    return props.override ? h(props.override, {attrs:{props}}) : <td tabindex="0" class={props.classes}>
+                    return props.override ? h(props.override, {attrs:{props}}) : <td tabindex={props.tabIndex} class={props.classes}>
                         {props.content}
                     </td>
                 }

@@ -29,7 +29,7 @@ var _default2 = {
             }
           }) : h("td", {
             attrs: {
-              tabindex: "0"
+              tabindex: props.tabIndex
             },
             "class": props.classes
           }, [props.content]);

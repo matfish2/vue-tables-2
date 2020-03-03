@@ -9,7 +9,7 @@
 
 <script>
     export default {
-        name: "VtDateFilter",
+        name: "MyDateFilter",
         props: ['props']
     }
 </script>

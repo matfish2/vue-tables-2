@@ -19,5 +19,8 @@ module.exports = {
   },
   Page: function Page() {
     return this.page;
+  },
+  tabIndex: function tabIndex() {
+    return this.opts.tabbable ? 0 : -1;
   }
 };

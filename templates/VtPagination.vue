@@ -13,7 +13,7 @@
     import Pagination from 'vue-pagination-2'
 
     export default {
-        name: "VtPagination",
+        name: "MyPagination",
         components: {
             Pagination
         },
