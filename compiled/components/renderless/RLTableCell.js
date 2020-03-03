@@ -73,7 +73,7 @@ var _default = {
         update: this.updateValue(this.Row, this.column),
         isEditing: this.isEditing(),
         setEditing: this.setEditingCell(this.Row, this.column),
-        revertValue: this.revertValue(this, this.Row, this.column)
+        revertValue: this.revertValue(this.Row, this.column)
       };
     }
   }

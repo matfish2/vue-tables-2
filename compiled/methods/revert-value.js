@@ -7,5 +7,5 @@ module.exports = function _revertVal(row, column) {
     row[column] = this.editing.find(function (e) {
       return e.id === row[_this.opts.uniqueKey];
     }).originalValue;
-  };
+  }.bind(this);
 };
