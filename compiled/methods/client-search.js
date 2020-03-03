@@ -68,7 +68,7 @@ module.exports = function (data, e) {
 
       if (currentQuery) {
         if (this.opts.filterAlgorithm[column]) {
-          if (this.opts.filterAlgorithm[column](row, this.opts.filterByColumn ? query[column] : query)) found++;
+          if (this.opts.filterAlgorithm[column].call(this.$parent.$parent, row, this.opts.filterByColumn ? query[column] : query)) found++;
         } else {
           if (foundMatch(currentQuery, value, isListFilter)) found++;
         }
