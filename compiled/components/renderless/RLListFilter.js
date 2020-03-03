@@ -23,6 +23,7 @@ var _default = {
       }),
       name: this.getColumnName(this.column),
       value: this.query()[this.column],
+      column: this.column,
       override: this.componentsOverride.listFilter
     });
   }
