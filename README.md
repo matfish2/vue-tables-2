@@ -13,12 +13,12 @@ If you were using custom templates in previous version you'll need to adapt it t
 ### About Vue Tables 2
 Vue Tables 2 was created to give developers a fully featured tool-set for creating beautiful and useful data tables with Vue.js. Used in hundreds of commercial software applications, Vue Tables 2 is constantly growing, improving and getting new features.
 
-## Pricing
-
+## License 
 [![dual license](https://github.com/xscode-resources/promotion-materials/blob/master/assets/Dual-license-badge.gif?raw=true)](https://cp.xscode.com/matfish2/vue-tables-2)
 
-The free public package comes with a GPLv3 license.
-To Purchase access to a private repo with MIT license for a one-time fee, please visit [xs-code](https://cp.xscode.com/matfish2/vue-tables-2)
+As of **version 1.6.0**, this project is licensed under the **GPLv3** license.
+An **MIT** licensed version is available for a one-time fee [here](https://cp.xscode.com/matfish2/vue-tables-2)
+In addition to the permissive license, paying users will receive **ongoing priority support** for any issue that might arise.
 
 ### Server and Client Data
 Fetch and display backend and frontend data with ease. <br>
@@ -51,11 +51,6 @@ Install with npm or git clone, [Read More](https://matanya.gitbook.io/vue-tables
 Please click [here](https://matanya.gitbook.io/vue-tables-2/) for GitBook documentation.
 
 ----
-
-## License 
-As of **version 1.6.0**, this project is licensed under the **GPLv3** license.
-An **MIT** licensed version is available as a subscription [here](https://cp.xscode.com/matfish2/vue-tables-2)
-In addition to the permissive license, subscribed users will receive **ongoing priority support** for any issue that might arise.
 
 ## Contributing
 All contributions are welcome. <br> Learn more about how you can contribute to this project
