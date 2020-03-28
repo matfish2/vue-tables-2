@@ -92,6 +92,7 @@ function _default(source) {
         });
       },
       setPage: function setPage(page) {
+        this.dispatch('pagination', page);
         this.commit("PAGINATE", page);
       }
     }
