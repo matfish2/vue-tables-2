@@ -58,6 +58,9 @@ var _default2 = {
       set: function set(val) {
         this.$refs.table.customQueries = val;
       }
+    },
+    data: function data() {
+      return this.$refs.table.tableData;
     }
   },
   methods: {
