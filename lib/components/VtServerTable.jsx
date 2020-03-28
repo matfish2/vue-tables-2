@@ -50,6 +50,9 @@ export default {
         refresh() {
           this.$refs.table.refresh();
         },
+        getData() {
+          return this.$refs.table.getData();
+        },
         setFilter(val) {
             this.$refs.table.setFilter(val);
         },
