@@ -23,7 +23,7 @@ describe(suite + ': Events', () => {
     });
 
 
-	it ('fire a "pagination" event (#813), done=>{
+	it ('fire a "pagination" event (#813)', done=>{
 		// can't paginate on server table without some mocking
         if (isClient) {
             vm().setPage(3);
