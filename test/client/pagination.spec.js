@@ -55,5 +55,4 @@ describe(suite + ': Pagination', ()=>{
 			count('tbody tr',5);
 		},done,1000);
 	});
-
 });

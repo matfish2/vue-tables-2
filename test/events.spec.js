@@ -1,6 +1,8 @@
 describe(suite + ': Events', () => {
+
+    var isClient = suite.includes('Client');
+
     it('fires a row click event and passes the overall index (#689)', (done) => {
-        var isClient = suite.includes('Client');
 
         // can't paginate on server table without some mocking
         if (isClient) {
@@ -20,5 +22,21 @@ describe(suite + ': Events', () => {
         });
     });
 
+
+	it ('fire a "pagination" event (#813), done=>{
+		// can't paginate on server table without some mocking
+        if (isClient) {
+            vm().setPage(3);
+        vm().$nextTick(function() {
+        run(function() {
+            eventEmitted('pagination');
+            var data = getEventData('pagination');
+            expect(data).toEqual(3);
+        }, done);
+        });
+        }
+
+
+	})
 
 });
