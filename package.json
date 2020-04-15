@@ -19,7 +19,6 @@
   ],
   "dependencies": {
     "array-intersect": "^0.0.1",
-    "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "clone": "^2.1.1",
     "debounce": "^1.1",
     "merge": "^1.2.0",
@@ -48,6 +47,7 @@
     "@babel/plugin-syntax-object-rest-spread": "^7.2.0",
     "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.6.3",
+    "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "axios": "^0.19.0",
     "babel-jest": "^23.0.1",
     "babel-loader": "^8.0.6",

@@ -112,6 +112,7 @@ module.exports = function () {
     resizableColumns: true,
     editableColumns: [],
     tabbable: true,
+    infiniteScroll: false,
     componentsOverride: {}
   };
 };

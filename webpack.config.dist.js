@@ -12,6 +12,9 @@ module.exports = {
     libraryTarget:'var',
     library:'VueTables'
   },
+  resolve:{
+    extensions: [".js",".jsx"]
+  },
   optimization: {
     minimize: env==='production'
   },
@@ -21,8 +24,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         loader: 'babel-loader',
+        options: { plugins: ['transform-vue-jsx'] },
         exclude: /node_modules/
       }
     ]
