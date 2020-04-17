@@ -51,6 +51,9 @@ export default {
         },
         getOpenChildRows(rows = null) {
             return this.$refs.table.getOpenChildRows(rows);
+        },
+        resetQuery() {
+            this.$refs.table.resetQuery()
         }
     },
     computed: {

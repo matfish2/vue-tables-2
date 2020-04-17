@@ -37,24 +37,24 @@ export default {
         }
     },
     computed: {
-      customQueries: {
-        get() {
-          return this.$refs.table.customQueries;
+        customQueries: {
+            get() {
+                return this.$refs.table.customQueries;
+            },
+            set(val) {
+                this.$refs.table.customQueries = val;
+            }
         },
-        set(val) {
-          this.$refs.table.customQueries = val;
-        }
-      },
         data() {
-          return this.$refs.table.tableData
+            return this.$refs.table.tableData
         }
     },
     methods: {
         refresh() {
-          this.$refs.table.refresh();
+            this.$refs.table.refresh();
         },
         getData() {
-          return this.$refs.table.getData();
+            return this.$refs.table.getData();
         },
         setFilter(val) {
             this.$refs.table.setFilter(val);
@@ -73,6 +73,9 @@ export default {
         },
         getResponseData(response) {
             return this.$refs.table.getResponseData(response);
+        },
+        resetQuery() {
+            this.$refs.table.resetQuery()
         }
     },
     provide() {
@@ -85,7 +88,8 @@ export default {
         prop: "data"
     },
     render(h) {
-        return <r-l-server-table url={this.url} columns={this.columns} name={this.name} options={this.options} ref="table" scopedSlots={
+        return <r-l-server-table url={this.url} columns={this.columns} name={this.name} options={this.options}
+                                 ref="table" scopedSlots={
             {
                 default: function (props) {
                     return props.override ? h(props.override, {
@@ -95,14 +99,16 @@ export default {
                         <div class={props.theme.row}>
                             <div class={props.theme.column}>
                                 {!props.opts.filterByColumn && props.opts.filterable ?
-                                    <div class={`${props.theme.field} ${props.theme.inline} ${props.theme.left} VueTables__search`}>
+                                    <div
+                                        class={`${props.theme.field} ${props.theme.inline} ${props.theme.left} VueTables__search`}>
                                         {props.slots.beforeFilter}
                                         <vt-generic-filter/>
                                         {props.slots.afterFilter}
                                     </div> : ''}
                                 {props.slots.afterFilterWrapper}
 
-                                {props.perPageValues.length > 1 ? <div class={`${props.theme.field} ${props.theme.inline} ${props.theme.right} VueTables__limit`}>
+                                {props.perPageValues.length > 1 ? <div
+                                    class={`${props.theme.field} ${props.theme.inline} ${props.theme.right} VueTables__limit`}>
                                     {props.slots.beforeLimit}
                                     <vt-per-page-selector/>
                                     {props.slots.afterLimit}
@@ -110,12 +116,14 @@ export default {
 
                                 {props.opts.pagination.dropdown && props.totalPages > 1 ?
                                     <div class="VueTables__pagination-wrapper">
-                                        <div class={`${props.theme.field} ${props.theme.inline} ${props.theme.right} VueTables__dropdown-pagination`}>
+                                        <div
+                                            class={`${props.theme.field} ${props.theme.inline} ${props.theme.right} VueTables__dropdown-pagination`}>
                                             <vt-dropdown-pagination/>
                                         </div>
                                     </div> : ''}
 
-                                {props.opts.columnsDropdown ? <div class={`VueTables__columns-dropdown-wrapper ${props.theme.right} ${props.theme.dropdown.container}`}>
+                                {props.opts.columnsDropdown ? <div
+                                    class={`VueTables__columns-dropdown-wrapper ${props.theme.right} ${props.theme.dropdown.container}`}>
                                     <vt-columns-dropdown/>
                                 </div> : ''}
                             </div>

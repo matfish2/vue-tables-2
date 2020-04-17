@@ -88,6 +88,9 @@ var _default2 = {
     },
     getResponseData: function getResponseData(response) {
       return this.$refs.table.getResponseData(response);
+    },
+    resetQuery: function resetQuery() {
+      this.$refs.table.resetQuery();
     }
   },
   provide: function provide() {

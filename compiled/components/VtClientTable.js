@@ -66,6 +66,9 @@ var _default2 = {
     getOpenChildRows: function getOpenChildRows() {
       var rows = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
       return this.$refs.table.getOpenChildRows(rows);
+    },
+    resetQuery: function resetQuery() {
+      this.$refs.table.resetQuery();
     }
   },
   computed: {
