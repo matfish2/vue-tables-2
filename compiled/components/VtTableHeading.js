@@ -37,6 +37,7 @@ var _default2 = {
             },
             "class": props.thAttrs["class"],
             attrs: {
+              title: props.thAttrs.title,
               tabindex: props.thAttrs.tabIndex
             }
           }, [h("span", {

@@ -13,6 +13,7 @@ export default {
                         on-keypress={props.thEvents.keypress}
                         on-click={props.thEvents.click}
                         class={props.thAttrs.class}
+                        title={props.thAttrs.title}
                         tabindex={props.thAttrs.tabIndex}
                     >
             <span

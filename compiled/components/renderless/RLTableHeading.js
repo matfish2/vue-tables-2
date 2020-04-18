@@ -19,7 +19,8 @@ var _default = {
     return this.$scopedSlots["default"]({
       thAttrs: {
         "class": this.sortableClass(this.column),
-        tabIndex: this.tabIndex()
+        tabIndex: this.tabIndex(),
+        title: this.getHeadingTooltip(this.column)
       },
       thEvents: {
         keypress: function keypress(e) {
