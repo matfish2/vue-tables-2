@@ -129,7 +129,7 @@ var _default2 = {
             "class": "table-responsive"
           }, [h("vt-table", {
             ref: "vt_table"
-          })]), props.slots.afterTable, h("vt-pagination")]);
+          })]), props.slots.afterTable, props.opts.pagination.show ? h("vt-pagination") : '']);
         }
       }
     });
