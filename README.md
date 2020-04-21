@@ -37,7 +37,7 @@ Please click [here](https://matanya.gitbook.io/vue-tables-2/) for GitBook docume
 * Tailwind theme
 * Request failed message
 * Virtual Pagination
-* Coming soon: Selectable rows
+* Selectable rows
 
 Feel free to suggest more premium features and I'll consider adding them
 
