@@ -47,6 +47,9 @@ export default {
         },
         data() {
             return this.$refs.table.tableData
+        },
+        filtersCount() {
+            return this.$refs.table.filtersCount
         }
     },
     methods: {

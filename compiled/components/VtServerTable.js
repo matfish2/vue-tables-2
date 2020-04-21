@@ -61,6 +61,9 @@ var _default2 = {
     },
     data: function data() {
       return this.$refs.table.tableData;
+    },
+    filtersCount: function filtersCount() {
+      return this.$refs.table.filtersCount;
     }
   },
   methods: {

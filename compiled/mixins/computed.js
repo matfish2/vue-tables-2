@@ -13,6 +13,11 @@ module.exports = {
   colspan: require('../computed/colspan'),
   hasGenericFilter: require('../computed/has-generic-filter'),
   perPageValues: require('../computed/per-page-values'),
+  filtersCount: function filtersCount() {
+    return this.opts.filterByColumn ? Object.values(this.query).filter(function (val) {
+      return !!val;
+    }).length : !!this.query ? 1 : 0;
+  },
   stateKey: function stateKey() {
     var key = this.name ? this.name : this.id;
     return 'vuetables_' + key;

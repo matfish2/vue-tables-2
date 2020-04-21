@@ -77,6 +77,9 @@ var _default2 = {
     },
     allFilteredData: function allFilteredData() {
       return this.$refs.table.allFilteredData;
+    },
+    filtersCount: function filtersCount() {
+      return this.$refs.table.filtersCount;
     }
   },
   provide: function provide() {

@@ -62,6 +62,9 @@ export default {
         },
         allFilteredData() {
             return this.$refs.table.allFilteredData
+        },
+        filtersCount() {
+            return this.$refs.table.filtersCount
         }
     },
     provide() {
