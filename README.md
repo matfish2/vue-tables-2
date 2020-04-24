@@ -38,6 +38,7 @@ Please click [here](https://matanya.gitbook.io/vue-tables-2/) for GitBook docume
 * Request failed message
 * Virtual Pagination
 * Selectable rows
+* Axios: automatically cancel pending requests when a new request is sent
 
 Feel free to suggest more premium features and I'll consider adding them
 
