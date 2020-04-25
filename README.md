@@ -39,6 +39,7 @@ Please click [here](https://matanya.gitbook.io/vue-tables-2/) for GitBook docume
 * Virtual Pagination
 * Selectable rows
 * Axios: automatically cancel pending requests when a new request is sent
+* Server Side: Draw Counter to render only latest request
 
 Feel free to suggest more premium features and I'll consider adding them
 
