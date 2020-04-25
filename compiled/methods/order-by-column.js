@@ -2,6 +2,7 @@
 
 module.exports = function (colName, ev) {
   if (!this.sortable(colName)) return;
+  this.setPage(1, true);
 
   if (ev && ev.shiftKey && this.orderBy.column && this.hasMultiSort) {
     this.setUserMultiSort(colName);
