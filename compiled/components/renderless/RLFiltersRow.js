@@ -9,10 +9,10 @@ var _default = {
   inject: ['opts', 'theme', 'allColumns', 'filterable', 'filterType', 'slots', 'columnClass', 'hasChildRow', 'componentsOverride'],
   render: function render() {
     return this.$scopedSlots["default"]({
+      opts: this.opts(),
       columns: this.allColumns(),
       filterable: this.filterable,
       filterType: this.filterType,
-      opts: this.opts(),
       slots: this.slots(),
       columnClass: this.columnClass,
       hasChildRow: this.hasChildRow(),

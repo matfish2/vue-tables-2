@@ -10,6 +10,7 @@ var _default = {
   props: ['column'],
   render: function render(h) {
     return this.$scopedSlots["default"]({
+      opts: this.opts(),
       column: this.column,
       debounce: this.opts().debounce,
       theme: this.theme,

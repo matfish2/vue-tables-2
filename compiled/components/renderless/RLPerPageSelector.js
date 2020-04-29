@@ -11,6 +11,7 @@ var _default = {
     var _this = this;
 
     return this.$scopedSlots["default"]({
+      opts: this.opts(),
       perPageValues: this.perPageValues(),
       theme: this.theme,
       limit: this.limit(),

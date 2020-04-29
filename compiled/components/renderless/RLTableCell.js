@@ -15,6 +15,7 @@ var _default = {
   props: ['column'],
   render: function render(h) {
     return this.$scopedSlots["default"]({
+      opts: this.opts(),
       row: this.Row,
       content: this.content(h),
       classes: "".concat(this.columnClass(this.column), " ").concat(this.cellClasses(this.column, this.Row)).trim(),

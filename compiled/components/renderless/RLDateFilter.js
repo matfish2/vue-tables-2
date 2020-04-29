@@ -6,10 +6,11 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _default = {
   name: 'RLDateFilter',
-  inject: ['getHeading', 'display', 'componentsOverride'],
+  inject: ['getHeading', 'display', 'componentsOverride', 'opts'],
   props: ['column'],
   render: function render(h) {
     return this.$scopedSlots["default"]({
+      opts: this.opts(),
       column: this.column,
       placeholder: this.display('filterBy', {
         column: this.getHeading(this.column)

@@ -17,6 +17,7 @@ var _default = {
     var _this = this;
 
     return this.$scopedSlots["default"]({
+      opts: this.opts(),
       thAttrs: {
         "class": this.sortableClass(this.column),
         tabIndex: this.tabIndex(),

@@ -14,6 +14,7 @@ var _default = {
   inject: ['opts', 'count', 'limit', 'vuex', 'name', 'id', 'theme', 'page', 'setPage', 'totalPages', 'componentsOverride'],
   render: function render() {
     return this.$scopedSlots["default"]({
+      opts: this.opts(),
       setPage: this.setPage,
       options: this.opts().pagination,
       infiniteScroll: this.opts().infiniteScroll,
