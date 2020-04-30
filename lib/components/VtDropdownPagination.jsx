@@ -1,7 +1,7 @@
 import RLDropdownPagination from "./renderless/RLDropdownPagination";
 
 export default {
-    name: 'VTPagination',
+    name: 'VTDropdownPagination',
     components: {RLDropdownPagination},
     render() {
         return <r-l-dropdown-pagination scopedSlots={

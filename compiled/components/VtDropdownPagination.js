@@ -10,7 +10,7 @@ var _RLDropdownPagination = _interopRequireDefault(require("./renderless/RLDropd
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _default2 = {
-  name: 'VTPagination',
+  name: 'VTDropdownPagination',
   components: {
     RLDropdownPagination: _RLDropdownPagination["default"]
   },
