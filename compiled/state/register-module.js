@@ -13,8 +13,9 @@ module.exports = function (self) {
     state: (0, _state["default"])(self),
     mutations: (0, _mutations["default"])(self)
   };
+  var hasModule = self.$store.hasModule ? self.$store.hasModule(self.name) : self.$store.state && self.$store.state[self.name];
 
-  if (self.$store && self.$store.state && self.$store.state[self.name]) {
+  if (hasModule) {
     Module.state = _merge["default"].recursive(Module.state, self.$store.state[self.name]);
     self.$store.unregisterModule(self.name);
   }
