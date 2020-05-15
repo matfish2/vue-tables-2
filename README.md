@@ -7,7 +7,7 @@
 ----
 #### Breaking Change in New Release
 Version 2.0 is now in live. 
-It introduces an improved mechanism for building custom templates by allowing you to swap every component with your own UI implementation. [Read all about it](https://matanya.gitbook.io/vue-tables-2/custom-template-version-2).
+It introduces an improved mechanism for building custom templates by allowing you to swap every component with your own UI implementation. [Read all about it](https://matanya.gitbook.io/vue-tables-2/custom-template).
 If you were using custom templates in previous version you'll need to adapt it to the new syntax.
 
 ### About Vue Tables 2
