@@ -23,7 +23,7 @@ module.exports = function (filter) {
   }
 
   ;
-  var mergedFilter = this.opts.filterByColumn ? merge(this.query, filter) : filter;
+  var mergedFilter = this.opts.filterByColumn ? merge(true, this.query, filter) : filter;
 
   if (this.vuex) {
     this.commit('SET_FILTER', mergedFilter);
