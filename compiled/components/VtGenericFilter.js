@@ -39,7 +39,7 @@ var _default2 = {
               autocomplete: "off"
             },
             on: {
-              "keyup": props.search(props.debounce)
+              "keyup": props.search(props.opts.debounce)
             }
           })]);
         }

@@ -7,7 +7,7 @@
         <input :class="`VueTables__search__input ${props.theme.input} ${props.theme.small}`"
                type="text"
                :placeholder="props.display('filterPlaceholder')"
-               @keyup="e=>props.search(props.debounce)(e)"
+               @keyup="e=>props.search(props.opts.debounce)(e)"
                :id="`VueTables__search_${props.id}`"
                autocomplete="off"
         />

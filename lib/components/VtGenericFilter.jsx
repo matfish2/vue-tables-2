@@ -21,7 +21,7 @@ export default {
                             <input class={`VueTables__search__input ${props.theme.input} ${props.theme.small}`}
                                    type="text"
                                    placeholder={props.display('filterPlaceholder')}
-                                   on-keyup={props.search(props.debounce)}
+                                   on-keyup={props.search(props.opts.debounce)}
                                    id={`VueTables__search_${props.id}`}
                                    autocomplete="off"
                             />
