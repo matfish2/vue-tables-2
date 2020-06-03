@@ -46,6 +46,9 @@ export default {
         setOrder(column, asc) {
             this.$refs.table.setOrder(column, asc);
         },
+        setLimit(limit) {
+            this.$refs.table.setLimit(limit);
+        },
         toggleChildRow(rowId) {
             this.$refs.table.toggleChildRow(rowId);
         },

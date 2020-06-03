@@ -60,6 +60,9 @@ var _default2 = {
     setOrder: function setOrder(column, asc) {
       this.$refs.table.setOrder(column, asc);
     },
+    setLimit: function setLimit(limit) {
+      this.$refs.table.setLimit(limit);
+    },
     toggleChildRow: function toggleChildRow(rowId) {
       this.$refs.table.toggleChildRow(rowId);
     },
