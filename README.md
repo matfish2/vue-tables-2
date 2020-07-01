@@ -17,7 +17,7 @@ Vue Tables 2 was created to give developers a fully featured tool-set for creati
 [![dual license](https://github.com/xscode-resources/promotion-materials/blob/master/assets/Dual-license-badge.gif?raw=true)](https://cp.xscode.com/matfish2/vue-tables-2)
 
 As of **version 1.6.0**, this project is licensed under the **GPLv3** license.
-An **MIT** licensed version is available for a one-time fee [here](https://cp.xscode.com/matfish2/vue-tables-2)
+An **MIT** licensed version is available for an annual subscription [here](https://cp.xscode.com/matfish2/vue-tables-2)
 In addition to the permissive license, paying users will enjoy **[premium features](#premium-features)** and receive **ongoing priority support** for any issue that might arise.
 
 ### Demo
