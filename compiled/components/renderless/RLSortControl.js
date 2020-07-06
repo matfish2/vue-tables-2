@@ -10,8 +10,8 @@ var _default = {
   render: function render() {
     return this.$scopedSlots["default"]({
       opts: this.opts(),
-      sortable: this.sortable(this.column),
-      "class": "VueTables__sort-icon ".concat(this.theme.right, " ").concat(this.sortableChevronClass(this.column)),
+      sortable: this.sortable(this.column()),
+      "class": "VueTables__sort-icon ".concat(this.theme.right, " ").concat(this.sortableChevronClass(this.column())),
       sortStatus: this.sortStatus,
       override: this.componentsOverride.sortControl
     });
@@ -28,7 +28,7 @@ var _default = {
 
       if (this.hasMultiSort && this.OrderBy.column && this.UserMultiSorting[this.OrderBy.column]) {
         var col = this.UserMultiSorting[this.OrderBy.column].filter(function (c) {
-          return c.column === _this.column;
+          return c.column === _this.column();
         })[0];
         if (col) return {
           sorted: true,
@@ -36,7 +36,7 @@ var _default = {
         };
       }
 
-      if (this.column === this.OrderBy.column) {
+      if (this.column() === this.OrderBy.column) {
         return {
           sorted: true,
           asc: this.OrderBy.ascending

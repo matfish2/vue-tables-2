@@ -8,13 +8,17 @@ var _default = {
   name: 'RLTableHeading',
   props: ['column'],
   provide: function provide() {
+    var _this = this;
+
     return {
-      column: this.column
+      column: function column() {
+        return _this.column;
+      }
     };
   },
   inject: ['opts', 'theme', 'sortableClass', 'getHeadingTooltip', 'getHeading', 'orderByColumn', 'componentsOverride', 'tabIndex'],
   render: function render(h) {
-    var _this = this;
+    var _this2 = this;
 
     return this.$scopedSlots["default"]({
       opts: this.opts(),
@@ -31,7 +35,7 @@ var _default = {
         },
         click: function click(e) {
           if (e.target.className !== "resize-handle") {
-            _this.orderByColumn(_this.column, e);
+            _this2.orderByColumn(_this2.column, e);
           }
         }
       },
