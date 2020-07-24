@@ -24,7 +24,7 @@ module.exports = function (query) {
         continue;
       }
 
-      el = this.$el.querySelector("[name='".concat(columnName, "']"));
+      el = this.$el.querySelector("[name='".concat(columnName.replace("'", "\\'"), "']"));
 
       if (el) {
         el.value = query[column];
