@@ -123,7 +123,9 @@ var _default2 = {
             "class": props.theme.column
           }, [!props.opts.filterByColumn && props.opts.filterable ? h("div", {
             "class": "".concat(props.theme.field, " ").concat(props.theme.inline, " ").concat(props.theme.left, " VueTables__search")
-          }, [props.slots.beforeFilter, h("vt-generic-filter"), props.slots.afterFilter]) : '', props.slots.afterFilterWrapper, props.perPageValues.length > 1 ? h("div", {
+          }, [props.slots.beforeFilter, h("vt-generic-filter", {
+            ref: "genericFilter"
+          }), props.slots.afterFilter]) : '', props.slots.afterFilterWrapper, props.perPageValues.length > 1 ? h("div", {
             "class": "".concat(props.theme.field, " ").concat(props.theme.inline, " ").concat(props.theme.right, " VueTables__limit")
           }, [props.slots.beforeLimit, h("vt-per-page-selector"), props.slots.afterLimit]) : '', props.opts.pagination.dropdown && props.totalPages > 1 ? h("div", {
             "class": "VueTables__pagination-wrapper"

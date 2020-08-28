@@ -7,7 +7,7 @@
                 <div v-if="!props.opts.filterByColumn && props.opts.filterable"
                      :class="`${props.theme.field} ${props.theme.inline} ${props.theme.left} VueTables__search`">
                     <vnodes :vnodes="props.slots.beforeFilter"/>
-                    <vt-generic-filter/>
+                    <vt-generic-filter ref="genericFilter"/>
                     <vnodes :vnodes="props.slots.afterFilter"/>
                 </div>
                 <vnodes :vnodes="props.slots.afterFilterWrapper"/>
