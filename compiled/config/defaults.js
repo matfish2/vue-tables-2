@@ -54,6 +54,7 @@ module.exports = function () {
       up: "glyphicon-chevron-up",
       down: "glyphicon-chevron-down"
     },
+    addSortedClassToCells: false,
     sortingAlgorithm: function sortingAlgorithm(data, column) {
       return data.sort(this.getSortFn(column));
     },
