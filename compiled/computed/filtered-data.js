@@ -3,6 +3,7 @@
 var clone = require('clone');
 
 module.exports = function () {
+  this.dispatch('loading');
   var data = clone(this.tableData);
   var column = this.orderBy.column;
   data = this.search(data);
@@ -23,5 +24,6 @@ module.exports = function () {
 
   var offset = (this.page - 1) * this.limit;
   this.allFilteredData = JSON.parse(JSON.stringify(data));
+  this.dispatch('loaded');
   return data.splice(offset, this.limit);
 };
