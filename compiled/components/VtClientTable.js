@@ -51,6 +51,9 @@ var _default2 = {
     }
   },
   methods: {
+    setLoadingState: function setLoadingState(isLoading) {
+      this.$refs.table.loading = isLoading;
+    },
     setFilter: function setFilter(val) {
       this.$refs.table.setFilter(val);
     },
