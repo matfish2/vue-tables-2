@@ -9,6 +9,12 @@ export default {
             {
                 default: function (props) {
 
+                    if (props.override) {
+                        return h(props.override, {
+                            attrs: {props}
+                        })
+                    }
+
                     var headings = [];
 
                     if (props.childRowTogglerFirst) {

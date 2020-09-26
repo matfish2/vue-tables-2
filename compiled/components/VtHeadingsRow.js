@@ -22,6 +22,14 @@ var _default2 = {
     return h("r-l-headings-row", {
       scopedSlots: {
         "default": function _default(props) {
+          if (props.override) {
+            return h(props.override, {
+              attrs: {
+                props: props
+              }
+            });
+          }
+
           var headings = [];
 
           if (props.childRowTogglerFirst) {
