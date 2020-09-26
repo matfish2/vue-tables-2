@@ -28,14 +28,12 @@ var _default2 = {
           }) : h("pagination", {
             attrs: {
               options: props.optionsObj,
-              "for": props.name,
-              vuex: props.vuex,
               records: props.records,
               "per-page": props.perPage,
-              page: props.page
+              value: props.page
             },
             on: {
-              "paginate": function paginate(page) {
+              "input": function input(page) {
                 return props.setPage(page);
               }
             }

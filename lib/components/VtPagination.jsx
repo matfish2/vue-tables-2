@@ -15,12 +15,11 @@ export default {
                         }
                     ) : <pagination
                         options={props.optionsObj}
-                        for={props.name}
-                        vuex={props.vuex}
                         records={props.records}
                         per-page={props.perPage}
-                        page={props.page}
-                        onPaginate={page => props.setPage(page)}>
+                        value={props.page}
+                        onInput={page=> props.setPage(page)}
+                        >
                     </pagination>
                 }
             }

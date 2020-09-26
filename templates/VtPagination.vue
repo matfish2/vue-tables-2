@@ -1,12 +1,10 @@
 <template>
         <pagination
                 :options="props.optionsObj"
-                :for="props.name"
-                :vuex="props.vuex"
                 :records="props.records"
                 :per-page="props.perPage"
-                v-model="props.page"
-                @paginate="page => props.setPage(page)"/>
+                :value="props.page"
+                @input="page => props.setPage(page)"/>
 </template>
 
 <script>
