@@ -97,7 +97,8 @@ var _default2 = {
     },
     resetQuery: function resetQuery() {
       this.$refs.table.resetQuery();
-    }
+    },
+    resetCustomFilters: require('../methods/reset-custom-filters')
   },
   provide: function provide() {
     var _this = this;

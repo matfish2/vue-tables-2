@@ -68,7 +68,7 @@ export default {
         setOrder(column, asc) {
             this.$refs.table.setOrder(column, asc);
         },
-         setLimit(limit) {
+        setLimit(limit) {
             this.$refs.table.setLimit(limit);
         },
         toggleChildRow(rowId) {
@@ -82,7 +82,8 @@ export default {
         },
         resetQuery() {
             this.$refs.table.resetQuery()
-        }
+        },
+        resetCustomFilters: require('../methods/reset-custom-filters')
     },
     provide() {
         return {
