@@ -102,7 +102,7 @@ export default {
                                     </div> : ''}
                                 {props.slots.afterFilterWrapper}
 
-                                {props.perPageValues.length > 1 ? <div
+                                {props.perPageValues.length > 1 || props.opts.alwaysShowPerPageSelect ? <div
                                     class={`${props.theme.field} ${props.theme.inline} ${props.theme.right} VueTables__limit`}>
                                     {props.slots.beforeLimit}
                                     <vt-per-page-selector/>
