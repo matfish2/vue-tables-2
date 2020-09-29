@@ -22,6 +22,8 @@ As of **version 1.6.0**, this project is licensed under the **GPLv3** license.
 An **MIT** licensed version is available for an annual subscription [here](https://cp.xscode.com/matfish2/vue-tables-2)
 In addition to the permissive license, paying users will enjoy **[premium features](#premium-features)** and receive **ongoing priority support** for any issue that might arise.
 
+**We offer a one month [FREE trial](https://cp.xscode.com/matfish2/vue-tables-2) so you can check the premium features yourself.**
+
 ### Demo
 [Click here](https://jsfiddle.net/matfish2/jfa5t4sm/) to see the client component in action and fiddle with the various [options](https://matanya.gitbook.io/vue-tables-2/options-api)
 or [here](https://jsfiddle.net/matfish2/js4bmdbL/) for a rudimentary server component demo.
