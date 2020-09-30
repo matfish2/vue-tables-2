@@ -4,6 +4,7 @@ module.exports = function () {
   return {
     framework: 'bootstrap3',
     table: 'table table-striped table-bordered table-hover',
+    td: '',
     row: 'row',
     column: 'col-md-12',
     label: '',

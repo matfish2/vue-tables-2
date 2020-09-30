@@ -11,7 +11,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var _default = {
   name: 'RLTableCell',
-  inject: ['row', 'scopedSlots', 'orderBy', 'opts', 'render', 'index', 'setEditingCell', 'updateValue', 'revertValue', 'editing', 'getValue', 'columnClass', 'cellClasses', 'componentsOverride', 'isListFilter', 'optionText', 'source', 'dateFormat', 'formatDate', 'tabIndex'],
+  inject: ['row', 'scopedSlots', 'theme', 'orderBy', 'opts', 'render', 'index', 'setEditingCell', 'updateValue', 'revertValue', 'editing', 'getValue', 'columnClass', 'cellClasses', 'componentsOverride', 'isListFilter', 'optionText', 'source', 'dateFormat', 'formatDate', 'tabIndex'],
   props: ['column'],
   render: function render(h) {
     return this.$scopedSlots["default"]({
@@ -19,7 +19,7 @@ var _default = {
       row: this.Row,
       column: this.column,
       content: this.content(h),
-      classes: "".concat(this.columnClass(this.column), " ").concat(this.cellClasses(this.column, this.Row), " ").concat(this.sortedClass(this.column)).trim(),
+      classes: "".concat(this.theme.td, " ").concat(this.columnClass(this.column), " ").concat(this.cellClasses(this.column, this.Row), " ").concat(this.sortedClass(this.column)).trim(),
       tabIndex: this.tabIndex(),
       override: this.componentsOverride.tableCell
     });

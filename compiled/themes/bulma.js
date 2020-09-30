@@ -5,6 +5,7 @@ module.exports = function () {
     framework: 'bulma',
     table: 'table is-bordered is-striped is-hoverable is-fullwidth',
     row: 'columns',
+    td: '',
     column: 'column is-12',
     label: 'label',
     input: 'input',
