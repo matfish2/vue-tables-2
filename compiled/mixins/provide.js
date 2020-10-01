@@ -106,6 +106,9 @@ module.exports = function () {
     },
     loading: function loading() {
       return _this.loading;
+    },
+    initialRequestSent: function initialRequestSent() {
+      return _this.initialRequestSent;
     }
   };
 };

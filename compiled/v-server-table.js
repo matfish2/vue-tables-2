@@ -83,6 +83,8 @@ exports.install = function (Vue, globalOptions, useVuex) {
             }.bind(this), 0);
           }
         }.bind(this));
+      } else {
+        this.loading = false;
       }
     },
     mounted: function mounted() {
@@ -101,6 +103,7 @@ exports.install = function (Vue, globalOptions, useVuex) {
       return _merge["default"].recursive(_data(), {
         source: "server",
         loading: true,
+        initialRequestSent: false,
         lastKeyStrokeAt: false,
         globalOptions: globalOptions,
         componentsOverride: componentsOverride,

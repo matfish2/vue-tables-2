@@ -31,7 +31,7 @@ var _default2 = {
               tabindex: props.tabIndex,
               colspan: props.colspan
             }
-          }, [props.display(props.loading ? 'loading' : 'noResults')])]);
+          }, [props.display(props.message)])]);
         }
       }
     });

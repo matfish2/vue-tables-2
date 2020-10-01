@@ -10,7 +10,7 @@ export default {
                     return props.override ? h(props.override, {attrs:{props}}) : <tr class="VueTables__no-results">
                         <td class="text-center" tabindex={props.tabIndex}
                             colspan={props.colspan}>
-                            {props.display(props.loading ? 'loading' : 'noResults')}
+                            {props.display(props.message)}
                         </td>
                     </tr>
                 }
