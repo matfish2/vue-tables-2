@@ -5,5 +5,6 @@ module.exports = function () {
     this.$refs.table.customQueries[key] = null;
   }
 
+  this.$refs.table.updateState('customQueries', this.customQueries);
   this.$refs.table.refresh();
 };

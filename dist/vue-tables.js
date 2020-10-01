@@ -1487,7 +1487,7 @@ eval("\n\nmodule.exports = function (row, column, index, h) {\n  var value = thi
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nmodule.exports = function () {\n  for (var key in this.$refs.table.customQueries) {\n    this.$refs.table.customQueries[key] = null;\n  }\n\n  this.$refs.table.refresh();\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/reset-custom-filters.js?");
+eval("\n\nmodule.exports = function () {\n  for (var key in this.$refs.table.customQueries) {\n    this.$refs.table.customQueries[key] = null;\n  }\n\n  this.$refs.table.updateState('customQueries', this.customQueries);\n  this.$refs.table.refresh();\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/reset-custom-filters.js?");
 
 /***/ }),
 
