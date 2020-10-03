@@ -35,16 +35,14 @@ var _default2 = {
               id: props.selectAttrs.id
             },
             "class": props.selectAttrs["class"],
-            domProps: {
-              "value": props.selectAttrs.value
-            },
             on: {
               "change": props.selectEvents.change
             }
           }, [props.perPageValues.map(function (val) {
             return h("option", {
               domProps: {
-                "value": val
+                "value": val,
+                "selected": val === props.selectAttrs.value
               }
             }, [val]);
           })])]);
