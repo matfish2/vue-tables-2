@@ -5,9 +5,11 @@
             </label>
             <select :id="props.selectAttrs.id"
                     :class="props.selectAttrs.class"
-                    :value="props.selectAttrs.value"
                     @change="props.selectEvents.change">
-                <option v-for="val in props.perPageValues" :value="val">{{val}}</option>
+                <option v-for="val in props.perPageValues"
+                        :key="val"
+                        :value="val"
+                        :selected="val===props.selectAttrs.value">{{val}}</option>
             </select>
         </div>
 </template>
