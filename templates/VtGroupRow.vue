@@ -4,7 +4,7 @@
             <!-- Togglable group (toggleGroups: true)-->
             <button v-if="props.canToggleGroup"
                     :class="props.theme.button"
-                    @click="props.toggleGroup.bind(this, props.groupValue)">{{props.groupValue}}
+                    @click="props.toggleGroup.call(this, props.groupValue, $event)">{{props.groupValue}}
                 <span :class="props.groupToggleIcon(props.groupValue)"></span>
             </button>
             <!--  Non-togglable group (toggleGroups: false) -->
