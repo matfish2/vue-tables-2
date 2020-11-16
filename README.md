@@ -7,10 +7,12 @@
 [![Foo](https://xscode.com/assets/promo-banner.svg)](https://xscode.com/matfish2/vue-tables-2)
 
 ----
-#### Breaking Change in New Release
-Version 2.0 is now in live. 
-It introduces an improved mechanism for building custom templates by allowing you to swap every component with your own UI implementation. [Read all about it](https://matanya.gitbook.io/vue-tables-2/custom-template).
-If you were using custom templates in previous version you'll need to adapt it to the new syntax.
+### Vue 3 package is now available for subscribers
+The package is stored on the `vue3` branch.
+Please see instructions [here](https://matanya.gitbook.io/vue-tables-2/installation/vue-version-3)
+There are almost no breaking changes, so migration from v2 should be easy-peasy
+
+If you haven't subscribed yet you can start a [30 days free trial](https://xscode.com/matfish2/vue-tables-2) now.
 
 ### About Vue Tables 2
 Vue Tables 2 was created to give developers a fully featured tool-set for creating beautiful and useful data tables with Vue.js. Used in hundreds of commercial software applications, Vue Tables 2 is constantly growing, improving and getting new features.
