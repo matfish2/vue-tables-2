@@ -116,6 +116,7 @@ exports.install = function (Vue, globalOptions, useVuex) {
       setData: require("./methods/set-data"),
       serverSearch: require("./methods/server-search"),
       registerServerFilters: require("./methods/register-server-filters"),
+      getRequestParams: require("./methods/get-request-params"),
       loadState: function loadState() {
         var _this = this;
 

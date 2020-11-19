@@ -98,6 +98,9 @@ var _default2 = {
     resetQuery: function resetQuery() {
       this.$refs.table.resetQuery();
     },
+    getRequestParams: function getRequestParams() {
+      return this.$refs.table.getRequestParams();
+    },
     resetCustomFilters: require('../methods/reset-custom-filters')
   },
   provide: function provide() {

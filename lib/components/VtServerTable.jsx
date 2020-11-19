@@ -83,6 +83,9 @@ export default {
         resetQuery() {
             this.$refs.table.resetQuery()
         },
+        getRequestParams() {
+          return this.$refs.table.getRequestParams()
+        },
         resetCustomFilters: require('../methods/reset-custom-filters')
     },
     provide() {
