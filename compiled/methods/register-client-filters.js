@@ -13,6 +13,8 @@ module.exports = function () {
     _bus["default"].$off("".concat(event, ".filter::").concat(filter.name));
 
     _bus["default"].$on("".concat(event, ".filter::").concat(filter.name), function (value) {
+      _this.setPage(1);
+
       _this.customQueries[filter.name] = value;
 
       _this.updateState('customQueries', _this.customQueries);
