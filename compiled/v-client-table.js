@@ -99,6 +99,10 @@ exports.install = function (Vue, globalOptions, useVuex) {
         if (_this.page > _this.totalPages) {
           _this.setPage(_this.totalPages);
         }
+
+        if (_this.vuex) {
+          _this.commit('SET_CLIENT_DATA', _this.data);
+        }
       });
     },
     model: {
