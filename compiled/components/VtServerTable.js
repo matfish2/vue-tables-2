@@ -105,6 +105,10 @@ var _default2 = {
       var sendRequest = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
       return this.$refs.table.setRequestParams(params, sendRequest);
     },
+    setCustomFilters: function setCustomFilters(params) {
+      var sendRequest = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+      return this.$refs.table.setCustomFilters(params, sendRequest);
+    },
     resetCustomFilters: require('../methods/reset-custom-filters')
   },
   provide: function provide() {

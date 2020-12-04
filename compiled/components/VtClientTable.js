@@ -75,6 +75,10 @@ var _default2 = {
     },
     resetQuery: function resetQuery() {
       this.$refs.table.resetQuery();
+    },
+    setCustomFilters: function setCustomFilters(params) {
+      var sendRequest = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      return this.$refs.table.setCustomFilters(params, sendRequest);
     }
   },
   computed: {
