@@ -30,7 +30,7 @@ module.exports = function () {
       caret: 'caret'
     },
     pagination: {
-      nav: '',
+      nav: 'text-center',
       count: '',
       wrapper: '',
       list: 'pagination',
