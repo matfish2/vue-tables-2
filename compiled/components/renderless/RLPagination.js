@@ -29,7 +29,6 @@ var _default = {
       optionsObj: {
         theme: (0, _merge["default"])(this.theme.pagination, {
           wrapper: "".concat(this.theme.row, " ").concat(this.theme.column, " ").concat(this.theme.contentCenter),
-          nav: this.theme.center,
           count: "".concat(this.theme.center, " ").concat(this.theme.column)
         }),
         chunk: this.opts().pagination.chunk,
