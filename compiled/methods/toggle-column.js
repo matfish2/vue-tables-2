@@ -21,5 +21,9 @@ module.exports = function (column) {
   this.updateState('userColumnsDisplay', this.userColumnsDisplay);
   this.$nextTick(function () {
     _this._setFiltersDOM(_this.query);
+
+    if (_this.userColumnsDisplay.includes(column) && _this.opts.dateColumns.includes(column)) {
+      _this.initDateFilters();
+    }
   });
 };

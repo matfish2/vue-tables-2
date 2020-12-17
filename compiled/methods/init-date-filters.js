@@ -49,6 +49,12 @@ module.exports = function () {
       dpOptions.ranges = {};
     }
 
+    var drp = el.data('daterangerpicker');
+
+    if (drp) {
+      drp.remove();
+    }
+
     el.daterangepicker(merge.recursive(dpOptions, columnOptions, range));
     el.on('apply.daterangepicker', function (ev, picker) {
       query[column] = {
