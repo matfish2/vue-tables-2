@@ -8,7 +8,7 @@ export default {
         return <r-l-date-filter column={this.column} scopedSlots={
             {
                 default: (props) => {
-                    return props.overide ? h(props.override, {
+                    return props.override ? h(props.override, {
                         attrs: {props}
                     }) : <div class="VueTables__date-filter" id={'VueTables__' + this.column + '-filter'}>
                         <span class="VueTables__filter-placeholder">{props.placeholder}</span>
