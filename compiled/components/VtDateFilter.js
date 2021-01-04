@@ -24,7 +24,7 @@ var _default2 = {
       },
       scopedSlots: {
         "default": function _default(props) {
-          return props.overide ? h(props.override, {
+          return props.override ? h(props.override, {
             attrs: {
               props: props
             }
