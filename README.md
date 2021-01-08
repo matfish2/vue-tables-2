@@ -38,12 +38,13 @@ Please click [here](https://matanya.gitbook.io/vue-tables-2/) for GitBook docume
 
 #### Premium Features
 
+* Selectable rows
 * Sticky Headers
+* Virtual Pagination
+* Download CSV of client component data
 * Multiple-level grouping with data layer backing
 * Tailwind theme
 * Request failed message
-* Virtual Pagination
-* Selectable rows
 * Axios: automatically cancel pending requests when a new request is sent
 * Server Side: Draw Counter to render only latest request
 
