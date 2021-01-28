@@ -1691,7 +1691,7 @@ eval("\n\nmodule.exports = function (column, ascending) {\n  var sendRequest = a
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nmodule.exports = function (page) {\n  var preventRequest = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;\n  page = parseInt(page);\n  this.page = page;\n  this.updateState('page', page);\n  this.dispatch('pagination', page);\n  if (this.source == 'server' && !preventRequest) this.getData();\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/set-page.js?");
+eval("\n\nmodule.exports = function (page) {\n  var preventRequest = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;\n  page = parseInt(page);\n  this.page = page > 0 ? page : 1;\n  this.updateState('page', page);\n  this.dispatch('pagination', page);\n  if (this.source == 'server' && !preventRequest) this.getData();\n};\n\n//# sourceURL=webpack://VueTables/./lib/methods/set-page.js?");
 
 /***/ }),
 
