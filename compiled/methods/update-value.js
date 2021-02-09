@@ -1,6 +1,6 @@
 "use strict";
 
-var clone = require('clone');
+var clone = require('lodash.clonedeep');
 
 module.exports = function _updateValue(row, column) {
   return function (e) {

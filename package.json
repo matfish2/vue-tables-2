@@ -1,7 +1,7 @@
 {
   "name": "vue-tables-2",
   "description": "Vue.js 2 grid components",
-  "version": "2.1.80",
+  "version": "2.2.0",
   "keywords": [
     "vue2",
     "vuex",
@@ -19,12 +19,12 @@
   ],
   "dependencies": {
     "array-intersect": "^0.0.1",
-    "clone": "^2.1.1",
+    "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "debounce": "^1.1",
+    "lodash.clonedeep": "^4.5.0",
     "merge": "^1.2.0",
     "vue": "^2.6.10",
-    "vue-pagination-2": "^3.0",
-    "babel-helper-vue-jsx-merge-props": "^2.0.3"
+    "vue-pagination-2": "^3.0"
   },
   "scripts": {
     "build": "babel lib -d compiled",
