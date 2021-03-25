@@ -35,14 +35,14 @@ var _default = {
   methods: {
     content: function content(h) {
       if (this.options.templates[this.column]) {
-        return this.render(this.Row, this.column, this.index, h);
+        return this.render(this.Row, this.column, this.index(), h);
       }
 
       if (this.scopedSlots()[this.column]) {
         var data = {
           row: this.Row,
           column: this.column,
-          index: this.index
+          index: this.index()
         };
 
         if (this.options.editableColumns.includes(this.column)) {

@@ -15,7 +15,9 @@ var _default = {
       row: function row() {
         return _this.row;
       },
-      index: this.index
+      index: function index() {
+        return _this.index;
+      }
     };
   },
   render: function render() {
