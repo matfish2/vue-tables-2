@@ -136,14 +136,14 @@ exports.install = function (Vue, globalOptions, useVuex) {
             query: state.query,
             customQueries: state.customQueries,
             page: state.page,
-            limit: state.perPage,
+            limit: parseInt(state.perPage),
             orderBy: state.orderBy
           });
         } else {
           this.page = state.page;
           this.query = state.query;
           this.customQueries = state.customQueries;
-          this.limit = state.perPage;
+          this.limit = parseInt(state.perPage);
           this.orderBy = state.orderBy;
         }
 

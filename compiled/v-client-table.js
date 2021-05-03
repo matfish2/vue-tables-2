@@ -163,9 +163,9 @@ exports.install = function (Vue, globalOptions, useVuex) {
         this.setOrder(state.orderBy.column, state.orderBy.ascending);
 
         if (this.vuex) {
-          this.commit("SET_LIMIT", state.perPage);
+          this.commit("SET_LIMIT", parseInt(state.perPage));
         } else {
-          this.limit = state.perPage;
+          this.limit = parseInt(state.perPage);
         }
 
         this.setPage(state.page);
