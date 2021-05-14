@@ -57,12 +57,27 @@ function _default(self) {
         customQueries = _ref4.customQueries,
         limit = _ref4.limit,
         orderBy = _ref4.orderBy;
-    state.customQueries = customQueries;
-    state.query = query;
-    state.page = page;
-    state.limit = limit;
-    state.ascending = orderBy.ascending;
-    state.sortBy = orderBy.column;
+
+    if (customQueries) {
+      state.customQueries = customQueries;
+    }
+
+    if (typeof query !== 'undefined') {
+      state.query = query;
+    }
+
+    if (page) {
+      state.page = page;
+    }
+
+    if (limit) {
+      state.limit = limit;
+    }
+
+    if (typeof orderBy !== 'undefined') {
+      state.ascending = orderBy.ascending;
+      state.sortBy = orderBy.column;
+    }
   }), _defineProperty(_merge$recursive, "".concat(self.name, "/SET_LIMIT"), function SET_LIMIT(state, limit) {
     state.page = 1;
     self.updateState('page', 1);
