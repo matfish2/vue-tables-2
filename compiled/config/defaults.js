@@ -81,6 +81,7 @@ module.exports = function () {
     },
     childRow: false,
     childRowTogglerFirst: true,
+    disabledChildRows: false,
     showChildRowToggler: true,
     uniqueKey: "id",
     requestFunction: false,

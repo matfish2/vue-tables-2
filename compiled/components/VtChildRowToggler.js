@@ -38,9 +38,9 @@ var _default2 = {
               },
               "click": props.toggle
             }
-          }, [h("span", {
+          }, [props.toggleable ? h("span", {
             "class": "VueTables__child-row-toggler " + props["class"]()
-          })]);
+          }) : '']);
         }
       }
     });

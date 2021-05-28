@@ -1,6 +1,6 @@
 <template>
     <td :tabindex="props.tabIndex" @keypress.enter="props.toggle" @click="props.toggle">
-        <span :class="`VueTables__child-row-toggler ${props.class()}`"></span>
+        <span v-if="props.toggleable" :class="`VueTables__child-row-toggler ${props.class()}`"></span>
     </td>
 </template>
 
