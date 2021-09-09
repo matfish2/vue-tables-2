@@ -52,8 +52,9 @@ module.exports = function (table, hasChildRow, isChildRowTogglerFirst, resizeabl
       }
     });
     document.addEventListener("mouseup", function (e) {
-      if (e.target.nodeName === 'INPUT') return;
-      e.stopPropagation();
+      if (e.target.nodeName === 'INPUT') return; // Commented out due to #968. Monitor.
+      // e.stopPropagation();
+
       curCol = undefined;
       nxtCol = undefined;
       pageX = undefined;
